@@ -23,24 +23,25 @@ public class ServerImagen {
         try {
             //apertura de socket para escuchar a través de un puerto
             servidor = new ServerSocket(PUERTO);
-            System.out.println(".1");
+            
             do {
                 
                 numCliente ++;
-                System.out.println("numCliente:" +numCliente);
                 
-                //aceptamos la conexión de un cliente
-                cliente=servidor.accept();
+                cliente=servidor.accept(); //aceptamos la conexión de un cliente
                 
-                System.out.println(".2");
+                System.out.println("Cliente Conectado" + numCliente); //
                 
-                HiloImagen h = new HiloImagen(cliente); // Creamos un hilo de cliente
-                System.out.println(".3");
+                HiloImagen h = new HiloImagen(cliente); // creamos un hilo de cliente
+                
                 Thread t = new Thread(h);
-                System.out.println(".4");
-                t.start();
+                
+                t.start(); //lanzamos el hilo
+                System.out.println("Hilo Lanzado");
                 
             } while (true);
+            
+            
         } catch (IOException ex) {
             Logger.getLogger(ServerImagen.class.getName()).log(Level.SEVERE, null, ex);
         }
