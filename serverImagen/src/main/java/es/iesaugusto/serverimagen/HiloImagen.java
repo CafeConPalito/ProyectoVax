@@ -4,15 +4,10 @@
  */
 package es.iesaugusto.serverimagen;
 
-import java.awt.Image;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.net.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.ImageIcon;
 
 /**
  *
@@ -47,25 +42,67 @@ public class HiloImagen implements Runnable{
             
             switch (opcion) { //Opcion del Cliente
                 case "descarga":
+                    
+                    //--------- Trabajo interno.
                     //Enviar DATOS al Cliente.
-                    File direccionImagen = new File("logo.png");
-                    ImageIcon imagenEnviada = new ImageIcon(direccionImagen.getAbsolutePath());
+                    File archivoEnviar = new File("logo-negative.png"); //Imagen a enviar al cliente 
                     
+                    //Se necesita un Array de Bytes para almacenar la informacion con el tamaño del archivo.
+                    byte[] arrayDeBitesArchivo = new byte[(int) archivoEnviar.length()];
                     
-                    ///////////////////////////LO DEJAMOS POR AQUI/////////////////////////////
-                                        
+                    //Creo un Buffer para leer el archivo
+                    BufferedInputStream bis = new BufferedInputStream(new FileInputStream(archivoEnviar)); 
+                    
+                    //Leo con el buffer el archivo ya lo tengo en memoria.
+                    bis.read(arrayDeBitesArchivo, 0, arrayDeBitesArchivo.length);
+                    //---------
+                    
+                    //--------- CLiente tiene que escuchar
+                    
+                    //ENVIO NOMBRE ARCHIVO
+                    bufferDatosSalida.writeUTF(archivoEnviar.getName());
+                        
+                    //bufferDatosSalida.write(arrayDeBitesArchivo, 0, arrayDeBitesArchivo.length);
+                    
+                    //ENVIO DATOS DEL ARCHIVO
+                    //Envieando la info de 1024 en 1024 Bytes.
+                    
+                    //ESTO LO ENVIA TODO DE GOLPE
+                    //bufferDatosSalida.write(arrayDeBitesArchivo, 0, arrayDeBitesArchivo.length);
+                    
                     System.out.println("Opcion del cliente: " + opcion);
-                    bufferDatosSalida.writeUTF("ESTO ES LA INFORMACION!");
+                    
+                    int offset = 0; // Permite identificar la posicion desde la que se va a empezar a enviar en cada pasada.
+                    
+                    while (offset < arrayDeBitesArchivo.length) {
+                        int length = Math.min(arrayDeBitesArchivo.length - offset, 1024); // Tamaño de los Paquetes que se quiere enviar en este caso 1024 Bytes
+                        bufferDatosSalida.write(arrayDeBitesArchivo, offset, length);
+                        offset += length;
+                        System.out.println("enviando datos: " + offset);
+                    }
+                    
                     System.out.println("informacion envida al cliente");
+                    
+                    //Cierro bis
+                    bis.close();
                     
                     break;
                 case "carga":
                     
-                    //Recibir DATOS del cliente
-                    System.out.println("Opcion del cliente: " + opcion);
-                    String carga = bufferDatosEntrada.readUTF();
-                    System.out.println("informacion recibida del cliente");
-                    System.out.println("Datos: " + carga);
+                    String nombreArchivo = bufferDatosEntrada.readUTF(); // recibo en nombre del archivo
+                    
+                    // Creo un array para recibir el archivo e ir almacenándolo
+                    byte[] archivoRecibido = bufferDatosEntrada.readAllBytes(); // escribo en el array los datos enviados.
+                    // Creo el buffer que voy a utilizar y escribo en la imagen
+                    BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(nombreArchivo)); // pongo el nombre.
+                    bos.write(archivoRecibido);
+
+                    // 3 Cierro los búferes y servidor
+
+                    System.out.println("Archivo recibido y conexión cerrada");
+                    
+                    //Cierro bos
+                    bos.close();
                     
                     break;
                 default:
