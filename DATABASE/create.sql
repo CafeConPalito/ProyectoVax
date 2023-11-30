@@ -36,14 +36,40 @@ constraint fk_juego_usuario foreign key (idusuario) references usuario(idusuario
 
 create table if not exists regulacion(
 idregulacion int(10)unsigned auto_increment,
-idjuego int(10) unsigned,
 region int(1) unsigned,
 nivel varchar(25),
-primary key(idregulacion),
-constraint fk_regulacion_juego foreign key (idjuego) references juego(idjuego)
+primary key(idregulacion)
 );
 
 -- DROP TABLE regulacion;
+
+create table if not exists regulacion_juego(
+idregulacion int(10) unsigned,
+idjuego int(10) unsigned,
+primary key(idregulacion,idjuego),
+constraint fk_this_juego foreign key (idjuego) references juego(idjuego),
+constraint fk_this_regulacion foreign key (idregulacion) references regulacion(idregulacion)
+);
+
+-- DROP TABLE regulacion_juego
+
+create table if not exists genero(
+idgenero int(10) unsigned auto_increment,
+name varchar(50) unique,
+primary key(idgenero)
+);
+
+-- DROP TABLE genero;
+
+create table if not exists juego_genero(
+idjuego int(10) unsigned,
+idgenero int(10) unsigned,
+primary key(idjuego,idgenero),
+constraint fk_juego foreign key (idjuego) references juego(idjuego),
+constraint fk_this_genero foreign key (idgenero) references genero(idgenero)
+);
+
+-- DROP TABLE juego_genero;
 
 CREATE table if not exists biblioteca(
 idbiblioteca int(10) unsigned auto_increment,
