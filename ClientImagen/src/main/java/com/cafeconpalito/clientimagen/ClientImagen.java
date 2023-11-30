@@ -9,7 +9,7 @@ package com.cafeconpalito.clientimagen;
 public class ClientImagen {
 
     public static void main(String[] args) {
-        //Options.downloadImg();
+        Options.downloadImg();
         Options.uploadImg();
     }
 }
