@@ -11,6 +11,8 @@ public class PrimaryController {
     private Button primaryButton;
     @FXML
     private Font x3;
+    @FXML
+    private Button primaryButton1;
 
     @FXML
     private void switchToSecondary() throws IOException {
