@@ -30,6 +30,10 @@ public class HiloImagen implements Runnable{
             //se declaran los gru`pos de comunicacion con el cliente
             //flujo de entrada o lectura
             DataInputStream bufferDatosEntrada = new DataInputStream(cliente.getInputStream());
+            
+           
+            
+            
             //flujo de salida o escritura
             DataOutputStream bufferDatosSalida = new DataOutputStream(cliente.getOutputStream());
             
@@ -52,6 +56,10 @@ public class HiloImagen implements Runnable{
                     
                     //Creo un Buffer para leer el archivo
                     BufferedInputStream bis = new BufferedInputStream(new FileInputStream(archivoEnviar)); 
+                    
+                    byte buffer[]= new byte[1024];
+                    bis.read(arrayDeBitesArchivo);
+                    
                     
                     //Leo con el buffer el archivo ya lo tengo en memoria.
                     bis.read(arrayDeBitesArchivo, 0, arrayDeBitesArchivo.length);
