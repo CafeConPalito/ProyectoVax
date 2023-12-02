@@ -23,8 +23,6 @@ public class GameInfoController implements Initializable {
     @FXML
     private Label labelGameTitle;
     @FXML
-    private AnchorPane PanelPadre;
-    @FXML
     private ImageView imagen;
     @FXML
     private ComboBox<String> comboBox;

@@ -29,8 +29,8 @@ public class App extends Application {
         scene = new Scene(loadFXML(   "primary"));
 
         mainStage.setResizable(true);
-        mainStage.setMaxWidth(Double.MAX_VALUE);
-        mainStage.setMaxHeight(Double.MAX_VALUE);
+        //mainStage.setMaxWidth(Double.MAX_VALUE);
+        //mainStage.setMaxHeight(Double.MAX_VALUE);
         mainStage.setTitle("VaX");
         mainStage.setScene(scene);
         mainStage.show();
@@ -39,8 +39,9 @@ public class App extends Application {
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
-
-    private static Parent loadFXML(String fxml) throws IOException {
+    
+    //Dejar en public para que otros componentes puedan cargar la lista de fxml
+    public static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
     }
