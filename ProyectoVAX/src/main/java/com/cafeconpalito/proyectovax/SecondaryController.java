@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
@@ -23,15 +24,9 @@ public class SecondaryController implements Initializable {
     private Button secondaryButton;
     @FXML
     private Button addGameButton;
-
     @FXML
-    private TilePane gamesTilePane;
-
-    @FXML
-    private GridPane gridpanel;
+    private TilePane MyTilePane;
     
-    int columns=0;
-    int rows =1;
 
     @FXML
     private void switchToPrimary() throws IOException {
@@ -58,16 +53,8 @@ public class SecondaryController implements Initializable {
         giPanel.getLabelGameTitle().setText("Añade titulo aqui: Nº " + cont);
         giPanel.getImagen().setImage(new Image("https://m.media-amazon.com/images/I/413OEtICMlL._AC_UF894,1000_QL80_.jpg"));
 
-        //gamesTilePane.getChildren().add(giPanel.getPane());
+        MyTilePane.getChildren().add(giPanel.getPane());        
         
-        if (columns==3) {
-            columns=0;
-            rows++;
-        }
-        gridpanel.add(giPanel.getPane(), columns, rows);
-        columns++;
-        GridPane.setMargin(gridpanel, new Insets(50));
-
         //gamesTilePane.resize(Double.MAX_VALUE, Double.MAX_VALUE);
         //ol.add(giPanel.getPane());
         //lista.setItems(ol);
