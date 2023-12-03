@@ -9,13 +9,15 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
 
-public class SecondaryController implements Initializable{
+public class SecondaryController implements Initializable {
 
     @FXML
     private Button secondaryButton;
@@ -24,38 +26,49 @@ public class SecondaryController implements Initializable{
 
     @FXML
     private TilePane gamesTilePane;
-   
+
+    @FXML
+    private GridPane gridpanel;
+    
+    int columns=0;
+    int rows =1;
+
     @FXML
     private void switchToPrimary() throws IOException {
         App.setRoot("primary");
     }
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         //gamesPanes = new JFXMasonryPane();
     }
-    
-        
-     ObservableList<Pane> ol = FXCollections.observableArrayList();
-    
-    int cont =0;
+
+    ObservableList<Pane> ol = FXCollections.observableArrayList();
+
+    int cont = 0;
     //JFXMasonryPane root = new JFXMasonryPane();
-    
+
     @FXML
     private void clickAddGameButton(ActionEvent event) throws IOException {
-               
+
         cont++;
-        
+
         ConstructorGameInfo giPanel = new ConstructorGameInfo();
         giPanel.getLabelGameTitle().setText("Añade titulo aqui: Nº " + cont);
         giPanel.getImagen().setImage(new Image("https://m.media-amazon.com/images/I/413OEtICMlL._AC_UF894,1000_QL80_.jpg"));
+
+        //gamesTilePane.getChildren().add(giPanel.getPane());
         
-        gamesTilePane.getChildren().add(giPanel.getPane());
-        
+        if (columns==3) {
+            columns=0;
+            rows++;
+        }
+        gridpanel.add(giPanel.getPane(), columns, rows);
+        columns++;
+        GridPane.setMargin(gridpanel, new Insets(50));
 
         //gamesTilePane.resize(Double.MAX_VALUE, Double.MAX_VALUE);
-        
         //ol.add(giPanel.getPane());
         //lista.setItems(ol);
         /*
@@ -75,7 +88,6 @@ public class SecondaryController implements Initializable{
         }
         
         Scene scene = new Scene(gridPaneMain, 800, 800);
-        */
-        
+         */
     }
 }
