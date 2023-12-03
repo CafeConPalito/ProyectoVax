@@ -13,10 +13,16 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
+import javafx.scene.paint.Color;
 
 public class SecondaryController implements Initializable {
 
@@ -26,6 +32,8 @@ public class SecondaryController implements Initializable {
     private Button addGameButton;
     @FXML
     private TilePane MyTilePane;
+    @FXML
+    private HBox asd;
     
 
     @FXML
@@ -77,4 +85,21 @@ public class SecondaryController implements Initializable {
         Scene scene = new Scene(gridPaneMain, 800, 800);
          */
     }
+
+    @FXML
+    private void click(MouseEvent event) {
+        System.out.println("bhaskduhasdkh");
+    }
+
+    @FXML
+    private void asdOut(MouseEvent event) {
+        asd.setBackground(new Background(new BackgroundFill(Color.RED,CornerRadii.EMPTY,Insets.EMPTY)));
+    }
+
+    @FXML
+    private void asdEnter(MouseEvent event) {
+        asd.setBackground(new Background(new BackgroundFill(Color.GRAY,CornerRadii.EMPTY,Insets.EMPTY)));
+    }
+
+ 
 }

@@ -27,7 +27,8 @@ public class App extends Application {
     public void start(Stage mainStage) throws IOException {
         
         scene = new Scene(loadFXML(   "primary"));
-
+        
+        
         mainStage.setResizable(true);
         //mainStage.setMaxWidth(Double.MAX_VALUE);
         //mainStage.setMaxHeight(Double.MAX_VALUE);

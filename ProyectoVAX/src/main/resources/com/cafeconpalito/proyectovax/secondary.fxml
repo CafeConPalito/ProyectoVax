@@ -11,6 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 
 <BorderPane prefHeight="415.0" prefWidth="412.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cafeconpalito.proyectovax.SecondaryController">
@@ -19,8 +20,18 @@
           <children>
             <VBox alignment="TOP_CENTER" style="-fx-background-color: red;" VBox.vgrow="SOMETIMES">
                <children>
-                  <Button mnemonicParsing="false" text="Button" />
-                  <Button mnemonicParsing="false" text="Button" />
+                  <Button mnemonicParsing="false" prefHeight="22.0" prefWidth="202.0" style="-fx-background-color: Transparent; -fx-border-color: white; -fx-border-width: 0 0 2 0;" text="Tienda" textFill="WHITE">
+                     <font>
+                        <Font name="AdobeSongStd-Light" size="12.0" />
+                     </font>
+                  </Button>
+                  <HBox fx:id="asd" accessibleRole="BUTTON" alignment="CENTER" onMouseClicked="#click" onMouseEntered="#asdEnter" onMouseExited="#asdOut" prefHeight="0.0" prefWidth="189.0" style="-fx-background-color: gray;">
+                     <children>
+                        <Pane prefHeight="17.0" prefWidth="24.0" style="-fx-background-color: cyan;" />
+                        <Label prefHeight="28.0" prefWidth="28.0" text="Label" />
+                     </children>
+                  </HBox>
+                  <Button mnemonicParsing="false" text="Biblioteca" />
                </children>
             </VBox>
             <VBox alignment="CENTER" style="-fx-background-color: blue;" VBox.vgrow="ALWAYS">
@@ -32,7 +43,7 @@
                <children>
                     <Label text="Secondary View" />
                     <Button fx:id="secondaryButton" onAction="#switchToPrimary" text="Switch to Primary View" />
-                  <Button fx:id="addGameButton" mnemonicParsing="false" onAction="#clickAddGameButton" text="Button" />
+                  <Button fx:id="addGameButton" mnemonicParsing="false" onAction="#clickAddGameButton" prefHeight="25.0" prefWidth="233.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0 0 2 0;" text="Añadir Paneles" />
                </children>
             </VBox>
           </children>
@@ -65,7 +76,7 @@
             <HBox prefHeight="69.0" prefWidth="223.0">
                <children>
                   <Label text="Label" />
-                  <Pane prefHeight="69.0" prefWidth="157.0" HBox.hgrow="ALWAYS" />
+                  <Pane prefHeight="54.0" prefWidth="167.0" HBox.hgrow="ALWAYS" />
                   <Label text="Label" />
                </children>
             </HBox>
