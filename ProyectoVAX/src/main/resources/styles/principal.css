@@ -1,0 +1,37 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 4 dic 2023, 19:35:15
+    Author     : Ramiro
+*/
+.button{
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-border-radius: 50;
+    -fx-background-radius : 50;
+    -fx-border-color: white;
+    -fx-font-size: 18px;
+}
+.button:hover{
+    -fx-text-fill: #db3c21;
+    -fx-border-color: #db3c21;
+}
+
+.button.allGamesBtn{
+    -fx-background-color: transparent;
+    -fx-text-fill: #15b218;
+    -fx-border-radius: 50;
+    -fx-background-radius : 50;
+    -fx-border-color: #15b218;
+    -fx-font-size: 18px;
+}
+
+.button.allGamesBtn:hover{  
+    -fx-text-fill: #db3c21;
+    -fx-border-color: #db3c21;
+}
+
+
+
