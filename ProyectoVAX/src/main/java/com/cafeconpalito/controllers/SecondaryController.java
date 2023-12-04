@@ -1,6 +1,7 @@
-package com.cafeconpalito.proyectovax;
+package com.cafeconpalito.controllers;
 
 import com.cafeconpalito.constructor.ConstructorGameInfo;
+import com.cafeconpalito.proyectovax.App;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
