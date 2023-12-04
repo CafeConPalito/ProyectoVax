@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<BorderPane style="-fx-background-color: #11598a;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <HBox prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: white; -fx-background-radius: 50;">
+         <children>
+            <Pane HBox.hgrow="ALWAYS" />
+            <VBox alignment="CENTER" prefWidth="300.0" HBox.hgrow="NEVER">
+               <children>
+                  <Pane VBox.vgrow="ALWAYS" />
+                  <Label alignment="CENTER" text="LOGIN" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" text="EMAIL" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField prefHeight="25.0" prefWidth="221.0" style="-fx-background-color: transparent; -fx-border-style: solid; -fx-border-width: 0 0 2 0;" />
+                  <Label alignment="CENTER" text="PASSWORD" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <PasswordField style="-fx-background-color: trasnparent; -fx-border-style: solid; -fx-border-width: 0 0 2 0;" />
+                  <Pane VBox.vgrow="ALWAYS" />
+               </children>
+            </VBox>
+            <Pane HBox.hgrow="ALWAYS" />
+         </children>
+      </HBox>
+   </center>
+   <top>
+      <Pane prefHeight="10.0" style="-fx-background-color: transparent;" BorderPane.alignment="CENTER" />
+   </top>
+   <left>
+      <Pane prefWidth="10.0" style="-fx-background-color: transparent;" BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <Pane prefWidth="10.0" style="-fx-background-color: transparent;" BorderPane.alignment="CENTER" />
+   </right>
+   <bottom>
+      <Pane prefHeight="10.0" style="-fx-background-color: transparent;" BorderPane.alignment="CENTER" />
+   </bottom>
+</BorderPane>
