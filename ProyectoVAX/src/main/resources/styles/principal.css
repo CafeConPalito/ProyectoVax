@@ -6,13 +6,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     Created on : 4 dic 2023, 19:35:15
     Author     : Ramiro
 */
+
 .button{
     -fx-background-color: transparent;
     -fx-text-fill: white;
     -fx-border-radius: 50;
+    -fx-border-width: 2;
     -fx-background-radius : 50;
     -fx-border-color: white;
     -fx-font-size: 18px;
+/*    Sombra boton*/
+/*    -fx-effect: dropshadow(three-pass-box, black, 10, 0, 5, 5);*/
 }
 .button:hover{
     -fx-text-fill: #db3c21;
@@ -23,15 +27,24 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-background-color: transparent;
     -fx-text-fill: #15b218;
     -fx-border-radius: 50;
+    -fx-border-width: 2;
     -fx-background-radius : 50;
     -fx-border-color: #15b218;
     -fx-font-size: 18px;
 }
 
-.button.allGamesBtn:hover{  
+.button.allGamesBtn:hover{
     -fx-text-fill: #db3c21;
     -fx-border-color: #db3c21;
 }
 
+#VBoxPrin{
 
+    -fx-background-color: linear-gradient(to bottom,#060b36,  #11598a);
+}
+
+#VBoxUser{
+    -fx-background-radius:  30;
+    -fx-background-color: linear-gradient(to bottom,#11598a,  #060b36);
+}
 

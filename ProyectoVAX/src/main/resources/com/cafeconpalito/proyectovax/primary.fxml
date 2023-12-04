@@ -13,22 +13,14 @@
 
 <BorderPane prefHeight="500.0" prefWidth="900.0" stylesheets="@../../../styles/principal.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cafeconpalito.controllers.PrimaryController">
    <right>
-      <Pane prefHeight="500.0" prefWidth="700.0" BorderPane.alignment="CENTER">
-         <children>
-            <ImageView fitHeight="308.0" fitWidth="439.0" layoutX="217.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/vax%20games.png" />
-               </image>
-            </ImageView>
-         </children>
-         </Pane>
+      <Pane fx:id="parent" prefWidth="700.0" BorderPane.alignment="CENTER" />
    </right>
    <left>
-      <VBox prefHeight="500.0" prefWidth="200.0" style="-fx-background-color: #060b36;" BorderPane.alignment="CENTER">
+      <VBox id="VBoxPrin" prefHeight="500.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <VBox prefHeight="150.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="allGamesBtn" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#switchToSecondary" styleClass="allGamesBtn" text="All Games" textFill="#15b218">
+                  <Button fx:id="allGamesBtn" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#switchToSecondary" styleClass="allGamesBtn" text="Store" textFill="#15b218">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
@@ -51,9 +43,9 @@
             <HBox VBox.vgrow="NEVER">
                <children>
                   <Pane prefWidth="50.0" />
-                  <VBox alignment="CENTER" prefWidth="200.0" style="-fx-background-color: #11598a; -fx-background-radius: 30;">
+                  <VBox id="VBoxUser" alignment="CENTER" prefWidth="200.0" style="-fx-background-radius: 30;">
                      <children>
-                        <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: transparent;" text="Nick name" textAlignment="CENTER" textFill="WHITE">
+                        <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: transparent;" text="\@guest" textAlignment="CENTER" textFill="WHITE">
                            <VBox.margin>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="20.0" />
                            </VBox.margin>
@@ -74,29 +66,55 @@
                               <Font size="18.0" />
                            </font>
                         </Button>
+                        <Button fx:id="primaryButton1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#switchToLogIn" text="Log in" textFill="WHITE">
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Register" textFill="WHITE">
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
                      </children>
                   </VBox>
                   <Pane prefWidth="50.0" />
                </children>
             </HBox>
-            <VBox prefHeight="150.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+            <VBox alignment="CENTER" prefHeight="150.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                <children>
                   <Pane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
-                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Register" textFill="WHITE">
-                     <VBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </VBox.margin>
+                  <ImageView id="avatar" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/logo%20vax2.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: transparent;" text="Made by Cafe Con Palito®" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: transparent;" text="with ❤ for gamers " textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: transparent;" text="0.0.1" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Help" textFill="#f5f4f4">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="primaryButton1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#switchToSecondary" text="Log in" textFill="WHITE">
-                     <VBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font size="18.0" />
-                     </font></Button>
                </children>
                <VBox.margin>
                   <Insets />

@@ -1,41 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane style="-fx-background-color: #11598a;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane id="VBoxPrin" prefHeight="650.0" prefWidth="700.0" stylesheets="@../../../styles/principal.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cafeconpalito.controllers.LoginController">
    <center>
-      <HBox prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: white; -fx-background-radius: 50;">
+      <HBox maxHeight="700.0" maxWidth="1200.0" prefHeight="650.0" prefWidth="700.0" style="-fx-background-color: white; -fx-background-radius: 50;">
          <children>
             <Pane HBox.hgrow="ALWAYS" />
             <VBox alignment="CENTER" prefWidth="300.0" HBox.hgrow="NEVER">
                <children>
-                  <Pane VBox.vgrow="ALWAYS" />
-                  <Label alignment="CENTER" text="LOGIN" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+                  <Pane prefHeight="25.0" />
+                  <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/vax%20games.png" />
+                     </image>
+                  </ImageView>
+                  <Pane prefHeight="25.0" />
+                  <Label alignment="CENTER" text="WELCOME GAMER" textAlignment="CENTER" VBox.vgrow="ALWAYS">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
+                  <Pane prefHeight="50.0" />
                   <Label alignment="CENTER" text="EMAIL" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <TextField prefHeight="25.0" prefWidth="221.0" style="-fx-background-color: transparent; -fx-border-style: solid; -fx-border-width: 0 0 2 0;" />
+                  <TextField prefHeight="25.0" prefWidth="221.0" style="-fx-background-color: transparent; -fx-border-style: solid; -fx-border-width: 0 0 2 0;">
+                     <font>
+                        <Font size="18.0" />
+                     </font></TextField>
+                  <Pane prefHeight="25.0" />
                   <Label alignment="CENTER" text="PASSWORD" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <PasswordField style="-fx-background-color: trasnparent; -fx-border-style: solid; -fx-border-width: 0 0 2 0;" />
-                  <Pane VBox.vgrow="ALWAYS" />
+                  <PasswordField style="-fx-background-color: trasnparent; -fx-border-style: solid; -fx-border-width: 0 0 2 0;">
+                     <font>
+                        <Font size="18.0" />
+                     </font></PasswordField>
+                  <Pane prefHeight="50.0" />
+                  <HBox alignment="CENTER">
+                     <children>
+                        <Button fx:id="allGamesBtn" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#switchToSecondary" styleClass="allGamesBtn" text="Login" textFill="#15b218">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
                </children>
             </VBox>
             <Pane HBox.hgrow="ALWAYS" />
