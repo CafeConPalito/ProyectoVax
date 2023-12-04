@@ -1,5 +1,6 @@
-package com.cafeconpalito.proyectovax;
+package com.cafeconpalito.controllers;
 
+import com.cafeconpalito.proyectovax.App;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
