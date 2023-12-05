@@ -12,12 +12,12 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane id="VBoxPrin" prefHeight="650.0" prefWidth="700.0" stylesheets="@../../../styles/principal.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cafeconpalito.controllers.LoginController">
+<BorderPane id="BackGround" prefHeight="650.0" prefWidth="700.0" stylesheets="@../../../styles/login.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cafeconpalito.controllers.LoginController">
    <center>
       <HBox maxHeight="700.0" maxWidth="1200.0" prefHeight="650.0" prefWidth="700.0" style="-fx-background-color: white; -fx-background-radius: 50;">
          <children>
             <Pane HBox.hgrow="ALWAYS" />
-            <VBox alignment="CENTER" prefWidth="300.0" HBox.hgrow="NEVER">
+            <VBox alignment="CENTER" prefWidth="500.0" HBox.hgrow="NEVER">
                <children>
                   <Pane prefHeight="25.0" />
                   <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
@@ -51,10 +51,26 @@
                      <font>
                         <Font size="18.0" />
                      </font></PasswordField>
-                  <Pane prefHeight="50.0" />
+                  <Pane prefHeight="30.0" />
                   <HBox alignment="CENTER">
                      <children>
                         <Button fx:id="allGamesBtn" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#switchToSecondary" styleClass="allGamesBtn" text="Login" textFill="#15b218">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <Pane prefHeight="30.0" />
+                  <Label alignment="CENTER" text="You don't have an account" textAlignment="CENTER">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Pane prefWidth="20.0" />
+                  <HBox alignment="CENTER">
+                     <children>
+                        <Button fx:id="allGamesBtn1" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#switchToSecondary" style="-fx-background-color: red;" text="Register Now" textFill="#15b218">
                            <font>
                               <Font size="18.0" />
                            </font>
