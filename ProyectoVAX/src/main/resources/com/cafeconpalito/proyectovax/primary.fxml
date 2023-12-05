@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="500.0" prefWidth="900.0" stylesheets="@../../../styles/principal.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cafeconpalito.controllers.PrimaryController">
+<BorderPane prefHeight="650.0" prefWidth="900.0" stylesheets="@../../../styles/principal.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cafeconpalito.controllers.PrimaryController">
    <left>
       <VBox id="VBoxPrin" prefHeight="500.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -111,6 +111,9 @@
                      <font>
                         <Font size="18.0" />
                      </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
                   </Button>
                </children>
                <VBox.margin>
@@ -127,10 +130,14 @@
       </VBox>
    </left>
    <center>
-      <HBox BorderPane.alignment="CENTER">
-         <children>
-            <Pane fx:id="parent" HBox.hgrow="ALWAYS" />
-         </children>
-      </HBox>
+      <BorderPane styleClass="BackGround" BorderPane.alignment="CENTER">
+         <center>
+            <HBox BorderPane.alignment="CENTER">
+               <children>
+                  <Pane fx:id="parent" prefHeight="650.0" prefWidth="700.0" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+         </center>
+      </BorderPane>
    </center>
 </BorderPane>
