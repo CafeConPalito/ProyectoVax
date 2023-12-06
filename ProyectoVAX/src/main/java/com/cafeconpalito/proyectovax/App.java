@@ -35,7 +35,7 @@ public class App extends Application {
         //Titulo Stage
         mainStage.setTitle("VaX");
         //Icono Stage
-        mainStage.getIcons().add(new Image(App.class.getResourceAsStream("images/vax games.png")));
+        mainStage.getIcons().add(new Image(App.class.getResourceAsStream("images/logovax.png")));
         
         //Mostrando Escena principal
         mainStage.show();

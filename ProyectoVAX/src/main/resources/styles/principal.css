@@ -48,12 +48,3 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-background-color: linear-gradient(to bottom,#11598a,  #060b36);
 }
 
-#paco{
-    
-    -fx-background-image: url("fondoBonito.jpg");
-    -fx-background-position:center;
-    -fx-background-repeat: no-repeat;
-    -fx-background-size: stretch;
-    
-}
-

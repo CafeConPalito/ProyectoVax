@@ -15,8 +15,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-background-radius : 50;
     -fx-border-color: white;
     -fx-font-size: 18px;
-/*    Sombra boton*/
-/*    -fx-effect: dropshadow(three-pass-box, black, 10, 0, 5, 5);*/
+    /*    Sombra boton*/
+    /*    -fx-effect: dropshadow(three-pass-box, black, 10, 0, 5, 5);*/
 }
 .button:hover{
     -fx-text-fill: #db3c21;
@@ -43,6 +43,24 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 }
 
 #BackGround{
-    -fx-background-color: linear-gradient(to bottom,#11598a,  #060b36);
+    -fx-background-image: url("../com/cafeconpalito/proyectovax/images/fondoBonito.jpg");
+    -fx-background-position:center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: stretch;
 }
 
+#ButtonRegister{
+    -fx-background-color: transparent;
+    -fx-text-fill: #11598a;
+    -fx-border-radius: 50;
+    -fx-border-width: 2;
+    -fx-background-radius : 50;
+    -fx-border-color: #11598a;
+    -fx-font-size: 18px;
+    /*    Sombra boton*/
+    /*    -fx-effect: dropshadow(three-pass-box, black, 10, 0, 5, 5);*/
+}
+#ButtonRegister:hover{
+    -fx-text-fill: #db3c21;
+    -fx-border-color: #db3c21;
+}

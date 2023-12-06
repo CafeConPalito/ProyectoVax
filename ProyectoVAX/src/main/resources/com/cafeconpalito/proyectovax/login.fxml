@@ -19,13 +19,11 @@
             <Pane style="-fx-background-color: transparent;" HBox.hgrow="ALWAYS" />
             <VBox alignment="CENTER" prefWidth="500.0" HBox.hgrow="NEVER">
                <children>
-                  <Pane prefHeight="25.0" />
-                  <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="161.0" fitWidth="256.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/vax%20games.png" />
+                        <Image url="@images/logovax.png" />
                      </image>
                   </ImageView>
-                  <Pane prefHeight="25.0" />
                   <Label alignment="CENTER" text="WELCOME GAMER" textAlignment="CENTER" VBox.vgrow="ALWAYS">
                      <font>
                         <Font name="System Bold" size="18.0" />
@@ -72,7 +70,7 @@
                   <Pane prefWidth="20.0" />
                   <HBox alignment="CENTER">
                      <children>
-                        <Button fx:id="allGamesBtn1" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#switchToSecondary" style="-fx-background-color: red;" text="Register Now" textFill="#15b218">
+                        <Button id="ButtonRegister" fx:id="allGamesBtn1" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#switchToSecondary" text="Register Now" textFill="#15b218">
                            <font>
                               <Font size="18.0" />
                            </font>

@@ -71,14 +71,6 @@
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="registerButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#switchToRegister" text="Register" textFill="WHITE">
-                           <VBox.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </VBox.margin>
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
                      </children>
                   </VBox>
                   <Pane prefWidth="50.0" />
@@ -130,6 +122,6 @@
       </VBox>
    </left>
    <center>
-      <HBox id="paco" fx:id="parent" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <HBox id="BackgroundImg" fx:id="parent" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>
