@@ -36,7 +36,6 @@ public class PrimaryController {
         
         layout.setCenter(App.loadFXML("login"));
         
-        
     }
 
     @FXML

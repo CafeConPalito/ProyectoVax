@@ -36,8 +36,6 @@ public class App extends Application {
         mainStage.setTitle("VaX");
         //Icono Stage
         mainStage.getIcons().add(new Image(App.class.getResourceAsStream("images/vax games.png")));
-        double width = scene.getWidth();
-        double height = scene.getHeight();
         
         //Mostrando Escena principal
         mainStage.show();
@@ -45,12 +43,7 @@ public class App extends Application {
         //Tamaño minimo Stage
         mainStage.setMinWidth(mainStage.getWidth());
         mainStage.setMinHeight(mainStage.getHeight());
-        
-        
-        //PARA BORRAR
-        //System.out.println(scene.getWidth() + "   " + scene.getHeight());
-        //System.out.println(mainStage.getWidth() + "   " + mainStage.getHeight());
-    
+
     }
     
     
