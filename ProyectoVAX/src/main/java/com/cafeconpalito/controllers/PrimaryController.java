@@ -18,14 +18,8 @@ public class PrimaryController {
     private Pane parent;
     @FXML
     private BorderPane layout;
-    @FXML
-    private Button registerButton;
 
-    @FXML
-    private void switchToSecondary() throws IOException {
-        App.setRoot("secondary");
-    }
-
+    
     @FXML
     private void switchToLogIn(ActionEvent event) throws IOException {
         
@@ -38,9 +32,17 @@ public class PrimaryController {
         
     }
 
-    @FXML
     private void switchToRegister(ActionEvent event) throws IOException {
-        layout.setCenter(App.loadFXML("secondary"));
+        
+    }
+
+    @FXML
+    private void switchToStore(ActionEvent event) throws IOException {
+        layout.setCenter(App.loadFXML("store"));
+    }
+
+    @FXML
+    private void switchToLibrary(ActionEvent event) {
     }
 
 }

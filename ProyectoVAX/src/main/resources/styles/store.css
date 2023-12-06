@@ -1,0 +1,42 @@
+/* 
+    Created on : 6 dic 2023, 20:35:27
+    Author     : TerciodeMarte
+*/
+#BackGround{
+    -fx-background-image: url("../com/cafeconpalito/proyectovax/images/fondoBonito.jpg");
+    -fx-background-position:center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: stretch;
+}
+
+.button{
+    -fx-background-color: transparent;
+    -fx-text-fill: #11598a;
+    -fx-border-radius: 50;
+    -fx-border-width: 2;
+    -fx-background-radius : 50;
+    -fx-border-color: #11598a;
+    -fx-font-size: 18px;
+    /*    Sombra boton*/
+    /*    -fx-effect: dropshadow(three-pass-box, black, 10, 0, 5, 5);*/
+}
+.button:hover{
+    -fx-text-fill: #db3c21;
+    -fx-border-color: #db3c21;
+}
+
+#WhiteBackGround{
+    -fx-background-color: white;
+    -fx-background-radius : 50;
+}
+
+.filter{
+    -fx-background-color: #060b36;
+    -fx-background-radius : 50;
+    -fx-text-fill: white;
+}
+
+.textfield{
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}

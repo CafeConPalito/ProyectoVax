@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import javafx.scene.image.Image;
+import javafx.scene.layout.BorderPane;
 
 /**
  * JavaFX App
@@ -28,15 +29,28 @@ public class App extends Application {
 
         //Cargando Escena principal para mostrar
         scene = new Scene(loadFXML("primary"));
-        mainStage.setScene(scene);
         
+        
+        /*
+        Made by Cerveza con jarra fria
+            *Topo
+            *Cebo
+            *Hortelano
+            *Pijo^2
+        */
+        
+        //Añado la tienda al primary para cuando se lanze
+        BorderPane main = (BorderPane) scene.lookup("#layout");
+        main.setCenter(App.loadFXML("store"));
+        mainStage.setScene(scene);
+
         //Tamaño modificable del Stage si o no
         mainStage.setResizable(true);
         //Titulo Stage
         mainStage.setTitle("VaX");
         //Icono Stage
         mainStage.getIcons().add(new Image(App.class.getResourceAsStream("images/logovax.png")));
-        
+
         //Mostrando Escena principal
         mainStage.show();
 
@@ -45,8 +59,6 @@ public class App extends Application {
         mainStage.setMinHeight(mainStage.getHeight());
 
     }
-    
-    
 
     public static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));

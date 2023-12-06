@@ -11,13 +11,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="layout" minWidth="900.0" prefHeight="670.0" prefWidth="900.0" stylesheets="@../../../styles/principal.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cafeconpalito.controllers.PrimaryController">
+<BorderPane fx:id="layout" prefHeight="670.0" prefWidth="1200.0" stylesheets="@../../../styles/principal.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cafeconpalito.controllers.PrimaryController">
    <left>
       <VBox id="VBoxPrin" minHeight="-Infinity" minWidth="-Infinity" prefHeight="670.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <VBox prefHeight="150.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="allGamesBtn" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#switchToSecondary" styleClass="allGamesBtn" text="Store" textFill="#15b218">
+                  <Button fx:id="allGamesBtn" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#switchToStore" styleClass="allGamesBtn" text="Store" textFill="#15b218">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
@@ -25,7 +25,7 @@
                         <Font size="18.0" />
                      </font>
                      </Button>
-                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="My Games" textFill="WHITE">
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#switchToLibrary" text="My Games" textFill="WHITE">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
@@ -122,6 +122,6 @@
       </VBox>
    </left>
    <center>
-      <HBox id="BackgroundImg" fx:id="parent" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <HBox id="BackgroundImg" fx:id="parent" alignment="CENTER" prefHeight="670.0" prefWidth="1000.0" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>
