@@ -130,6 +130,6 @@
       </VBox>
    </left>
    <center>
-      <HBox fx:id="parent" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: red;" BorderPane.alignment="CENTER" />
+      <HBox id="paco" fx:id="parent" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>
