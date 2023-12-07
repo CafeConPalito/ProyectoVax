@@ -19,7 +19,7 @@
             <Insets />
          </opaqueInsets>
          <children>
-            <Label text="STORE" textFill="#11598a">
+            <Label styleClass="labels" text="STORE" textFill="#11598a">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>

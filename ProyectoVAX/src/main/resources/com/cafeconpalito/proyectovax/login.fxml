@@ -24,7 +24,7 @@
                         <Image url="@images/logovax.png" />
                      </image>
                   </ImageView>
-                  <Label alignment="CENTER" text="WELCOME GAMER" textAlignment="CENTER" textFill="#11598a" VBox.vgrow="ALWAYS">
+                  <Label alignment="CENTER" styleClass="labels" text="WELCOME GAMER" textAlignment="CENTER" textFill="WHITE" VBox.vgrow="ALWAYS">
                      <font>
                         <Font name="System Bold" size="36.0" />
                      </font>

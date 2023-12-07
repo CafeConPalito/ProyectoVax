@@ -38,6 +38,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-border-color: #db3c21;
 }
 
+.labels{
+    -fx-text-fill: #11598a;
+}
+
 #VBoxPrin{
     -fx-background-color: linear-gradient(to bottom,#060b36,  #11598a);
 }
