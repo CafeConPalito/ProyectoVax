@@ -17,7 +17,7 @@ import javafx.stage.StageStyle;
 public class App extends Application {
 
     private static Scene scene;
-
+   
     @Override
     public void init() throws Exception {
         //aquí llamo a los métodos que INICIAN LA BASE DE DATOS . se ejecuta antes de start
@@ -30,16 +30,14 @@ public class App extends Application {
 
         //Cargando Escena principal para mostrar
         scene = new Scene(loadFXML("primary"));
-        
-        
+
         /*
         Made by Cerveza con jarra fria
             *Topo
             *Cebo
             *Hortelano
             *Pijo^2
-        */
-        
+         */
         //Añado la tienda al primary para cuando se lanze
         BorderPane main = (BorderPane) scene.lookup("#layout");
         main.setCenter(App.loadFXML("store"));
@@ -47,11 +45,17 @@ public class App extends Application {
 
         //Tamaño modificable del Stage si o no
         mainStage.setResizable(true);
+
+        //Quito el header de windows
+        mainStage.initStyle(StageStyle.TRANSPARENT);
+        /*
         //Titulo Stage
         mainStage.setTitle("VaX");
+         */
+        
         //Icono Stage
         mainStage.getIcons().add(new Image(App.class.getResourceAsStream("images/logovax.png")));
-        
+
         //Mostrando Escena principal
         mainStage.show();
 

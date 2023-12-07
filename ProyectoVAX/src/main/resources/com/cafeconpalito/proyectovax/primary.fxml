@@ -147,4 +147,48 @@
    <center>
       <HBox id="BackgroundImg" fx:id="parent" alignment="CENTER" prefHeight="670.0" prefWidth="1000.0" BorderPane.alignment="CENTER" />
    </center>
+   <top>
+      <HBox fx:id="Header" alignment="CENTER_RIGHT" onMouseDragged="#HeaderMovement" onMousePressed="#HeaderClick" prefHeight="35.0" prefWidth="1300.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" HBox.hgrow="NEVER">
+               <image>
+                  <Image url="@images/logovax.png" />
+               </image>
+               <HBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </HBox.margin>
+            </ImageView>
+            <Label styleClass="labels" text="VaX" HBox.hgrow="NEVER">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+            <Button id="MinimizeButton" fx:id="MiminizeButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#MinimizeButton" prefHeight="10.0" prefWidth="10.0" textAlignment="CENTER" textFill="#156f2e" HBox.hgrow="NEVER">
+               <font>
+                  <Font size="10.0" />
+               </font>
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+            </Button>
+            <Button id="MaximizeButton" fx:id="MaximizeButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#MaximizeButton" prefHeight="10.0" prefWidth="10.0" textAlignment="CENTER" textFill="#acc600" HBox.hgrow="NEVER">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Button>
+            <Button id="CloseButton" fx:id="CloseButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#CloseButton" prefHeight="10.0" prefWidth="10.0" textAlignment="CENTER" textFill="#9a0000" HBox.hgrow="NEVER">
+               <font>
+                  <Font size="10.0" />
+               </font>
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+   </top>
 </BorderPane>
