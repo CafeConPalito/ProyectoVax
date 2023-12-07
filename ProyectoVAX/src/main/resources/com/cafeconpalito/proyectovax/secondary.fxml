@@ -13,7 +13,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane prefHeight="415.0" prefWidth="412.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cafeconpalito.controllers.SecondaryController">
    <left>
       <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="390.0" prefWidth="189.0" BorderPane.alignment="CENTER">
@@ -86,7 +85,7 @@
                      <content>
                         <VBox>
                            <children>
-                              <TilePane fx:id="MyTilePane" prefColumns="0" prefRows="0" style="-fx-background-color: yellow;" tileAlignment="TOP_CENTER" VBox.vgrow="ALWAYS" />
+                              <TilePane fx:id="MyTilePane" prefColumns="0" prefHeight="7541.0" prefRows="0" prefWidth="208.0" style="-fx-background-color: yellow;" tileAlignment="TOP_CENTER" VBox.vgrow="ALWAYS" />
                            </children>
                         </VBox>
                      </content>

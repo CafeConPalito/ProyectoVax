@@ -33,6 +33,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-font-size: 18px;
 }
 
+.label{
+    -fx-text-fill: white;
+}
+
 .button.allGamesBtn:hover{
     -fx-text-fill: #db3c21;
     -fx-border-color: #db3c21;

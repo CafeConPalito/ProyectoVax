@@ -26,8 +26,7 @@
 }
 
 #WhiteBackGround{
-    -fx-background-color: white;
-    -fx-background-radius : 50;
+    -fx-background-color: linear-gradient(to bottom, #ccdae6, white);
 }
 
 .filter{

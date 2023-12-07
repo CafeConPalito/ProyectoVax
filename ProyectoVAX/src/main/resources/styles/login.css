@@ -49,6 +49,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-background-size: stretch;
 }
 
+#BackGroundForm{
+    -fx-background-color: linear-gradient(to bottom, #ccdae6, white );
+    -fx-background-radius : 50;
+}
+
 #ButtonRegister{
     -fx-background-color: transparent;
     -fx-text-fill: #11598a;

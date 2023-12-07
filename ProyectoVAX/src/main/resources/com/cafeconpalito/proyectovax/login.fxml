@@ -14,7 +14,7 @@
 
 <HBox id="BackGround" alignment="CENTER" stylesheets="@../../../styles/login.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cafeconpalito.controllers.LoginController">
    <children>
-      <HBox maxHeight="900.0" maxWidth="1200.0" prefHeight="650.0" prefWidth="700.0" style="-fx-background-color: white; -fx-background-radius: 50;" HBox.hgrow="ALWAYS">
+      <HBox id="BackGroundForm" maxHeight="900.0" maxWidth="1200.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="700.0" HBox.hgrow="ALWAYS">
          <children>
             <Pane style="-fx-background-color: transparent;" HBox.hgrow="ALWAYS" />
             <VBox alignment="CENTER" prefWidth="500.0" HBox.hgrow="NEVER">
@@ -24,9 +24,9 @@
                         <Image url="@images/logovax.png" />
                      </image>
                   </ImageView>
-                  <Label alignment="CENTER" text="WELCOME GAMER" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+                  <Label alignment="CENTER" text="WELCOME GAMER" textAlignment="CENTER" textFill="#11598a" VBox.vgrow="ALWAYS">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
                   <Pane prefHeight="50.0" />
@@ -35,7 +35,7 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <TextField prefHeight="25.0" prefWidth="221.0" style="-fx-background-color: transparent; -fx-border-style: solid; -fx-border-width: 0 0 2 0;">
+                  <TextField alignment="CENTER" prefHeight="25.0" prefWidth="221.0" style="-fx-background-color: transparent; -fx-border-style: solid; -fx-border-width: 0 0 1 0;">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -46,7 +46,7 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <PasswordField style="-fx-background-color: trasnparent; -fx-border-style: solid; -fx-border-width: 0 0 2 0;">
+                  <PasswordField alignment="CENTER" style="-fx-background-color: trasnparent; -fx-border-style: solid; -fx-border-width: 0 0 1 0;">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -54,23 +54,24 @@
                   <Pane prefHeight="30.0" />
                   <HBox alignment="CENTER">
                      <children>
-                        <Button fx:id="allGamesBtn" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#switchToSecondary" styleClass="allGamesBtn" text="Login" textFill="#15b218">
+                        <Button fx:id="allGamesBtn" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#switchToSecondary" prefHeight="43.0" prefWidth="150.0" styleClass="allGamesBtn" text="Login" textFill="#15b218">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
                      </children>
                   </HBox>
-                  <Pane prefHeight="30.0" />
                   <Label alignment="CENTER" text="You don't have an account" textAlignment="CENTER">
                      <font>
                         <Font size="18.0" />
                      </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="25.0" />
+                     </VBox.margin>
                   </Label>
-                  <Pane prefWidth="20.0" />
                   <HBox alignment="CENTER">
                      <children>
-                        <Button id="ButtonRegister" fx:id="allGamesBtn1" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#switchToSecondary" text="Register Now" textFill="#15b218">
+                        <Button id="ButtonRegister" fx:id="allGamesBtn1" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#switchToSecondary" prefHeight="43.0" prefWidth="150.0" text="Register Now" textFill="#15b218">
                            <font>
                               <Font size="18.0" />
                            </font>
