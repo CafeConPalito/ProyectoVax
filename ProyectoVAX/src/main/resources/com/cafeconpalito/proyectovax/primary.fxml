@@ -65,7 +65,7 @@
                                     <Insets />
                                  </HBox.margin>
                               </ImageView>
-                              <Label text="98,76">
+                              <Label styleClass="labels" text="98,76">
                                  <font>
                                     <Font size="11.0" />
                                  </font>
@@ -107,17 +107,17 @@
                         <Image url="@images/logo-simple-negative-rb.png" />
                      </image>
                   </ImageView>
-                  <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: transparent;" text="Made by Cafe Con Palito®" textAlignment="CENTER" textFill="WHITE">
+                  <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="labels" text="Made by Cafe Con Palito®" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: transparent;" text="with ❤ for gamers " textAlignment="CENTER" textFill="WHITE">
+                  <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="labels" text="with ❤ for gamers " textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: transparent;" text="0.0.1" textAlignment="CENTER" textFill="WHITE">
+                  <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="labels" text="0.0.1" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>

@@ -26,7 +26,7 @@
 }
 
 #WhiteBackGround{
-    -fx-background-color: linear-gradient(to bottom, #ccdae6, white);
+    -fx-background-color: linear-gradient(to bottom, #cedef5, white);
 }
 
 .filter{

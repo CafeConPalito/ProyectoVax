@@ -30,7 +30,7 @@
                      </font>
                   </Label>
                   <Pane prefHeight="50.0" />
-                  <Label alignment="CENTER" text="EMAIL" textAlignment="CENTER">
+                  <Label alignment="CENTER" styleClass="labels" text="EMAIL" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -41,7 +41,7 @@
                      </font>
                   </TextField>
                   <Pane prefHeight="25.0" />
-                  <Label alignment="CENTER" text="PASSWORD" textAlignment="CENTER">
+                  <Label alignment="CENTER" styleClass="labels" text="PASSWORD" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -61,7 +61,7 @@
                         </Button>
                      </children>
                   </HBox>
-                  <Label alignment="CENTER" text="You don't have an account" textAlignment="CENTER">
+                  <Label alignment="CENTER" styleClass="labels" text="You don't have an account" textAlignment="CENTER">
                      <font>
                         <Font size="18.0" />
                      </font>

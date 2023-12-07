@@ -54,8 +54,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 }
 
 #BackGroundForm{
-    -fx-background-color: linear-gradient(to bottom, #ccdae6, white );
-    -fx-background-radius : 50;
+    -fx-background-color: linear-gradient(to bottom, #cedef5, white );
+    -fx-background-radius : 10;
 }
 
 #ButtonRegister{
