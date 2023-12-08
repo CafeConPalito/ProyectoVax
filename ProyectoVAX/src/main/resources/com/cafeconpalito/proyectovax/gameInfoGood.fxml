@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox id="BackGroundTrans" fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" stylesheets="@../../../styles/gameInfo.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<HBox id="BackGroundTrans" fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" stylesheets="@../../../styles/gameInfo.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cafeconpalito.controllers.GameInfoGoodController">
    <children>
       <VBox id="BackGround" alignment="CENTER">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" text="GAME TITLE" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
+            <Label fx:id="infoGameTitle" alignment="CENTER" contentDisplay="CENTER" text="GAME TITLE" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -21,7 +21,7 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin>
             </Label>
-            <ImageView fitHeight="250.0" fitWidth="225.0" pickOnBounds="true">
+            <ImageView fx:id="infoGameImage" fitHeight="250.0" fitWidth="225.0" pickOnBounds="true">
                <image>
                   <Image url="@images/Diversity-Avatars-Avatars-Batman.48.png" />
                </image>
@@ -40,7 +40,7 @@
                                     <Image url="@images/descargas.png" />
                                  </image>
                               </ImageView>
-                              <Label text="123456789" textFill="WHITE">
+                              <Label fx:id="infoGameDownloads" text="123456789" textFill="WHITE">
                                  <font>
                                     <Font size="11.0" />
                                  </font></Label>
@@ -56,7 +56,7 @@
                                     <Insets left="20.0" right="10.0" />
                                  </HBox.margin>
                               </ImageView>
-                              <Label text="98,76" textFill="WHITE">
+                              <Label fx:id="infoGamePrice" text="98,76" textFill="WHITE">
                                  <font>
                                     <Font size="11.0" />
                                  </font></Label>
@@ -70,7 +70,7 @@
                         <Insets />
                      </HBox.margin>
                   </VBox>
-                  <Button mnemonicParsing="false" text="Purchase" />
+                  <Button mnemonicParsing="false" onAction="#switchToPurchase" text="Purchase" />
                </children>
             </HBox>
          </children>

@@ -28,9 +28,6 @@ public class COPIASEGURIDADPrimaryController {
     @FXML
     private Button CloseButton;
 
-
-
-
     @FXML
     private void MinimizeButton(ActionEvent event) {
         Stage stage = (Stage) MiminizeButton.getScene().getWindow();

@@ -1,13 +1,14 @@
 package com.cafeconpalito.proyectovax;
 
+import com.cafeconpalito.controllers.GameInfoGoodController;
 import com.cafeconpalito.staticElements.MainView;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import java.io.IOException;
+import java.net.URL;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.StageStyle;
@@ -40,11 +41,15 @@ public class App extends Application {
             *Cebo
             *Hortelano
             *Pijo^2
-         */
-        //Añado la tienda al primary para cuando se lanze
-        MainView.main = (BorderPane) scene.lookup("#layout");
-        MainView.main.setCenter(App.loadFXML("store"));
+        */
         
+        //SETEO EL Layout para que cualquiera pueda acceder!
+        MainView.main = (BorderPane) scene.lookup("#layout");
+        
+
+        //Añado la tienda al primary para cuando se lanze
+        MainView.main.setCenter(App.loadFXML("store"));
+
         //Añado la barra lateral
         MainView.main.setLeft(App.loadFXML("panelIzquierdoGeneral"));
         
@@ -82,12 +87,28 @@ public class App extends Application {
         return fxmlLoader.load();
     }
 
+    public static FXMLLoader getFXMLLoader(String fxml) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+        return fxmlLoader;
+    }
+    
+    public static String rutaRecursos(String fxml){
+        return App.class.getResource(fxml + ".fxml")+"";
+    }
+    
+    public static URL locationDeRecursos(String fxml){
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+        return fxmlLoader.getLocation();
+    }
+    
+    
     @Override
     public void stop() throws Exception {
         // aquí se ejecuta el código después de cerrar la aplicación. Por ejemplo CERRAR CONEXIÓN BASE DE DATOS
 
         // si quiero salir en otro punto del código y que se ejecute el stop() HAY QUE USAR el :
-        // Platform.exit();        
+        // Platform.exit();
+        
     }
 
     public static void main(String[] args) {

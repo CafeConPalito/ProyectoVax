@@ -23,11 +23,23 @@ public class Game {
     
     //Esto es segun region
     private String regulacion;
+    
+    //El que añadio el juego
+    private int idUsuarioRegistroJuego;
 
     public Game() {
     }
+
+    //CREO que se puede destruir
+    public Game(int idJuego, String titulo, double precio, int numDescargas , String urlImagen){
+        this.idJuego = idJuego;
+        this.titulo = titulo;
+        this.precio = precio;
+        this.numDescargas = numDescargas;
+        this.urlImagen = urlImagen;
+    }
     
-    public Game(int idJuego, String titulo, String descripcion, String urlImagen, String fecha, int numDescargas, double precio, String genero, String regulacion) {
+    public Game(int idJuego, String titulo, String descripcion, String urlImagen, String fecha, int numDescargas, double precio, String genero, String regulacion, int idUsuarioRegistroJuego) {
         this.idJuego = idJuego;
         this.titulo = titulo;
         this.descripcion = descripcion;
@@ -37,7 +49,7 @@ public class Game {
         this.precio = precio;
         this.genero = genero;
         this.regulacion = regulacion;
-        
+        this.idUsuarioRegistroJuego = idUsuarioRegistroJuego;
     }
 
     public int getIdJuego() {
@@ -111,7 +123,14 @@ public class Game {
     public void setRegulacion(String regulacion) {
         this.regulacion = regulacion;
     }
-    
+
+    public int getIdUsuarioRegistroJuego() {
+        return idUsuarioRegistroJuego;
+    }
+
+    public void setIdUsuarioRegistroJuego(int idUsuarioRegistroJuego) {
+        this.idUsuarioRegistroJuego = idUsuarioRegistroJuego;
+    }
     
     
 }

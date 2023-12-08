@@ -22,6 +22,5 @@ public class UserLogedGames {
     public static void setMyGames(ArrayList<Game> myGames) {
         UserLogedGames.myGames = myGames;
     }
-    
-    
+
 }
