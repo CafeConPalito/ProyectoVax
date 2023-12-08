@@ -1,5 +1,6 @@
 package com.cafeconpalito.proyectovax;
 
+import com.cafeconpalito.staticElements.MainView;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,6 +18,8 @@ import javafx.stage.StageStyle;
 public class App extends Application {
 
     private static Scene scene;
+    
+
    
     @Override
     public void init() throws Exception {
@@ -39,8 +42,12 @@ public class App extends Application {
             *Pijo^2
          */
         //Añado la tienda al primary para cuando se lanze
-        BorderPane main = (BorderPane) scene.lookup("#layout");
-        main.setCenter(App.loadFXML("store"));
+        MainView.main = (BorderPane) scene.lookup("#layout");
+        MainView.main.setCenter(App.loadFXML("store"));
+        
+        //Añado la barra lateral
+        MainView.main.setLeft(App.loadFXML("panelIzquierdoGeneral"));
+        
         mainStage.setScene(scene);
 
         //Tamaño modificable del Stage si o no

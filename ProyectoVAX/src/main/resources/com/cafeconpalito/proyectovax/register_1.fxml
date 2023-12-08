@@ -90,7 +90,7 @@
                                           <Font size="18.0" />
                                        </font>
                                     </TextField>
-                                    <Button id="selectImgBtn" mnemonicParsing="false" onMouseClicked="#SelectImage" text="Select" />
+                                    <Button id="selectImgBtn" mnemonicParsing="false" onAction="#SelectImage" text="Select" />
                                  </children>
                               </HBox>
                               <Pane prefHeight="25.0" />
@@ -114,7 +114,7 @@
                            </image>
                         </ImageView>
                         <Pane prefHeight="43.0" prefWidth="82.0" />
-                        <Button id="ButtonRegister" fx:id="allGamesBtn1" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" onAction="#switchToSecondary" onMouseClicked="#registerBtn" prefHeight="43.0" prefWidth="150.0" text="Register" textFill="#15b218">
+                        <Button id="ButtonRegister" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" onAction="#tryToRegister" prefHeight="43.0" prefWidth="150.0" text="Register" textFill="#15b218">
                            <font>
                               <Font size="18.0" />
                            </font>

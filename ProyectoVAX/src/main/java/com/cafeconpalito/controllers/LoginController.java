@@ -4,6 +4,9 @@
  */
 package com.cafeconpalito.controllers;
 
+import com.cafeconpalito.proyectovax.App;
+import com.cafeconpalito.staticElements.MainView;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -19,7 +22,7 @@ import javafx.scene.control.Button;
 public class LoginController implements Initializable {
 
     @FXML
-    private Button allGamesBtn;
+    private Button registerBtn;
 
     /**
      * Initializes the controller class.
@@ -30,7 +33,13 @@ public class LoginController implements Initializable {
     }    
 
     @FXML
-    private void switchToSecondary(ActionEvent event) {
+    private void tryLogIn(ActionEvent event) {
+        System.out.println("intentando Logear");
+    }
+
+    @FXML
+    private void switchToRegister(ActionEvent event) throws IOException {
+         MainView.main.setCenter(App.loadFXML("register"));
     }
     
 }

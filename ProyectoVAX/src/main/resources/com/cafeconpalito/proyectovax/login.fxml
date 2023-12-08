@@ -54,7 +54,7 @@
                   <Pane prefHeight="30.0" />
                   <HBox alignment="CENTER">
                      <children>
-                        <Button fx:id="allGamesBtn" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#switchToSecondary" prefHeight="43.0" prefWidth="150.0" styleClass="allGamesBtn" text="Login" textFill="#15b218">
+                        <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#tryLogIn" prefHeight="43.0" prefWidth="150.0" styleClass="allGamesBtn" text="Login" textFill="#15b218">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -71,7 +71,7 @@
                   </Label>
                   <HBox alignment="CENTER">
                      <children>
-                        <Button id="ButtonRegister" fx:id="allGamesBtn1" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#switchToSecondary" prefHeight="43.0" prefWidth="150.0" text="Register Now" textFill="#15b218">
+                        <Button id="ButtonRegister" fx:id="registerBtn" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#switchToRegister" prefHeight="43.0" prefWidth="150.0" text="Register Now" textFill="#15b218">
                            <font>
                               <Font size="18.0" />
                            </font>

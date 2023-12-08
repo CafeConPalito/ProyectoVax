@@ -4,6 +4,9 @@
  */
 package com.cafeconpalito.controllers;
 
+import com.cafeconpalito.proyectovax.App;
+import com.cafeconpalito.staticElements.MainView;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -29,8 +32,14 @@ public class RegisterController implements Initializable {
     }    
 
     @FXML
-    private void nextBtn(MouseEvent event) {
+    private void nextBtn(MouseEvent event) throws IOException {
         
+        //Si todos los campos son correctos te deja avanzar si no es asi error!
+        if (true) {
+            MainView.main.setCenter(App.loadFXML("register_1"));
+        } else {
+            System.out.println("FALTAN DATOS!");
+        }
         
     }
 

@@ -4,13 +4,14 @@
  */
 package com.cafeconpalito.controllers;
 
+import com.cafeconpalito.proyectovax.App;
+import com.cafeconpalito.staticElements.MainView;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-
-import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 /**
  * FXML Controller class
@@ -20,8 +21,6 @@ import javafx.scene.input.MouseEvent;
 public class Register_1Controller implements Initializable {
 
 
-    @FXML
-    private Button allGamesBtn1;
     /**
      * Initializes the controller class.
      */
@@ -30,24 +29,24 @@ public class Register_1Controller implements Initializable {
         // TODO
     }    
     
-    @FXML
-    private void SelectImage(MouseEvent event) {
-    }
 
     @FXML
-    private void backBtn(MouseEvent event) {
-    }
-
-    @FXML
-    private void registerBtn(MouseEvent event) {
-    }
-
-    @FXML
-    private void switchToSecondary(ActionEvent event) {
+    private void backBtn(MouseEvent event) throws IOException {
+        MainView.main.setCenter(App.loadFXML("register"));
     }
 
     @FXML
     private void imageClicked(MouseEvent event) {
+    }
+
+    @FXML
+    private void SelectImage(ActionEvent event) {
+    }
+
+    @FXML
+    private void tryToRegister(ActionEvent event) {
+        System.out.println("intentando registrar usuario");
+        
     }
 
 }

@@ -40,7 +40,7 @@ public class HiloImagen implements Runnable {
             String opcion = bufferDatosEntrada.readUTF();
 
             switch (opcion) { //Opcion del Cliente
-                case "descarga":
+                case "descarga":// ENVIANDO PAQUETE DE INFORMACION AL CLIENTE
 
                     //--------- Trabajo interno.
                     //Enviar DATOS al Cliente.
@@ -49,31 +49,52 @@ public class HiloImagen implements Runnable {
                     //---------
                     
                     //--------- CLiente tiene que escuchar
-                    //ENVIO NOMBRE ARCHIVO
+                    // 1* ENVIO NOMBRE ARCHIVO
                     bufferDatosSalida.writeUTF(archivoEnviar.getName());
+                    // 2* ENVIO EL TAMAÑO DEL ARCHIVO
+                    bufferDatosSalida.writeLong(archivoEnviar.length());
 
                     System.out.println("Opcion del cliente: " + opcion);
 
                     //Creo una Buffer para leer el archivo
-                    int offset = 0; // Permite identificar la posicion desde la que se va a empezar a enviar en cada pasada.
+                    int offsetSend = 0; // Permite identificar la posicion desde la que se va a empezar a enviar en cada pasada.
                     //mientras el offset sea menor que el tamaño del archivo enviara datos
-                    while (offset < archivoEnviar.length()) {
-
+                    while (offsetSend < archivoEnviar.length()) {
+                        
+                        System.out.println("Tamaño total: " + archivoEnviar.length());
+                        
                         //Calculo el tamaño del paquete que voy a enviar con un maximo de 1024
-                        int length = (int) Math.min(archivoEnviar.length() - offset, 1024); // Tamaño de los Paquetes que se quiere enviar en este caso 1024 Bytes
-
+                        int length = (int) Math.min(archivoEnviar.length() - offsetSend, 1024); // Tamaño de los Paquetes que se quiere enviar en este caso 1024 Bytes
+                        
+                        // 3* ENVIO EL TAMAÑO DEL PAQUETE A ENVIAR
+                        bufferDatosSalida.writeInt(length);
+                        
                         //Creo un array que almacenara la informacion del buffer, tiene el tamaño necesario
-                        byte buffer[] = new byte[length];
-                        bis.read(buffer, offset, length);
-
-                        //envio el paquete de datos.
+                        byte[] buffer = new byte[length];
+                        
+                        System.out.println("offsetSend: " + offsetSend);
+                        System.out.println("length: " + length);                   
+                        bis.read(buffer);
+                        System.out.println("Array escrito");
+                        
+                        // 4 * envio el paquete de datos.
                         bufferDatosSalida.write(buffer);
-
+                        System.out.println("pak enviado");
+                        
                         //muevo el offset y a seguir enviando
-                        offset += length;
-                        System.out.println("enviando datos: " + offset);
+                        offsetSend += length;
+                        System.out.println("enviando datos: " + offsetSend);
                     }
 
+                    /*
+                    int count;
+                    byte[] buffer2 = new byte[1024]; // or 4096, or more
+                    while ((count = bis.read(buffer2)) > 0) {
+                        System.out.println("count " + count );
+                        bufferDatosSalida.write(buffer2, 0, count);
+                    }
+                    */
+                    
                     System.out.println("informacion envida al cliente");
 
                     //Cierro bis
@@ -81,14 +102,22 @@ public class HiloImagen implements Runnable {
 
                     break;
                 case "carga":
-
+                    
+                    
+                    // 1* RECIBIR NOMBRE ARCHIVO
                     String nombreArchivo = bufferDatosEntrada.readUTF(); // recibo en nombre del archivo
                     //Creo el Buffer de escritura para almacenar el archivo recibido en disco con el nombre que recibimos.
                     BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(nombreArchivo)); // pongo el nombre.
-  
-                    //mientras este recibiendo informacion seguira escibiendo
-                    while (bufferDatosEntrada.available() > 0) {
+
+                    // 2* RECIBIR TAMAÑO DEL ARCHIVO
+                    long lengthFile = bufferDatosEntrada.readLong();
                     
+                    //mientras este recibiendo informacion seguira escibiendo
+                    int offsetRecib = 0;
+                    
+                    //Mientras el offset de escritura sea menor que el tamaño del archivo escribirar.
+                    while (offsetRecib < lengthFile ) {
+                        
                         // Capturo el tamaño del paquete a recibir
                         int length = bufferDatosEntrada.available();
                         System.out.println("Tamaño del paq a recibir" + length);
@@ -97,8 +126,9 @@ public class HiloImagen implements Runnable {
 
                         //Escribo en el buffer el paquete recibido
                         buffer = bufferDatosEntrada.readAllBytes();
-                        bos.write(buffer);
-
+                        bos.write(buffer, offsetRecib, length);
+                        
+                        offsetRecib += length;
                     }
 
                     // 3 Cierro los búferes y servidor

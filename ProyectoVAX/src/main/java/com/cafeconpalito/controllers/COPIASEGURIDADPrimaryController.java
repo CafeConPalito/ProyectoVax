@@ -11,7 +11,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class PrimaryController {
+public class COPIASEGURIDADPrimaryController {
 
     private double xMouse,yMouse;
 

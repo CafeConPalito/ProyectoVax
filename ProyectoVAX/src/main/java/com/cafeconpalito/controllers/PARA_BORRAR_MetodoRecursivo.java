@@ -12,7 +12,7 @@ import javafx.scene.layout.Pane;
  *
  * @author damt207
  */
-public class MetodoRecursivo {
+public class PARA_BORRAR_MetodoRecursivo {
     
     public static Object buscarComponente(Pane pane, String idComponenteBuscado){
     
