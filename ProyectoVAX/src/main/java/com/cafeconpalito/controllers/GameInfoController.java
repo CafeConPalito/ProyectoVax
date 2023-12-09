@@ -92,10 +92,7 @@ public class GameInfoController extends HBox {
         fxmlLoader = App.getFXMLLoader("gameInfo");
         fxmlLoader.setRoot(this);
         
-        
         fxmlLoader.setControllerFactory(GameInfoController -> this);
-        
-        
         
         try {
             fxmlLoader.load();
