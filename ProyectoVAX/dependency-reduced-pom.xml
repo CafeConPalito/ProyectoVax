@@ -81,7 +81,7 @@
               </filters>
               <transformers>
                 <transformer>
-                  <mainClass>com.cafeconpalito.proyectovax.App</mainClass>
+                  <mainClass>com.cafeconpalito.proyectovax.EntryPoint</mainClass>
                 </transformer>
               </transformers>
               <shadedArtifactAttached>true</shadedArtifactAttached>

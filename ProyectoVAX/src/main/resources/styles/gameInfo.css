@@ -3,7 +3,7 @@
     Author     : TerciodeMarte
 */
 
-#BackGround{
+#BackGroundGame{
     -fx-background-color: linear-gradient(to bottom,#060b36,  #11598a);
     -fx-background-radius : 50;
     -fx-border-radius: 50;
