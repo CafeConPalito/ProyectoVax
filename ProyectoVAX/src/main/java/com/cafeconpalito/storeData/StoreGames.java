@@ -4,7 +4,7 @@
  */
 package com.cafeconpalito.storeData;
 
-import com.cafeconpalito.constructor.ConstructorGameInfoGood;
+import com.cafeconpalito.controllers.GameInfoController;
 import com.cafeconpalito.entitis.Game;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,10 +16,10 @@ import java.util.Collections;
  */
 public class StoreGames {
     
-    private static ArrayList<ConstructorGameInfoGood> storeGames = new ArrayList<>();
+    private static ArrayList<GameInfoController> storeGames = new ArrayList<>();
 
     
-    public static ArrayList<ConstructorGameInfoGood> getStoreGames() throws IOException {
+    public static ArrayList<GameInfoController> getStoreGames() throws IOException {
         
         actualizarStoreGames();
         
@@ -44,7 +44,7 @@ public class StoreGames {
         
         //construyo un javaFX de cada juego
         for (Game game : listaJuegosBBDD) {
-            ConstructorGameInfoGood cg = new ConstructorGameInfoGood(game.getIdJuego(), game.getTitulo(), game.getNumDescargas()+"", game.getPrecio()+"", game.getUrlImagen());
+            GameInfoController cg = new GameInfoController(game.getIdJuego(), game.getTitulo(), game.getNumDescargas()+"", game.getPrecio()+"", game.getUrlImagen());
             storeGames.add(cg);
         }
 

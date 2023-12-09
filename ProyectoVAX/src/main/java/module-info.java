@@ -17,7 +17,6 @@ module com.cafeconpalito.proyectovax {
     opens com.cafeconpalito.storeData to com.cafeconpalito.proyectovax ;
     opens com.cafeconpalito.entitis to com.cafeconpalito.proyectovax ;
     opens com.cafeconpalito.staticElements to com.cafeconpalito.proyectovax ;
-    opens com.cafeconpalito.constructor to com.cafeconpalito.proyectovax ;
     
     opens com.cafeconpalito.controllers to javafx.fxml;
     exports com.cafeconpalito.proyectovax;

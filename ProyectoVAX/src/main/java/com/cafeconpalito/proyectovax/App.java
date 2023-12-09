@@ -1,6 +1,6 @@
 package com.cafeconpalito.proyectovax;
 
-import com.cafeconpalito.controllers.GameInfoGoodController;
+import com.cafeconpalito.controllers.GameInfoController;
 import com.cafeconpalito.staticElements.MainView;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -82,26 +82,28 @@ public class App extends Application {
     }
 
     //Dejar en public para que otros componentes puedan cargar la lista de fxml
+    /**
+     * Metodo que devuelve la ruta de un FXML y permite cargarlo
+     * @param fxml
+     * @return
+     * @throws IOException 
+     */
     public static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
     }
 
+    /**
+     * Metodo Necesario para que devuelta la ruta correcta del FXLM y poder construir Objetos desde el controller 
+     * @param fxml
+     * @return
+     * @throws IOException 
+     */
     public static FXMLLoader getFXMLLoader(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader;
     }
-    
-    public static String rutaRecursos(String fxml){
-        return App.class.getResource(fxml + ".fxml")+"";
-    }
-    
-    public static URL locationDeRecursos(String fxml){
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
-        return fxmlLoader.getLocation();
-    }
-    
-    
+
     @Override
     public void stop() throws Exception {
         // aquí se ejecuta el código después de cerrar la aplicación. Por ejemplo CERRAR CONEXIÓN BASE DE DATOS

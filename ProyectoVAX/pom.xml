@@ -19,6 +19,7 @@
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
             <version>21.0.1</version>
+            <type>jar</type>
         </dependency>
         
         <!-- PRUEBAS -->
@@ -28,9 +29,12 @@
             <version>9.0.10</version>
             <type>jar</type>
         </dependency>
-        
-        
-        
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-graphics</artifactId>
+            <version>21.0.1</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
