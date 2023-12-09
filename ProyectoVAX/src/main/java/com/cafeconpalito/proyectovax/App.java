@@ -18,8 +18,6 @@ public class App extends Application {
 
     private static Scene scene;
     
-
-   
     @Override
     public void init() throws Exception {
         //aquí llamo a los métodos que INICIAN LA BASE DE DATOS . se ejecuta antes de start

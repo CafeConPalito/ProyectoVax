@@ -5,6 +5,7 @@
 package com.cafeconpalito.controllers;
 
 import com.cafeconpalito.proyectovax.App;
+import com.cafeconpalito.staticElements.MainView;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -33,6 +34,7 @@ public class GameInfoController extends HBox {
 
     //Para almacenar el id del juego con eso se puede crear la pantalla del juego al comprarlo!
     private int idGame;
+    
     @FXML
     private HBox BackGroundTrans;
 
@@ -115,9 +117,11 @@ public class GameInfoController extends HBox {
      * @param event 
      */
     @FXML
-    private void switchToPurchase(ActionEvent event) {
+    private void switchToPurchase(ActionEvent event) throws IOException {
         
+        GameController gc = new GameController(idGame);
         
+        MainView.main.setCenter(gc);
         
     }
     

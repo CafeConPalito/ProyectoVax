@@ -78,13 +78,8 @@ public class GameController extends HBox {
         }
         
         this.idGame = idGame;
-        
-        
+        this.gameTitle.setText("Juego " + this.idGame);
         
     }
-    
-    
-    
-
     
 }
