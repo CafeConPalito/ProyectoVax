@@ -1,9 +1,10 @@
 module com.cafeconpalito.proyectovax {
     requires javafx.controls;
     requires javafx.fxml;
-    requires com.jfoenix;
-    requires java.base;
     requires javafx.graphics;
+    requires javafx.base;
+    requires java.base;
+
     
     
     
@@ -18,7 +19,14 @@ module com.cafeconpalito.proyectovax {
     opens com.cafeconpalito.entitis to com.cafeconpalito.proyectovax ;
     opens com.cafeconpalito.staticElements to com.cafeconpalito.proyectovax ;
     
+    //Para que pueda leer los FXML
     opens com.cafeconpalito.controllers to javafx.fxml;
+    
+    
+    //NO logro que abra el JAR
+    opens com.cafeconpalito.proyectovax to javafx.graphics;
+   
+    
     exports com.cafeconpalito.proyectovax;
            
 }

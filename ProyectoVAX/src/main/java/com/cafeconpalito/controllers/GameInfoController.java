@@ -5,18 +5,15 @@
 package com.cafeconpalito.controllers;
 
 import com.cafeconpalito.proyectovax.App;
-import com.cafeconpalito.staticElements.MainView;
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.util.Callback;
 
 /**
  * FXML Controller class
@@ -39,15 +36,6 @@ public class GameInfoController extends HBox {
     @FXML
     private HBox BackGroundTrans;
 
-    /**
-     * Initializes the controller class.
-     */
-    /*
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-     */
     public GameInfoController() throws IOException {
         
         System.out.println("Construyendo");
@@ -66,7 +54,7 @@ public class GameInfoController extends HBox {
         System.out.println("1");
         fxmlLoader.setRoot(this);
         System.out.println("2");
-        fxmlLoader.setController(this);
+        fxmlLoader.setControllerFactory(GameInfoController -> this);
         System.out.println("3");
         
         System.out.println("\nIMPORTANTE QUE SALGA BIEN");
@@ -103,7 +91,11 @@ public class GameInfoController extends HBox {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader = App.getFXMLLoader("gameInfo");
         fxmlLoader.setRoot(this);
-        fxmlLoader.setController(this);
+        
+        
+        fxmlLoader.setControllerFactory(GameInfoController -> this);
+        
+        
         
         try {
             fxmlLoader.load();
@@ -121,8 +113,14 @@ public class GameInfoController extends HBox {
         
     }
     
+    /**
+     * Al precionar el Boton de compra deveria de pillar la ide del juego y generar una nueva hoja de juego para mostrarla preguntando primero en la BBDD por los juegos
+     * @param event 
+     */
     @FXML
     private void switchToPurchase(ActionEvent event) {
+        
+        
         
     }
     
