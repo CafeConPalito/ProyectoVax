@@ -21,16 +21,12 @@
             <version>21.0.1</version>
             <type>jar</type>
         </dependency>
-<<<<<<< HEAD
         <!-- https://mvnrepository.com/artifact/org.controlsfx/controlsfx -->
         <dependency>
             <groupId>org.controlsfx</groupId>
             <artifactId>controlsfx</artifactId>
             <version>11.1.0</version>
         </dependency>
-
-        
-=======
 
         <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
         <dependency>
@@ -57,7 +53,6 @@
             <version>1.0.2.Final</version>
         </dependency>
 
->>>>>>> 4efca01ebee5f444d38bb416a6db08aa71bc194d
     </dependencies>
     
     <build>
