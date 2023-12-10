@@ -26,6 +26,9 @@ public class App extends Application {
     public void init() throws Exception {
         
         
+        //INICIAR CONEXION BBDD
+        ConectionBBDD.start();
+        
         //aquí llamo a los métodos que INICIAN LA BASE DE DATOS . se ejecuta antes de start
 
         System.out.println("Hola. Aquí empieza todo");
@@ -79,9 +82,6 @@ public class App extends Application {
         //Tamaño minimo Stage
         mainStage.setMinWidth(mainStage.getWidth());
         mainStage.setMinHeight(mainStage.getHeight());
-        
-        //INICIAR CONEXION BBDD
-        ConectionBBDD.start();
 
     }
 

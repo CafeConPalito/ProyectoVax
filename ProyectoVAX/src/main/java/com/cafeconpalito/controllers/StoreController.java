@@ -4,7 +4,7 @@
  */
 package com.cafeconpalito.controllers;
 
-import com.cafeconpalito.storeData.StoreGames;
+import com.cafeconpalito.consultDB.StoreConsults;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -32,7 +32,7 @@ public class StoreController implements Initializable {
         try {
             
             MyTilePane.getChildren().clear();
-            MyTilePane.getChildren().addAll(StoreGames.getStoreGames());
+            MyTilePane.getChildren().addAll(StoreConsults.getStoreGames());
             
         } catch (IOException ex) {
             System.err.println("ERROR AL CARGAR LOS JUEGOS");

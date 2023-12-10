@@ -2,19 +2,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.cafeconpalito.storeData;
+package com.cafeconpalito.consultDB;
 
 import com.cafeconpalito.controllers.GameInfoController;
 import com.cafeconpalito.entitis.Game;
+import com.cafeconpalito.staticElements.ConectionBBDD;
+import com.cafeconpalito.entitiDB.Juego;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
+import javax.persistence.Query;
 
 /**
  *
  * @author produccion
  */
-public class StoreGames {
+public class StoreConsults {
     
     private static ArrayList<GameInfoController> storeGames = new ArrayList<>();
 
@@ -36,15 +40,10 @@ public class StoreGames {
         
         //Limpio la lista.
         storeGames.clear();
-
-
-        
-        //Consulto la Base de datos.
-        ArrayList<Game> listaJuegosBBDD = consultarBBDD();
         
         //construyo un javaFX de cada juego
-        for (Game game : listaJuegosBBDD) {
-            GameInfoController cg = new GameInfoController(game.getIdJuego(), game.getTitulo(), game.getNumDescargas()+"", game.getPrecio()+"", game.getUrlImagen());
+        for (Juego j : consultarBBDD()) {
+            GameInfoController cg = new GameInfoController(j.getIdjuego(), j.getTitulo(), j.getNumdescargas()+"", j.getPrecio()+"", j.getImagen());
             storeGames.add(cg);
         }
 
@@ -53,22 +52,11 @@ public class StoreGames {
     /**
      * simula la conexion y lo que me devuelve la BBDD
      */
-    private static ArrayList<Game> consultarBBDD(){
+    private static Collection<Juego> consultarBBDD(){
         
-        //DE MOMENTO LOS CONSTRUYO A MANO        
-        
-        ArrayList<Game> listaJuegosBBDD = new ArrayList<>();
-        
-        
-        //Simula lo que me devuelve la BBDD
-        for (int i = 0; i < 10; i++) {
-            int x = i + 1;
-            Game g = new Game(x, ("juego " + x), (x*5.33), (x*6431), "https://m.media-amazon.com/images/I/413OEtICMlL._AC_UF894,1000_QL80_.jpg");
-            listaJuegosBBDD.add(g);
-        }
-        
-        return listaJuegosBBDD;
+        Query q = ConectionBBDD.getEm().createNamedQuery("Juego.findAll");
+        return q.getResultList();
         
     }
-    
+
 }
