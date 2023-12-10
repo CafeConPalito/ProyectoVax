@@ -6,7 +6,7 @@ package com.cafeconpalito.consultDB;
 
 import com.cafeconpalito.controllers.GameInfoController;
 import com.cafeconpalito.staticElements.ConectionBBDD;
-import com.cafeconpalito.entitiDB.Juego;
+import com.cafeconpalito.entities.Juego;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;

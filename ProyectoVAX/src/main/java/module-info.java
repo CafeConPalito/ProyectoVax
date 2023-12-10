@@ -14,11 +14,11 @@ module com.cafeconpalito.proyectovax {
     //OJO NO LE GUSTAN LAS BARRAS BAJAS PARA LOS NOMBRE DE LOS PAQUETES!
     opens com.cafeconpalito.userLogedData to com.cafeconpalito.proyectovax ;
     opens com.cafeconpalito.consultDB to com.cafeconpalito.proyectovax ;
-    opens com.cafeconpalito.entitis to com.cafeconpalito.proyectovax ;
+    //opens com.cafeconpalito.entities to com.cafeconpalito.proyectovax ;
     opens com.cafeconpalito.staticElements to com.cafeconpalito.proyectovax ;
     
     //Abriendo las entidades al controlador de hibernate.
-    opens com.cafeconpalito.entitiDB to org.hibernate.orm.core;
+    opens com.cafeconpalito.entities to org.hibernate.orm.core;
     
     //Para que pueda leer los FXML
     opens com.cafeconpalito.controllers to javafx.fxml;
