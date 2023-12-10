@@ -24,6 +24,8 @@ public class App extends Application {
     
     @Override
     public void init() throws Exception {
+        
+        
         //aquí llamo a los métodos que INICIAN LA BASE DE DATOS . se ejecuta antes de start
 
         System.out.println("Hola. Aquí empieza todo");

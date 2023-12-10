@@ -9,7 +9,8 @@ module com.cafeconpalito.proyectovax {
     requires org.hibernate.orm.core;
     requires java.sql;
     requires java.persistence;
-    
+    requires org.controlsfx.controls;
+        
     //OJO NO LE GUSTAN LAS BARRAS BAJAS PARA LOS NOMBRE DE LOS PAQUETES!
     opens com.cafeconpalito.userLogedData to com.cafeconpalito.proyectovax ;
     opens com.cafeconpalito.storeData to com.cafeconpalito.proyectovax ;

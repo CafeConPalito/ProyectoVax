@@ -21,6 +21,12 @@
             <version>21.0.1</version>
             <type>jar</type>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.controlsfx/controlsfx -->
+        <dependency>
+            <groupId>org.controlsfx</groupId>
+            <artifactId>controlsfx</artifactId>
+            <version>11.1.0</version>
+        </dependency>
 
     <!-- hibernate -->
         <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
@@ -52,6 +58,7 @@
     
     <build>
         <plugins>
+            
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
