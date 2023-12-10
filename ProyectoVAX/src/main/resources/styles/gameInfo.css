@@ -1,0 +1,36 @@
+/* 
+    Created on : 6 dic 2023, 11:27:18
+    Author     : TerciodeMarte
+*/
+
+#BackGroundGame{
+    -fx-background-color: linear-gradient(to bottom,#060b36,  #11598a);
+    -fx-background-radius : 50;
+    -fx-border-radius: 50;
+    -fx-border-width: 2;
+    -fx-border-color: black;
+}
+
+#BackGroundTrans{
+    -fx-background-color: transparent;
+}
+
+.label{
+    -fx-text-fill: white;
+}
+
+.button{
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-border-radius: 50;
+    -fx-border-width: 2;
+    -fx-background-radius : 50;
+    -fx-border-color: white;
+    -fx-font-size: 18px;
+/*    Sombra boton*/
+/*    -fx-effect: dropshadow(three-pass-box, black, 10, 0, 5, 5);*/
+}
+.button:hover{
+    -fx-text-fill: #db3c21;
+    -fx-border-color: #db3c21;
+}

@@ -3,117 +3,59 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cafeconpalito.proyectovax.PrimaryController">
-   <children>
-      <ImageView fitHeight="550.0" fitWidth="939.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/fondo.jpg" />
-         </image>
-      </ImageView>
-      <MenuBar layoutX="-1.0" layoutY="1.0" prefHeight="27.0" prefWidth="939.0">
-         <menus>
-            <Menu mnemonicParsing="false" text="File">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="New" />
-                  <MenuItem mnemonicParsing="false" text="Open…" />
-                  <Menu mnemonicParsing="false" text="Open Recent" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Close" />
-                  <MenuItem mnemonicParsing="false" text="Save" />
-                  <MenuItem mnemonicParsing="false" text="Save As…" />
-                  <MenuItem mnemonicParsing="false" text="Revert" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Preferences…" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Quit" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Edit">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Undo" />
-                  <MenuItem mnemonicParsing="false" text="Redo" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Cut" />
-                  <MenuItem mnemonicParsing="false" text="Copy" />
-                  <MenuItem mnemonicParsing="false" text="Paste" />
-                  <MenuItem mnemonicParsing="false" text="Delete" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Select All" />
-                  <MenuItem mnemonicParsing="false" text="Unselect All" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Help">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
-               </items>
-            </Menu>
-         </menus>
-      </MenuBar>
-      <Pane id="A" layoutX="208.0" layoutY="28.0" prefHeight="501.0" prefWidth="732.0">
+<BorderPane fx:id="layout" prefHeight="670.0" prefWidth="1300.0" stylesheets="@../../../styles/principal.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cafeconpalito.controllers.PrimaryController">
+   <center>
+      <HBox id="BackgroundImg" fx:id="parent" alignment="CENTER" prefHeight="670.0" prefWidth="1000.0" BorderPane.alignment="CENTER" />
+   </center>
+   <top>
+      <HBox fx:id="Header" alignment="CENTER_RIGHT" onMouseDragged="#HeaderMovement" onMousePressed="#HeaderClick" prefHeight="35.0" prefWidth="1300.0" BorderPane.alignment="CENTER">
          <children>
-            <GridPane prefHeight="501.0" prefWidth="732.0">
-              <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-            </GridPane>
-         </children>
-      </Pane>
-      <HBox id="HBox" alignment="CENTER_LEFT" layoutY="530.0" prefHeight="20.0" prefWidth="939.0" spacing="5.0">
-         <children>
-            <Label maxHeight="1.7976931348623157E308" maxWidth="-1.0" prefHeight="14.0" prefWidth="58.0" text="Left status" HBox.hgrow="ALWAYS">
+            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" HBox.hgrow="NEVER">
+               <image>
+                  <Image url="@images/logovax.png" />
+               </image>
+               <HBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </HBox.margin>
+            </ImageView>
+            <Label styleClass="labels" text="VaX" HBox.hgrow="NEVER">
                <font>
-                  <Font size="11.0" fx:id="x3" />
+                  <Font name="System Bold" size="12.0" />
                </font>
-               <textFill>
-               </textFill>
             </Label>
-            <Pane prefHeight="-1.0" prefWidth="-1.0" HBox.hgrow="ALWAYS" />
-            <Label font="$x3" maxWidth="-1.0" text="Right status" HBox.hgrow="NEVER" />
+            <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+            <Button id="MinimizeButton" fx:id="MiminizeButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#MinimizeButton" prefHeight="10.0" prefWidth="10.0" textAlignment="CENTER" textFill="#156f2e" HBox.hgrow="NEVER">
+               <font>
+                  <Font size="10.0" />
+               </font>
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+            </Button>
+            <Button id="MaximizeButton" fx:id="MaximizeButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#MaximizeButton" prefHeight="10.0" prefWidth="10.0" textAlignment="CENTER" textFill="#acc600" HBox.hgrow="NEVER">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Button>
+            <Button id="CloseButton" fx:id="CloseButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#CloseButton" prefHeight="10.0" prefWidth="10.0" textAlignment="CENTER" textFill="#9a0000" HBox.hgrow="NEVER">
+               <font>
+                  <Font size="10.0" />
+               </font>
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+            </Button>
          </children>
-         <padding>
-            <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
-         </padding>
       </HBox>
-      <HBox alignment="CENTER" layoutX="-1.0" layoutY="28.0" prefHeight="45.0" prefWidth="151.0" spacing="20.0">
-         <children>
-            <Button fx:id="primaryButton" onAction="#switchToSecondary" text="SSV" />
-            <Button mnemonicParsing="false" text="Button" AnchorPane.topAnchor="1.0" />
-         </children>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
-      </HBox>
-      <HBox alignment="CENTER" layoutY="483.0" prefHeight="4.0" prefWidth="151.0" spacing="20.0">
-         <children>
-            <Button fx:id="primaryButton1" onAction="#switchToSecondary" text="SSV" />
-            <Button mnemonicParsing="false" text="Button" />
-         </children>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
-      </HBox>
-   </children>
-</AnchorPane>
+   </top>
+</BorderPane>

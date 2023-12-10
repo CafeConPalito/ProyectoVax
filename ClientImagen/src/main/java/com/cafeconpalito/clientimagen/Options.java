@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  */
 public class Options {
 
-    static String direccion = "192.168.34.4";
+    static String direccion = "localhost";
     static Socket servidor;
     static final int PUERTO = 6666;
 
@@ -33,32 +33,26 @@ public class Options {
             bufferDatosSalida.writeUTF(opcion);
 
             // 2 Espero la respuesta
-            
             //--------- Trabajo interno.
-            
             //Enviar DATOS al Servidor.
-            
             File archivoEnviar = new File("AD3 Modelo ORM - Hibernate.pdf"); //Imagen a enviar al cliente 
-            
+
             //Envio el nombre al servidor
-            
             bufferDatosSalida.writeUTF(archivoEnviar.getName());
-            
+            //Enviar tamaño del archivo
+
             //Se necesita un Array de Bytes para almacenar la informacion con el tamaño del archivo.
-            
             byte[] arrayDeBitesArchivo = new byte[(int) archivoEnviar.length()];
             //Creo un Buffer para leer el archivo
-            
+
             BufferedInputStream bis = new BufferedInputStream(new FileInputStream(archivoEnviar));
             //Leo con el buffer el archivo ya lo tengo en memoria.
-            
+
             bis.read(arrayDeBitesArchivo, 0, arrayDeBitesArchivo.length);
-            
+
             //---------
             //--------- El servidor escucha.
-            
             //Envieando la info de 1024 en 1024 Bytes.
-            
             System.out.println("Opcion del cliente: " + opcion);
             int offset = 0; // Permite identificar la posicion desde la que se va a empezar a enviar en cada pasada.
             while (offset < arrayDeBitesArchivo.length) {
@@ -87,7 +81,7 @@ public class Options {
         try {
 
             File archivoDescargado;
-            
+
             servidor = new Socket(direccion, PUERTO);
             System.out.println("conexion realizada con exito");
 
@@ -98,28 +92,57 @@ public class Options {
             String opcion = "descarga";
             bufferDatosSalida.writeUTF(opcion);
 
-            // 2 Espero la respuesta
-            //recibo el nombre completo del archivo
-            String nombreArchivo= bufferDatosEntrada.readUTF();
             
-            // Creo un array para recibir el archivo e ir almacenándolo
-            byte[] archivoRecibido = bufferDatosEntrada.readAllBytes();
+            // 1* RECIBIR NOMBRE ARCHIVO
+            String nombreArchivo = bufferDatosEntrada.readUTF(); // recibo en nombre del archivo
+            //Creo el Buffer de escritura para almacenar el archivo recibido en disco con el nombre que recibimos.
+            BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(nombreArchivo)); // pongo el nombre.
+            System.out.println("nombre archivo " + nombreArchivo );
+            
+            // 2* RECIBIR TAMAÑO TOTAL DEL ARCHIVO
+            long lengthFile = bufferDatosEntrada.readLong();
+            System.out.println("Total tamaño leer " + lengthFile);
+            
+            //mientras este recibiendo informacion seguira escibiendo
+            int offsetRecib = 0;
 
-            // Creo el buffer que voy a utilizar y escribo en la imagen
-            BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(nombreArchivo));
-            bos.write(archivoRecibido);
+            //Mientras el offset de escritura sea menor que el tamaño del archivo escribirar.
+            while (offsetRecib < lengthFile) {
+                System.out.println("offset Recibido: " +offsetRecib);
+                System.out.println("tamaño archivo: " +lengthFile);
+                
+                // 3* Capturo el tamaño del paquete a recibir
+                int length = bufferDatosEntrada.readInt();
+                
+                System.out.println("Tamaño del paq a recibir: " + length);
+                // Creo un array del tamaño del paquete a recibir
+                byte[] buffer = new byte[length];
+
+                //4* Recibo el Array con Datos
+                buffer = bufferDatosEntrada.readAllBytes();
+                
+                //bos.write(buffer);
+
+                offsetRecib += length;
+            }
+
+            // 3 Cierro los búferes y servidor
+            System.out.println("Archivo recibido y conexión cerrada");
+
+            //Cierro bos
+            bos.close();
 
             // 3 Cierro los búferes y servidor
             bos.close();
             bufferDatosEntrada.close();
             bufferDatosSalida.close();
             servidor.close();
-            
 
             System.out.println("Archivo recibido y conexión cerrada");
 
         } catch (IOException ex) {
             Logger.getLogger(Options.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
 
     }
