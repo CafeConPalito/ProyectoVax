@@ -1,0 +1,101 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 4 dic 2023, 19:35:15
+    Author     : Ramiro
+*/
+
+.button{
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-border-radius: 50;
+    -fx-border-width: 2;
+    -fx-background-radius : 50;
+    -fx-border-color: white;
+    -fx-font-size: 18px;
+    /*    Sombra boton*/
+    /*    -fx-effect: dropshadow(three-pass-box, black, 10, 0, 5, 5);*/
+}
+.button:hover{
+    -fx-text-fill: #db3c21;
+    -fx-border-color: #db3c21;
+}
+
+.button.allGamesBtn{
+    -fx-background-color: transparent;
+    -fx-text-fill: #15b218;
+    -fx-border-radius: 50;
+    -fx-border-width: 2;
+    -fx-background-radius : 50;
+    -fx-border-color: #15b218;
+    -fx-font-size: 18px;
+}
+
+.labels{
+    -fx-text-fill: white;
+}
+
+.button.allGamesBtn:hover{
+    -fx-text-fill: #db3c21;
+    -fx-border-color: #db3c21;
+}
+
+#VBoxPrin{
+
+    -fx-background-color: linear-gradient(to bottom,#060b36,  #11598a);
+}
+
+#VBoxUser{
+    -fx-background-radius:  30;
+    -fx-background-color: linear-gradient(to bottom,#11598a,  #060b36);
+}
+
+#Header{
+    -fx-background-color: linear-gradient(to left,#060b36,  #11598a);
+}
+
+#MinimizeButton{
+    -fx-background-color: #15b218 ;
+    -fx-border-radius: 50;
+    -fx-border-width: 2;
+    -fx-background-radius : 50;
+    -fx-border-color: #15b218;
+
+    /*#c60000*/
+}
+
+#MinimizeButton:hover{
+    -fx-background-color: #156f2e ;
+    -fx-border-color: #156f2e;
+}
+
+#MaximizeButton{
+    -fx-background-color: #d9ff00 ;
+    -fx-border-radius: 50;
+    -fx-border-width: 2;
+    -fx-background-radius : 50;
+    -fx-border-color: #d9ff00;
+
+}
+
+#MaximizeButton:hover{
+    -fx-background-color: #acc600 ;
+    -fx-border-color: #acc600;
+}
+
+#CloseButton{
+    -fx-background-color: #c60000 ;
+    -fx-border-radius: 50;
+    -fx-border-width: 2;
+    -fx-background-radius : 50;
+    -fx-border-color: #c60000;
+
+    /*#c60000*/
+}
+
+#CloseButton:hover{
+    -fx-background-color: #9a0000 ;
+    -fx-border-color: #9a0000;
+}
