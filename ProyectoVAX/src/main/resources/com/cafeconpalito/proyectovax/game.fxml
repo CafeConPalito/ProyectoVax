@@ -5,7 +5,6 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.TextFlow?>
 
@@ -26,29 +25,29 @@
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <VBox alignment="CENTER" prefHeight="310.0" prefWidth="190.0" HBox.hgrow="ALWAYS">
+                        <VBox alignment="CENTER" prefHeight="410.0" prefWidth="63.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <Pane prefHeight="310.0" prefWidth="234.0">
-                                 <children>
+                              <Label alignment="CENTER" VBox.vgrow="ALWAYS">
+                                 <graphic>
                                     <ImageView fx:id="gameImage" fitHeight="340.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@images/Diversity-Avatars-Avatars-Batman.48.png" />
                                        </image>
                                     </ImageView>
-                                 </children>
-                              </Pane>
+                                 </graphic>
+                              </Label>
                            </children>
                         </VBox>
                         <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                            <children>
                               <Label fx:id="gameTitle" alignment="CENTER" prefHeight="17.0" prefWidth="309.0" text="Titulo" />
-                              <TextFlow fx:id="gamePegi" prefHeight="293.0" prefWidth="291.0" VBox.vgrow="ALWAYS" />
+                              <TextFlow fx:id="gameDescription" prefHeight="393.0" prefWidth="325.0" VBox.vgrow="ALWAYS" />
                            </children></VBox>
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <TextFlow fx:id="gameDescription" prefHeight="235.0" prefWidth="718.0" HBox.hgrow="ALWAYS" />
+                        <TextFlow fx:id="gamePegi" prefHeight="235.0" prefWidth="718.0" HBox.hgrow="ALWAYS" />
                      </children></HBox>
                </children>
             </VBox>
