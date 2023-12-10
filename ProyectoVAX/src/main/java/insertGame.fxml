@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox id="BackGround" alignment="CENTER" stylesheets="@../../../styles/register.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cafeconpalito.controllers.insertGameController">
+   <children>
+      <HBox id="BackGroundForm" alignment="CENTER" maxHeight="900.0" maxWidth="1200.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="700.0" HBox.hgrow="ALWAYS">
+         <children>
+            <VBox alignment="CENTER" prefWidth="650.0" HBox.hgrow="NEVER">
+               <children>
+                  <HBox alignment="TOP_CENTER">
+                     <children>
+                        <ImageView fitHeight="89.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/logovax.png" />
+                           </image>
+                        </ImageView>
+                        <Pane prefHeight="89.0" prefWidth="45.0" />
+                        <Label alignment="CENTER" prefHeight="89.0" prefWidth="184.0" styleClass="labels" text="NEW GAME" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="36.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <Pane prefHeight="24.0" prefWidth="650.0" />
+                  <HBox alignment="CENTER" prefHeight="435.0" prefWidth="650.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="400.0" prefWidth="300.0">
+                           <children>
+                              <Pane prefHeight="16.0" prefWidth="193.0" />
+                              <Label alignment="CENTER" prefWidth="200.0" styleClass="labels" text="Title" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <TextField alignment="CENTER" prefHeight="25.0" prefWidth="220.0" style="-fx-background-color: transparent; -fx-border-style: solid; -fx-border-width: 0 0 1 0;">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </TextField>
+                              <Pane prefHeight="25.0" />
+                              <Label alignment="CENTER" prefWidth="200.0" styleClass="labels" text="Description" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <TextArea prefHeight="173.0" prefWidth="300.0" />
+                              <Pane prefHeight="25.0" />
+                              <HBox>
+                                 <children>
+                                    <TextField id="SelectImgTf" alignment="CENTER" prefHeight="25.0" prefWidth="220.0" promptText="Select an image" style="-fx-background-color: transparent; -fx-border-style: solid; -fx-border-width: 0 0 1 0;">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </TextField>
+                                    <Button id="selectImgBtn" mnemonicParsing="false" onAction="#SelectImage" text="Select" />
+                                 </children>
+                              </HBox>
+                              <Pane prefHeight="25.0" />
+                              <Label alignment="CENTER" prefWidth="200.0" styleClass="labels" text="Price" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <TextField alignment="CENTER" prefHeight="25.0" prefWidth="220.0" style="-fx-background-color: transparent; -fx-border-style: solid; -fx-border-width: 0 0 1 0;">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </TextField>
+                              <Pane prefHeight="25.0" />
+                           </children>
+                        </VBox>
+                        <Pane prefHeight="432.0" prefWidth="50.0" style="-fx-background-color: transparent;" />
+                        <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="300.0">
+                           <children>
+                              <Pane prefHeight="16.0" prefWidth="193.0" />
+                              <Label alignment="CENTER" prefWidth="200.0" styleClass="labels" text="Launch Date" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <DatePicker prefHeight="35.0" prefWidth="300.0" />
+                              <Pane prefHeight="25.0" />
+                              <Label alignment="CENTER" prefWidth="200.0" styleClass="labels" text="Region" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <TextField alignment="CENTER" prefHeight="25.0" prefWidth="220.0" style="-fx-background-color: transparent; -fx-border-style: solid; -fx-border-width: 0 0 1 0;">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </TextField>
+                              <Pane prefHeight="25.0" />
+                              <Label alignment="CENTER" prefWidth="200.0" styleClass="labels" text="Email" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <TextField alignment="CENTER" prefHeight="25.0" prefWidth="220.0" style="-fx-background-color: transparent; -fx-border-style: solid; -fx-border-width: 0 0 1 0;">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </TextField>
+                              <Pane prefHeight="25.0" />
+                              <Button id="selectImgBtn" mnemonicParsing="false" onAction="#SelectImage" prefHeight="39.0" prefWidth="150.0" text="Done" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <Pane prefHeight="20.0" prefWidth="500.0" style="-fx-background-color: transparent;" />
+                  <ImageView id="nextBtn" fitHeight="52.0" fitWidth="42.0" onMouseClicked="#nextBtn" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/Custom-Icon-Design-Flatastic-1-Forward.72.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </VBox>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </HBox>
+      <HBox alignment="CENTER" />
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</HBox>

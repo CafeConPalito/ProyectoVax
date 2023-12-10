@@ -4,7 +4,7 @@ module com.cafeconpalito.proyectovax {
     requires javafx.graphics;
     requires javafx.base;
     requires java.base;
-
+    requires org.controlsfx.controls;
     
     
     
