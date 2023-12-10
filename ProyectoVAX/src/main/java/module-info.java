@@ -5,13 +5,10 @@ module com.cafeconpalito.proyectovax {
     requires javafx.base;
     requires java.base;
 
-    
-    
-    
-    //NO me borres
-    //requires org.hibernate.orm.core;
-    //requires java.sql;
-    
+    //BBDD
+    requires org.hibernate.orm.core;
+    requires java.sql;
+    requires java.persistence;
     
     //OJO NO LE GUSTAN LAS BARRAS BAJAS PARA LOS NOMBRE DE LOS PAQUETES!
     opens com.cafeconpalito.userLogedData to com.cafeconpalito.proyectovax ;
@@ -19,14 +16,15 @@ module com.cafeconpalito.proyectovax {
     opens com.cafeconpalito.entitis to com.cafeconpalito.proyectovax ;
     opens com.cafeconpalito.staticElements to com.cafeconpalito.proyectovax ;
     
+    //Abriendo las entidades al controlador de hibernate.
+    opens com.cafeconpalito.entitiDB to org.hibernate.orm.core;
+    
     //Para que pueda leer los FXML
     opens com.cafeconpalito.controllers to javafx.fxml;
-    
     
     //NO logro que abra el JAR
     opens com.cafeconpalito.proyectovax to javafx.graphics;
    
-    
     exports com.cafeconpalito.proyectovax;
            
 }

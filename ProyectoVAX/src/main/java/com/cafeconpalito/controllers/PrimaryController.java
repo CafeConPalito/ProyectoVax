@@ -1,7 +1,5 @@
 package com.cafeconpalito.controllers;
 
-import com.cafeconpalito.proyectovax.App;
-import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -29,7 +27,7 @@ public class PrimaryController {
     private Button CloseButton;
 
 
-
+   
 
     @FXML
     private void MinimizeButton(ActionEvent event) {
@@ -69,5 +67,7 @@ public class PrimaryController {
         yMouse = event.getSceneY();
         
     }
+
+   
 
 }
