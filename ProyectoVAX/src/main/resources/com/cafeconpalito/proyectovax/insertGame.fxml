@@ -35,11 +35,11 @@
                      </children>
                   </HBox>
                   <Pane prefHeight="24.0" prefWidth="650.0" />
-                  <HBox alignment="CENTER" prefHeight="435.0" prefWidth="650.0">
+                  <HBox alignment="CENTER" prefHeight="360.0" prefWidth="650.0">
                      <children>
                         <VBox alignment="CENTER" prefHeight="400.0" prefWidth="300.0">
                            <children>
-                              <Pane prefHeight="16.0" prefWidth="193.0" />
+                              <Pane prefHeight="31.0" prefWidth="300.0" />
                               <Label alignment="CENTER" prefWidth="200.0" styleClass="labels" text="Title" textAlignment="CENTER">
                                  <font>
                                     <Font name="System Bold" size="18.0" />
@@ -58,17 +58,12 @@
                               </Label>
                               <TextArea prefHeight="173.0" prefWidth="300.0" />
                               <Pane prefHeight="25.0" />
-                              <HBox>
-                                 <children>
-                                    <TextField id="SelectImgTf" alignment="CENTER" prefHeight="25.0" prefWidth="220.0" promptText="Select an image" style="-fx-background-color: transparent; -fx-border-style: solid; -fx-border-width: 0 0 1 0;">
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                    </TextField>
-                                    <Button id="selectImgBtn" mnemonicParsing="false" onAction="#SelectImage" text="Select" />
-                                 </children>
-                              </HBox>
-                              <Pane prefHeight="25.0" />
+                           </children>
+                        </VBox>
+                        <Pane prefHeight="432.0" prefWidth="50.0" style="-fx-background-color: transparent;" />
+                        <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="300.0">
+                           <children>
+                              <Pane prefHeight="23.0" prefWidth="300.0" />
                               <Label alignment="CENTER" prefWidth="200.0" styleClass="labels" text="Price" textAlignment="CENTER">
                                  <font>
                                     <Font name="System Bold" size="18.0" />
@@ -79,42 +74,25 @@
                                     <Font size="18.0" />
                                  </font>
                               </TextField>
-                              <Pane prefHeight="25.0" />
-                           </children>
-                        </VBox>
-                        <Pane prefHeight="432.0" prefWidth="50.0" style="-fx-background-color: transparent;" />
-                        <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="300.0">
-                           <children>
-                              <Pane prefHeight="16.0" prefWidth="193.0" />
+                              <Pane prefHeight="70.0" prefWidth="300.0" />
+                              <HBox>
+                                 <children>
+                                    <TextField id="SelectImgTf" alignment="CENTER" prefHeight="25.0" prefWidth="220.0" promptText="Select an image" style="-fx-background-color: transparent; -fx-border-style: solid; -fx-border-width: 0 0 1 0;">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </TextField>
+                                    <Button id="selectImgBtn" mnemonicParsing="false" onAction="#SelectImage" text="Select" />
+                                 </children>
+                              </HBox>
+                              <Pane prefHeight="52.0" prefWidth="300.0" />
                               <Label alignment="CENTER" prefWidth="200.0" styleClass="labels" text="Launch Date" textAlignment="CENTER">
                                  <font>
                                     <Font name="System Bold" size="18.0" />
                                  </font>
                               </Label>
                               <DatePicker prefHeight="35.0" prefWidth="300.0" />
-                              <Pane prefHeight="25.0" />
-                              <Label alignment="CENTER" prefWidth="200.0" styleClass="labels" text="Region" textAlignment="CENTER">
-                                 <font>
-                                    <Font name="System Bold" size="18.0" />
-                                 </font>
-                              </Label>
-                              <TextField alignment="CENTER" prefHeight="25.0" prefWidth="220.0" style="-fx-background-color: transparent; -fx-border-style: solid; -fx-border-width: 0 0 1 0;">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </TextField>
-                              <Pane prefHeight="25.0" />
-                              <Label alignment="CENTER" prefWidth="200.0" styleClass="labels" text="Email" textAlignment="CENTER">
-                                 <font>
-                                    <Font name="System Bold" size="18.0" />
-                                 </font>
-                              </Label>
-                              <TextField alignment="CENTER" prefHeight="25.0" prefWidth="220.0" style="-fx-background-color: transparent; -fx-border-style: solid; -fx-border-width: 0 0 1 0;">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </TextField>
-                              <Pane prefHeight="25.0" />
+                              <Pane prefHeight="17.0" prefWidth="300.0" />
                            </children>
                         </VBox>
                      </children>

@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 import org.controlsfx.control.CheckComboBox;
 /**
  * FXML Controller class
@@ -20,21 +21,26 @@ import org.controlsfx.control.CheckComboBox;
 public class insertGame_1Controller implements Initializable {
 
 
-    @FXML
     private CheckComboBox checkComboBox;
     @FXML
-    private Button done;
+    private CheckComboBox<?> checkComboBox2;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        checkComboBox.getItems().add("region 1");
     }    
     
     @FXML
-    private void SelectImage(ActionEvent event) {
+    private void backBtn(MouseEvent event) {
     }
+
+    @FXML
+    private void tryToRegister(ActionEvent event) {
+    }
+    
+    
     
     
 
