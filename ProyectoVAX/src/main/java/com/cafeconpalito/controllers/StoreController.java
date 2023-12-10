@@ -10,6 +10,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 
 import javafx.scene.layout.TilePane;
 
@@ -22,6 +24,10 @@ public class StoreController implements Initializable {
 
     @FXML
     private TilePane MyTilePane;
+    @FXML
+    private TextField nameTextField;
+    @FXML
+    private TextField genreTextField;
 
     /**
      * Initializes the controller class.
@@ -37,6 +43,22 @@ public class StoreController implements Initializable {
         } catch (IOException ex) {
             System.err.println("ERROR AL CARGAR LOS JUEGOS");
         }
+    }
+
+    @FXML
+    private void nameEntryInfo(KeyEvent event) {
+        
+        MyTilePane.getChildren().clear();
+        MyTilePane.getChildren().addAll(StoreConsults.filterStoreGames(nameTextField.getText(), genreTextField.getText(),""));
+        
+    }
+
+    @FXML
+    private void genreEntryInfo(KeyEvent event) {
+        
+        MyTilePane.getChildren().clear();
+        MyTilePane.getChildren().addAll(StoreConsults.filterStoreGames(nameTextField.getText(), genreTextField.getText(),""));
+        
     }
 
 }

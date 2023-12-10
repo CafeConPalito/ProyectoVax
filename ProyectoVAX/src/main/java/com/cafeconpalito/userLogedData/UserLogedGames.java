@@ -4,23 +4,10 @@
  */
 package com.cafeconpalito.userLogedData;
 
-import com.cafeconpalito.entitis.Game;
-import java.util.ArrayList;
-
 /**
  *
  * @author produccion
  */
 public class UserLogedGames {
     
-    private static ArrayList<Game> myGames;
-
-    public static ArrayList<Game> getMyGames() {
-        return myGames;
-    }
-
-    public static void setMyGames(ArrayList<Game> myGames) {
-        UserLogedGames.myGames = myGames;
-    }
-
 }
