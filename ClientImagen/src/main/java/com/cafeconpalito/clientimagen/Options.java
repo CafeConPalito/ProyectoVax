@@ -98,32 +98,24 @@ public class Options {
             //Creo el Buffer de escritura para almacenar el archivo recibido en disco con el nombre que recibimos.
             BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(nombreArchivo)); // pongo el nombre.
             System.out.println("nombre archivo " + nombreArchivo );
-            
-            // 2* RECIBIR TAMAÑO TOTAL DEL ARCHIVO
-            long lengthFile = bufferDatosEntrada.readLong();
-            System.out.println("Total tamaño leer " + lengthFile);
-            
+        
             //mientras este recibiendo informacion seguira escibiendo
-            int offsetRecib = 0;
+            
+            
+            byte[] bufferEntrada= new byte[1024];
 
+            int numBytesLeidos = bufferDatosEntrada.read(bufferEntrada);
             //Mientras el offset de escritura sea menor que el tamaño del archivo escribirar.
-            while (offsetRecib < lengthFile) {
-                System.out.println("offset Recibido: " +offsetRecib);
-                System.out.println("tamaño archivo: " +lengthFile);
+            while (numBytesLeidos != -1) {
                 
-                // 3* Capturo el tamaño del paquete a recibir
-                int length = bufferDatosEntrada.readInt();
+                bos.write(bufferEntrada, 0, numBytesLeidos);
                 
-                System.out.println("Tamaño del paq a recibir: " + length);
-                // Creo un array del tamaño del paquete a recibir
-                byte[] buffer = new byte[length];
-
-                //4* Recibo el Array con Datos
-                buffer = bufferDatosEntrada.readAllBytes();
+                // 2 * recibo el paquete de datos
+                numBytesLeidos=bufferDatosEntrada.read(bufferEntrada);
                 
-                //bos.write(buffer);
-
-                offsetRecib += length;
+                //leo el buffer recibido y escribo la escribo la informacion
+                
+                
             }
 
             // 3 Cierro los búferes y servidor
