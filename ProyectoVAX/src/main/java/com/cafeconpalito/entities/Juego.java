@@ -38,7 +38,14 @@ import javax.persistence.TemporalType;
     @NamedQuery(name = "Juego.findByImagen", query = "SELECT j FROM Juego j WHERE j.imagen = :imagen"),
     @NamedQuery(name = "Juego.findByFecha", query = "SELECT j FROM Juego j WHERE j.fecha = :fecha"),
     @NamedQuery(name = "Juego.findByNumdescargas", query = "SELECT j FROM Juego j WHERE j.numdescargas = :numdescargas"),
-    @NamedQuery(name = "Juego.findByPrecio", query = "SELECT j FROM Juego j WHERE j.precio = :precio")})
+    @NamedQuery(name = "Juego.findByPrecio", query = "SELECT j FROM Juego j WHERE j.precio = :precio"),
+    //PARA VER LOS JUEGOS QUE TIENE EL USUARIO en su biblioteca
+    @NamedQuery(name = "Juego.findJuegoTieneUsuario", query = "SELECT j FROM Juego j INNER JOIN Biblioteca b USING (idjuego) INNER JOIN Usuario u USING (idusuario) WHERE u.idusuario = :idusuario"),
+    //PARA VER LOS JUEGOS QUE NO TIENE EL USUARIO 
+    //QUEDA COMPROBAR!
+    @NamedQuery(name = "Juego.findJuegoTieneUsuario", query = "SELECT j FROM Juego j LEFT JOIN Biblioteca b USING (idjuego) INNER JOIN Usuario u USING (idusuario) WHERE u.idusuario = :idusuario")    
+})
+
 public class Juego implements Serializable {
 
     private static final long serialVersionUID = 1L;
