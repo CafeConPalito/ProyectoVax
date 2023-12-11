@@ -79,4 +79,9 @@ public class PanelIzquierdoGeneralController implements Initializable {
         
     }
 
+    @FXML
+    private void switchToHelp(ActionEvent event) throws IOException {
+        MainView.main.setCenter(App.loadFXML("help"));
+    }
+
 }
