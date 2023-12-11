@@ -27,7 +27,14 @@ public class UserLogedInfo {
     private static String Region;
     private static Date FechaNacimiento;
 
+    public static void contructUser(){
+        
+    }
     
+    public static void logoutUser(){
+        //poner todo a nulos
+        
+    }
     
     public static boolean isUserIsLoged() {
         return userIsLoged;
