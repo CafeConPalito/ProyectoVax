@@ -35,13 +35,16 @@ public class ConectionBBDD {
      * inicia la conexion
      */
     public static void start() {
-            if (emf == null) {
+        
+             if (emf == null) {
                 emf = Persistence.createEntityManagerFactory("com.cafeconpalito_ProyectoVAX_jar_1.0-SNAPSHOTPU");
             }
 
             if (em == null) {
                 em = emf.createEntityManager();
             }
+
+           
     }
 
     /**
@@ -70,7 +73,7 @@ public class ConectionBBDD {
 
         persistenceMap.put("javax.persistence.jdbc.url", "jdbc:mysql://" + newIP + ":3306/vapor?zeroDateTimeBehavior=CONVERT_TO_NULL");
         persistenceMap.put("javax.persistence.jdbc.user", "root");
-        persistenceMap.put("javax.persistence.jdbc.password", "1234");
+        persistenceMap.put("javax.persistence.jdbc.password", "12345678");
         persistenceMap.put("javax.persistence.jdbc.driver", "com.mysql.cj.jdbc.Driver");
 
         //Carga las entidades del Em original en el nuevo EntityManagerFactory
