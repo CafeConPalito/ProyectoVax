@@ -120,7 +120,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Help" textFill="#f5f4f4">
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#switchToHelp" text="Help" textFill="#f5f4f4">
                <font>
                   <Font size="18.0" />
                </font>
