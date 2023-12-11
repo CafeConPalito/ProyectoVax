@@ -39,7 +39,7 @@
                                     <Font name="System Bold" size="18.0" />
                                  </font>
                               </Label>
-                              <TextField alignment="CENTER" prefHeight="25.0" prefWidth="220.0" promptText="\@" style="-fx-background-color: transparent; -fx-border-style: solid; -fx-border-width: 0 0 1 0;">
+                              <TextField fx:id="nicknametexfield" alignment="CENTER" prefHeight="25.0" prefWidth="220.0" promptText="\@" style="-fx-background-color: transparent; -fx-border-style: solid; -fx-border-width: 0 0 1 0;">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
@@ -50,7 +50,7 @@
                                     <Font name="System Bold" size="18.0" />
                                  </font>
                               </Label>
-                              <TextField alignment="CENTER" prefHeight="25.0" prefWidth="220.0" style="-fx-background-color: transparent; -fx-border-style: solid; -fx-border-width: 0 0 1 0;">
+                              <TextField fx:id="passwordtextfield" alignment="CENTER" prefHeight="25.0" prefWidth="220.0" style="-fx-background-color: transparent; -fx-border-style: solid; -fx-border-width: 0 0 1 0;">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
@@ -61,7 +61,7 @@
                                     <Font name="System Bold" size="18.0" />
                                  </font>
                               </Label>
-                              <TextField alignment="CENTER" prefHeight="25.0" prefWidth="220.0" style="-fx-background-color: transparent; -fx-border-style: solid; -fx-border-width: 0 0 1 0;">
+                              <TextField fx:id="rpasswordtextfield" alignment="CENTER" prefHeight="25.0" prefWidth="220.0" style="-fx-background-color: transparent; -fx-border-style: solid; -fx-border-width: 0 0 1 0;">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
@@ -85,12 +85,12 @@
                               </Label>
                               <HBox>
                                  <children>
-                                    <TextField id="SelectImgTf" alignment="CENTER" prefHeight="25.0" prefWidth="220.0" promptText="Select an image" style="-fx-background-color: transparent; -fx-border-style: solid; -fx-border-width: 0 0 1 0;">
+                                    <TextField id="SelectImgTf" fx:id="imagetextfield" alignment="CENTER" prefHeight="25.0" prefWidth="220.0" promptText="Select an image" style="-fx-background-color: transparent; -fx-border-style: solid; -fx-border-width: 0 0 1 0;">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
                                     </TextField>
-                                    <Button id="selectImgBtn" mnemonicParsing="false" onAction="#SelectImage" text="Select" />
+                                    <Button id="selectImgBtn" fx:id="selectImgButton" mnemonicParsing="false" onAction="#SelectImage" text="Select" />
                                  </children>
                               </HBox>
                               <Pane prefHeight="25.0" />
@@ -99,7 +99,7 @@
                                     <Font name="System Bold" size="18.0" />
                                  </font>
                               </Label>
-                              <ComboBox id="comboBox" prefHeight="36.0" prefWidth="300.0" visibleRowCount="2" />
+                              <ComboBox id="rolecombobox" fx:id="rolecombobox" prefHeight="36.0" prefWidth="300.0" styleClass="ComboBox" visibleRowCount="2" />
                               <Pane prefHeight="25.0" />
                            </children>
                         </VBox>
@@ -108,13 +108,13 @@
                   <Pane prefHeight="20.0" prefWidth="500.0" style="-fx-background-color: transparent;" />
                   <HBox alignment="CENTER_RIGHT">
                      <children>
-                        <ImageView id="backBtn" fitHeight="52.0" fitWidth="42.0" onMouseClicked="#backBtn" pickOnBounds="true" preserveRatio="true">
+                        <ImageView id="backBtn" fx:id="backArrow" fitHeight="52.0" fitWidth="42.0" onMouseClicked="#backBtn" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@images/Custom-Icon-Design-Flatastic-1-Back.72.png" />
                            </image>
                         </ImageView>
                         <Pane prefHeight="43.0" prefWidth="82.0" />
-                        <Button id="ButtonRegister" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" onAction="#tryToRegister" prefHeight="43.0" prefWidth="150.0" text="Register" textFill="#15b218">
+                        <Button id="ButtonRegister" fx:id="registerButton" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" onAction="#tryToRegister" prefHeight="43.0" prefWidth="150.0" text="Register" textFill="#15b218">
                            <font>
                               <Font size="18.0" />
                            </font>

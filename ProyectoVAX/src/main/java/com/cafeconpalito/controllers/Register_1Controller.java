@@ -12,6 +12,10 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 /**
  * FXML Controller class
@@ -20,6 +24,24 @@ import javafx.scene.input.MouseEvent;
  */
 public class Register_1Controller implements Initializable {
 
+    
+    @FXML
+    private TextField nicknametexfield;
+    @FXML
+    private TextField passwordtextfield;
+    @FXML
+    private TextField rpasswordtextfield;
+    @FXML
+    private TextField imagetextfield;
+    @FXML
+    private Button selectImgButton;
+    @FXML
+    private ComboBox<String> rolecombobox;
+    @FXML
+    private ImageView backArrow;
+    @FXML
+    private Button registerButton;
+
 
     /**
      * Initializes the controller class.
@@ -27,6 +49,7 @@ public class Register_1Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        rolecombobox.getItems().addAll("user", "developer");
     }    
     
 
@@ -48,5 +71,7 @@ public class Register_1Controller implements Initializable {
         System.out.println("intentando registrar usuario");
         
     }
+    
+    
 
 }

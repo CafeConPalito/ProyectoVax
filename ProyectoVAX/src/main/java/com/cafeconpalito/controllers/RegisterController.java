@@ -13,6 +13,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
 /**
@@ -22,13 +25,27 @@ import javafx.scene.input.MouseEvent;
  */
 public class RegisterController implements Initializable {
 
+    @FXML
+    private TextField firstNameTextField;
+    @FXML
+    private TextField firstSurnameTextField;
+    @FXML
+    private TextField secondSurnameTextField;
+    @FXML
+    private DatePicker BirthDatePicker;
+    @FXML
+    private ComboBox<String> regionComboBox;
+    
+    @FXML
+    private TextField emailTextField;
+
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        regionComboBox.getItems().addAll("user", "developer");
     }    
 
     @FXML
@@ -40,6 +57,7 @@ public class RegisterController implements Initializable {
         } else {
             System.out.println("FALTAN DATOS!");
         }
+        
         
     }
 
