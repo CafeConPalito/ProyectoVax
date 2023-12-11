@@ -4,8 +4,8 @@ use vapor;
 
 CREATE table if not exists usuario(
 idusuario int(10) unsigned auto_increment,
-alias varchar(100),
-email varchar(100),
+alias varchar(100) unique,
+email varchar(100)unique,
 pwd varchar(25),
 nombre varchar(25),
 apellido1 varchar(25),
@@ -21,7 +21,7 @@ primary key(idusuario)
 
 create table if not exists juego(
 idjuego int(10) unsigned auto_increment,
-titulo varchar(50),
+titulo varchar(50) unique,
 descripcion longtext,
 imagen varchar(100),
 fecha date,
