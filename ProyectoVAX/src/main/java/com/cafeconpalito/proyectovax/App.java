@@ -27,7 +27,7 @@ public class App extends Application {
         
         
         //INICIAR CONEXION BBDD
-        ConectionBBDD.start();
+        //ConectionBBDD.start();
         
         //aquí llamo a los métodos que INICIAN LA BASE DE DATOS . se ejecuta antes de start
 

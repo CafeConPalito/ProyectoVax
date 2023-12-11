@@ -11,7 +11,7 @@ public class EntryPoint {
     public static void main(String[] args) {
         
         //IP DONDE ESTAN LOS SERVER
-        String ipServer = "127.0.0.1";
+        String ipServer = "192.168.34.209";
         
         //inicia la conexion Modificando la IP para la BBDD
         ConectionBBDD.modifyEM(ipServer);
