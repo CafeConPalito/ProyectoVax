@@ -5,6 +5,8 @@
 package com.cafeconpalito.controllers;
 
 import com.cafeconpalito.proyectovax.App;
+import com.cafeconpalito.proyectovax.EntryPoint;
+import com.cafeconpalito.staticElements.CheckURLImg;
 import com.cafeconpalito.staticElements.MainView;
 import com.cafeconpalito.userLogedData.UserLogedInfo;
 import java.io.IOException;
@@ -15,6 +17,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 /**
  * FXML Controller class
@@ -31,6 +35,10 @@ public class PanelIzquierdoGeneralController implements Initializable {
     private Button loginBtn;
     @FXML
     private Label alias;
+    @FXML
+    private ImageView avatarUser;
+    
+    private Image imgdefault;
 
     /**
      * Initializes the controller class.
@@ -38,16 +46,22 @@ public class PanelIzquierdoGeneralController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
+        imgdefault= avatarUser.getImage();
         if (UserLogedInfo.isUserIsLoged()) {
+            //CARGAR INFO USUARIO
             loginBtn.setText("Log Out");
             //Cargar Alias
-            alias.setText("@"+UserLogedInfo.getAlias());
-            //Cargar Imagen
-        } else {
-            loginBtn.setText("Log In");
-            alias.setText("@guest");
-            
+
+            alias.setText("@" + UserLogedInfo.getAlias());
+            //Cargar Avatar
+
+            String urlavatar = "http://"+EntryPoint.getServerIP() + ":80" + EntryPoint.rutaImgUser + UserLogedInfo.getUsuarioUrlImagen();
+            if (CheckURLImg.exists(urlavatar)) {
+                
+                avatarUser.setImage(new Image(urlavatar));
+            }
         }
+        
     }
 
     @FXML
@@ -72,11 +86,17 @@ public class PanelIzquierdoGeneralController implements Initializable {
     private void switchToLogIn(ActionEvent event) throws IOException {
 
         if (UserLogedInfo.isUserIsLoged()) {
+            //LOG OUT
             UserLogedInfo.logoutUser();
             MainView.main.setCenter(App.loadFXML("store"));
-            loginBtn.setText("Log In");
             alias.setText("@guest");
+            loginBtn.setText("Log In");
+            System.out.println(imgdefault.getUrl());
+            avatarUser.setImage(imgdefault);
+           
+            
         } else {
+            //LOG IN
             MainView.main.setCenter(App.loadFXML("login"));
         }
     }
