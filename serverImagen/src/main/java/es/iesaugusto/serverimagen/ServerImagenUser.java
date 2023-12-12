@@ -1,14 +1,15 @@
 package es.iesaugusto.serverimagen;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.net.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class ServerImagen {
+public class ServerImagenUser {
 
+    public static String dirName= "imguser";
+    
     public static void main(String[] args) {
         
         
@@ -18,32 +19,32 @@ public class ServerImagen {
         Socket cliente; // atencion a cliente
         int numCliente=0;// contador clientes
         
-        System.out.println("Soy el servidor, y empiezo a escuchar peticiones por el puerto "+ PUERTO);
+        
+        File f = new File(dirName);
+        if (!f.isDirectory()) {
+            f.mkdir();
+        }
+        
+        System.out.println("Server Escuchando");
         
         try {
             //apertura de socket para escuchar a través de un puerto
             servidor = new ServerSocket(PUERTO);
             
             do {
-                
-                numCliente ++;
-                
                 cliente=servidor.accept(); //aceptamos la conexión de un cliente
-                
-                System.out.println("Cliente Conectado" + numCliente); //
-                
+
                 HiloImagen h = new HiloImagen(cliente); // creamos un hilo de cliente
                 
                 Thread t = new Thread(h);
                 
                 t.start(); //lanzamos el hilo
-                System.out.println("Hilo Lanzado");
-                
+               
             } while (true);
             
             
         } catch (IOException ex) {
-            Logger.getLogger(ServerImagen.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServerImagenUser.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }

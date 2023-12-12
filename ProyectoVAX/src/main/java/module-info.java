@@ -4,7 +4,8 @@ module com.cafeconpalito.proyectovax {
     requires javafx.graphics;
     requires javafx.base;
     requires java.base;
-
+    requires com.google.protobuf;
+    
     //BBDD
     requires org.hibernate.orm.core;
     requires java.sql;

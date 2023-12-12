@@ -1,5 +1,6 @@
 package com.cafeconpalito.proyectovax;
 
+import com.cafeconpalito.socket.SocketImagUser;
 import com.cafeconpalito.staticElements.ConectionBBDD;
 
 /**
@@ -8,6 +9,7 @@ import com.cafeconpalito.staticElements.ConectionBBDD;
  */
 public class EntryPoint {
     
+    //public static String serverIP = "localhost";
     public static String serverIP = "192.168.34.209";
     public static String user = "root";
     public static String pass = "12345678";
@@ -16,10 +18,12 @@ public class EntryPoint {
         
         //levado al init de la app
        
-        ConectionBBDD.createCustomEM(serverIP, user, pass);
+        //ConectionBBDD.createCustomEM(serverIP, user, pass);
         
-        App.main(args);
-
+        //App.main(args);
+        
+        
+        
     }
 
 }
