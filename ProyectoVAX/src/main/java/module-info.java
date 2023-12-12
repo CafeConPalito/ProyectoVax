@@ -11,6 +11,8 @@ module com.cafeconpalito.proyectovax {
     requires java.sql;
     requires java.persistence;
     requires org.controlsfx.controls;
+    requires java.desktop;
+    requires java.logging;
         
     //OJO NO LE GUSTAN LAS BARRAS BAJAS PARA LOS NOMBRE DE LOS PAQUETES!
     opens com.cafeconpalito.userLogedData to com.cafeconpalito.proyectovax ;

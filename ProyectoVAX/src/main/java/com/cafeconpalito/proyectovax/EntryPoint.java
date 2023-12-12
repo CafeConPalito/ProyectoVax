@@ -2,25 +2,37 @@ package com.cafeconpalito.proyectovax;
 
 import com.cafeconpalito.socket.SocketImagUser;
 import com.cafeconpalito.staticElements.ConectionBBDD;
+import com.cafeconpalito.staticElements.FrameDatosConex;
 
 /**
  *
  * @author Albano Díez de Paulino
  */
 public class EntryPoint {
-    
-    //public static String serverIP = "localhost";
 
+    //public static String serverIP = "localhost";
     public static String serverIP = "192.168.34.209";
     public static String user = "root";
-    public static String pass = "12345678";
+    public static String pass = "1234";
 
     public static String rutaImgUser = "/imguser/";
     public static String rutaImgGame = "/imggame/";
 
     public static void main(String[] args) {
 
-        ConectionBBDD.createCustomEM(serverIP, user, pass);
+        boolean conexCorrecta = true;
+        while (conexCorrecta) {
+            try {
+                ConectionBBDD.createCustomEM(serverIP, user, pass);
+                conexCorrecta=false;
+            } catch (Exception e) {
+                System.out.println("peto la conexion");
+                FrameDatosConex fdc = new FrameDatosConex();
+                fdc.setVisible(true);
+                while (fdc.esperandoIP) {                    
+                }
+            }
+        }
 
         App.main(args);
 
