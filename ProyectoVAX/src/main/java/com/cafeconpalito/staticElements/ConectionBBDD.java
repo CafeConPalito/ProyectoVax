@@ -27,7 +27,7 @@ public class ConectionBBDD {
      * @return
      */
     public static EntityManager getEm() {
-        start();
+        //start();
         return em;
     }
 
@@ -85,4 +85,26 @@ public class ConectionBBDD {
 
     }
 
+    public static void createCustomEM(String newIP, String user, String pass){
+
+        
+        //Crea una nueva EntityManagerFactory con los datos que se necesitan
+        EntityManagerFactory managerFactory = null;
+        Map<String, String> persistenceMap = new HashMap<String, String>();
+        
+        persistenceMap.put("javax.persistence.jdbc.url", "jdbc:mysql://"+newIP+":3306/vapor?zeroDateTimeBehavior=CONVERT_TO_NULL");
+        persistenceMap.put("javax.persistence.jdbc.user", user);
+        persistenceMap.put("javax.persistence.jdbc.password", pass);
+        persistenceMap.put("javax.persistence.jdbc.driver", "com.mysql.cj.jdbc.Driver");
+
+        //Carga las entidades del Em original en el nuevo EntityManagerFactory
+        managerFactory = Persistence.createEntityManagerFactory("com.cafeconpalito_ProyectoVAX_jar_1.0-SNAPSHOTPU", persistenceMap);
+        
+        //Una ves modificada vuelve a cargar la info en em
+        emf = managerFactory;
+        System.out.println("\ndespues de modificar");
+        em = managerFactory.createEntityManager();
+
+    }
+    
 }
