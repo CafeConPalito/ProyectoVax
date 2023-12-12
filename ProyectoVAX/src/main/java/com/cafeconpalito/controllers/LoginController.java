@@ -49,18 +49,22 @@ public class LoginController implements Initializable {
     }
 
     @FXML
-    private void tryLogIn(ActionEvent event) {
-        System.out.println("intentando Logear");
-        if (!LoginConsults.userExists(emailTextField.getText())||emailTextField.getText().isBlank()   ||   !emailTextField.getText().matches("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$")   ){
-           emailLabel.setTextFill(Colors.textColorError);
-        } else if (passwordTextField.getText().isBlank()||LoginConsults.passwordCorrect(emailTextField.getText(), passwordTextField.getText())) {
+    private void tryLogIn(ActionEvent event) throws IOException {
+
+        if (!LoginConsults.userExists(emailTextField.getText()) || emailTextField.getText().isBlank() || !emailTextField.getText().matches("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$")) {
+            emailLabel.setTextFill(Colors.textColorError);
+        } else if (passwordTextField.getText().isBlank() || !LoginConsults.passwordCorrect(emailTextField.getText(), passwordTextField.getText())) {
             passwordLabel.setTextFill(Colors.textColorError);
         } else {
-            UserLogedInfo.setUserIsLoged(true);
-            
+            //USER LOGEADO CARGO INFO Y LANZO LA STORE DE VUELTA
+            LoginConsults.loadUserData(emailTextField.getText());
+            //Dirijo a la store
+            MainView.main.setCenter(App.loadFXML("store"));
+            //Recargo el panel lateral
+            MainView.main.setLeft(App.loadFXML("panelIzquierdoGeneral"));
+
         }
-        
-        
+
     }
 
     @FXML
