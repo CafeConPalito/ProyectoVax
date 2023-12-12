@@ -13,13 +13,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox id="BackGround" alignment="CENTER" stylesheets="@../../../styles/register.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cafeconpalito.controllers.insertGameController">
+<HBox id="BackGround" alignment="CENTER" stylesheets="@../../../styles/register.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cafeconpalito.controllers.insertGameController">
    <children>
       <HBox id="BackGroundForm" alignment="CENTER" maxHeight="900.0" maxWidth="1200.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="700.0" HBox.hgrow="ALWAYS">
          <children>
             <VBox alignment="CENTER" prefWidth="650.0" HBox.hgrow="NEVER">
                <children>
-                  <HBox alignment="TOP_CENTER">
+                  <HBox alignment="CENTER">
                      <children>
                         <ImageView fitHeight="89.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -27,7 +27,7 @@
                            </image>
                         </ImageView>
                         <Pane prefHeight="89.0" prefWidth="45.0" />
-                        <Label alignment="CENTER" prefHeight="89.0" prefWidth="184.0" styleClass="labels" text="NEW GAME" textAlignment="CENTER" textFill="WHITE">
+                        <Label alignment="CENTER" prefHeight="89.0" prefWidth="213.0" styleClass="labels" text="NEW GAME" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="36.0" />
                            </font>
@@ -98,11 +98,20 @@
                      </children>
                   </HBox>
                   <Pane prefHeight="20.0" prefWidth="500.0" style="-fx-background-color: transparent;" />
-                  <ImageView id="nextBtn" fitHeight="52.0" fitWidth="42.0" onMouseClicked="#nextBtn" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/Custom-Icon-Design-Flatastic-1-Forward.72.png" />
-                     </image>
-                  </ImageView>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <ImageView id="nextBtn" fitHeight="52.0" fitWidth="42.0" onMouseClicked="#nextBtn" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/Custom-Icon-Design-Flatastic-1-Forward.72.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#CancelInsertGame" styleClass="cancel" text="Cancel">
+                           <HBox.margin>
+                              <Insets left="40.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
                </children>
             </VBox>
          </children>

@@ -14,6 +14,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 
 /**
  * FXML Controller class
@@ -28,6 +29,8 @@ public class PanelIzquierdoGeneralController implements Initializable {
     private Button myGamesBtn;
     @FXML
     private Button loginBtn;
+    @FXML
+    private Label alias;
 
     /**
      * Initializes the controller class.
@@ -36,47 +39,58 @@ public class PanelIzquierdoGeneralController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
         if (UserLogedInfo.isUserIsLoged()) {
-            //System.out.println("el usuario esta logeado");
-        }else{
-            //System.out.println("el usuaroio no esta logueado");
+            loginBtn.setText("Log Out");
+            //Cargar Alias
+            alias.setText("@"+UserLogedInfo.getAlias());
+            //Cargar Imagen
+        } else {
+            loginBtn.setText("Log In");
+            alias.setText("@guest");
+            
         }
-    }    
+    }
 
     @FXML
     private void switchToStore(ActionEvent event) throws IOException {
-        
+
         MainView.main.setCenter(App.loadFXML("store"));
-        
+
     }
 
     @FXML
     private void switchToLibrary(ActionEvent event) throws IOException {
-        
+
         if (UserLogedInfo.isUserIsLoged()) {
-            //System.out.println("el usuario esta logeado");
-        }else{
-            //System.out.println("el usuaroio no esta logueado");
-             MainView.main.setCenter(App.loadFXML("login"));
+            //TODO: AÑADIR PESTAÑA BIBLIOTECA
+        } else {
+            MainView.main.setCenter(App.loadFXML("login"));
         }
-        
+
     }
 
     @FXML
     private void switchToLogIn(ActionEvent event) throws IOException {
-        
-        MainView.main.setCenter(App.loadFXML("login"));
+
+        if (UserLogedInfo.isUserIsLoged()) {
+            UserLogedInfo.logoutUser();
+            MainView.main.setCenter(App.loadFXML("store"));
+            loginBtn.setText("Log In");
+            alias.setText("@guest");
+        } else {
+            MainView.main.setCenter(App.loadFXML("login"));
+        }
     }
 
     @FXML
     private void switchToSettings(ActionEvent event) throws IOException {
-        
+
         if (UserLogedInfo.isUserIsLoged()) {
             //System.out.println("el usuario esta logeado");
-        }else{
+        } else {
             //System.out.println("el usuaroio no esta logueado");
-             MainView.main.setCenter(App.loadFXML("login"));
+            MainView.main.setCenter(App.loadFXML("login"));
         }
-        
+
     }
 
     @FXML

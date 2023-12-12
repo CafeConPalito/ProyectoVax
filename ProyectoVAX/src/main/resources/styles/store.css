@@ -9,16 +9,14 @@
     -fx-background-size: stretch;
 }
 
-.button{
+.button.allGamesBtn{
     -fx-background-color: transparent;
-    -fx-text-fill: #11598a;
+    -fx-text-fill: #15b218;
     -fx-border-radius: 50;
     -fx-border-width: 2;
     -fx-background-radius : 50;
-    -fx-border-color: #11598a;
+    -fx-border-color: #15b218;
     -fx-font-size: 18px;
-    /*    Sombra boton*/
-    /*    -fx-effect: dropshadow(three-pass-box, black, 10, 0, 5, 5);*/
 }
 .button:hover{
     -fx-text-fill: #db3c21;

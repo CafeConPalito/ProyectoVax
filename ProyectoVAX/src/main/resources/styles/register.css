@@ -24,6 +24,23 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-border-color: #db3c21;
 }
 
+.button.cancel{
+    -fx-background-color: transparent;
+    -fx-text-fill: #c60000;
+    -fx-border-radius: 50;
+    -fx-border-width: 2;
+    -fx-background-radius : 50;
+    -fx-border-color: #c60000;
+    -fx-font-size: 18px;
+    /*    Sombra boton*/
+    /*    -fx-effect: dropshadow(three-pass-box, black, 10, 0, 5, 5);*/
+}
+
+.button.cancel:hover{
+    -fx-text-fill: #db3c21;
+    -fx-border-color: #db3c21;
+}
+
 .button.allGamesBtn{
     -fx-background-color: transparent;
     -fx-text-fill: #15b218;

@@ -6,6 +6,7 @@ package com.cafeconpalito.consultDB;
 
 import com.cafeconpalito.entities.Usuario;
 import com.cafeconpalito.staticElements.ConectionBBDD;
+import com.cafeconpalito.userLogedData.UserLogedInfo;
 import java.util.ArrayList;
 import java.util.Collection;
 import javax.persistence.Query;
@@ -46,6 +47,15 @@ public class LoginConsults {
         Query q = ConectionBBDD.getEm().createNamedQuery("Usuario.findByEmail");
         q.setParameter("email", email);
         ArrayList<Usuario> l = (ArrayList<Usuario>) q.getResultList();
+        for (Usuario u : l) {
+            boolean rol;
+            if (u.getRol()==0) {
+                rol=true;
+            }else{
+                rol=false;
+            }
+            UserLogedInfo.constructUser(u.getIdusuario(), u.getAlias(), u.getImagen(), u.getRegion(),email, u.getNombre(), u.getApellido1(), u.getApellido2(),u.getFechanac(), rol);
+        }
         
     }
     

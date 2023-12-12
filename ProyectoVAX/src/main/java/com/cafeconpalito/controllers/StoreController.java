@@ -5,11 +5,17 @@
 package com.cafeconpalito.controllers;
 
 import com.cafeconpalito.consultDB.StoreConsults;
+import com.cafeconpalito.proyectovax.App;
+import com.cafeconpalito.staticElements.MainView;
+import com.cafeconpalito.userLogedData.UserLogedInfo;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 
@@ -28,6 +34,10 @@ public class StoreController implements Initializable {
     private TextField nameTextField;
     @FXML
     private TextField genreTextField;
+    @FXML
+    private ComboBox<?> priceComboBox;
+    @FXML
+    private Button insertGameStoreButton;
 
     /**
      * Initializes the controller class.
@@ -39,6 +49,13 @@ public class StoreController implements Initializable {
             
             MyTilePane.getChildren().clear();
             MyTilePane.getChildren().addAll(StoreConsults.getStoreGames());
+            
+            if (UserLogedInfo.isUserIsDeveloper()) {
+                insertGameStoreButton.setVisible(true);
+            }else{
+                insertGameStoreButton.setVisible(false);
+            }
+            
             
         } catch (IOException ex) {
             System.err.println("ERROR AL CARGAR LOS JUEGOS");
@@ -59,6 +76,11 @@ public class StoreController implements Initializable {
         MyTilePane.getChildren().clear();
         MyTilePane.getChildren().addAll(StoreConsults.filterStoreGames(nameTextField.getText(), genreTextField.getText(),""));
         
+    }
+
+    @FXML
+    private void insertGameStore(ActionEvent event) throws IOException {
+        MainView.main.setCenter(App.loadFXML("insertGame"));
     }
 
 }
