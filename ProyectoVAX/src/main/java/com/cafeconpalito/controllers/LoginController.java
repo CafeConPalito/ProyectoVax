@@ -8,7 +8,6 @@ import com.cafeconpalito.consultDB.LoginConsults;
 import com.cafeconpalito.proyectovax.App;
 import com.cafeconpalito.staticElements.Colors;
 import com.cafeconpalito.staticElements.MainView;
-import com.cafeconpalito.userLogedData.UserLogedInfo;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -20,7 +19,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
 
 /**
  * FXML Controller class

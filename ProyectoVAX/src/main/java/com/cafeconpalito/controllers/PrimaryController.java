@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 
 public class PrimaryController {
 
-    private double xMouse,yMouse;
+    private double xMouse, yMouse;
 
     @FXML
     private Pane parent;
@@ -26,8 +26,7 @@ public class PrimaryController {
     @FXML
     private Button CloseButton;
 
-
-   
+    String operatingSystem = System.getProperty("os.name").toLowerCase();
 
     @FXML
     private void MinimizeButton(ActionEvent event) {
@@ -38,11 +37,20 @@ public class PrimaryController {
     @FXML
     private void MaximizeButton(ActionEvent event) {
         Stage stage = (Stage) MaximizeButton.getScene().getWindow();
-
-        if (stage.isMaximized()) {
-            stage.setMaximized(false);
+        
+        if (operatingSystem.contains("mac")) {
+            if (stage.isFullScreen()) {
+                stage.setFullScreen(false);
+            } else {
+                stage.setFullScreen(true);
+            }
         } else {
-            stage.setMaximized(true);
+            if (stage.isMaximized()) {
+                stage.setMaximized(false);
+            } else {
+                stage.setMaximized(true);
+            }
+            
         }
 
     }
@@ -65,9 +73,7 @@ public class PrimaryController {
         Stage stage = (Stage) Header.getScene().getWindow();
         xMouse = event.getSceneX();
         yMouse = event.getSceneY();
-        
-    }
 
-   
+    }
 
 }

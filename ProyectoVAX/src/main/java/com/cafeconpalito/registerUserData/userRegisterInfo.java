@@ -4,8 +4,6 @@
  */
 package com.cafeconpalito.registerUserData;
 
-import java.util.Date;
-
 /**
  *
  * @author Ramiro
@@ -24,6 +22,25 @@ public class userRegisterInfo {
     private static String rPassword;
     private static String image;
     private static String Role;
+    
+  
+    
+     public static void resetRegisterInfo(){
+        
+        firstName="";
+        firstSurname="";
+        secondSurname="";
+        birthDate="";
+        region="";
+        email="";
+        nickname="";
+        password="";
+        rPassword="";
+        image="";
+        Role="";
+         
+        
+    }
 
     public static String getFirstName() {
         return firstName;
@@ -113,13 +130,4 @@ public class userRegisterInfo {
         userRegisterInfo.Role = Role;
     }
 
-    @Override
-    public String toString() {
-        return super.toString(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
-    }
-
-    
-    
-    
-    
 }

@@ -78,7 +78,7 @@
                                     <Font name="System Bold" size="18.0" />
                                  </font>
                               </Label>
-                              <DatePicker id="datepicker" fx:id="BirthDatePicker" onMouseClicked="#birthDateFocused" prefHeight="35.0" prefWidth="300.0" />
+                              <DatePicker id="datepicker" fx:id="BirthDatePicker" editable="false" onMouseClicked="#birthDateFocused" prefHeight="35.0" prefWidth="300.0" />
                               <Pane prefHeight="25.0" />
                               <Label fx:id="RegionLabel" alignment="CENTER" prefWidth="200.0" styleClass="labels" text="Region" textAlignment="CENTER">
                                  <font>

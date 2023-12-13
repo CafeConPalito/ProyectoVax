@@ -62,7 +62,9 @@ public class RegisterController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        regionComboBox.getItems().addAll("user", "developer");
+        
+        regionComboBox.getItems().addAll("region1 ", "region2", "region3", "papasFritas");
+        
         if (userRegisterInfo.getFirstName()!=null) {
             firstNameTextField.setText(userRegisterInfo.getFirstName());
             firstSurnameTextField.setText(userRegisterInfo.getFirstSurname());

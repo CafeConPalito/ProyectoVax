@@ -17,10 +17,12 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import com.cafeconpalito.controllers.RegisterController;
 import com.cafeconpalito.registerUserData.userRegisterInfo;
 import com.cafeconpalito.staticElements.Colors;
+import java.io.File;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.stage.FileChooser;
 
 /**
  * FXML Controller class
@@ -66,26 +68,49 @@ public class Register_1Controller implements Initializable {
         // TODO
         rolecombobox.getItems().addAll("user", "developer");
 
-//        nicknametexfield.setText(userRegisterInfo.getNickname());
-//        passwordtextfield.setText(userRegisterInfo.getPassword());
-//        rPasswordtextfield.setText(userRegisterInfo.getrPassword());
-//        imagetextfield.setText(userRegisterInfo.getImage());
-//        rolecombobox.setValue(userRegisterInfo.getRole());
+        if (userRegisterInfo.getNickname() != null) {
+            nicknametexfield.setText(userRegisterInfo.getNickname());
+        }
+
+        if (userRegisterInfo.getPassword() != null) {
+            passwordtextfield.setText(userRegisterInfo.getPassword());
+        }
+
+        if (userRegisterInfo.getrPassword() != null) {
+            rPasswordtextfield.setText(userRegisterInfo.getrPassword());
+        }
+
+        if (userRegisterInfo.getImage() != null) {
+            imagetextfield.setText(userRegisterInfo.getImage());
+            defaultImage.setImage(new Image("file:" + imagetextfield.getText()));
+        }
+
+        if (userRegisterInfo.getRole() != null) {
+            rolecombobox.setValue(userRegisterInfo.getRole());
+        }
     }
 
     @FXML
     private void backBtn(MouseEvent event) throws IOException {
         //incluir persistencia de datos aqui ******** aunque  no se haya relellenado todo
 
-        if (nicknametexfield.getText()!=null) {
-            userRegisterInfo.setNickname(nicknametexfield.getText());           
-        }else if(passwordtextfield.getText()!=null) {
+        if (nicknametexfield.getText() != null) {
+            userRegisterInfo.setNickname(nicknametexfield.getText());
+        }
+
+        if (passwordtextfield.getText() != null) {
             userRegisterInfo.setPassword(passwordtextfield.getText());
-        }else if(rPasswordtextfield.getText()!=null) {
+        }
+
+        if (rPasswordtextfield.getText() != null) {
             userRegisterInfo.setrPassword(rPasswordtextfield.getText());
-        }else if(imagetextfield.getText()!=null) {
+        }
+
+        if (imagetextfield.getText() != null) {
             userRegisterInfo.setImage(imagetextfield.getText());
-        }else if(rolecombobox.getValue()!=null) {
+        }
+
+        if (rolecombobox.getValue() != null) {
             userRegisterInfo.setRole(rolecombobox.getValue().toString());
         }
 
@@ -95,31 +120,58 @@ public class Register_1Controller implements Initializable {
 
     @FXML
     private void imageClicked(MouseEvent event) {
+        
+        FileChooser fch = new FileChooser();
 
-        //mismo que imageButton... debería desplegar un filechooser
+        File selected = fch.showOpenDialog(null);
+
+        if (selected != null) { // Verificar si se seleccionó un archivo
+            
+            imagetextfield.setText(selected.getAbsolutePath());
+            defaultImage.setImage(new Image("file:" + selected.getAbsolutePath()));
+        }
+
     }
 
     @FXML
     private void SelectImage(ActionEvent event) {
+        FileChooser fch = new FileChooser();
+
+        File selected = fch.showOpenDialog(null);
+
+        if (selected != null) { // Verificar si se seleccionó un archivo
+            
+            imagetextfield.setText(selected.getAbsolutePath());
+            defaultImage.setImage(new Image("file:" + selected.getAbsolutePath()));
+        }
+
     }
 
     @FXML
     private void tryToRegister(ActionEvent event) {
+
         if (nicknametexfield.getText().isBlank()) {
             nicknameLabel.setTextFill(Colors.textColorError);
+
         } else if (passwordtextfield.getText().isBlank()) {
             passwordLabel.setTextFill(Colors.textColorError);
-        } else if (rPasswordtextfield.getText().isBlank() || rPasswordtextfield.getText() != passwordtextfield.getText()) {
+
+        } else if (rPasswordtextfield.getText().isBlank() || !rPasswordtextfield.getText().equals(passwordtextfield.getText())) {
             rPaswordLabel.setTextFill(Colors.textColorError);
+
         } else if (imagetextfield.getText().isBlank()) {
             imageLabel.setTextFill(Colors.textColorError);
+
         } else if (rolecombobox.getValue() == null) {
             roleLabel.setTextFill(Colors.textColorError);
+
+        } else {
+
+            // aquí va to lo gordo
+            System.out.println("intentando registrar usuario");
+//            userRegisterInfo.resetRegisterInfo();
+
         }
-
-        // aquí va to lo gordo
-        System.out.println("intentando registrar usuario");
-
     }
 
     @FXML
@@ -132,18 +184,9 @@ public class Register_1Controller implements Initializable {
         passwordLabel.setTextFill(Colors.textColor);
     }
 
-    private void rPasswordFocused(MouseEvent event) {
-        rPaswordLabel.setTextFill(Colors.textColor);
-    }
-
     @FXML
     private void imageTextfieldFocused(MouseEvent event) {
         imageLabel.setTextFill(Colors.textColor);
-    }
-
-    @FXML
-    private void imageButton(MouseEvent event) {
-        //mismo que imageCliked... debería desplegar un filechooser
     }
 
     @FXML
@@ -153,6 +196,7 @@ public class Register_1Controller implements Initializable {
 
     @FXML
     private void rpasswordFocused(MouseEvent event) {
+        rPaswordLabel.setTextFill(Colors.textColor);
     }
 
 }
