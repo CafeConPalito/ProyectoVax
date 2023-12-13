@@ -5,6 +5,7 @@ module com.cafeconpalito.proyectovax {
     requires javafx.base;
     requires java.base;
     requires com.google.protobuf;
+    requires com.google.common;
     
     //BBDD
     requires org.hibernate.orm.core;
@@ -30,5 +31,6 @@ module com.cafeconpalito.proyectovax {
     opens com.cafeconpalito.proyectovax to javafx.graphics;
    
     exports com.cafeconpalito.proyectovax;
+    
            
 }

@@ -39,11 +39,15 @@ import javax.persistence.TemporalType;
     @NamedQuery(name = "Juego.findByFecha", query = "SELECT j FROM Juego j WHERE j.fecha = :fecha"),
     @NamedQuery(name = "Juego.findByNumdescargas", query = "SELECT j FROM Juego j WHERE j.numdescargas = :numdescargas"),
     @NamedQuery(name = "Juego.findByPrecio", query = "SELECT j FROM Juego j WHERE j.precio = :precio"),
+    //No funciona nada si tienes que irte a otras tablas
     //PARA VER LOS JUEGOS QUE TIENE EL USUARIO en su biblioteca
     //@NamedQuery(name = "Juego.findJuegoTieneUsuario", query = "SELECT j FROM Juego j INNER JOIN Biblioteca b USING (idjuego) INNER JOIN Usuario u USING (idusuario) WHERE u.idusuario = :idusuario"),
     //PARA VER LOS JUEGOS QUE NO TIENE EL USUARIO 
     //QUEDA COMPROBAR!
-    //@NamedQuery(name = "Juego.findJuegoNoTieneUsuario", query = "SELECT j FROM Juego j LEFT JOIN Biblioteca b USING (idjuego) INNER JOIN Usuario u USING (idusuario) WHERE u.idusuario = :idusuario")    
+    //@NamedQuery(name = "Juego.findJuegoNoTieneUsuario", query = "SELECT j FROM juego j where j.idjuego not in(SELECT idjuego from biblioteca b where b.idusuario =1)") 
+    
+    //ESTO PETA PERO FUNCIONA EN MYSQL PRUEBO OTRA FORMA
+    //@NamedQuery(name = "Juego.filterGames", query = "SELECT j FROM Juego j INNER JOIN juego_genero jg ON j.idjuego = jg.idjuego INNER JOIN genero g ON g.idgenero =jg.idgenero WHERE g.name LIKE ':genero' and j.titulo like ':titulo' AND j.precio<:precio")  
 })
 
 public class Juego implements Serializable {

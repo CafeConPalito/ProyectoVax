@@ -35,7 +35,7 @@ public class StoreController implements Initializable {
     @FXML
     private TextField genreTextField;
     @FXML
-    private ComboBox<?> priceComboBox;
+    private ComboBox<String> priceComboBox;
     @FXML
     private Button insertGameStoreButton;
 
@@ -49,6 +49,7 @@ public class StoreController implements Initializable {
             
             MyTilePane.getChildren().clear();
             MyTilePane.getChildren().addAll(StoreConsults.getStoreGames());
+            priceComboBox.getItems().addAll("Free to Play", "-10$","-20$");
             
             if (UserLogedInfo.isUserIsDeveloper()) {
                 insertGameStoreButton.setVisible(true);
@@ -63,18 +64,18 @@ public class StoreController implements Initializable {
     }
 
     @FXML
-    private void nameEntryInfo(KeyEvent event) {
+    private void nameEntryInfo(KeyEvent event) throws IOException {
         
-        MyTilePane.getChildren().clear();
-        MyTilePane.getChildren().addAll(StoreConsults.filterStoreGames(nameTextField.getText(), genreTextField.getText(),""));
+        //MyTilePane.getChildren().clear();
+        //MyTilePane.getChildren().addAll(StoreConsults.filterStoreGames(nameTextField.getText(), genreTextField.getText(),"30"));
         
     }
 
     @FXML
-    private void genreEntryInfo(KeyEvent event) {
+    private void genreEntryInfo(KeyEvent event) throws IOException {
         
-        MyTilePane.getChildren().clear();
-        MyTilePane.getChildren().addAll(StoreConsults.filterStoreGames(nameTextField.getText(), genreTextField.getText(),""));
+        //MyTilePane.getChildren().clear();
+       // MyTilePane.getChildren().addAll(StoreConsults.filterStoreGames(nameTextField.getText(), genreTextField.getText(),"30"));
         
     }
 
