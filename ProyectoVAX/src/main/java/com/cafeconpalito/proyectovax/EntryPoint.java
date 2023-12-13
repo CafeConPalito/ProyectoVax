@@ -12,7 +12,7 @@ public class EntryPoint {
     //PURETO 6666 Imagen Usuario
     //PUERTO 6665 Imagen Juego
     //PUERTO 6664 ZIP Upload
-    //PUERTO 6663 ZIP Bajada
+    //PUERTO 6663 ZIP Download
     
     //public static String serverIP = "localhost";
     public static String serverIP = "192.168.34.209";

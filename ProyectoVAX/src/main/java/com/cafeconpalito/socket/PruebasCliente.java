@@ -4,7 +4,6 @@
  */
 package com.cafeconpalito.socket;
 
-import com.google.common.io.Files;
 import java.io.File;
 
 /**
@@ -22,17 +21,16 @@ public class PruebasCliente {
         
         //PRUEBAS DEL CLIENTE IMAGEN
         
-        File f = new File("daniel.png");
+        File f = new File("daniel.zip");
         
         String path = f.getAbsolutePath();
         String alias = "ALBANO ES TONTO";
+              
+        //SocketImagUser siu = new SocketImagUser(alias, path);
+        //SocketImagGame sig = new SocketImagGame(alias, path);
+        //SocketZipGameUpload szgu = new SocketZipGameUpload(alias, path);
+        SocketZipGameDownload szgd = new SocketZipGameDownload("daniel");
         
-        System.out.println(path);
-        
-        SocketImagUser siu = new SocketImagUser(alias, path);
-        SocketImagGame sig = new SocketImagGame(alias, path);
-        SocketZipGameUpload szgu = new SocketZipGameUpload(alias, path);
-
     }
     
 }

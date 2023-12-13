@@ -24,7 +24,6 @@ public class ServerImageUser {
         final int PUERTO = 6666;//puerto de escucha (a partir del 1024)
 
         Socket cliente; // atencion a cliente
-        int numCliente = 0;// contador clientes
 
         File f = new File(dirName);
         if (!f.isDirectory()) {
