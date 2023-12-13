@@ -25,15 +25,14 @@ public class PruebasCliente {
         File f = new File("daniel.png");
         
         String path = f.getAbsolutePath();
-        String ext = "."+Files.getFileExtension(path);
-        String alias = "MIALIAS";
+        String alias = "ALBANO ES TONTO";
         
         System.out.println(path);
-        System.out.println("."+ext);
         
-        SocketImagUser siu = new SocketImagUser(alias, path, ext);
-        siu.run();
-        
+        SocketImagUser siu = new SocketImagUser(alias, path);
+        SocketImagGame sig = new SocketImagGame(alias, path);
+        SocketZipGameUpload szgu = new SocketZipGameUpload(alias, path);
+
     }
     
 }
