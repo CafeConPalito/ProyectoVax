@@ -4,6 +4,7 @@
  */
 package com.cafeconpalito.controllers;
 
+import com.cafeconpalito.consultDB.RegisterConsults;
 import com.cafeconpalito.proyectovax.App;
 import com.cafeconpalito.staticElements.MainView;
 import java.io.IOException;
@@ -94,6 +95,13 @@ public class Register_1Controller implements Initializable {
     private void backBtn(MouseEvent event) throws IOException {
         //incluir persistencia de datos aqui ******** aunque  no se haya relellenado todo
 
+        saveData();
+
+        MainView.main.setCenter(App.loadFXML("register"));
+
+    }
+    
+    private void saveData(){
         if (nicknametexfield.getText() != null) {
             userRegisterInfo.setNickname(nicknametexfield.getText());
         }
@@ -112,45 +120,53 @@ public class Register_1Controller implements Initializable {
 
         if (rolecombobox.getValue() != null) {
             userRegisterInfo.setRole(rolecombobox.getValue().toString());
+            userRegisterInfo.setRolenumber(rolecombobox.getSelectionModel().getSelectedIndex()+1);
         }
-
-        MainView.main.setCenter(App.loadFXML("register"));
-
+        
+        
+        
     }
 
     @FXML
     private void imageClicked(MouseEvent event) {
-        
-        FileChooser fch = new FileChooser();
-
-        File selected = fch.showOpenDialog(null);
-
-        if (selected != null) { // Verificar si se seleccionó un archivo
-            
-            imagetextfield.setText(selected.getAbsolutePath());
-            defaultImage.setImage(new Image("file:" + selected.getAbsolutePath()));
-        }
-
+        launchFileChooser();
     }
 
     @FXML
     private void SelectImage(ActionEvent event) {
-        FileChooser fch = new FileChooser();
+        launchFileChooser();
+    }
 
-        File selected = fch.showOpenDialog(null);
+    private boolean fileChooserOpened = false;
 
-        if (selected != null) { // Verificar si se seleccionó un archivo
+    private void launchFileChooser() {
+        
+        if (!fileChooserOpened) {
             
-            imagetextfield.setText(selected.getAbsolutePath());
-            defaultImage.setImage(new Image("file:" + selected.getAbsolutePath()));
-        }
-
+            fileChooserOpened = true;
+          
+            FileChooser fch = new FileChooser();
+            File selected = fch.showOpenDialog(null);
+            
+            
+            
+            if (selected != null) {
+                imagetextfield.setText(selected.getAbsolutePath());
+                defaultImage.setImage(new Image("file:" + selected.getAbsolutePath()));
+            }
+            
+            fileChooserOpened = false;
+        } 
+    }
+    
+    private void insertNewUser(){
+        
     }
 
     @FXML
-    private void tryToRegister(ActionEvent event) {
+    private void tryToRegister(ActionEvent event) throws IOException {
 
-        if (nicknametexfield.getText().isBlank()) {
+        if (nicknametexfield.getText().isBlank() || RegisterConsults.nickNameExists(nicknametexfield.getText())) {
             nicknameLabel.setTextFill(Colors.textColorError);
 
         } else if (passwordtextfield.getText().isBlank()) {
@@ -166,10 +182,12 @@ public class Register_1Controller implements Initializable {
             roleLabel.setTextFill(Colors.textColorError);
 
         } else {
+            saveData();
 
-            // aquí va to lo gordo
-            System.out.println("intentando registrar usuario");
-//            userRegisterInfo.resetRegisterInfo();
+            RegisterConsults.insercion();
+            System.out.println("registrando usuario");
+            userRegisterInfo.resetRegisterInfo();
+            MainView.main.setCenter(App.loadFXML("store"));
 
         }
     }
