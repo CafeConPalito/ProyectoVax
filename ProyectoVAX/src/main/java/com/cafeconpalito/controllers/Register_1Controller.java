@@ -19,6 +19,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import com.cafeconpalito.registerUserData.userRegisterInfo;
+import com.cafeconpalito.socket.SocketImagUser;
 import com.cafeconpalito.staticElements.Colors;
 import java.io.File;
 import javafx.scene.control.Label;
@@ -67,7 +68,8 @@ public class Register_1Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        rolecombobox.getItems().addAll("user", "developer");
+        rolecombobox.getItems().addAll("developer", "user");
+        rolecombobox.setVisibleRowCount(3);
 
         if (userRegisterInfo.getNickname() != null) {
             nicknametexfield.setText(userRegisterInfo.getNickname());
@@ -120,7 +122,7 @@ public class Register_1Controller implements Initializable {
 
         if (rolecombobox.getValue() != null) {
             userRegisterInfo.setRole(rolecombobox.getValue().toString());
-            userRegisterInfo.setRolenumber(rolecombobox.getSelectionModel().getSelectedIndex()+1);
+            userRegisterInfo.setRolenumber(rolecombobox.getSelectionModel().getSelectedIndex());
         }
         
         
@@ -185,6 +187,7 @@ public class Register_1Controller implements Initializable {
             saveData();
 
             RegisterConsults.insercion();
+            SocketImagUser siu = new SocketImagUser(userRegisterInfo.getNickname(), userRegisterInfo.getImage());
             System.out.println("registrando usuario");
             userRegisterInfo.resetRegisterInfo();
             MainView.main.setCenter(App.loadFXML("store"));

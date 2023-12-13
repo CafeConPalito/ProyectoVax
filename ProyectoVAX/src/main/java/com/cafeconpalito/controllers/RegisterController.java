@@ -65,6 +65,7 @@ public class RegisterController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
         regionComboBox.getItems().addAll("Europe/Asia ", "Japan", "America", "Australia", "Germany");
+        regionComboBox.setVisibleRowCount(6);
         
         if (userRegisterInfo.getFirstName()!=null) {
             firstNameTextField.setText(userRegisterInfo.getFirstName());
