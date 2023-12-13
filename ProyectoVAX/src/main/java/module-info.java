@@ -31,5 +31,6 @@ module com.cafeconpalito.proyectovax {
     opens com.cafeconpalito.proyectovax to javafx.graphics;
    
     exports com.cafeconpalito.proyectovax;
+    
            
 }

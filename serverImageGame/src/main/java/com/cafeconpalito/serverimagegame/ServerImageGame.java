@@ -25,7 +25,6 @@ public class ServerImageGame {
         final int PUERTO=6665;//puerto de escucha (a partir del 1024)
         
         Socket cliente; // atencion a cliente
-        int numCliente=0;// contador clientes
         
         
         File f = new File(dirName);

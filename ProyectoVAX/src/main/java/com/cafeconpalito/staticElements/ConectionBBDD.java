@@ -102,7 +102,8 @@ public class ConectionBBDD {
         
         //Una ves modificada vuelve a cargar la info en em
         emf = managerFactory;
-        System.out.println("\ndespues de modificar");
+        
+        //System.out.println("\ndespues de modificar");
         em = managerFactory.createEntityManager();
 
     }

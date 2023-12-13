@@ -28,7 +28,7 @@
 }
 
 .filter{
-    -fx-background-color: #060b36;
+    -fx-background-color: #11598a;
     -fx-background-radius : 50;
     -fx-text-fill: white;
 }
@@ -40,4 +40,28 @@
 
 .labels{
     -fx-text-fill: #11598a;
+}
+
+/* outer combo-box text */
+.combo-box .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+/* combo-box list view text, not hovered or focused */
+.combo-box .list-view .list-cell {
+    -fx-background-color: #11598a;
+    -fx-text-fill: white;
+}
+
+/* combo-box selected text */
+.combo-box .list-view .list-cell:focused {
+    -fx-background-color : #db3c21;  /* Cadet Blue */
+    -fx-text-fill: white;
+}
+
+/* combo-box hover text */
+.combo-box .list-view .list-cell:hover {
+    -fx-background-color : #db3c21;  /* Cadet Blue */
+    -fx-text-fill: white;
 }

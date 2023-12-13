@@ -4,7 +4,7 @@
  */
 package com.cafeconpalito.socket;
 
-import java.io.BufferedInputStream;
+import com.cafeconpalito.proyectovax.EntryPoint;
 import java.io.BufferedOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -22,9 +22,10 @@ import java.util.logging.Logger;
 public class SocketZipGameDownload implements Runnable {
 
     private Socket servidor;
-    private static final int PUERTO = 6666;
+    private static final int PUERTO = 6663;
 
     private String gameName;
+    private String dirGames = "games";
 
     public SocketZipGameDownload(String gameName) {
         this.gameName = gameName;
@@ -33,19 +34,43 @@ public class SocketZipGameDownload implements Runnable {
 
     @Override
     public void run() {
-        /*
-        BufferedInputStream bis = null;
+        
+        //Creo la carpeta Games si no existe
+        File f = new File(dirGames);
+        if (!f.isDirectory()) {
+            f.mkdir();
+        }
+        
+        //Ruta de la carpeta para el juego
+        String dirGamesGame = dirGames +"/"+gameName;
+        
+        //Creo la carpeta del juego para almacenarlo
+        File fg = new File(dirGamesGame);
+        if (!fg.isDirectory()) {
+            fg.mkdir();
+        }
+        
+        BufferedOutputStream bos = null;
         DataInputStream bufferDatosEntrada = null;
         DataOutputStream bufferDatosSalida = null;
         try{
-
-            // 1!!!!! PREGUNTAR SI EL ARCHIVO EXISTE
-            bufferDatosSalida.writeUTF(gameName+".zip");
+                    
+            servidor = new Socket(EntryPoint.serverIP, PUERTO);
             
-            // 1* RECIBIR NOMBRE ARCHIVO
-            String nombreArchivo = bufferDatosEntrada.readUTF(); // recibo en nombre del archivo
-            //Creo el Buffer de escritura para almacenar el archivo recibido en disco con el nombre que recibimos.
-            bos = new BufferedOutputStream(new FileOutputStream(ServerZipUpload.dirName+"/"+nombreArchivo)); // pongo el nombre.
+            this.servidor.setSoLinger(true, 10);
+            
+            bufferDatosEntrada = new DataInputStream(servidor.getInputStream());
+            bufferDatosSalida = new DataOutputStream(servidor.getOutputStream());
+            
+            // ENVIAR AL SERVER EL NOMBRE DEL JUEGO A DESCARGAR
+            String nombreArchivo = gameName+".zip";
+            bufferDatosSalida.writeUTF(nombreArchivo);
+
+            if (bufferDatosEntrada.readBoolean()) {
+                
+            }
+            
+            bos = new BufferedOutputStream(new FileOutputStream(dirGamesGame+"/"+nombreArchivo)); // pongo el nombre.
             
             byte[] bufferEntrada= new byte[1024];
 
@@ -60,21 +85,27 @@ public class SocketZipGameDownload implements Runnable {
             }
 
         } catch (IOException ex) {
-            Logger.getLogger(HiloZip.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SocketZipGameDownload.class.getName()).log(Level.SEVERE, null, ex);
         } finally{
             try {
                 if (bos != null) {
                     bos.close();
                 }                
-                cliente.close();
+                if (bufferDatosEntrada != null) {
+                    bufferDatosEntrada.close();
+                }
+                if (bufferDatosSalida != null) {
+                    bufferDatosSalida.close();
+                }
+                servidor.close();
             } catch (IOException ex) {
-                Logger.getLogger(HiloZip.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(SocketZipGameDownload.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         
     
     }
-*/        
-    }
+    
+    
 
 }
