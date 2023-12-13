@@ -48,12 +48,31 @@ public class StoreConsults {
         } else {
             Query q = ConectionBBDD.getEm().createNamedQuery("Juego.findAll");
 
+            boolean tienejuego = false;
             for (Juego j : (Collection<Juego>) q.getResultList()) {
                 for (Biblioteca b : (Collection<Biblioteca>) j.getBibliotecaCollection()) {
-                    if (b.getIdusuario().getIdusuario() != UserLogedInfo.getUserID()) {
-                        GameInfoController cg = new GameInfoController(j.getIdjuego(), j.getTitulo(), j.getNumdescargas() + "", j.getPrecio() + "", j.getImagen());
-                        storeGames.add(cg);
+                    //System.out.println(j.getTitulo());
+                    //System.out.println(b.getIdusuario().getAlias());
+
+                    /*Super Mario Bros
+                        dev
+                        Super Mario Bros
+                        user
+                        Call of Duty
+                        dev
+                        Minecraft
+                        user*/
+                    if (b.getIdusuario().getIdusuario() == UserLogedInfo.getUserID()) {
+                        tienejuego = true;
+                        break;
                     }
+
+                }
+                if (!tienejuego) {
+                    GameInfoController cg = new GameInfoController(j.getIdjuego(), j.getTitulo(), j.getNumdescargas() + "", j.getPrecio() + "", j.getImagen());
+                    storeGames.add(cg);
+                }else{
+                    tienejuego=false;
                 }
 
             }
