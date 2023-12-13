@@ -38,7 +38,29 @@ insert into regulacion (region, nivel) values
 (3,'AC'),
 (3,'DC');
 
+-- INSERT REGULACION JUEGO MANY TO MANY
+insert into regulacion_juego(idregulacion,idjuego) values
+(1,1),
+(1,2),
+(1,3),
+(1,4);
 
+-- INSERT GENEROS
+INSERT INTO genero (name) values
+("plataformas"),
+("estrategia"),
+("survival"),
+("shooter");
 
+-- INSERT GENERO JUEGO MANY TO MANY
+INSERT INTO juego_genero (idjuego,idgenero) values
+(1,1),
+(2,4),
+(3,3),
+(4,2);
 
-
+INSERT INTO biblioteca(idusuario,idjuego,fecha) values
+(1,1,"2023-12-13"),
+(1,2,"2023-12-13"),
+(2,3,"2023-12-13"),
+(2,1,"2023-12-13");
