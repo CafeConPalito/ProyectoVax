@@ -5,6 +5,7 @@
 package com.cafeconpalito.socket;
 
 import com.cafeconpalito.proyectovax.EntryPoint;
+import com.google.common.io.Files;
 import java.io.BufferedInputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -19,19 +20,20 @@ import java.util.logging.Logger;
  *
  * @author damt207
  */
-public class SocketImagGame implements Runnable{
-    
-     private Socket servidor;
+public class SocketImagGame implements Runnable {
+
+    private Socket servidor;
     private static final int PUERTO = 6665;
 
     private String gameName;
-    private String imagenPath;
+    private String imagenAbsolutePath;
     private String imagenExtencion;
 
-    public SocketImagGame(String gameName, String imagenPath, String imagenExtencion) {
+    public SocketImagGame(String gameName, String imagenAbsolutePath) {
         this.gameName = gameName;
-        this.imagenPath = imagenPath;
-        this.imagenExtencion = imagenExtencion;
+        this.imagenAbsolutePath = imagenAbsolutePath;
+        this.imagenExtencion = "." + Files.getFileExtension(imagenAbsolutePath);
+        run();
     }
 
     @Override
@@ -41,9 +43,9 @@ public class SocketImagGame implements Runnable{
         DataInputStream bufferDatosEntrada = null;
         DataOutputStream bufferDatosSalida = null;
         try {
-            
+
             servidor = new Socket(EntryPoint.serverIP, PUERTO);
-            
+
             this.servidor.setSoLinger(true, 10);
 
             //se declaran los gru`pos de comunicacion con el cliente
@@ -55,7 +57,7 @@ public class SocketImagGame implements Runnable{
 
             //--------- Trabajo interno.
             //Enviar DATOS al Cliente.
-            File archivoEnviar = new File(imagenPath); //Imagen a enviar al cliente
+            File archivoEnviar = new File(imagenAbsolutePath); //Imagen a enviar al cliente
             bis = new BufferedInputStream(new FileInputStream(archivoEnviar));
             //---------
 
@@ -76,9 +78,10 @@ public class SocketImagGame implements Runnable{
                 //Leo el archivo y lo almaceno en el buffer
                 numBytesLeidos = bis.read(bufferSalida);
             }
-            
+
         } catch (IOException ex) {
-            Logger.getLogger(SocketImagUser.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SocketImagGame.class.getName()).log(Level.SEVERE, null, ex);
+
         } finally {
             try {
                 if (bis != null) {
@@ -91,11 +94,10 @@ public class SocketImagGame implements Runnable{
                     bufferDatosSalida.close();
                 }
             } catch (IOException ex) {
-                Logger.getLogger(SocketImagUser.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(SocketImagGame.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 
     }
-    
-    
+
 }

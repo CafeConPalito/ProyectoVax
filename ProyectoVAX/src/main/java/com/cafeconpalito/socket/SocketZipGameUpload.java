@@ -20,25 +20,25 @@ import java.util.logging.Logger;
  *
  * @author damt207
  */
-public class SocketImagUser implements Runnable {
-
+public class SocketZipGameUpload implements Runnable{
+    
     private Socket servidor;
-    private static final int PUERTO = 6666;
+    private static final int PUERTO = 6664;
 
-    private String userAlias;
-    private String imagenAbsolutePath;
+    private String gameName;
+    private String zipAbsolutePath;
     private String imagenExtencion;
 
-    public SocketImagUser(String userAlias, String imagenAbsolutePath) {
-        this.userAlias = userAlias;
-        this.imagenAbsolutePath = imagenAbsolutePath;
-        this.imagenExtencion = "."+Files.getFileExtension(this.imagenAbsolutePath);
+    public SocketZipGameUpload(String gameName, String zipAbsolutePath) {
+        this.gameName = gameName;
+        this.zipAbsolutePath = zipAbsolutePath;
+        this.imagenExtencion = "."+Files.getFileExtension(this.zipAbsolutePath);
         run();
     }
 
     @Override
     public void run() {
-
+        
         BufferedInputStream bis = null;
         DataInputStream bufferDatosEntrada = null;
         DataOutputStream bufferDatosSalida = null;
@@ -57,13 +57,13 @@ public class SocketImagUser implements Runnable {
 
             //--------- Trabajo interno.
             //Enviar DATOS al Cliente.
-            File archivoEnviar = new File(imagenAbsolutePath); //Imagen a enviar al cliente
+            File archivoEnviar = new File(zipAbsolutePath); //Imagen a enviar al cliente
             bis = new BufferedInputStream(new FileInputStream(archivoEnviar));
             //---------
 
             //--------- CLiente tiene que escuchar
             // 1* ENVIO NOMBRE ARCHIVO
-            bufferDatosSalida.writeUTF(userAlias + imagenExtencion); // El nombre con el que se guardara sera el Alias del usuario con la extencion
+            bufferDatosSalida.writeUTF(gameName + imagenExtencion); // El nombre con el que se guardara sera el juego con la extencion
 
             //Creo una Buffer para leer el archivo
             //mientras el offset sea menor que el tamaño del archivo enviara datos
@@ -80,7 +80,7 @@ public class SocketImagUser implements Runnable {
             }
             
         } catch (IOException ex) {
-            Logger.getLogger(SocketImagUser.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SocketZipGameUpload.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
                 if (bis != null) {
@@ -93,10 +93,10 @@ public class SocketImagUser implements Runnable {
                     bufferDatosSalida.close();
                 }
             } catch (IOException ex) {
-                Logger.getLogger(SocketImagUser.class.getName()).log(Level.SEVERE, null, ex);
-            }
+                Logger.getLogger(SocketZipGameUpload.class.getName()).log(Level.SEVERE, null, ex);
+            } 
         }
-
+    
     }
-
+    
 }

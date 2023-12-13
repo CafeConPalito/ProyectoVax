@@ -10,7 +10,8 @@ package com.cafeconpalito.registerUserData;
  */
 public class userRegisterInfo {
     
-        
+    private static Integer regionNumber;
+    private static Integer rolenumber;    
     private static String firstName;
     private static String firstSurname;
     private static String secondSurname;
@@ -27,21 +28,39 @@ public class userRegisterInfo {
     
      public static void resetRegisterInfo(){
         
-        firstName="";
-        firstSurname="";
-        secondSurname="";
-        birthDate="";
-        region="";
-        email="";
-        nickname="";
-        password="";
-        rPassword="";
-        image="";
-        Role="";
+        firstName=null;
+        firstSurname=null;
+        secondSurname=null;
+        birthDate=null;
+        region=null;
+        email=null;
+        nickname=null;
+        password=null;
+        rPassword=null;
+        image=null;
+        Role=null;
+        regionNumber=null;
+        rolenumber=null;
          
         
     }
 
+    public static Integer getRegionNumber() {
+        return regionNumber;
+    }
+
+    public static void setRegionNumber(Integer regionNumber) {
+        userRegisterInfo.regionNumber = regionNumber;
+    }
+
+    public static Integer getRolenumber() {
+        return rolenumber;
+    }
+
+    public static void setRolenumber(Integer rolenumber) {
+        userRegisterInfo.rolenumber = rolenumber;
+    } 
+     
     public static String getFirstName() {
         return firstName;
     }

@@ -4,6 +4,7 @@
  */
 package com.cafeconpalito.controllers;
 
+import com.cafeconpalito.consultDB.RegisterConsults;
 import com.cafeconpalito.proyectovax.App;
 import com.cafeconpalito.staticElements.Colors;
 import com.cafeconpalito.staticElements.MainView;
@@ -63,7 +64,7 @@ public class RegisterController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        regionComboBox.getItems().addAll("region1 ", "region2", "region3", "papasFritas");
+        regionComboBox.getItems().addAll("Europe/Asia ", "Japan", "America", "Australia", "Germany");
         
         if (userRegisterInfo.getFirstName()!=null) {
             firstNameTextField.setText(userRegisterInfo.getFirstName());
@@ -91,7 +92,7 @@ public class RegisterController implements Initializable {
             birthDateLabel.setTextFill(Colors.textColorError);
         } else if (regionComboBox.getValue() == null) {
             RegionLabel.setTextFill(Colors.textColorError);
-        } else if (emailTextField.getText().isBlank() || !emailTextField.getText().matches("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$")) {
+        } else if (emailTextField.getText().isBlank() || !emailTextField.getText().matches("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$")||RegisterConsults.emailExists(emailTextField.getText())) {
             emailLabel.setTextFill(Colors.textColorError);
         } else{
         MainView.main.setCenter(App.loadFXML("register_1"));
@@ -102,6 +103,7 @@ public class RegisterController implements Initializable {
         userRegisterInfo.setBirthDate(BirthDatePicker.getValue().toString());
         userRegisterInfo.setRegion(regionComboBox.getValue().toString());
         userRegisterInfo.setEmail(emailTextField.getText());
+        userRegisterInfo.setRegionNumber(regionComboBox.getSelectionModel().getSelectedIndex()+1);
                 
         }
         
