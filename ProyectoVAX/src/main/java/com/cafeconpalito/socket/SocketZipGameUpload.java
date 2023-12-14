@@ -27,12 +27,12 @@ public class SocketZipGameUpload implements Runnable{
 
     private String gameName;
     private String zipAbsolutePath;
-    private String imagenExtencion;
+    private String zipExtencion;
 
     public SocketZipGameUpload(String gameName, String zipAbsolutePath) {
         this.gameName = gameName;
         this.zipAbsolutePath = zipAbsolutePath;
-        this.imagenExtencion = "."+Files.getFileExtension(this.zipAbsolutePath);
+        this.zipExtencion = "."+Files.getFileExtension(this.zipAbsolutePath);
         run();
     }
 
@@ -63,7 +63,7 @@ public class SocketZipGameUpload implements Runnable{
 
             //--------- CLiente tiene que escuchar
             // 1* ENVIO NOMBRE ARCHIVO
-            bufferDatosSalida.writeUTF(gameName + imagenExtencion); // El nombre con el que se guardara sera el juego con la extencion
+            bufferDatosSalida.writeUTF(gameName + zipExtencion); // El nombre con el que se guardara sera el juego con la extencion
 
             //Creo una Buffer para leer el archivo
             //mientras el offset sea menor que el tamaño del archivo enviara datos

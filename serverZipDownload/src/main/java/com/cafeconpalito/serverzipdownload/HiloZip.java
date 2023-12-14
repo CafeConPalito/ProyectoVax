@@ -50,7 +50,7 @@ public class HiloZip implements Runnable{
             //RECIBO EL NOMBRE DEL ARCHIVO
             String nombreArchivo = bufferDatosEntrada.readUTF();
             
-            File archivoEnviar = new File("zip/"+nombreArchivo); //Imagen a enviar al cliente
+            File archivoEnviar = new File("zip" + File.separator +nombreArchivo); //Imagen a enviar al cliente
             bis = new BufferedInputStream(new FileInputStream(archivoEnviar));
             //---------
 

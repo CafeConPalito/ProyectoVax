@@ -33,7 +33,7 @@ public class HiloImagen implements Runnable {
             // 1* RECIBIR NOMBRE ARCHIVO
             String nombreArchivo = bufferDatosEntrada.readUTF(); // recibo en nombre del archivo
             //Creo el Buffer de escritura para almacenar el archivo recibido en disco con el nombre que recibimos.
-            bos = new BufferedOutputStream(new FileOutputStream(ServerImageUser.dirName+"/"+nombreArchivo)); // pongo el nombre.
+            bos = new BufferedOutputStream(new FileOutputStream(ServerImageUser.dirName + File.separator + nombreArchivo)); // pongo el nombre.
             
             byte[] bufferEntrada= new byte[1024];
 

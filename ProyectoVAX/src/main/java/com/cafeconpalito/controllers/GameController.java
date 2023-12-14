@@ -103,7 +103,7 @@ public class GameController extends HBox {
         ArrayList<Juego> l=  GameConsults.getGameData(idGame);
         this.gameTitle.setText(l.get(0).getTitulo().toUpperCase());
         this.showGenre.setText(l.get(0).getGeneroCollection().toString());
-        this.showRegulation.setText(l.get(0).get);
+        //this.showRegulation.setText(l.get(0).get);
         this.showDownloads.setText(l.get(0).getNumdescargas().toString());
         this.showReleased.setText(l.get(0).getFecha().toString());
         this.showPrice.setText(l.get(0).getPrecio().toString() + " $");

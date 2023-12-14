@@ -4,6 +4,7 @@
  */
 package com.cafeconpalito.socket;
 
+import com.cafeconpalito.staticElements.RunGame;
 import java.io.File;
 
 /**
@@ -24,12 +25,15 @@ public class PruebasCliente {
         File f = new File("daniel.zip");
         
         String path = f.getAbsolutePath();
-        String alias = "ALBANO ES TONTO";
+        String alias = "Pepe";
               
         //SocketImagUser siu = new SocketImagUser(alias, path);
         //SocketImagGame sig = new SocketImagGame(alias, path);
         //SocketZipGameUpload szgu = new SocketZipGameUpload(alias, path);
-        SocketZipGameDownload szgd = new SocketZipGameDownload("daniel");
+        //SocketZipGameDownload szgd = new SocketZipGameDownload("daniel");
+        
+        RunGame r = new RunGame("daniel");
+        r.runGame();
         
     }
     
