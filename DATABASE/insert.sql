@@ -3,8 +3,8 @@ use vapor;
 -- INSERT USUARIOS
 
 insert into usuario (alias, email, pwd, nombre, apellido1, apellido2, fechanac, imagen, region, rol) values
-('dev', 'dev@dev.com', '1234', 'devname', 'devapellido1', 'devapellido2', '1990-01-23', 'alberto.jpg', 1, 0),
-('user', 'user@user.com', '1234', 'username', 'userapellido1', 'userapellido2', '2000-01-23', 'alberto.jpg', 1, 1),
+('dev', 'dev@dev.com', '1234', 'devname', 'devapellido1', 'devapellido2', '1990-01-23', 'dev.png', 0, 0),
+('user', 'user@user.com', '1234', 'username', 'userapellido1', 'userapellido2', '2000-01-23', 'user.png', 1, 1),
 ('alberto23', 'alberto23@gmail.com', 'alberto123', 'Alberto', 'García', 'López', '1990-01-23', 'alberto.jpg', 1, 1),
 ('maria89', 'maria89@hotmail.com', 'maria456', 'María', 'Sánchez', 'Gómez', '1989-05-12', 'maria.jpg', 1, 1),
 ('pablo76', 'pablo76@yahoo.com', 'pablo789', 'Pablo', 'Pérez', 'Martín', '1976-09-07', 'pablo.jpg', 1, 1),
@@ -27,23 +27,56 @@ insert into juego (titulo, descripcion, imagen, fecha, numdescargas, precio, idu
 -- INSERT REGULACIONES DE JUEGOS
 
 insert into regulacion (region, nivel) values
-(1,'+3'),
-(1,'+5'),
-(1,'+7'),
-(1,'+11'),
-(2, 'A'),
-(2,'B'),
-(2,'C'),
-(2,'D'),
-(3,'AC'),
-(3,'DC');
+(0,'+3'),
+(0,'+7'),
+(0,'+12'),
+(0,'+16'),
+(0, '+18'),
+(1,'A'),
+(1,'B'),
+(1,'C'),
+(1,'D'),
+(1, 'Z'),
+(2,'E'),
+(2,'E10+'),
+(2,'T'),
+(2,'M'),
+(2, 'AO'),
+(3,'G'),
+(3,'PG'),
+(3,'M'),
+(3,'MA'),
+(3, 'R'),
+(4,'0'),
+(4,'6'),
+(4,'12'),
+(4,'16'),
+(4, '18');
+
 
 -- INSERT REGULACION JUEGO MANY TO MANY
 insert into regulacion_juego(idregulacion,idjuego) values
 (1,1),
-(1,2),
+(6,1),
+(11,1),
+(16,1),
+(21,1),
+(5,2),
+(10,2),
+(15,2),
+(20,2),
+(25,2),
 (1,3),
-(1,4);
+(6,3),
+(11,3),
+(16,3),
+(21,3),
+(1,4),
+(6,4),
+(11,4),
+(16,4),
+(21,4);
+
 
 -- INSERT GENEROS
 INSERT INTO genero (name) values

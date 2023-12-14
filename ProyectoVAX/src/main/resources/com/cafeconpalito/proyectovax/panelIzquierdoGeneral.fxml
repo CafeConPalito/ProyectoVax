@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox id="VBoxPrin" minHeight="-Infinity" minWidth="-Infinity" prefHeight="670.0" prefWidth="200.0" stylesheets="@../../../styles/principal.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cafeconpalito.controllers.PanelIzquierdoGeneralController">
+<VBox id="VBoxPrin" minHeight="-Infinity" minWidth="-Infinity" prefHeight="670.0" prefWidth="200.0" stylesheets="@../../../styles/principal.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cafeconpalito.controllers.PanelIzquierdoGeneralController">
    <children>
       <VBox prefHeight="150.0" prefWidth="200.0">
          <children>
@@ -48,7 +48,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <ImageView id="avatar" fx:id="avatarUser" fitHeight="100.0" fitWidth="100.0" opacity="0.77" pickOnBounds="true">
+                  <ImageView id="avatar" fx:id="avatarUser" fitHeight="100.0" fitWidth="100.0" opacity="0.77" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@images/avatardefault.png" />
                      </image>
