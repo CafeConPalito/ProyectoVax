@@ -1,0 +1,67 @@
+/* 
+    Created on : 6 dic 2023, 20:35:27
+    Author     : TerciodeMarte
+*/
+#BackGround{
+    -fx-background-image: url("../com/cafeconpalito/proyectovax/images/fondoBonito.jpg");
+    -fx-background-position:center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: stretch;
+}
+
+.button.allGamesBtn{
+    -fx-background-color: transparent;
+    -fx-text-fill: #15b218;
+    -fx-border-radius: 50;
+    -fx-border-width: 2;
+    -fx-background-radius : 50;
+    -fx-border-color: #15b218;
+    -fx-font-size: 18px;
+}
+.button:hover{
+    -fx-text-fill: #db3c21;
+    -fx-border-color: #db3c21;
+}
+
+#WhiteBackGround{
+    -fx-background-color: linear-gradient(to bottom, #cedef5, white);
+}
+
+.filter{
+    -fx-background-color: #11598a;
+    -fx-background-radius : 50;
+    -fx-text-fill: white;
+}
+
+.textfield{
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+.labels{
+    -fx-text-fill: #11598a;
+}
+
+/* outer combo-box text */
+.combo-box .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+/* combo-box list view text, not hovered or focused */
+.combo-box .list-view .list-cell {
+    -fx-background-color: #11598a;
+    -fx-text-fill: white;
+}
+
+/* combo-box selected text */
+.combo-box .list-view .list-cell:focused {
+    -fx-background-color : #db3c21;  /* Cadet Blue */
+    -fx-text-fill: white;
+}
+
+/* combo-box hover text */
+.combo-box .list-view .list-cell:hover {
+    -fx-background-color : #db3c21;  /* Cadet Blue */
+    -fx-text-fill: white;
+}

@@ -75,7 +75,7 @@ public class PanelIzquierdoGeneralController implements Initializable {
     private void switchToLibrary(ActionEvent event) throws IOException {
 
         if (UserLogedInfo.isUserIsLoged()) {
-            //TODO: AÑADIR PESTAÑA BIBLIOTECA
+            MainView.main.setCenter(App.loadFXML("library"));
         } else {
             MainView.main.setCenter(App.loadFXML("login"));
         }

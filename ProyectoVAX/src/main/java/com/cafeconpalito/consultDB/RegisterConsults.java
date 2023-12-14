@@ -60,6 +60,7 @@ public class RegisterConsults {
         
         
         insercion.executeUpdate();
+        em.clear();
         em.getTransaction().commit();
     }
 }

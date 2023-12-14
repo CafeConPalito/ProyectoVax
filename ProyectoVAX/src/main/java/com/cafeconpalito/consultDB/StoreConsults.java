@@ -41,7 +41,7 @@ public class StoreConsults {
                 if (CheckURLImg.exists(URL)) {
                     GameInfoController cg = new GameInfoController(j.getIdjuego(), j.getTitulo(), j.getNumdescargas() + "", j.getPrecio() + "", URL);
                     storeGames.add(cg);
-                }else{
+                } else {
                     GameInfoController cg = new GameInfoController(j.getIdjuego(), j.getTitulo(), j.getNumdescargas() + "", j.getPrecio() + "", j.getImagen());
                     storeGames.add(cg);
                 }
@@ -67,9 +67,11 @@ public class StoreConsults {
                     if (CheckURLImg.exists(URL)) {
                         GameInfoController cg = new GameInfoController(j.getIdjuego(), j.getTitulo(), j.getNumdescargas() + "", j.getPrecio() + "", URL);
                         storeGames.add(cg);
+                        tienejuego = false;
                     } else {
                         GameInfoController cg = new GameInfoController(j.getIdjuego(), j.getTitulo(), j.getNumdescargas() + "", j.getPrecio() + "", j.getImagen());
                         storeGames.add(cg);
+                        tienejuego = false;
                     }
                 } else {
                     tienejuego = false;

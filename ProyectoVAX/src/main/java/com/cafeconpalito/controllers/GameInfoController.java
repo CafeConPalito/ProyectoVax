@@ -13,6 +13,7 @@ import java.net.URL;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -39,6 +40,8 @@ public class GameInfoController extends HBox {
 
     @FXML
     private HBox BackGroundTrans;
+    @FXML
+    private Button PurchaseButton;
 
     public GameInfoController() throws IOException {
 
@@ -172,5 +175,15 @@ public class GameInfoController extends HBox {
     public void setInfoGamePrice(Label infoGamePrice) {
         this.infoGamePrice = infoGamePrice;
     }
+
+    public Button getPurchaseButton() {
+        return PurchaseButton;
+    }
+
+    public void setPurchaseButton(Button PurchaseButton) {
+        this.PurchaseButton = PurchaseButton;
+    }
+    
+    
 
 }
