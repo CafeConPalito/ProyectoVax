@@ -23,7 +23,7 @@ import java.util.zip.*;
 
 /**
  *
- * @author damt207
+ * @author CafeConPalito
  */
 public class SocketZipGameDownload implements Runnable {
 
@@ -43,6 +43,11 @@ public class SocketZipGameDownload implements Runnable {
         run();
     }
 
+    /**
+     * Lanza la descarga del archivo .zip al servidor
+     * descomprime el archivo
+     * borra el archivo .zip descargado
+     */
     @Override
     public void run() {
         
@@ -121,12 +126,18 @@ public class SocketZipGameDownload implements Runnable {
             }
         }
         
+        //al terminar la descarga descomprimo el ZIP
         descomprimirZip(zipFilePath, dirGamesGame);
+        //borro el zip al terminar la descomprecion
         borrarZip(zipFilePath);
         
     }
 
-    public void  borrarZip(String zipFilePath){
+    /**
+     * Metodo que borra un zip al terminar la descarga
+     * @param zipFilePath 
+     */
+    private void  borrarZip(String zipFilePath){
         File f = new File(zipFilePath);
         if (f.exists()) {
             f.delete();
@@ -134,7 +145,12 @@ public class SocketZipGameDownload implements Runnable {
     }
     
     
-    public static void descomprimirZip(String zipFilePath, String directorioDestino) {
+    /**
+     * Metodo para leer un fichero Zip y descomprimir la informacion
+     * @param zipFilePath recibe como parametro la ruta del zip
+     * @param directorioDestino directorio donde se desea descomprimir
+     */
+    private void descomprimirZip(String zipFilePath, String directorioDestino) {
         byte[] buffer = new byte[1024];
         try (ZipInputStream zis = new ZipInputStream(new FileInputStream(zipFilePath))) {
             // Recorrer cada entrada en el archivo ZIP
@@ -164,8 +180,8 @@ public class SocketZipGameDownload implements Runnable {
                 ze = zis.getNextEntry();
             }
             
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException ex) {
+            Logger.getLogger(SocketZipGameDownload.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     

@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author damt207
+ * @author CafeConPalito
  */
 public class HiloZip implements Runnable{
     
@@ -29,12 +29,13 @@ public class HiloZip implements Runnable{
     @Override
     public void run() {
         
-        
+        //Inicializo los buffer de entrada y salida de datos
         BufferedInputStream bis = null;
         DataInputStream bufferDatosEntrada = null;
         DataOutputStream bufferDatosSalida = null;
         try {
 
+            //Metodo de espera para cerrar la conexion por si existe alguna perdida de paquetes en el envio, espera 10 seg
             this.cliente.setSoLinger(true, 10);
 
             //se declaran los gru`pos de comunicacion con el cliente
@@ -54,13 +55,14 @@ public class HiloZip implements Runnable{
             bis = new BufferedInputStream(new FileInputStream(archivoEnviar));
             //---------
 
-            //Creo una Buffer para leer el archivo
-            //mientras el offset sea menor que el tamaño del archivo enviara datos
+            //Creo una Buffer para leer el archivo con un tamaño de 1024 bytes
             byte[] bufferSalida = new byte[1024];
+            
+            //Leo el archivo a enviar y almaceno el valor de Bytes leidos
             int numBytesLeidos = 0;
-
             numBytesLeidos = bis.read(bufferSalida);
 
+            //Mientras el numero de Bytes sea distito de -1 enviara datos al cliente
             while (numBytesLeidos != -1) {
                 // 2 * envio el paquete de datos.
                 bufferDatosSalida.write(bufferSalida, 0, numBytesLeidos);
@@ -71,6 +73,7 @@ public class HiloZip implements Runnable{
         } catch (IOException ex) {
             Logger.getLogger(HiloZip.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
+            //Cierro las conexiones
             try {
                 if (bis != null) {
                     bis.close();
@@ -81,6 +84,7 @@ public class HiloZip implements Runnable{
                 if (bufferDatosSalida != null) {
                     bufferDatosSalida.close();
                 }
+                cliente.close();
             } catch (IOException ex) {
                 Logger.getLogger(HiloZip.class.getName()).log(Level.SEVERE, null, ex);
             }

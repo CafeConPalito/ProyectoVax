@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author damt207
+ * @author CafeConPalito
  */
 public class ServerZipUpload {
 

@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author damt207
+ * @author CafeConPalito
  */
 public class SocketImagGame implements Runnable {
 
