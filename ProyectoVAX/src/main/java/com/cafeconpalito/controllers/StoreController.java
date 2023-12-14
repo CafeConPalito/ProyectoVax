@@ -67,20 +67,22 @@ public class StoreController implements Initializable {
         int auxprecio = 999;
         switch (priceComboBox.getSelectionModel().getSelectedIndex()) {
             case 0:
+                System.err.println(priceComboBox.getSelectionModel().getSelectedIndex());
                 auxprecio = 999;
                 break;
             case 1:
+                System.err.println(priceComboBox.getSelectionModel().getSelectedIndex());
                 auxprecio = 0;
                 break;
             case 2:
+                System.err.println(priceComboBox.getSelectionModel().getSelectedIndex());
                 auxprecio = 10;
                 break;
             case 3:
+                System.err.println(priceComboBox.getSelectionModel().getSelectedIndex());
                 auxprecio = 20;
                 break;
-            default:
-                System.err.println("Error");
-
+           
         }
 
         MyTilePane.getChildren().addAll(StoreConsults.filterStoreGames(nameTextField.getText(), auxprecio));
@@ -99,20 +101,22 @@ public class StoreController implements Initializable {
         int auxprecio = 999;
         switch (priceComboBox.getSelectionModel().getSelectedIndex()) {
             case 0:
+                System.err.println(priceComboBox.getSelectionModel().getSelectedIndex());
                 auxprecio = 999;
                 break;
             case 1:
+                System.err.println(priceComboBox.getSelectionModel().getSelectedIndex());
                 auxprecio = 0;
                 break;
             case 2:
+                System.err.println(priceComboBox.getSelectionModel().getSelectedIndex());
                 auxprecio = 10;
                 break;
             case 3:
+                System.err.println(priceComboBox.getSelectionModel().getSelectedIndex());
                 auxprecio = 20;
                 break;
-            default:
-
-                System.err.println("Error");
+           
         }
 
         MyTilePane.getChildren().addAll(StoreConsults.filterStoreGames(nameTextField.getText(), auxprecio));

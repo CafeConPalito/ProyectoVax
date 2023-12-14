@@ -5,7 +5,6 @@
 package com.cafeconpalito.controllers;
 
 import com.cafeconpalito.consultDB.GameConsults;
-import com.cafeconpalito.entities.Genero;
 import com.cafeconpalito.entities.Juego;
 import com.cafeconpalito.entities.Regulacion;
 import com.cafeconpalito.proyectovax.App;
@@ -108,21 +107,22 @@ public class GameController extends HBox {
             if (r.getRegion() == UserLogedInfo.getRegion()) {
                 this.showRegulation.setText(r.getNivel());
                 break;
-            } else if (r.getRegion() == 0) {
+            } else if (r.getRegion() == 1) {
                 this.showRegulation.setText(r.getNivel());
-                continue;
             }
         }
+
         /*for (Genero g : l.get(0).getGeneroCollection()) {
             System.out.println("nombre" + g.getName());
             this.showGenre.setText(g.getName());
         }*/
         
-       l.get(0).getGeneroCollection().forEach(g -> {this.showGenre.setText(g.getName());});
+        // Albano se ilumina e introduce un lambda :)
+        
+        l.get(0).getGeneroCollection().forEach(g -> {
+            this.showGenre.setText(g.getName());
+        });
 
-
-        //this.showGenre.setText(l.get(0).getGeneroCollection().toString());
-        //this.showRegulation.setText(l.get(0).getRegulacionCollection().toString());
         this.showDownloads.setText(l.get(0).getNumdescargas().toString());
         this.showReleased.setText(l.get(0).getFecha().toString());
         this.showPrice.setText(l.get(0).getPrecio().toString() + " $");
@@ -146,6 +146,8 @@ public class GameController extends HBox {
 
     @FXML
     private void downloadAction(MouseEvent event) {
+        
+        
 
     }
 

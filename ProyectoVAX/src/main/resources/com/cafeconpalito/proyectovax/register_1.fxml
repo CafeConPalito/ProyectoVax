@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox id="BackGround" alignment="CENTER" stylesheets="@../../../styles/register.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cafeconpalito.controllers.Register_1Controller">
+<HBox id="BackGround" alignment="CENTER" stylesheets="@../../../styles/register.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cafeconpalito.controllers.Register_1Controller">
    <children>
       <HBox id="BackGroundForm" alignment="CENTER" maxHeight="900.0" maxWidth="1200.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="700.0" HBox.hgrow="ALWAYS">
          <children>
@@ -40,11 +40,23 @@
                                     <Font name="System Bold" size="18.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="nicknametexfield" alignment="CENTER" onMouseClicked="#nickNameFocused" prefHeight="25.0" prefWidth="220.0" promptText="\@" style="-fx-background-color: transparent; -fx-border-style: solid; -fx-border-width: 0 0 1 0;">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </TextField>
+                              <HBox alignment="CENTER">
+                                 <children>
+                                    <Label fx:id="nicknameLabel1" alignment="CENTER" styleClass="labels" text="\@" textAlignment="CENTER">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets right="10.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <TextField fx:id="nicknametexfield" alignment="CENTER" onMouseClicked="#nickNameFocused" prefHeight="40.0" prefWidth="273.0" style="-fx-background-color: transparent; -fx-border-style: solid; -fx-border-width: 0 0 1 0;">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </HBox>
                               <Pane prefHeight="25.0" />
                               <Label fx:id="passwordLabel" alignment="CENTER" styleClass="labels" text="Password" textAlignment="CENTER">
                                  <font>
@@ -75,7 +87,7 @@
                            <children>
                               <ImageView id="imagePrev" fx:id="defaultImage" fitHeight="88.0" fitWidth="98.0" onMouseClicked="#imageClicked" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@images/Diversity-Avatars-Avatars-Batman.48.png" />
+                                    <Image url="@images/avatardefault.png" />
                                  </image>
                               </ImageView>
                               <Pane prefHeight="16.0" prefWidth="193.0" />
