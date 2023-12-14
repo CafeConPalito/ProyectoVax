@@ -52,7 +52,7 @@ public class PanelIzquierdoGeneralController implements Initializable {
             loginBtn.setText("Log Out");
             //Cargar Alias
 
-            alias.setText("@" + UserLogedInfo.getAlias());
+            alias.setText(UserLogedInfo.getAlias());
             //Cargar Avatar
 
             String urlavatar = "http://"+EntryPoint.getServerIP() + ":80" + EntryPoint.rutaImgUser + UserLogedInfo.getUsuarioUrlImagen();
