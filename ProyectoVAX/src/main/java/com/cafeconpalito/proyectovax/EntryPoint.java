@@ -2,6 +2,8 @@ package com.cafeconpalito.proyectovax;
 
 import com.cafeconpalito.staticElements.ConectionBBDD;
 import com.cafeconpalito.staticElements.FrameDatosConex;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -13,7 +15,7 @@ public class EntryPoint {
     //PUERTO 6665 Imagen Juego
     //PUERTO 6664 ZIP Upload
     //PUERTO 6663 ZIP Download
-    
+ 
     //public static String serverIP = "localhost";
     public static String serverIP = "192.168.34.209";
     public static String user = "root";
@@ -24,6 +26,8 @@ public class EntryPoint {
 
     public static void main(String[] args) {
 
+        Logger.getLogger("org.hibernate").setLevel(Level.SEVERE);
+        
         boolean conexCorrecta = true;
         while (conexCorrecta) {
             try {

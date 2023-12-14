@@ -9,6 +9,8 @@ import com.cafeconpalito.entities.Biblioteca;
 import com.cafeconpalito.entities.Genero;
 import com.cafeconpalito.staticElements.ConectionBBDD;
 import com.cafeconpalito.entities.Juego;
+import com.cafeconpalito.proyectovax.EntryPoint;
+import com.cafeconpalito.staticElements.CheckURLImg;
 import com.cafeconpalito.userLogedData.UserLogedInfo;
 import java.io.File;
 import java.io.IOException;
@@ -16,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
+import javafx.scene.image.Image;
 import javax.persistence.Query;
 
 /**
@@ -34,8 +37,14 @@ public class StoreConsults {
             Query q = ConectionBBDD.getEm().createNamedQuery("Juego.findAll");
 
             for (Juego j : (Collection<Juego>) q.getResultList()) {
-                GameInfoController cg = new GameInfoController(j.getIdjuego(), j.getTitulo(), j.getNumdescargas() + "", j.getPrecio() + "", j.getImagen());
-                storeGames.add(cg);
+                String URL = "http://" + EntryPoint.getServerIP() + ":80" + EntryPoint.rutaImgGame + j.getImagen();
+                if (CheckURLImg.exists(URL)) {
+                    GameInfoController cg = new GameInfoController(j.getIdjuego(), j.getTitulo(), j.getNumdescargas() + "", j.getPrecio() + "", URL);
+                    storeGames.add(cg);
+                }else{
+                    GameInfoController cg = new GameInfoController(j.getIdjuego(), j.getTitulo(), j.getNumdescargas() + "", j.getPrecio() + "", j.getImagen());
+                    storeGames.add(cg);
+                }
             }
 
             Collections.shuffle(storeGames);
@@ -46,7 +55,7 @@ public class StoreConsults {
             boolean tienejuego = false;
             for (Juego j : (Collection<Juego>) q.getResultList()) {
                 for (Biblioteca b : (Collection<Biblioteca>) j.getBibliotecaCollection()) {
-                    
+
                     if (b.getIdusuario().getIdusuario() == UserLogedInfo.getUserID()) {
                         tienejuego = true;
                         break;
@@ -54,8 +63,14 @@ public class StoreConsults {
 
                 }
                 if (!tienejuego) {
-                    GameInfoController cg = new GameInfoController(j.getIdjuego(), j.getTitulo(), j.getNumdescargas() + "", j.getPrecio() + "", j.getImagen());
-                    storeGames.add(cg);
+                    String URL = "http://" + EntryPoint.getServerIP() + ":80" + EntryPoint.rutaImgGame + j.getImagen();
+                    if (CheckURLImg.exists(URL)) {
+                        GameInfoController cg = new GameInfoController(j.getIdjuego(), j.getTitulo(), j.getNumdescargas() + "", j.getPrecio() + "", URL);
+                        storeGames.add(cg);
+                    } else {
+                        GameInfoController cg = new GameInfoController(j.getIdjuego(), j.getTitulo(), j.getNumdescargas() + "", j.getPrecio() + "", j.getImagen());
+                        storeGames.add(cg);
+                    }
                 } else {
                     tienejuego = false;
                 }
@@ -70,30 +85,23 @@ public class StoreConsults {
     public static ArrayList<GameInfoController> filterStoreGames(String gameName, int gamePrice) throws IOException {
 
         storeGames.clear();
-        
+
         if (!UserLogedInfo.isUserIsLoged()) {
             Query q = ConectionBBDD.getEm().createNamedQuery("Juego.findAll");
 
             Collection<Juego> aux = (Collection<Juego>) q.getResultList();
-            Iterator<Juego> it = aux.iterator();
-            while (it.hasNext()) {
-                Juego i = it.next();
-                if (!i.getTitulo().toLowerCase().contains(gameName.toLowerCase())) {
-                    it.remove();
-                }
-            }
-            Iterator<Juego> it2= aux.iterator();
-            while (it2.hasNext()) {
-                Juego i = it2.next();
- 
-                if (i.getPrecio() > gamePrice) {
-                    it.remove();
+            filtro(aux, gameName, gamePrice);
+
+            for (Juego j : aux) {
+                String URL = "http://" + EntryPoint.getServerIP() + ":80" + EntryPoint.rutaImgGame + j.getImagen();
+                if (CheckURLImg.exists(URL)) {
+                    GameInfoController cg = new GameInfoController(j.getIdjuego(), j.getTitulo(), j.getNumdescargas() + "", j.getPrecio() + "", URL);
+                    storeGames.add(cg);
+                } else {
+                    GameInfoController cg = new GameInfoController(j.getIdjuego(), j.getTitulo(), j.getNumdescargas() + "", j.getPrecio() + "", j.getImagen());
+                    storeGames.add(cg);
                 }
 
-            }
-            for (Juego j : aux) {
-                GameInfoController cg = new GameInfoController(j.getIdjuego(), j.getTitulo(), j.getNumdescargas() + "", j.getPrecio() + "", j.getImagen());
-                storeGames.add(cg);
             }
 
             //mueve el orden de los juegos para que no siempre salgan en el mismo orden
@@ -103,7 +111,7 @@ public class StoreConsults {
             Query q = ConectionBBDD.getEm().createNamedQuery("Juego.findAll");
 
             boolean tienejuego = false;
-            ArrayList<Juego> aux=new ArrayList();
+            ArrayList<Juego> aux = new ArrayList();
             for (Juego j : (Collection<Juego>) q.getResultList()) {
                 for (Biblioteca b : (Collection<Biblioteca>) j.getBibliotecaCollection()) {
                     if (b.getIdusuario().getIdusuario() == UserLogedInfo.getUserID()) {
@@ -120,32 +128,45 @@ public class StoreConsults {
 
             }
 
-            Iterator<Juego> it = aux.iterator();
-            while (it.hasNext()) {
-                Juego i = it.next();
-                if (!i.getTitulo().toLowerCase().contains(gameName.toLowerCase())) {
-                    it.remove();
-                }
+            filtro(aux, gameName, gamePrice);
 
-            }
-            Iterator<Juego> it2= aux.iterator();
-            while (it2.hasNext()) {
-                Juego i = it2.next();
- 
-                if (i.getPrecio() > gamePrice) {
-                    it.remove();
-                }
-
-            }
             for (Juego j : aux) {
-                GameInfoController cg = new GameInfoController(j.getIdjuego(), j.getTitulo(), j.getNumdescargas() + "", j.getPrecio() + "", j.getImagen());
-                storeGames.add(cg);
+                String URL = "http://" + EntryPoint.getServerIP() + ":80" + EntryPoint.rutaImgGame + j.getImagen();
+                if (CheckURLImg.exists(URL)) {
+                    GameInfoController cg = new GameInfoController(j.getIdjuego(), j.getTitulo(), j.getNumdescargas() + "", j.getPrecio() + "", URL);
+                    storeGames.add(cg);
+                } else {
+                    GameInfoController cg = new GameInfoController(j.getIdjuego(), j.getTitulo(), j.getNumdescargas() + "", j.getPrecio() + "", j.getImagen());
+                    storeGames.add(cg);
+                }
+
             }
             Collections.shuffle(storeGames);
             return storeGames;
-            
+
         }
 
+    }
+
+    private static void filtro(Collection<Juego> col, String gameName, int gamePrice) {
+        Iterator<Juego> it = col.iterator();
+        while (it.hasNext()) {
+            Juego i = it.next();
+            if (!i.getTitulo().toLowerCase().contains(gameName.toLowerCase())) {
+                it.remove();
+            }
+        }
+
+        Iterator<Juego> it2 = col.iterator();
+
+        while (it2.hasNext()) {
+            Juego i = it2.next();
+
+            if (i.getPrecio() > gamePrice) {
+                it2.remove();
+            }
+
+        }
     }
 
 }
