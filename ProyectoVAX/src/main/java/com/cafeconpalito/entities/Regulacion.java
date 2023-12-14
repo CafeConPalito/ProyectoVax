@@ -25,7 +25,7 @@ import javax.persistence.Table;
 @Table(name = "regulacion")
 @NamedQueries({
     @NamedQuery(name = "Regulacion.findAll", query = "SELECT r FROM Regulacion r"),
-    @NamedQuery(name = "Regulacion.findByIdregulacion", query = "SELECT r FROM Regulacion r WHERE r.idregulacion = :idregulacion"),
+    @NamedQuery(name = "Regulacion.findByIdregulacion21", query = "SELECT r FROM Regulacion r WHERE r.idregulacion = :idregulacion"),
     @NamedQuery(name = "Regulacion.findByRegion", query = "SELECT r FROM Regulacion r WHERE r.region = :region"),
     @NamedQuery(name = "Regulacion.findByNivel", query = "SELECT r FROM Regulacion r WHERE r.nivel = :nivel")})
 public class Regulacion implements Serializable {

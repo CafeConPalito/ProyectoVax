@@ -95,7 +95,7 @@
                                                 <Font size="25.0" />
                                              </font>
                                           </Label>
-                                          <Label fx:id="showRegulation" contentDisplay="CENTER" prefHeight="110.0" prefWidth="400.0" styleClass="labels" text="Regulation">
+                                          <Label fx:id="showRegulation" contentDisplay="CENTER" prefHeight="110.0" prefWidth="400.0" styleClass="labels" text="Not regulated">
                                              <font>
                                                 <Font size="25.0" />
                                              </font>
