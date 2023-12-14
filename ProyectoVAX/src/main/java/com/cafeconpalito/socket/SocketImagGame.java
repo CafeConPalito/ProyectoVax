@@ -28,7 +28,13 @@ public class SocketImagGame implements Runnable {
     private String gameName;
     private String imagenAbsolutePath;
     private String imagenExtencion;
-
+    
+    
+    /**
+     * Constructor con parametros que lanza directamente el hilo para subir la imagen
+     * @param gameName nombre del juego que se utiliza en el registro, se utiliza para renombrar la imagen
+     * @param imagenAbsolutePath ruta absoluta donde se encuentra la imagen
+     */
     public SocketImagGame(String gameName, String imagenAbsolutePath) {
         this.gameName = gameName;
         this.imagenAbsolutePath = imagenAbsolutePath;
@@ -38,40 +44,39 @@ public class SocketImagGame implements Runnable {
 
     @Override
     public void run() {
-
+        
+        //Inicializo las conexiones necesarias a nulo
         BufferedInputStream bis = null;
         DataInputStream bufferDatosEntrada = null;
         DataOutputStream bufferDatosSalida = null;
         try {
-
+            
+            //Establesco la conexion con el servidor
             servidor = new Socket(EntryPoint.serverIP, PUERTO);
 
+            //Metodo de espera para cerrar la conexion por si existe alguna perdida de paquetes en el envio, espera 10 seg
             this.servidor.setSoLinger(true, 10);
 
-            //se declaran los gru`pos de comunicacion con el cliente
+            //Se declaran los grupos de comunicacion con el servidor
             //flujo de entrada o lectura
             bufferDatosEntrada = new DataInputStream(servidor.getInputStream());
-
-            //flujo de salida o escritura
             bufferDatosSalida = new DataOutputStream(servidor.getOutputStream());
 
-            //--------- Trabajo interno.
-            //Enviar DATOS al Cliente.
-            File archivoEnviar = new File(imagenAbsolutePath); //Imagen a enviar al cliente
-            bis = new BufferedInputStream(new FileInputStream(archivoEnviar));
-            //---------
+            //Bufer de lectura del archivo a enviar
+            bis = new BufferedInputStream(new FileInputStream(new File(imagenAbsolutePath)));
 
             //--------- CLiente tiene que escuchar
             // 1* ENVIO NOMBRE ARCHIVO
-            bufferDatosSalida.writeUTF(gameName + imagenExtencion); // El nombre con el que se guardara sera el juego con la extencion
+            bufferDatosSalida.writeUTF(gameName + imagenExtencion); // El nombre con el que se guardara sera el del juego con la extencion
 
-            //Creo una Buffer para leer el archivo
-            //mientras el offset sea menor que el tamaño del archivo enviara datos
+            //Creo una Buffer para leer el archivo con un tamaño de 1024 bytes            
             byte[] bufferSalida = new byte[1024];
-            int numBytesLeidos = 0;
 
+            //Leo el archivo a enviar y almaceno el valor de Bytes leidos
+            int numBytesLeidos = 0;
             numBytesLeidos = bis.read(bufferSalida);
 
+            //Mientras el numero de Bytes sea distito de -1 enviara datos al servidor
             while (numBytesLeidos != -1) {
                 // 2 * envio el paquete de datos.
                 bufferDatosSalida.write(bufferSalida, 0, numBytesLeidos);
@@ -83,6 +88,7 @@ public class SocketImagGame implements Runnable {
             Logger.getLogger(SocketImagGame.class.getName()).log(Level.SEVERE, null, ex);
 
         } finally {
+            //Cierro las conexiones
             try {
                 if (bis != null) {
                     bis.close();

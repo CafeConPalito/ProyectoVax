@@ -33,6 +33,11 @@ public class SocketZipGameDownload implements Runnable {
     private String gameName;
     private String dirGames = "games";
 
+    
+    /**
+     * metodo que descarga un juego desde el servidor
+     * @param gameName nombre del juego que se quiere descargar, rescatado de la BBDD
+     */
     public SocketZipGameDownload(String gameName) {
         this.gameName = gameName;
         run();
@@ -41,6 +46,7 @@ public class SocketZipGameDownload implements Runnable {
     @Override
     public void run() {
         
+        //Declaro a nulo la   
         String zipFilePath = null;
 
         //Creo la carpeta Games si no existe
@@ -73,15 +79,20 @@ public class SocketZipGameDownload implements Runnable {
             // ENVIAR AL SERVER EL NOMBRE DEL JUEGO A DESCARGAR
             String nombreArchivo = gameName + ".zip";
             bufferDatosSalida.writeUTF(nombreArchivo);
-
+            
+            //guardo el pathDonde llegara el zip
             zipFilePath = dirGamesGame + File.separator + nombreArchivo;
-
-            bos = new BufferedOutputStream(new FileOutputStream(zipFilePath)); // pongo el nombre.
-
+            
+            //Creo un buffer para escribir el juego que recibe el cliente
+            bos = new BufferedOutputStream(new FileOutputStream(zipFilePath)); 
+            
+            //Creo una Buffer para leer el archivo con un tamaño de 1024 bytes
             byte[] bufferEntrada = new byte[1024];
 
+            //Leo los datos enviados por el servidor los almaceno en el buffer y almaceno el valor los Bytes leidos
             int numBytesLeidos = bufferDatosEntrada.read(bufferEntrada);
 
+            //Mientras el numero de Bytes sea distito de -1 recibira datos al servidor
             while (numBytesLeidos != -1) {
 
                 bos.write(bufferEntrada, 0, numBytesLeidos);
@@ -93,6 +104,7 @@ public class SocketZipGameDownload implements Runnable {
         } catch (IOException ex) {
             Logger.getLogger(SocketZipGameDownload.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
+            //Cierro las conexiones
             try {
                 if (bos != null) {
                     bos.close();
@@ -156,241 +168,5 @@ public class SocketZipGameDownload implements Runnable {
             e.printStackTrace();
         }
     }
-    
-    
-    
-    
-    /*
-    private static void unzip(String zipFilePath, String destDirPath) {
-        try {
-
-            File destDir = new File(destDirPath);
-
-            byte[] buffer = new byte[1024];
-            ZipInputStream zis = new ZipInputStream(new FileInputStream(zipFilePath));
-            ZipEntry zipEntry = zis.getNextEntry();
-            while (zipEntry != null) {
-                File newFile = newFile(destDir, zipEntry);
-                if (zipEntry.isDirectory()) {
-                    if (!newFile.isDirectory() && !newFile.mkdirs()) {
-                        throw new IOException("Failed to create directory " + newFile);
-                    }
-                } else {
-                    // fix for Windows-created archives
-                    File parent = newFile.getParentFile();
-                    if (!parent.isDirectory() && !parent.mkdirs()) {
-                        throw new IOException("Failed to create directory " + parent);
-                    }
-
-                    // write file content
-                    FileOutputStream fos = new FileOutputStream(newFile);
-                    int len;
-                    while ((len = zis.read(buffer)) > 0) {
-                        fos.write(buffer, 0, len);
-                    }
-                    fos.close();
-                }
-                zipEntry = zis.getNextEntry();
-            }
-
-            zis.closeEntry();
-            zis.close();
-        } catch (IOException ex) {
-            Logger.getLogger(SocketZipGameDownload.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
-
-    private static File newFile(File destinationDir, ZipEntry zipEntry) throws IOException {
-        File destFile = new File(destinationDir, zipEntry.getName());
-
-        String destDirPath = destinationDir.getCanonicalPath();
-        String destFilePath = destFile.getCanonicalPath();
-
-        if (!destFilePath.startsWith(destDirPath + File.separator)) {
-            throw new IOException("Entry is outside of the target dir: " + zipEntry.getName());
-        }
-
-        return destFile;
-    }
-
-    */
-    
-    /*
-    private void unzip2(String zipFilePath, String destDirPath) {
-        try {
-            int BUFFER = 1024;
-            File dirDestino = new File(destDirPath);
-            BufferedOutputStream dest = null;
-            FileInputStream fis = new FileInputStream(zipFilePath);
-            ZipInputStream zis = new ZipInputStream(new BufferedInputStream(fis));
-            FileOutputStream fos = null;
-            ZipEntry entry;
-            int count;
-            int index = 0;
-            byte data[] = new byte[BUFFER];
-            String rutaarchivo = null;
-            while ((entry = zis.getNextEntry()) != null) {
-                System.out.println("Extracting: " + entry);
-                rutaarchivo = entry.getName();
-                // tenemos que quitar el primer directorio
-                index = rutaarchivo.indexOf(File.separator);
-                rutaarchivo = rutaarchivo.substring(index + 1);
-                if (rutaarchivo.trim().length() > 0) {
-                    // write the files to the disk
-                    try {
-                        dest = null;
-                        File fileDest = new File(dirDestino.getAbsolutePath() + File.separator + rutaarchivo);
-                        if (entry.isDirectory()) {
-                            fileDest.mkdirs();
-                        } else {
-                            if (fileDest.getParentFile().exists() == false) {
-                                fileDest.getParentFile().mkdirs();
-                            }
-
-                            fos = new FileOutputStream(fileDest);
-                            dest = new BufferedOutputStream(fos, BUFFER);
-                            while ((count = zis.read(data, 0, BUFFER)) != -1) {
-                                dest.write(data, 0, count);
-                            }
-                            dest.flush();
-                        }
-                    } finally {
-                        try {
-                            if (dest != null) {
-                                dest.close();
-                            }
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-            }
-            zis.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    */
-
-    /*
-    public void decompress(String zipFilePath) {
-        try {
-            ZipFile zf = new ZipFile(new File(zipFilePath));
-            try (zf) {
-                Enumeration<? extends ZipEntry> entries = zf.entries();
-                for (ZipEntry ze : Collections.list(entries)) {
-                    System.out.printf("Inflating %s (compressed: %s, size: %s, ratio: %.2f)%n", ze.getName(), ze.getCompressedSize(), ze.getSize(), (double) ze.getSize() / ze.getCompressedSize());
-                    InputStream is = zf.getInputStream(ze);
-                    FileOutputStream fos = new FileOutputStream(new File("target", ze.getName()));
-                    try (is; fos) {
-                        fos.write(is.readAllBytes());
-                    }
-                }
-            }
-        }   catch (IOException ex) {
-            Logger.getLogger(SocketZipGameDownload.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
-     */
- /*
-    private void unzip(String zipFilePath, String destDir) {
-        File dir = new File(destDir);
-        // create output directory if it doesn't exist
-        if(!dir.exists()) dir.mkdirs();
-        FileInputStream fis;
-        //buffer for read and write data to file
-        byte[] buffer = new byte[1024];
-        try {
-            fis = new FileInputStream(zipFilePath);
-            ZipInputStream zis = new ZipInputStream(fis);
-            ZipEntry ze = zis.getNextEntry();
-            while(ze != null){
-                String fileName = ze.getName();
-                File newFile = new File(destDir + File.separator + fileName);
-                System.out.println("Unzipping to "+newFile.getAbsolutePath());
-                //create directories for sub directories in zip
-                new File(newFile.getParent()).mkdirs();
-                FileOutputStream fos = new FileOutputStream(newFile);
-                int len;
-                while ((len = zis.read(buffer)) > 0) {
-                fos.write(buffer, 0, len);
-                }
-                fos.close();
-                //close this ZipEntry
-                zis.closeEntry();
-                ze = zis.getNextEntry();
-            }
-            //close last ZipEntry
-            zis.closeEntry();
-            zis.close();
-            fis.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        
-    }
-     */
- /*
-
-    private void unzip(String zipFilePath, String destDir) {
-        File dir = new File(destDir);
-        FileInputStream fis = null;
-        ZipInputStream zis = null;
-        FileOutputStream fos = null;
-        //buffer for read and write data to file
-        byte[] buffer = new byte[1024];
-
-        try {
-            fis = new FileInputStream(zipFilePath);
-            zis = new ZipInputStream(fis);
-            ZipEntry ze = zis.getNextEntry();
-            while (ze != null) {
-                String fileName = ze.getName();
-                File newFile = new File(destDir + File.separator + fileName);
-                
-                System.out.println("Unzipping to " + newFile.getAbsolutePath());
-                
-                //create directories for sub directories in zip
-                new File(newFile.getParent()).mkdirs();
-                fos = new FileOutputStream(newFile);
-                int len;
-                
-                while ((len = zis.read(buffer)) > 0) {
-                    fos.write(buffer, 0, len);
-                }
-                fos.close();
-                //close this ZipEntry
-                zis.closeEntry();
-                ze = zis.getNextEntry();
-            }
-
-        } catch (IOException ex) {
-            Logger.getLogger(SocketZipGameDownload.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                if (zis != null) {
-                    zis.closeEntry();
-                    zis.close();
-                }
-                        
-                if (fos != null) {
-                    fos.close();
-                }
-                
-                if (fis != null) {
-                    fis.close();
-                }
-            } catch (IOException ex) {
-                Logger.getLogger(SocketZipGameDownload.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        
-    }
-     */
-    
-    
-    
     
 }
