@@ -8,19 +8,19 @@ import com.cafeconpalito.consultDB.GameConsults;
 import com.cafeconpalito.entities.Juego;
 import com.cafeconpalito.proyectovax.App;
 import com.cafeconpalito.proyectovax.EntryPoint;
-import com.cafeconpalito.socket.SocketImagGame;
 import com.cafeconpalito.staticElements.CheckURLImg;
-import com.cafeconpalito.userLogedData.UserLogedInfo;
+import com.cafeconpalito.staticElements.MainView;
 import java.io.IOException;
 import java.util.ArrayList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 
@@ -38,11 +38,24 @@ public class GameController extends HBox {
     @FXML
     private Label gameTitle;
     @FXML
-    private TextFlow gamePegi;
-    @FXML
     private TextFlow gameDescription;
 
     private int idGame;
+    
+    @FXML
+    private Label showGenre;
+    @FXML
+    private Label showReleased;
+    @FXML
+    private Label showRegulation;
+    @FXML
+    private Label showPrice;
+    @FXML
+    private Label showDownloads;
+    @FXML
+    private Button cancelButton;
+    @FXML
+    private Button downloadButton;
 
     
     /**
@@ -88,8 +101,15 @@ public class GameController extends HBox {
 
         this.idGame = idGame;
         ArrayList<Juego> l=  GameConsults.getGameData(idGame);
-        this.gameTitle.setText(l.get(0).getTitulo());
+        this.gameTitle.setText(l.get(0).getTitulo().toUpperCase());
+        this.showGenre.setText(l.get(0).getGeneroCollection().toString());
+        this.showRegulation.setText(l.get(0).get);
+        this.showDownloads.setText(l.get(0).getNumdescargas().toString());
+        this.showReleased.setText(l.get(0).getFecha().toString());
+        this.showPrice.setText(l.get(0).getPrecio().toString() + " $");
+        Font font = new Font("System", 30);
         Text textoDescripccion = new Text(l.get(0).getDescripcion());
+        textoDescripccion.setFont(font);
         this.gameDescription.getChildren().add(textoDescripccion);
         
         String urlImagen = "http://"+EntryPoint.getServerIP() + ":80" + EntryPoint.rutaImgGame + l.get(0).getImagen();
@@ -97,6 +117,16 @@ public class GameController extends HBox {
         if(CheckURLImg.exists(urlImagen)){
             this.gameImage.setImage(new Image(urlImagen));
         }
+        
+    }
+
+    @FXML
+    private void cancelAction(MouseEvent event) throws IOException {
+        MainView.main.setCenter(App.loadFXML("store"));        
+    }
+
+    @FXML
+    private void downloadAction(MouseEvent event) {
         
     }
 
