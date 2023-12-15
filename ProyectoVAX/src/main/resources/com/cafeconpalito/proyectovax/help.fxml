@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox id="BackGround" alignment="CENTER" stylesheets="@../../../styles/help.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cafeconpalito.controllers.helpController">
+<HBox id="BackGround" alignment="CENTER" stylesheets="@../../../styles/help.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cafeconpalito.controllers.helpController">
    <children>
       <HBox id="BackGroundForm" maxHeight="900.0" maxWidth="1200.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="700.0" HBox.hgrow="ALWAYS">
          <children>
@@ -29,7 +29,7 @@
                      </font>
                   </Label>
                   <Pane prefHeight="50.0" />
-                  <Label alignment="CENTER" styleClass="labels" text="Images do not load" textAlignment="CENTER">
+                  <Label alignment="CENTER" styleClass="labels" text="Too many Batmans" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -56,12 +56,32 @@
                         </Button>
                      </children>
                   </HBox>
+                  <Label alignment="CENTER" styleClass="labels" text="Forgot Password" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#remindButton" prefHeight="43.0" prefWidth="150.0" styleClass="allGamesBtn" text="Remind" textFill="#15b218">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets top="10.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
                   <Label styleClass="labels" text="If you have any other problem contact with Café Con Palito®">
                      <font>
                         <Font size="14.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="100.0" />
+                        <Insets top="30.0" />
                      </VBox.margin>
                   </Label>
                </children>

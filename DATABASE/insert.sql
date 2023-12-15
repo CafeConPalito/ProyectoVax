@@ -3,18 +3,12 @@ use vapor;
 -- INSERT USUARIOS
 
 insert into usuario (alias, email, pwd, nombre, apellido1, apellido2, fechanac, imagen, region, rol) values
-('dev', 'dev@dev.com', '1234', 'devname', 'devapellido1', 'devapellido2', '1990-01-23', 'dev.png', 2, 0),
-('user', 'user@user.com', '1234', 'username', 'userapellido1', 'userapellido2', '2000-01-23', 'user.png', 3, 1),
-('alberto23', 'alberto23@gmail.com', 'alberto123', 'Alberto', 'García', 'López', '1990-01-23', 'alberto.jpg', 1, 1),
-('maria89', 'maria89@hotmail.com', 'maria456', 'María', 'Sánchez', 'Gómez', '1989-05-12', 'maria.jpg', 1, 1),
-('pablo76', 'pablo76@yahoo.com', 'pablo789', 'Pablo', 'Pérez', 'Martín', '1976-09-07', 'pablo.jpg', 1, 1),
-('ana34', 'ana34@gmail.com', 'ana101', 'Ana', 'Rodríguez', 'Fernández', '1986-03-04', 'ana.jpg',2, 1),
-('carlos45', 'carlos45@hotmail.com', 'carlos202', 'Carlos', 'González', 'Ruiz', '1978-06-15', 'carlos.jpg', 2, 1),
-('laura67', 'laura67@yahoo.com', 'laura303', 'Laura', 'López', 'Sánchez', '1967-12-21', 'laura.jpg', 2, 1),
-('david52', 'david52@gmail.com', 'david404', 'David', 'Gómez', 'Pérez', '1971-04-02', 'david.jpg', 2, 0),
-('sara28', 'sara28@hotmail.com', 'sara505', 'Sara', 'Martín', 'Rodríguez', '1995-07-28', 'sara.jpg', 2, 1),
-('jorge31', 'jorge31@yahoo.com', 'jorge606', 'Jorge', 'Fernández', 'González', '1992-10-31', 'jorge.jpg',3, 1),
-('lucia40', 'lucia40@gmail.com', 'lucia707', 'Lucía', 'Ruiz', 'López', '1983-02-10', 'lucia.jpg', 3, 1);
+('@dev', 'dev@dev.com', '1234', 'devname', 'devapellido1', 'devapellido2', '1990-01-23', 'dev.png', 2, 0),
+('@user', 'user@user.com', '1234', 'username', 'userapellido1', 'userapellido2', '2000-01-23', 'user.png', 3, 1),
+('@alberto23', 'alberto23@gmail.com', 'alberto123', 'Alberto', 'García', 'López', '1990-01-23', 'alberto.jpg', 1, 1),
+('@maria89', 'maria89@hotmail.com', 'maria456', 'María', 'Sánchez', 'Gómez', '1989-05-12', 'maria.jpg', 4, 1),
+('@pablo76', 'pablo76@yahoo.com', 'pablo789', 'Pablo', 'Pérez', 'Martín', '1976-09-07', 'pablo.jpg', 5, 1);
+
 
 -- INSERT JUEGOS
 

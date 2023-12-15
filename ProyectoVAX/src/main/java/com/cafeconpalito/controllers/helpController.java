@@ -4,6 +4,9 @@
  */
 package com.cafeconpalito.controllers;
 
+import com.cafeconpalito.proyectovax.App;
+import com.cafeconpalito.staticElements.MainView;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -31,6 +34,11 @@ public class helpController implements Initializable {
     
     @FXML
     private void loadUrl(ActionEvent event) {
+    }
+
+    @FXML
+    private void remindButton(ActionEvent event) throws IOException {
+        MainView.main.setCenter(App.loadFXML("forgetpass"));
     }
 
 }
