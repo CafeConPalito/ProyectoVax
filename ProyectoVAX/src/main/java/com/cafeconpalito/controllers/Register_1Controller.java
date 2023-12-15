@@ -91,6 +91,8 @@ public class Register_1Controller implements Initializable {
         if (userRegisterInfo.getRole() != null) {
             rolecombobox.setValue(userRegisterInfo.getRole());
         }
+        
+        
     }
 
     @FXML
@@ -136,7 +138,9 @@ public class Register_1Controller implements Initializable {
 
     @FXML
     private void SelectImage(ActionEvent event) {
+        imageLabel.setTextFill(Colors.textColor); 
         launchFileChooser();
+        
     }
 
     private boolean fileChooserOpened = false;
@@ -167,23 +171,32 @@ public class Register_1Controller implements Initializable {
 
     @FXML
     private void tryToRegister(ActionEvent event) throws IOException {
+        
+        boolean b=true;
 
         if (nicknametexfield.getText().isBlank() || RegisterConsults.nickNameExists(nicknametexfield.getText())) {
             nicknameLabel.setTextFill(Colors.textColorError);
-
-        } else if (passwordtextfield.getText().isBlank()) {
+            b=false;
+        }
+        if (passwordtextfield.getText().isBlank()) {
             passwordLabel.setTextFill(Colors.textColorError);
-
-        } else if (rPasswordtextfield.getText().isBlank() || !rPasswordtextfield.getText().equals(passwordtextfield.getText())) {
+            b=false;
+        }
+        if (rPasswordtextfield.getText().isBlank() || !rPasswordtextfield.getText().equals(passwordtextfield.getText())) {
             rPaswordLabel.setTextFill(Colors.textColorError);
-
-        } else if (imagetextfield.getText().isBlank()) {
+            b=false;
+        }
+        if (imagetextfield.getText().isBlank()) {
             imageLabel.setTextFill(Colors.textColorError);
-
-        } else if (rolecombobox.getValue() == null) {
+            b=false;
+        }
+        if (rolecombobox.getValue() == null) {
             roleLabel.setTextFill(Colors.textColorError);
-
-        } else {
+            b=false;
+        }
+        
+        if (b) {
+      
             saveData();
 
             RegisterConsults.insercion();

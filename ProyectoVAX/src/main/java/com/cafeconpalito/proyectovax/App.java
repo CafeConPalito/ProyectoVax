@@ -1,6 +1,5 @@
 package com.cafeconpalito.proyectovax;
 
-import com.cafeconpalito.staticElements.ConectionBBDD;
 import com.cafeconpalito.staticElements.MainView;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -11,9 +10,6 @@ import java.io.IOException;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.StageStyle;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 /**
  * JavaFX App
@@ -25,7 +21,6 @@ public class App extends Application {
     @Override
     public void init() throws Exception {
         
-        //aquí llamo a los métodos que INICIAN LA BASE DE DATOS . se ejecuta antes de start
         System.out.println("Hola. Aquí empieza todo");
 
     }

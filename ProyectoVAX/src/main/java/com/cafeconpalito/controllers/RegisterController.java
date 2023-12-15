@@ -29,7 +29,6 @@ import java.time.LocalDate;
  */
 public class RegisterController implements Initializable {
 
-
     @FXML
     private TextField firstNameTextField;
     @FXML
@@ -63,51 +62,63 @@ public class RegisterController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
         regionComboBox.getItems().addAll("Europe/Asia ", "Japan", "America", "Australia", "Germany");
         regionComboBox.setVisibleRowCount(6);
-        
-        if (userRegisterInfo.getFirstName()!=null) {
+
+        if (userRegisterInfo.getFirstName() != null) {
             firstNameTextField.setText(userRegisterInfo.getFirstName());
             firstSurnameTextField.setText(userRegisterInfo.getFirstSurname());
             secondSurnameTextField.setText(userRegisterInfo.getSecondSurname());
             BirthDatePicker.setValue((LocalDate.parse(userRegisterInfo.getBirthDate())));
             regionComboBox.setValue(userRegisterInfo.getRegion());
             emailTextField.setText(userRegisterInfo.getEmail());
-            
+
         }
     }
-    
 
     @FXML
     private void nextBtn(MouseEvent event) throws IOException {
 
         //Si todos los campos son correctos te deja avanzar si no es asi error!
+        boolean b = true;
+
         if (firstNameTextField.getText().isBlank()) {
             firstNameLabel.setTextFill(Colors.textColorError);
-        } else if (firstSurnameTextField.getText().isBlank()) {
-            firstSurnameLabel.setTextFill(Colors.textColorError);
-        } else if (secondSurnameTextField.getText().isBlank()) {
-            secondSurnameLabel.setTextFill(Colors.textColorError);
-        } else if (BirthDatePicker.getValue() == null) {
-            birthDateLabel.setTextFill(Colors.textColorError);
-        } else if (regionComboBox.getValue() == null) {
-            RegionLabel.setTextFill(Colors.textColorError);
-        } else if (emailTextField.getText().isBlank() || !emailTextField.getText().matches("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$")||RegisterConsults.emailExists(emailTextField.getText())) {
-            emailLabel.setTextFill(Colors.textColorError);
-        } else{
-        MainView.main.setCenter(App.loadFXML("register_1"));
-        
-        userRegisterInfo.setFirstName(firstNameTextField.getText());
-        userRegisterInfo.setFirstSurname(firstSurnameTextField.getText());
-        userRegisterInfo.setSecondSurname(secondSurnameTextField.getText());
-        userRegisterInfo.setBirthDate(BirthDatePicker.getValue().toString());
-        userRegisterInfo.setRegion(regionComboBox.getValue().toString());
-        userRegisterInfo.setEmail(emailTextField.getText());
-        userRegisterInfo.setRegionNumber(regionComboBox.getSelectionModel().getSelectedIndex()+1);
-                
+            b = false;
         }
-        
+        if (firstSurnameTextField.getText().isBlank()) {
+            firstSurnameLabel.setTextFill(Colors.textColorError);
+            b = false;
+        }
+        if (secondSurnameTextField.getText().isBlank()) {
+            secondSurnameLabel.setTextFill(Colors.textColorError);
+            b = false;
+        }
+        if (BirthDatePicker.getValue() == null) {
+            birthDateLabel.setTextFill(Colors.textColorError);
+            b = false;
+        }
+        if (regionComboBox.getValue() == null) {
+            RegionLabel.setTextFill(Colors.textColorError);
+            b = false;
+        }
+        if (emailTextField.getText().isBlank() || !emailTextField.getText().matches("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$") || RegisterConsults.emailExists(emailTextField.getText())) {
+            emailLabel.setTextFill(Colors.textColorError);
+            b = false;
+        }
+        if (b) {
+            userRegisterInfo.setFirstName(firstNameTextField.getText());
+            userRegisterInfo.setFirstSurname(firstSurnameTextField.getText());
+            userRegisterInfo.setSecondSurname(secondSurnameTextField.getText());
+            userRegisterInfo.setBirthDate(BirthDatePicker.getValue().toString());
+            userRegisterInfo.setRegion(regionComboBox.getValue().toString());
+            userRegisterInfo.setEmail(emailTextField.getText());
+            userRegisterInfo.setRegionNumber(regionComboBox.getSelectionModel().getSelectedIndex() + 1);
+
+            MainView.main.setCenter(App.loadFXML("register_1"));
+        }
+
     }
 
     @FXML

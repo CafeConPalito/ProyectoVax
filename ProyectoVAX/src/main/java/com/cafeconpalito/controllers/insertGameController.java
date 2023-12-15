@@ -5,10 +5,13 @@
 package com.cafeconpalito.controllers;
 
 import com.cafeconpalito.proyectovax.App;
+import com.cafeconpalito.registerGameData.gameRegisterInfo;
 import com.cafeconpalito.staticElements.Colors;
 import com.cafeconpalito.staticElements.MainView;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,6 +24,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 
 import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser;
+
 /**
  * FXML Controller class
  *
@@ -60,36 +65,97 @@ public class insertGameController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-    
+        if (gameRegisterInfo.getTitle() != null) {
+            titleTextField.setText(gameRegisterInfo.getTitle());
+            descriptionTextArea.setText(gameRegisterInfo.getDescription());
+            priceTextField.setText(gameRegisterInfo.getPrice().toString());
+            imagetexField.setText(gameRegisterInfo.getImage());
+            launchDateChooser.setValue((LocalDate.parse(gameRegisterInfo.getLaunchDate())));
+
+        }
+    }
+
+    private boolean fileChooserOpened = false;
+
+    private void launchFileChooser() {
+
+        if (!fileChooserOpened) {
+
+            fileChooserOpened = true;
+
+            FileChooser fch = new FileChooser();
+            File selected = fch.showOpenDialog(null);
+
+            if (selected != null) {
+                imagetexField.setText(selected.getAbsolutePath());
+            }
+
+            fileChooserOpened = false;
+        }
+    }
+
     @FXML
     private void SelectImage(ActionEvent event) {
+        imageLabel.setTextFill(Colors.textColor);
+        launchFileChooser();
+
     }
 
     @FXML
     private void nextBtn(MouseEvent event) throws IOException {
         // aquí realizo la comprobación de los campos
-        
-        if(titleTextField.getText().isBlank()){
+
+        boolean b = true;
+        if (titleTextField.getText().isBlank()) {
             titleLabel.setTextFill(Colors.textColorError);
-        }else if (descriptionTextArea.getText().isBlank()) {
-            descriptionLabel.setTextFill(Colors.textColorError);
-        }else if (priceTextField.getText().isBlank()) {
-            priceLabel.setTextFill(Colors.textColorError);
-        }else if (imagetexField.getText().isBlank()) {
-            imageLabel.setTextFill(Colors.textColorError);
-        }else if (launchDateChooser.getValue() == null) {
-            launchLabel.setTextFill(Colors.textColorError);
-        }else{
-        MainView.main.setCenter(App.loadFXML("insertGame_1"));
+            b = false;
         }
-        
+        if (descriptionTextArea.getText().isBlank()) {
+            descriptionLabel.setTextFill(Colors.textColorError);
+            b = false;
+        }
+        if (priceTextField.getText().isBlank() || !doubleTest(priceTextField.getText())) {
+            priceLabel.setTextFill(Colors.textColorError);
+            b = false;
+        }
+        if (imagetexField.getText().isBlank()) {
+            imageLabel.setTextFill(Colors.textColorError);
+            b = false;
+        }
+        if (launchDateChooser.getValue() == null) {
+            launchLabel.setTextFill(Colors.textColorError);
+            b = false;
+        }
+
+        if (b) {
+
+            gameRegisterInfo.setTitle(titleTextField.getText());
+            gameRegisterInfo.setDescription(descriptionTextArea.getText());
+            gameRegisterInfo.setPrice(Double.parseDouble(priceTextField.getText()));
+            gameRegisterInfo.setImage(imagetexField.getText());
+            gameRegisterInfo.setLaunchDate(launchDateChooser.getValue().toString());
+            
+            MainView.main.setCenter(App.loadFXML("insertGame_1"));
+        }
+
+    }
+
+    private boolean doubleTest(String price) {
+        try {
+            Double d = Double.parseDouble(price);
+
+            return true;
+        } catch (NumberFormatException nfe) {
+            System.err.println("NumberFormatException");
+            return false;
+        }
+
     }
 
     @FXML
     private void CancelInsertGame(ActionEvent event) throws IOException {
         MainView.main.setCenter(App.loadFXML("store"));
+        gameRegisterInfo.resetGameInfo();
     }
 
     @FXML
