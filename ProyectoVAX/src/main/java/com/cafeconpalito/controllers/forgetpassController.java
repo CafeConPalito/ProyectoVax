@@ -39,12 +39,16 @@ public class forgetpassController implements Initializable {
     private Label nicknameLabel;
     @FXML
     private TextField passwordTextField;
+    @FXML
+    private Label newPassword;
+    @FXML
+    private TextField pwdTextField;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+      
     }    
     
     @FXML
@@ -52,9 +56,6 @@ public class forgetpassController implements Initializable {
         emailLabel.setTextFill(Colors.textColor);
     }
 
-    private void passwordTextFocused(MouseEvent event) {
-        nicknameLabel.setTextFill(Colors.textColor);
-    }
 
     @FXML
     private void tryRemind(ActionEvent event) {
@@ -62,11 +63,14 @@ public class forgetpassController implements Initializable {
             emailLabel.setTextFill(Colors.textColorError);
         } else if (passwordTextField.getText().isBlank() || !ForgetConsults.passwordCorrect(emailTextField.getText(), "@"+passwordTextField.getText())) {
             nicknameLabel.setTextFill(Colors.textColorError);
-        } else {
+        }else if(pwdTextField.getText().isBlank() ){
+            newPassword.setTextFill(Colors.textColorError);
+        }else {
             nicknameLabel.setTextFill(Colors.textColor);
             emailLabel.setTextFill(Colors.textColor);
-            
-            showInformation("Remind Password",ForgetConsults.getPWD(emailTextField.getText(), "@"+passwordTextField.getText()));
+            newPassword.setTextFill(Colors.textColor);
+            ForgetConsults.updatePWD(emailTextField.getText(), pwdTextField.getText());
+            showInformation(pwdTextField.getText());
            
         }
     }
@@ -76,14 +80,24 @@ public class forgetpassController implements Initializable {
         MainView.main.setCenter(App.loadFXML("store"));
     }
     
-    private static void showInformation(String title, String message) {
+    private static void showInformation(String pass) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.initStyle(StageStyle.UTILITY);
-        alert.setTitle(title);
-        alert.setHeaderText("Your password is");
-        alert.setContentText(message);
+        alert.setTitle("Update Password");
+        alert.setHeaderText("Update Succeeded, new password");
+        alert.setContentText(pass);
 
         alert.showAndWait();
+    }
+
+    @FXML
+    private void nickFocused(MouseEvent event) {
+        nicknameLabel.setTextFill(Colors.textColor);
+    }
+
+    @FXML
+    private void passTextFocused(MouseEvent event) {
+        newPassword.setTextFill(Colors.textColor);
     }
 
 }

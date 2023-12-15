@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox id="BackGround" alignment="CENTER" stylesheets="@../../../styles/help.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cafeconpalito.controllers.helpController">
+<HBox id="BackGround" alignment="CENTER" stylesheets="@../../../styles/help.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cafeconpalito.controllers.helpController">
    <children>
       <HBox id="BackGroundForm" maxHeight="900.0" maxWidth="1200.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="700.0" HBox.hgrow="ALWAYS">
          <children>
@@ -66,7 +66,7 @@
                   </Label>
                   <HBox alignment="CENTER">
                      <children>
-                        <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#remindButton" prefHeight="43.0" prefWidth="150.0" styleClass="allGamesBtn" text="Remind" textFill="#15b218">
+                        <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#remindButton" prefHeight="43.0" prefWidth="150.0" styleClass="allGamesBtn" text="Restart" textFill="#15b218">
                            <font>
                               <Font size="18.0" />
                            </font>

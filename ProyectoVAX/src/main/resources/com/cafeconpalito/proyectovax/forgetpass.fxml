@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox id="BackGround" alignment="CENTER" stylesheets="@../../../styles/forget.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cafeconpalito.controllers.forgetpassController">
+<HBox id="BackGround" alignment="CENTER" stylesheets="@../../../styles/forget.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cafeconpalito.controllers.forgetpassController">
    <children>
       <HBox id="BackGroundForm" maxHeight="900.0" maxWidth="1200.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="700.0" HBox.hgrow="ALWAYS">
          <children>
@@ -23,12 +23,12 @@
                         <Image url="@images/logovax.png" />
                      </image>
                   </ImageView>
-                  <Label alignment="CENTER" styleClass="labels" text="PASSWORD REMINDER" textAlignment="CENTER" textFill="WHITE" VBox.vgrow="ALWAYS">
+                  <Label alignment="CENTER" styleClass="labels" text="PASSWORD ASSISTANCE" textAlignment="CENTER" textFill="WHITE" VBox.vgrow="ALWAYS">
                      <font>
                         <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
-                  <Pane prefHeight="50.0" />
+                  <Pane prefHeight="30.0" />
                   <Label fx:id="emailLabel" alignment="CENTER" styleClass="labels" text="EMAIL" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="18.0" />
@@ -39,11 +39,13 @@
                         <Font size="18.0" />
                      </font>
                   </TextField>
-                  <Pane prefHeight="25.0" />
                   <Label fx:id="nicknameLabel" alignment="CENTER" styleClass="labels" text="NICKNAME" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
                   </Label>
                   <HBox alignment="CENTER">
                      <children>
@@ -52,19 +54,32 @@
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="passwordTextField" prefHeight="26.0" prefWidth="461.0" style="-fx-border-style: solid; -fx-background-color: transparent; -fx-border-width: 0 0 1 0;">
+                        <TextField fx:id="passwordTextField" alignment="CENTER" onMouseClicked="#nickFocused" prefHeight="26.0" prefWidth="461.0" style="-fx-border-style: solid; -fx-background-color: transparent; -fx-border-width: 0 0 1 0;">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </TextField>
                      </children>
                   </HBox>
+                  <Label fx:id="newPassword" alignment="CENTER" styleClass="labels" text="NEW PASSWORD" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TextField fx:id="pwdTextField" alignment="CENTER" onMouseClicked="#passTextFocused" prefHeight="25.0" prefWidth="221.0" style="-fx-background-color: transparent; -fx-border-style: solid; -fx-border-width: 0 0 1 0;">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
                   <Pane prefHeight="30.0" />
                   <HBox alignment="CENTER">
                      <children>
                         <VBox>
                            <children>
-                              <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#tryRemind" prefHeight="43.0" prefWidth="150.0" styleClass="allGamesBtn" text="Remind" textFill="#15b218">
+                              <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#tryRemind" prefHeight="43.0" prefWidth="150.0" styleClass="allGamesBtn" text="Restart" textFill="#15b218">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
@@ -74,7 +89,7 @@
                                     <Font size="18.0" />
                                  </font>
                                  <VBox.margin>
-                                    <Insets top="40.0" />
+                                    <Insets top="20.0" />
                                  </VBox.margin>
                               </Button>
                            </children>
