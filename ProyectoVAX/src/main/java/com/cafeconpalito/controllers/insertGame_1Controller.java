@@ -5,7 +5,12 @@
 package com.cafeconpalito.controllers;
 
 import com.cafeconpalito.consultDB.GameConsults;
+import com.cafeconpalito.consultDB.RegisterConsults;
+import com.cafeconpalito.consultDB.RegulationConsults;
 import com.cafeconpalito.proyectovax.App;
+import com.cafeconpalito.registerGameData.gameRegisterInfo;
+import com.cafeconpalito.socket.SocketImagGame;
+import com.cafeconpalito.socket.SocketImagUser;
 import com.cafeconpalito.staticElements.Colors;
 import com.cafeconpalito.staticElements.MainView;
 import java.io.IOException;
@@ -38,6 +43,9 @@ public class insertGame_1Controller implements Initializable {
     private RadioButton a1;
     @FXML
     private ToggleGroup pegi;
+
+    int pegiNum = 1;
+
     @FXML
     private RadioButton a2;
     @FXML
@@ -50,6 +58,9 @@ public class insertGame_1Controller implements Initializable {
     private RadioButton a6;
     @FXML
     private ToggleGroup cero;
+
+    int ceroNum = 6;
+
     @FXML
     private RadioButton a7;
     @FXML
@@ -62,6 +73,9 @@ public class insertGame_1Controller implements Initializable {
     private RadioButton a11;
     @FXML
     private ToggleGroup esrb;
+
+    int esrbNum = 11;
+
     @FXML
     private RadioButton a12;
     @FXML
@@ -74,6 +88,9 @@ public class insertGame_1Controller implements Initializable {
     private RadioButton a16;
     @FXML
     private ToggleGroup acb;
+
+    int acbNum = 16;
+
     @FXML
     private RadioButton a17;
     @FXML
@@ -86,6 +103,9 @@ public class insertGame_1Controller implements Initializable {
     private RadioButton a21;
     @FXML
     private ToggleGroup usk;
+
+    int uskNum = 21;
+
     @FXML
     private RadioButton a22;
     @FXML
@@ -118,6 +138,22 @@ public class insertGame_1Controller implements Initializable {
         genreComboBox.getItems().addAll(GameConsults.getGenreList());
 
     }
+    
+    private void saveData(){
+        if (genreComboBox.getValue() != null) {
+            gameRegisterInfo.setGenre(genreComboBox.getValue().toString());
+        }
+        
+        gameRegisterInfo.setPegi(pegiNum);
+        gameRegisterInfo.setCero(ceroNum);
+        gameRegisterInfo.setAcb(acbNum);
+        gameRegisterInfo.setEsrb(esrbNum);
+        gameRegisterInfo.setUsk(uskNum);
+        
+        
+        
+        
+    }
 
     @FXML
     private void backBtn(MouseEvent event) throws IOException {
@@ -127,44 +163,62 @@ public class insertGame_1Controller implements Initializable {
     }
 
     @FXML
-    private void tryToRegister(ActionEvent event) {
+    private void tryToRegister(ActionEvent event) throws IOException {
         boolean b = true;
 
-        if (genreComboBox.getValue() == null) {
-            genreLabel.setTextFill(Colors.textColorError);
-            b = false;
-        }
-        
-        if (pegi.getSelectedToggle()== null){
+//        if (genreComboBox.getValue() == null) {
+//            genreLabel.setTextFill(Colors.textColorError);
+//            b = false;
+//        }
+        if (pegi.getSelectedToggle() == null) {
             pegiLabel.setTextFill(Colors.textColorError);
             b = false;
         }
-        
-        if (cero.getSelectedToggle()== null){
+
+        if (cero.getSelectedToggle() == null) {
             cerfoLabel.setTextFill(Colors.textColorError);
             b = false;
         }
-        
-        if (esrb.getSelectedToggle()== null){
+
+        if (esrb.getSelectedToggle() == null) {
             esrbLabel.setTextFill(Colors.textColorError);
             b = false;
         }
-        
-        if (acb.getSelectedToggle()== null){
+
+        if (acb.getSelectedToggle() == null) {
             acbLabel.setTextFill(Colors.textColorError);
             b = false;
         }
-              
-        if (usk.getSelectedToggle()== null){
+
+        if (usk.getSelectedToggle() == null) {
             uskLabel.setTextFill(Colors.textColorError);
             b = false;
         }
-        
+
         if (b) {
+
+            // insercion:
             
-            System.out.println("yas taría preparado para la inserción en la base de datos");
+            GameConsults.insercion();// falta el id del usuario en el gameconsults.insercion
             
+            System.out.println("Registrando juego");
             
+            //insertar imagen
+            SocketImagGame sig = new SocketImagGame(gameRegisterInfo.getTitle(), gameRegisterInfo.getImage());
+          
+            //insercion de la tabla regulacion (conseguir id de juego creado y 
+                //realizar 5 inserciones con el valor de las variables que almacenan pegi... etc + la id)
+                RegulationConsults.insercion(pegiNum, 888);//<--------------------
+                RegulationConsults.insercion(acbNum, 888);
+                RegulationConsults.insercion(ceroNum, 888);
+                RegulationConsults.insercion(esrbNum, 888);
+                RegulationConsults.insercion(uskNum, 888);
+            
+
+            gameRegisterInfo.resetGameInfo();
+            
+            MainView.main.setCenter(App.loadFXML("store"));
+
         }
 
     }
@@ -177,126 +231,151 @@ public class insertGame_1Controller implements Initializable {
     @FXML
     private void a1s(ActionEvent event) {
         pegiLabel.setTextFill(Colors.textColor);
+        pegiNum = 1;
     }
 
     @FXML
     private void a2s(ActionEvent event) {
         pegiLabel.setTextFill(Colors.textColor);
+        pegiNum = 2;
     }
 
     @FXML
     private void a3s(ActionEvent event) {
         pegiLabel.setTextFill(Colors.textColor);
+        pegiNum = 3;
     }
 
     @FXML
     private void a4s(ActionEvent event) {
         pegiLabel.setTextFill(Colors.textColor);
+        pegiNum = 4;
     }
 
     @FXML
     private void a5s(ActionEvent event) {
         pegiLabel.setTextFill(Colors.textColor);
+        pegiNum = 5;
     }
 
     @FXML
     private void a6s(ActionEvent event) {
         cerfoLabel.setTextFill(Colors.textColor);
+        ceroNum = 6;
     }
 
     @FXML
     private void a7s(ActionEvent event) {
         cerfoLabel.setTextFill(Colors.textColor);
+        ceroNum = 7;
     }
 
     @FXML
     private void a8s(ActionEvent event) {
         cerfoLabel.setTextFill(Colors.textColor);
+        ceroNum = 8;
     }
 
     @FXML
     private void a9s(ActionEvent event) {
         cerfoLabel.setTextFill(Colors.textColor);
+        ceroNum = 9;
     }
 
     @FXML
     private void a10s(ActionEvent event) {
         cerfoLabel.setTextFill(Colors.textColor);
+        ceroNum = 10;
     }
 
     @FXML
     private void a11s(ActionEvent event) {
-         esrbLabel.setTextFill(Colors.textColor);
+        esrbLabel.setTextFill(Colors.textColor);
+        esrbNum = 11;
     }
 
     @FXML
     private void a12s(ActionEvent event) {
-         esrbLabel.setTextFill(Colors.textColor);
+        esrbLabel.setTextFill(Colors.textColor);
+        esrbNum = 12;
     }
 
     @FXML
     private void a13s(ActionEvent event) {
-         esrbLabel.setTextFill(Colors.textColor);
+        esrbLabel.setTextFill(Colors.textColor);
+        esrbNum = 13;
     }
 
     @FXML
     private void a14s(ActionEvent event) {
-         esrbLabel.setTextFill(Colors.textColor);
+        esrbLabel.setTextFill(Colors.textColor);
+        esrbNum = 14;
     }
 
     @FXML
     private void a15s(ActionEvent event) {
-         esrbLabel.setTextFill(Colors.textColor);
+        esrbLabel.setTextFill(Colors.textColor);
+        esrbNum = 15;
     }
 
     @FXML
     private void a16s(ActionEvent event) {
-         acbLabel.setTextFill(Colors.textColor);
+        acbLabel.setTextFill(Colors.textColor);
+        acbNum = 16;
     }
 
     @FXML
     private void a17s(ActionEvent event) {
         acbLabel.setTextFill(Colors.textColor);
+        acbNum = 17;
     }
 
     @FXML
     private void a18s(ActionEvent event) {
         acbLabel.setTextFill(Colors.textColor);
+        acbNum = 18;
     }
 
     @FXML
     private void a19s(ActionEvent event) {
         acbLabel.setTextFill(Colors.textColor);
+        acbNum = 19;
     }
 
     @FXML
     private void a20s(ActionEvent event) {
         acbLabel.setTextFill(Colors.textColor);
+        acbNum = 20;
     }
 
     @FXML
     private void a21s(ActionEvent event) {
         uskLabel.setTextFill(Colors.textColor);
+        uskNum = 21;
     }
 
     @FXML
     private void a22s(ActionEvent event) {
         uskLabel.setTextFill(Colors.textColor);
+        uskNum = 22;
     }
 
     @FXML
     private void a23s(ActionEvent event) {
         uskLabel.setTextFill(Colors.textColor);
+        uskNum = 23;
     }
 
     @FXML
     private void a24s(ActionEvent event) {
         uskLabel.setTextFill(Colors.textColor);
+        uskNum = 24;
     }
 
     @FXML
     private void a25s(ActionEvent event) {
         uskLabel.setTextFill(Colors.textColor);
+        uskNum = 25;
     }
 
 }

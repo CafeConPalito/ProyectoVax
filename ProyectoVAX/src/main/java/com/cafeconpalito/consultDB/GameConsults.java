@@ -6,10 +6,12 @@ package com.cafeconpalito.consultDB;
 
 import com.cafeconpalito.entities.Genero;
 import com.cafeconpalito.entities.Juego;
+import com.cafeconpalito.registerGameData.gameRegisterInfo;
 import com.cafeconpalito.staticElements.ConectionBBDD;
 import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 /**
@@ -35,6 +37,34 @@ public class GameConsults {
         });
                 
         return items;
+    }
+    
+    public static ArrayList<Juego> getNewGameData(int idGame) {
+        Query q = ConectionBBDD.getEm().createNamedQuery("Juego.findByTitulo");
+        q.setParameter("titulo", idGame);
+        return (ArrayList<Juego>) q.getResultList();
+
+    }
+    
+    
+    public static void insercion() {
+        //insercion
+        EntityManager em = ConectionBBDD.getEm();
+        
+        Query insercion = em.createNativeQuery("insert into juego (titulo, descripcion, imagen, fecha, numdescargas, precio, idusuario) values (:titulo, :descripcion, :imagen, :fecha, :numdescargas, :precio, :idusuario);");
+        em.getTransaction().begin();
+        
+        insercion.setParameter("titulo", gameRegisterInfo.getTitle());
+        insercion.setParameter("descripcion", gameRegisterInfo.getDescription());
+        insercion.setParameter("imagen", gameRegisterInfo.getImage());
+        insercion.setParameter("fecha", gameRegisterInfo.getLaunchDate());
+        insercion.setParameter("numdescargas", 0);//al crearse siempre es 0
+        insercion.setParameter("precio", gameRegisterInfo.getPrice());
+        insercion.setParameter("idusuario",1);// falta   <-----------------------------------------------------    
+        
+        insercion.executeUpdate();
+        em.clear();
+        em.getTransaction().commit();
     }
 
 }
