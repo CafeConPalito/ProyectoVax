@@ -6,9 +6,8 @@ package com.cafeconpalito.consultDB;
 
 import com.cafeconpalito.entities.Usuario;
 import com.cafeconpalito.staticElements.ConectionBBDD;
-import com.cafeconpalito.userLogedData.UserLogedInfo;
 import java.util.ArrayList;
-import java.util.Collection;
+import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 /**
@@ -40,15 +39,37 @@ public class ForgetConsults {
         return false;
     }
 
-    public static String getPWD(String email, String alias) {
-        Query q = ConectionBBDD.getEm().createNamedQuery("Usuario.userAndAliasCorrect");
-        q.setParameter("alias", alias);
+   
+
+    public static void updatePWD(String email,String pass) {
+        EntityManager em = ConectionBBDD.getEm();
+        
+
+        //Sentencia a cañon, no me pilla el cambio
+        Query insercion = em.createNativeQuery("UPDATE usuario SET pwd = :pass WHERE idusuario=:iduser");
+        em.getTransaction().begin();
+        int id= getIdUser(email);
+        System.out.println("Obtengo Id" +id);
+
+        insercion.setParameter("pass", pass);
+        insercion.setParameter("iduser", id);
+
+        System.out.println("No puedo hacer update");
+        insercion.executeUpdate();
+        em.clear();
+        em.getTransaction().commit();
+
+    }
+    
+     private static int getIdUser(String email) {
+         Query q = ConectionBBDD.getEm().createNamedQuery("Usuario.findByEmail");
         q.setParameter("email", email);
         ArrayList<Usuario> l = (ArrayList<Usuario>) q.getResultList();
+
         for (Usuario usuario : l) {
-            return usuario.getPwd();
+            return usuario.getIdusuario();
         }
-        return null;
+        return 0;
 
     }
 
