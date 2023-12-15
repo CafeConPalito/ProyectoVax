@@ -15,19 +15,49 @@ public class UserLogedInfo {
     private static boolean userIsLoged = false;
     private static boolean userIsDeveloper = false; //Rol
     private static int UserID; //idusuario en BBDD
-    private static String Username;
     private static String Alias;
     private static String UsuarioUrlImagen;
+    private static int Region;
     
     //Creo que no hacen falta pero por si las moscas ;)
     private static String Email;
     private static String Nombre;
     private static String Apellido1;
     private static String Apellido2;
-    private static String Region;
     private static Date FechaNacimiento;
 
+   public static void constructUser(int UserID, String Alias, String UsuarioUrlImagen, int Region, String Email, String Nombre, String Apellido1, String Apellido2, Date FechaNacimiento, boolean rol) {
+        UserLogedInfo.UserID = UserID;
+        UserLogedInfo.Alias = Alias;
+        UserLogedInfo.UsuarioUrlImagen = UsuarioUrlImagen;
+        UserLogedInfo.Region = Region;
+        UserLogedInfo.Email = Email;
+        UserLogedInfo.Nombre = Nombre;
+        UserLogedInfo.Apellido1 = Apellido1;
+        UserLogedInfo.Apellido2 = Apellido2;
+        UserLogedInfo.FechaNacimiento = FechaNacimiento;
+        userIsDeveloper=rol;
+        userIsLoged=true;
+    }
+
+  
     
+    
+    public static void logoutUser(){
+        userIsLoged=false;
+        userIsDeveloper = false;
+        UserID=0;
+        Alias="";
+        UsuarioUrlImagen="";
+        Region=0;
+        
+        //Cosas que no hace falta
+        Email="";
+        Nombre="";
+        Apellido1="";
+        Apellido2="";
+        FechaNacimiento=null;
+    }
     
     public static boolean isUserIsLoged() {
         return userIsLoged;
@@ -52,15 +82,7 @@ public class UserLogedInfo {
     public static void setUserID(int UserID) {
         UserLogedInfo.UserID = UserID;
     }
-
-    public static String getUsername() {
-        return Username;
-    }
-
-    public static void setUsername(String Username) {
-        UserLogedInfo.Username = Username;
-    }
-
+    
     public static String getAlias() {
         return Alias;
     }
@@ -109,11 +131,11 @@ public class UserLogedInfo {
         UserLogedInfo.Apellido2 = Apellido2;
     }
 
-    public static String getRegion() {
+    public static int getRegion() {
         return Region;
     }
 
-    public static void setRegion(String Region) {
+    public static void setRegion(int Region) {
         UserLogedInfo.Region = Region;
     }
 

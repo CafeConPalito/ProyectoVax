@@ -38,7 +38,11 @@ import javax.persistence.TemporalType;
     @NamedQuery(name = "Usuario.findByFechanac", query = "SELECT u FROM Usuario u WHERE u.fechanac = :fechanac"),
     @NamedQuery(name = "Usuario.findByImagen", query = "SELECT u FROM Usuario u WHERE u.imagen = :imagen"),
     @NamedQuery(name = "Usuario.findByRegion", query = "SELECT u FROM Usuario u WHERE u.region = :region"),
-    @NamedQuery(name = "Usuario.findByRol", query = "SELECT u FROM Usuario u WHERE u.rol = :rol")})
+    @NamedQuery(name = "Usuario.findByRol", query = "SELECT u FROM Usuario u WHERE u.rol = :rol"),
+    @NamedQuery(name = "Usuario.userAndPwdCorrect", query = "SELECT u FROM Usuario u WHERE u.pwd = :pwd and u.email= :email"),
+    @NamedQuery(name = "Usuario.userAndAliasCorrect", query = "SELECT u FROM Usuario u WHERE u.alias = :alias and u.email= :email")
+
+})
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -208,5 +212,5 @@ public class Usuario implements Serializable {
     public String toString() {
         return "com.cafeconpalito.entitiDB.Usuario[ idusuario=" + idusuario + " ]";
     }
-    
+
 }

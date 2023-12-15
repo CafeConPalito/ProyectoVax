@@ -5,11 +5,17 @@
 package com.cafeconpalito.controllers;
 
 import com.cafeconpalito.consultDB.StoreConsults;
+import com.cafeconpalito.proyectovax.App;
+import com.cafeconpalito.staticElements.MainView;
+import com.cafeconpalito.userLogedData.UserLogedInfo;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 
@@ -27,7 +33,9 @@ public class StoreController implements Initializable {
     @FXML
     private TextField nameTextField;
     @FXML
-    private TextField genreTextField;
+    private ComboBox<String> priceComboBox;
+    @FXML
+    private Button insertGameStoreButton;
 
     /**
      * Initializes the controller class.
@@ -36,29 +44,82 @@ public class StoreController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
         try {
-            
+
             MyTilePane.getChildren().clear();
             MyTilePane.getChildren().addAll(StoreConsults.getStoreGames());
-            
+            priceComboBox.getItems().addAll("<Select>", "Free to Play", "-10$", "-20$");
+
+            if (UserLogedInfo.isUserIsDeveloper()) {
+                insertGameStoreButton.setVisible(true);
+            } else {
+                insertGameStoreButton.setVisible(false);
+            }
+
         } catch (IOException ex) {
             System.err.println("ERROR AL CARGAR LOS JUEGOS");
         }
     }
 
     @FXML
-    private void nameEntryInfo(KeyEvent event) {
-        
+    private void nameEntryInfo(KeyEvent event) throws IOException {
+
         MyTilePane.getChildren().clear();
-        MyTilePane.getChildren().addAll(StoreConsults.filterStoreGames(nameTextField.getText(), genreTextField.getText(),""));
+        int auxprecio = 999;
+        switch (priceComboBox.getSelectionModel().getSelectedIndex()) {
+            case 0:
+              
+                auxprecio = 999;
+                break;
+            case 1:
+              
+                auxprecio = 0;
+                break;
+            case 2:
+              
+                auxprecio = 10;
+                break;
+            case 3:
         
+                auxprecio = 20;
+                break;
+           
+        }
+
+        MyTilePane.getChildren().addAll(StoreConsults.filterStoreGames(nameTextField.getText(), auxprecio));
+
     }
 
     @FXML
-    private void genreEntryInfo(KeyEvent event) {
-        
-        MyTilePane.getChildren().clear();
-        MyTilePane.getChildren().addAll(StoreConsults.filterStoreGames(nameTextField.getText(), genreTextField.getText(),""));
-        
+    private void insertGameStore(ActionEvent event) throws IOException {
+        MainView.main.setCenter(App.loadFXML("insertGame"));
     }
 
+    @FXML
+    private void PriceSelectItem(ActionEvent event) throws IOException {
+
+        MyTilePane.getChildren().clear();
+        int auxprecio = 999;
+        switch (priceComboBox.getSelectionModel().getSelectedIndex()) {
+            case 0:
+                
+                auxprecio = 999;
+                break;
+            case 1:
+               
+                auxprecio = 0;
+                break;
+            case 2:
+                
+                auxprecio = 10;
+                break;
+            case 3:
+               
+                auxprecio = 20;
+                break;
+           
+        }
+
+        MyTilePane.getChildren().addAll(StoreConsults.filterStoreGames(nameTextField.getText(), auxprecio));
+
+    }
 }

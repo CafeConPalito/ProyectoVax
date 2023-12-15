@@ -15,4 +15,6 @@ public class MainView {
     //Hago Publico el Main para que todos puedan acceder a el y modificarlo ;)
     public static BorderPane main;
     
+
+    
 }
