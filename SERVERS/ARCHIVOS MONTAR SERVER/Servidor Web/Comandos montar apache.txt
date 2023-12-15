@@ -1,0 +1,28 @@
+sudo apt update
+
+sudo apt install apache2
+
+sudo ufw disable
+
+sudo mkdir /var/www/vax
+
+sudo chmod -R 755 /var/www/vax
+
+sudo nano /etc/apache2/sites-available/vax.conf
+
+<VirtualHost *:80>
+    ServerAdmin vax@vax
+    ServerName vax
+    ServerAlias www.vax
+    DocumentRoot /var/www/vax
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+
+sudo a2ensite vax.conf
+
+sudo a2dissite 000-default.conf
+
+sudo apache2ctl configtest
+
+sudo systemctl restart apache2
