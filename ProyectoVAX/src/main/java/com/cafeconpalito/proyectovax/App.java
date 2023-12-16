@@ -1,5 +1,6 @@
 package com.cafeconpalito.proyectovax;
 
+import com.cafeconpalito.staticElements.ConectionBBDD;
 import com.cafeconpalito.staticElements.MainView;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -10,9 +11,10 @@ import java.io.IOException;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.StageStyle;
+import org.hibernate.query.criteria.internal.expression.ConcatExpression;
 
 /**
- * JavaFX App
+ * @author CafeConPalito
  */
 public class App extends Application {
 
@@ -102,10 +104,11 @@ public class App extends Application {
 
     @Override
     public void stop() throws Exception {
-        // aquí se ejecuta el código después de cerrar la aplicación. Por ejemplo CERRAR CONEXIÓN BASE DE DATOS
-
         // si quiero salir en otro punto del código y que se ejecute el stop() HAY QUE USAR el :
         // Platform.exit();
+        
+        //Cerrando las conexiones a la BBDD al salir de la aplicacion
+        ConectionBBDD.close();
         
     }
 

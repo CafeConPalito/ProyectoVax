@@ -9,7 +9,7 @@ import java.io.File;
 
 /**
  *
- * @author damt207
+ * @author CafeConPalito
  */
 public class PruebasCliente {
 
@@ -25,15 +25,18 @@ public class PruebasCliente {
         File f = new File("daniel.zip");
         
         String path = f.getAbsolutePath();
-        String alias = "Pepe";
+        String alias = "pajaro volando";
               
+        //System.out.println(alias);
+        //System.out.println(alias.replaceAll("\\s+",""));
+        
         //SocketImagUser siu = new SocketImagUser(alias, path);
         //SocketImagGame sig = new SocketImagGame(alias, path);
         //SocketZipGameUpload szgu = new SocketZipGameUpload(alias, path);
-        //SocketZipGameDownload szgd = new SocketZipGameDownload("daniel");
+        //SocketZipGameDownload szgd = new SocketZipGameDownload("da niel");
         
-        RunGame r = new RunGame("daniel");
-        r.runGame();
+        //RunGame r = new RunGame("daniel");
+        //r.runGame();
         
     }
     

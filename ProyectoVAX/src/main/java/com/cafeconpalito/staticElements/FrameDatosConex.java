@@ -8,7 +8,7 @@ import com.cafeconpalito.proyectovax.EntryPoint;
 
 /**
  *
- * @author produccion
+ * @author CafeConPalito
  */
 public class FrameDatosConex extends javax.swing.JFrame {
 

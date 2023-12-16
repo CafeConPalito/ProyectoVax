@@ -2,22 +2,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 package com.cafeconpalito.staticElements;
 
 import java.net.URL;
 
 /**
- *
+ * @author CafeConPalito
  * @author Albano Díez de Paulino
  */
 public class CheckURLImg {
 
-     /**
-     * Comprobar la URL de una imagen si es correcta deja continuar
+    /**
+     * Comprobar la URL de una imagen
      *
      * @param URLName
-     * @return
+     * @return True si la imagen es accesible, False si no lo es
      */
     public static boolean exists(String URLName) {
 
@@ -30,11 +29,13 @@ public class CheckURLImg {
                 return false;
             }
         }
-        
-        return false;
 
-        // PRUEBAS
-        /*
+        return false;
+    }
+}
+
+// PRUEBAS
+/*
         InputStream input = null;
         try {
 
@@ -51,7 +52,7 @@ public class CheckURLImg {
             }
 
         }
-         */
+ */
  /*
         Image image = new Image(urlImage);
         if (image.isError()) {
@@ -60,7 +61,7 @@ public class CheckURLImg {
         } else {
             System.out.println("imagen ok");
         }
-         */
+ */
  /*
         boolean result = false;
         try {
@@ -70,6 +71,4 @@ public class CheckURLImg {
             System.out.println("Image doesnot exits :");
         }
         return result;
-         */
-    }
-}
+ */
