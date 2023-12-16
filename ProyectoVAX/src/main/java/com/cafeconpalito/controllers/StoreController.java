@@ -24,7 +24,7 @@ import javafx.scene.layout.TilePane;
 /**
  * FXML Controller class
  *
- * @author produccion
+ * @author CafeConPalito
  */
 public class StoreController implements Initializable {
 

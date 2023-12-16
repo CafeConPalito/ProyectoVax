@@ -11,7 +11,6 @@ import java.io.IOException;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.StageStyle;
-import org.hibernate.query.criteria.internal.expression.ConcatExpression;
 
 /**
  * @author CafeConPalito

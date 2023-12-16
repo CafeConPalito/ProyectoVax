@@ -4,7 +4,6 @@
  */
 package com.cafeconpalito.socket;
 
-import com.cafeconpalito.staticElements.RunGame;
 import java.io.File;
 
 /**

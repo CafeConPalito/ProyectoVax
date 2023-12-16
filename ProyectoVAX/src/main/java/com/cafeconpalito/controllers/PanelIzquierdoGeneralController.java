@@ -23,7 +23,7 @@ import javafx.scene.image.ImageView;
 /**
  * FXML Controller class
  *
- * @author produccion
+ * @author CafeConPalito
  */
 public class PanelIzquierdoGeneralController implements Initializable {
 

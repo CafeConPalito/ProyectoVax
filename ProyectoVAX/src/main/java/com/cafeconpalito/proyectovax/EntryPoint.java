@@ -35,7 +35,7 @@ public class EntryPoint {
                 ConectionBBDD.createCustomEM(serverIP, user, pass);
                 conexCorrecta=false;
             } catch (Exception e) {
-                System.out.println("peto la conexion");
+                System.out.println("Error al conectar con la BBDD");
                 FrameDatosConex fdc = new FrameDatosConex();
                 fdc.setVisible(true);
                 while (fdc.esperandoIP) {                    

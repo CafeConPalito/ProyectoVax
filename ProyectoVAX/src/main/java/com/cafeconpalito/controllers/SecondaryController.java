@@ -20,6 +20,14 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
 
+//PARA BORRAR
+
+
+/**
+ * FXML Controller class
+ *
+ * @author CafeConPalito
+ */
 public class SecondaryController implements Initializable {
 
     @FXML

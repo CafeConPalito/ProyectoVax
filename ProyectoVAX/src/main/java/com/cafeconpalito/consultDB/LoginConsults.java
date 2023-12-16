@@ -8,7 +8,6 @@ import com.cafeconpalito.entities.Usuario;
 import com.cafeconpalito.staticElements.ConectionBBDD;
 import com.cafeconpalito.userLogedData.UserLogedInfo;
 import java.util.ArrayList;
-import java.util.Collection;
 import javax.persistence.Query;
 
 /**

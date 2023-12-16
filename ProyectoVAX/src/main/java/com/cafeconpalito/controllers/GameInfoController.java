@@ -22,7 +22,7 @@ import javafx.scene.layout.HBox;
 /**
  * FXML Controller class
  *
- * @author produccion
+ * @author CafeConPalito
  */
 public class GameInfoController extends HBox {
 

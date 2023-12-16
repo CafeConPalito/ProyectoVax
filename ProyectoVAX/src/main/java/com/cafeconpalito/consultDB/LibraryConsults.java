@@ -6,24 +6,21 @@ package com.cafeconpalito.consultDB;
 
 import com.cafeconpalito.controllers.GameInfoController;
 import com.cafeconpalito.entities.Biblioteca;
-import com.cafeconpalito.entities.Genero;
 import com.cafeconpalito.staticElements.ConectionBBDD;
 import com.cafeconpalito.entities.Juego;
 import com.cafeconpalito.proyectovax.EntryPoint;
 import com.cafeconpalito.staticElements.CheckURLImg;
 import com.cafeconpalito.userLogedData.UserLogedInfo;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
-import javafx.scene.image.Image;
 import javax.persistence.Query;
 
 /**
  *
- * @author produccion
+ * @author CafeConPalito
  */
 public class LibraryConsults {
 

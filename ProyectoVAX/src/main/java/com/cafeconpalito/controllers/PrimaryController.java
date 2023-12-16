@@ -9,6 +9,11 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+/**
+ * FXML Controller class
+ *
+ * @author CafeConPalito
+ */
 public class PrimaryController {
 
     private double xMouse, yMouse;

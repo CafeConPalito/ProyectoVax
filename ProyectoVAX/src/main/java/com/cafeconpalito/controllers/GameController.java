@@ -33,7 +33,7 @@ import javax.persistence.Query;
 /**
  * FXML Controller class
  *
- * @author produccion
+ * @author CafeConPalito
  */
 public class GameController extends HBox {
 
