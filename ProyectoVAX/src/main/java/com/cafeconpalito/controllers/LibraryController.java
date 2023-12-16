@@ -33,7 +33,8 @@ public class LibraryController implements Initializable {
     private TilePane MyTilePane;
 
     /**
-     * Initializes the controller class.
+     * Initializes the controller class
+     * Limpia el panel central y carga instancias de los juegos del usuario
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -46,6 +47,11 @@ public class LibraryController implements Initializable {
         }
     }
 
+    /**
+     * Accion al esbribir en NameTextField que filtra por nombre y precio, al introducir caracteres
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void nameEntryInfo(KeyEvent event) throws IOException {
         MyTilePane.getChildren().clear();
@@ -73,6 +79,11 @@ public class LibraryController implements Initializable {
         MyTilePane.getChildren().addAll(LibraryConsults.filterLibraryGames(nameTextField.getText(), auxprecio));
     }
 
+    /**
+     * Accion al seleccionar un precio en el Combo Box priceComboBox que filtra por precio y nombre, al modificar su estado
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void PriceSelectItem(ActionEvent event) throws IOException {
         MyTilePane.getChildren().clear();

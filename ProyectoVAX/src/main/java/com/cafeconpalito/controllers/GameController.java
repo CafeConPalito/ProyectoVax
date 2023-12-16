@@ -37,6 +37,8 @@ import javax.persistence.Query;
  */
 public class GameController extends HBox {
 
+    private int idGame; // ID del juego rescatado de la DB
+
     @FXML
     private HBox BackGround;
     @FXML
@@ -45,9 +47,6 @@ public class GameController extends HBox {
     private Label gameTitle;
     @FXML
     private TextFlow gameDescription;
-
-    private int idGame;
-
     @FXML
     private Label showGenre;
     @FXML
@@ -65,6 +64,7 @@ public class GameController extends HBox {
 
     /**
      * Constructor sin parametros Crea una instancia de Game
+     * NO SE USA EN EL PROYECTO
      */
     public GameController() throws IOException {
 
@@ -85,7 +85,12 @@ public class GameController extends HBox {
     }
 
     /**
-     * Constructor con los parametros del juego Crea una instancia de Game
+     * Constructor con los parametros del ID del juego Crea una instancia del
+     * GameController
+     * rescatando de la base de datos toda la informacion que necesita
+     *
+     * @param idGame id del juego
+     * @throws java.io.IOException
      */
     public GameController(int idGame) throws IOException {
 
@@ -146,19 +151,33 @@ public class GameController extends HBox {
 
     }
 
+    /**
+     * Accion del boton de cancel, te devuelve a la vista Store
+     *
+     * @param event
+     * @throws IOException
+     */
     @FXML
     private void cancelEvent(ActionEvent event) throws IOException {
         MainView.main.setCenter(App.loadFXML("store"));
     }
 
+    /**
+     * Accion del boton download, añadel el juego a la libreria en la DB par el
+     * usuario y cambia la bista a la libreria
+     *
+     * @param event
+     * @throws IOException
+     */
     @FXML
     private void downloadEvent(ActionEvent event) throws IOException {
         downloadInsert();
         MainView.main.setCenter(App.loadFXML("library"));
-        EntityManager em = ConectionBBDD.getEm();
-
     }
 
+    /**
+     * Realiza la insercion en la DB del juego y el usuario en la biblioteca
+     */
     private void downloadInsert() {
         EntityManager em = ConectionBBDD.getEm();
 

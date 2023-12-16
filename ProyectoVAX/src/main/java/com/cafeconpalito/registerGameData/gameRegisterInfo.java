@@ -22,7 +22,10 @@ public class gameRegisterInfo {
     private static Integer acb;
     private static Integer usk;
     
-    
+    /**
+     * Pone todos los datos del registro de un Juego a nulo,
+     * Usuado al terminar un registro
+     */
     public static void resetGameInfo(){
         
         title=null;

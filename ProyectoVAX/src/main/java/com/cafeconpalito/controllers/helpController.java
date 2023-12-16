@@ -17,7 +17,7 @@ import javafx.scene.control.TextField;
 /**
  * FXML Controller class
  *
- * @author carra
+ * @author TerciodeMarte
  */
 public class helpController implements Initializable {
 

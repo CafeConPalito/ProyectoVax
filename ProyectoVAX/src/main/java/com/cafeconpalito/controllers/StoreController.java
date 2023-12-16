@@ -61,6 +61,16 @@ public class StoreController implements Initializable {
     }
 
     @FXML
+    private void insertGameStore(ActionEvent event) throws IOException {
+        MainView.main.setCenter(App.loadFXML("insertGame"));
+    }
+    
+    /**
+     * Accion al esbribir en NameTextField que filtra por nombre y precio, al introducir caracteres
+     * @param event
+     * @throws IOException 
+     */
+    @FXML
     private void nameEntryInfo(KeyEvent event) throws IOException {
 
         MyTilePane.getChildren().clear();
@@ -89,11 +99,12 @@ public class StoreController implements Initializable {
 
     }
 
-    @FXML
-    private void insertGameStore(ActionEvent event) throws IOException {
-        MainView.main.setCenter(App.loadFXML("insertGame"));
-    }
-
+    
+    /**
+     * Accion al seleccionar un precio en el Combo Box priceComboBox que filtra por precio y nombre, al modificar su estado
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void PriceSelectItem(ActionEvent event) throws IOException {
 

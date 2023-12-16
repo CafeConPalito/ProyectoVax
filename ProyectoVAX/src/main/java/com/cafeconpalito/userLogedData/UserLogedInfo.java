@@ -8,25 +8,36 @@ import java.util.Date;
 
 /**
  *
- * @author produccion
+ * @author CafeConPalito
  */
 public class UserLogedInfo {
-    
+
     private static boolean userIsLoged = false;
     private static boolean userIsDeveloper = false; //Rol
     private static int UserID; //idusuario en BBDD
     private static String Alias;
     private static String UsuarioUrlImagen;
     private static int Region;
-    
-    //Creo que no hacen falta pero por si las moscas ;)
     private static String Email;
     private static String Nombre;
     private static String Apellido1;
     private static String Apellido2;
     private static Date FechaNacimiento;
 
-   public static void constructUser(int UserID, String Alias, String UsuarioUrlImagen, int Region, String Email, String Nombre, String Apellido1, String Apellido2, Date FechaNacimiento, boolean rol) {
+    /**
+     * Setea toda la informacion del usuario recibiendo la informacion por parametros
+     * @param UserID
+     * @param Alias
+     * @param UsuarioUrlImagen
+     * @param Region
+     * @param Email
+     * @param Nombre
+     * @param Apellido1
+     * @param Apellido2
+     * @param FechaNacimiento
+     * @param rol 
+     */
+    public static void constructUser(int UserID, String Alias, String UsuarioUrlImagen, int Region, String Email, String Nombre, String Apellido1, String Apellido2, Date FechaNacimiento, boolean rol) {
         UserLogedInfo.UserID = UserID;
         UserLogedInfo.Alias = Alias;
         UserLogedInfo.UsuarioUrlImagen = UsuarioUrlImagen;
@@ -36,29 +47,27 @@ public class UserLogedInfo {
         UserLogedInfo.Apellido1 = Apellido1;
         UserLogedInfo.Apellido2 = Apellido2;
         UserLogedInfo.FechaNacimiento = FechaNacimiento;
-        userIsDeveloper=rol;
-        userIsLoged=true;
+        userIsDeveloper = rol;
+        userIsLoged = true;
     }
 
-  
-    
-    
-    public static void logoutUser(){
-        userIsLoged=false;
+    /**
+     * Vuelve a poner los datos del usuario como al inicio
+     */
+    public static void logoutUser() {
+        userIsLoged = false;
         userIsDeveloper = false;
-        UserID=0;
-        Alias="";
-        UsuarioUrlImagen="";
-        Region=0;
-        
-        //Cosas que no hace falta
-        Email="";
-        Nombre="";
-        Apellido1="";
-        Apellido2="";
-        FechaNacimiento=null;
+        UserID = 0;
+        Alias = "";
+        UsuarioUrlImagen = "";
+        Region = 0;
+        Email = "";
+        Nombre = "";
+        Apellido1 = "";
+        Apellido2 = "";
+        FechaNacimiento = null;
     }
-    
+
     public static boolean isUserIsLoged() {
         return userIsLoged;
     }
@@ -82,7 +91,7 @@ public class UserLogedInfo {
     public static void setUserID(int UserID) {
         UserLogedInfo.UserID = UserID;
     }
-    
+
     public static String getAlias() {
         return Alias;
     }
@@ -147,9 +156,4 @@ public class UserLogedInfo {
         UserLogedInfo.FechaNacimiento = FechaNacimiento;
     }
 
-    
-    
-    
-    
-    
 }
