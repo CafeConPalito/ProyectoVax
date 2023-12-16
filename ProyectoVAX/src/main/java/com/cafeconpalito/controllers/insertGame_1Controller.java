@@ -7,6 +7,7 @@ package com.cafeconpalito.controllers;
 import com.cafeconpalito.consultDB.GameConsults;
 import com.cafeconpalito.consultDB.RegisterConsults;
 import com.cafeconpalito.consultDB.RegulationConsults;
+import com.cafeconpalito.entities.Juego;
 import com.cafeconpalito.proyectovax.App;
 import com.cafeconpalito.registerGameData.gameRegisterInfo;
 import com.cafeconpalito.socket.SocketImagGame;
@@ -15,6 +16,7 @@ import com.cafeconpalito.staticElements.Colors;
 import com.cafeconpalito.staticElements.MainView;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -203,16 +205,25 @@ public class insertGame_1Controller implements Initializable {
             
             System.out.println("Registrando juego");
             
+            int idJuego=0;
+            
+            ArrayList <Juego> aj= GameConsults.getNewGameid(gameRegisterInfo.getTitle());
+            
+            for (Juego j : aj) {
+                idJuego= j.getIdjuego();
+            }
+            
+            
             //insertar imagen
             SocketImagGame sig = new SocketImagGame(gameRegisterInfo.getTitle(), gameRegisterInfo.getImage());
           
             //insercion de la tabla regulacion (conseguir id de juego creado y 
                 //realizar 5 inserciones con el valor de las variables que almacenan pegi... etc + la id)
-                RegulationConsults.insercion(pegiNum, 888);//<--------------------
-                RegulationConsults.insercion(acbNum, 888);
-                RegulationConsults.insercion(ceroNum, 888);
-                RegulationConsults.insercion(esrbNum, 888);
-                RegulationConsults.insercion(uskNum, 888);
+                RegulationConsults.insercion(pegiNum, idJuego);//<--------------------
+                RegulationConsults.insercion(acbNum, idJuego);
+                RegulationConsults.insercion(ceroNum, idJuego);
+                RegulationConsults.insercion(esrbNum, idJuego);
+                RegulationConsults.insercion(uskNum, idJuego);
             
 
             gameRegisterInfo.resetGameInfo();

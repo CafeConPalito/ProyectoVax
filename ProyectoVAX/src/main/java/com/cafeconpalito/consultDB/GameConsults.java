@@ -39,14 +39,6 @@ public class GameConsults {
         return items;
     }
     
-    public static ArrayList<Juego> getNewGameData(int idGame) {
-        Query q = ConectionBBDD.getEm().createNamedQuery("Juego.findByTitulo");
-        q.setParameter("titulo", idGame);
-        return (ArrayList<Juego>) q.getResultList();
-
-    }
-    
-    
     public static void insercion() {
         //insercion
         EntityManager em = ConectionBBDD.getEm();
@@ -65,6 +57,12 @@ public class GameConsults {
         insercion.executeUpdate();
         em.clear();
         em.getTransaction().commit();
+    }
+    public static ArrayList<Juego> getNewGameid(String tittle) {
+        Query q = ConectionBBDD.getEm().createNamedQuery("Juego.findByTitulo");
+        q.setParameter("titulo", tittle);
+        return (ArrayList<Juego>) q.getResultList();
+
     }
 
 }
