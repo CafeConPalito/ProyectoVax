@@ -5,6 +5,7 @@
 package com.cafeconpalito.controllers;
 
 import com.cafeconpalito.proyectovax.App;
+import com.cafeconpalito.staticElements.ConectionBBDD;
 import com.cafeconpalito.staticElements.MainView;
 import java.io.IOException;
 import java.net.URL;
@@ -34,6 +35,10 @@ public class helpController implements Initializable {
     
     @FXML
     private void loadUrl(ActionEvent event) {
+        //llamar al metodo de BBDD para actualizar la URL
+        //Toca pasarle una IP una URL y un User;
+        //ConectionBBDD.createCustomEM(newIP, user, pass);
+        //QUEDA LIMPIAR ESTO PARA QUE Funcione bien!
     }
 
     @FXML

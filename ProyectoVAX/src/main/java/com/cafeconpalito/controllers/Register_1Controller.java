@@ -64,6 +64,8 @@ public class Register_1Controller implements Initializable {
 
     /**
      * Initializes the controller class.
+     * Carga la informacion en el combo Box roleComboBox.
+     * Carga los datos de la persistencia el registro si los hubiera
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -95,16 +97,25 @@ public class Register_1Controller implements Initializable {
         
     }
 
+    /**
+     * Accion del Boton (Back).
+     * Guarda la informacion en la persistecia del registro si la ubiera
+     * Cambia la vista a registerController 
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void backBtn(MouseEvent event) throws IOException {
+        
+        //PARA BORRAR??
         //incluir persistencia de datos aqui ******** aunque  no se haya relellenado todo
-
         saveData();
-
         MainView.main.setCenter(App.loadFXML("register"));
-
     }
     
+    /**
+     * Guarda toda la informacion de los campos completados en la persistencia de Registro.
+     */
     private void saveData(){
         if (nicknametexfield.getText() != null) {
             userRegisterInfo.setNickname(nicknametexfield.getText());
@@ -131,11 +142,23 @@ public class Register_1Controller implements Initializable {
         
     }
 
+    /**
+     * Accion de la imagen del usuario.
+     * Permite seleccionar una imagen para cargar al usuario
+     * Lanza el metodo FileChooser.
+     * @param event 
+     */
     @FXML
     private void imageClicked(MouseEvent event) {
         launchFileChooser();
     }
 
+    /**
+     * Accion del boton Select.
+     * Cambia el color del label a su estado original.
+     * Lanza el metodo FileChooser.
+     * @param event 
+     */
     @FXML
     private void SelectImage(ActionEvent event) {
         imageLabel.setTextFill(Colors.textColor); 
@@ -143,8 +166,13 @@ public class Register_1Controller implements Initializable {
         
     }
 
+    //Variable que controla si esta abierta ya una ventana del FileChooser
     private boolean fileChooserOpened = false;
 
+    /**
+     * Lanza una ventana de Seleccion de Fichero.
+     * Permitiendo al usuario cargar una imagen de perfil.
+     */
     private void launchFileChooser() {
         
         if (!fileChooserOpened) {
@@ -152,10 +180,11 @@ public class Register_1Controller implements Initializable {
             fileChooserOpened = true;
           
             FileChooser fch = new FileChooser();
+            //FALTA AÑADIR LAS EXTENCIONES PERMITIDAS.
+            
+            
             File selected = fch.showOpenDialog(null);
-            
-            
-            
+   
             if (selected != null) {
                 imagetextfield.setText(selected.getAbsolutePath());
                 defaultImage.setImage(new Image("file:" + selected.getAbsolutePath()));
@@ -208,26 +237,46 @@ public class Register_1Controller implements Initializable {
         }
     }
 
+    /**
+     * Cambia el color del label a su estado original
+     * @param event 
+     */
     @FXML
     private void nickNameFocused(MouseEvent event) {
         nicknameLabel.setTextFill(Colors.textColor);
     }
 
+    /**
+     * Cambia el color del label a su estado original
+     * @param event 
+     */
     @FXML
     private void passwordFocused(MouseEvent event) {
         passwordLabel.setTextFill(Colors.textColor);
     }
 
+    /**
+     * Cambia el color del label a su estado original
+     * @param event 
+     */
     @FXML
     private void imageTextfieldFocused(MouseEvent event) {
         imageLabel.setTextFill(Colors.textColor);
     }
 
+    /**
+     * Cambia el color del label a su estado original
+     * @param event 
+     */
     @FXML
     private void roleComboBoxFocused(MouseEvent event) {
         roleLabel.setTextFill(Colors.textColor);
     }
 
+    /**
+     * Cambia el color del label a su estado original
+     * @param event 
+     */
     @FXML
     private void rpasswordFocused(MouseEvent event) {
         rPaswordLabel.setTextFill(Colors.textColor);
