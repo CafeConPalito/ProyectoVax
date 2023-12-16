@@ -24,11 +24,16 @@ import javax.persistence.Query;
  */
 public class LibraryConsults {
 
-    private static ArrayList<GameInfoController> storeGames = new ArrayList<>();
+    private static ArrayList<GameInfoController> libraryGames = new ArrayList<>();
 
-    public static ArrayList<GameInfoController> getStoreGames() throws IOException {
+    /**
+     * Consulta en la base de datos la informacion de los juegos que tiene un usuario
+     * @return devuelve un ArrayList de GameInfoController de todos los juegos del usuario
+     * @throws IOException 
+     */
+    public static ArrayList<GameInfoController> getLibraryGames() throws IOException {
 
-        storeGames.clear();
+        libraryGames.clear();
 
         Query q = ConectionBBDD.getEm().createNamedQuery("Juego.findAll");
 
@@ -40,12 +45,12 @@ public class LibraryConsults {
                     if (CheckURLImg.exists(URL)) {
                         GameInfoController cg = new GameInfoController(j.getIdjuego(), j.getTitulo(), j.getNumdescargas() + "", j.getPrecio() + "", URL);
                         cg.getPurchaseButton().setText("Download");
-                        storeGames.add(cg);
+                        libraryGames.add(cg);
                         break;
                     } else {
                         GameInfoController cg = new GameInfoController(j.getIdjuego(), j.getTitulo(), j.getNumdescargas() + "", j.getPrecio() + "", j.getImagen());
                         cg.getPurchaseButton().setText("Download");
-                        storeGames.add(cg);
+                        libraryGames.add(cg);
                         break;
                     }
                 }
@@ -53,13 +58,20 @@ public class LibraryConsults {
             }
 
         }
-        Collections.shuffle(storeGames);
-        return storeGames;
+        Collections.shuffle(libraryGames);
+        return libraryGames;
     }
 
-    public static ArrayList<GameInfoController> filterStoreGames(String gameName, int gamePrice) throws IOException {
+    /**
+     * Filtra el array list de los juegos que tiene el usuario y un array list en funcion de los filtros
+     * @param gameName filtrado por nombre
+     * @param gamePrice filtrado por precio
+     * @return devuelve un ArrayList de GameInfoController de los juegos que cumplen los requisitos.
+     * @throws IOException 
+     */
+    public static ArrayList<GameInfoController> filterLibraryGames(String gameName, int gamePrice) throws IOException {
 
-        storeGames.clear();
+        libraryGames.clear();
 
         Query q = ConectionBBDD.getEm().createNamedQuery("Juego.findAll");
 
@@ -82,19 +94,25 @@ public class LibraryConsults {
             if (CheckURLImg.exists(URL)) {
                 GameInfoController cg = new GameInfoController(j.getIdjuego(), j.getTitulo(), j.getNumdescargas() + "", j.getPrecio() + "", URL);
                 cg.getPurchaseButton().setText("Download");
-                storeGames.add(cg);
+                libraryGames.add(cg);
             } else {
                 GameInfoController cg = new GameInfoController(j.getIdjuego(), j.getTitulo(), j.getNumdescargas() + "", j.getPrecio() + "", j.getImagen());
                 cg.getPurchaseButton().setText("Download");
-                storeGames.add(cg);
+                libraryGames.add(cg);
             }
 
         }
-        Collections.shuffle(storeGames);
-        return storeGames;
+        Collections.shuffle(libraryGames);
+        return libraryGames;
 
     }
-
+    
+    /**
+     * Aplica el filtrado segun los datos introducidos
+     * @param col lista que se quiere filtrar
+     * @param gameName nombre del juego
+     * @param gamePrice precio del juego
+     */
     private static void filtro(Collection<Juego> col, String gameName, int gamePrice) {
         Iterator<Juego> it = col.iterator();
         while (it.hasNext()) {

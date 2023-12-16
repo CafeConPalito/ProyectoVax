@@ -5,7 +5,6 @@
 package com.cafeconpalito.controllers;
 
 import com.cafeconpalito.consultDB.LibraryConsults;
-import com.cafeconpalito.consultDB.StoreConsults;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -40,7 +39,7 @@ public class LibraryController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         try {
             MyTilePane.getChildren().clear();
-            MyTilePane.getChildren().addAll(LibraryConsults.getStoreGames());
+            MyTilePane.getChildren().addAll(LibraryConsults.getLibraryGames());
             priceComboBox.getItems().addAll("<Select>", "Free to Play", "-10$", "-20$");
         } catch (IOException ex) {
             Logger.getLogger(LibraryController.class.getName()).log(Level.SEVERE, null, ex);
@@ -71,7 +70,7 @@ public class LibraryController implements Initializable {
 
         }
 
-        MyTilePane.getChildren().addAll(LibraryConsults.filterStoreGames(nameTextField.getText(), auxprecio));
+        MyTilePane.getChildren().addAll(LibraryConsults.filterLibraryGames(nameTextField.getText(), auxprecio));
     }
 
     @FXML
@@ -98,7 +97,7 @@ public class LibraryController implements Initializable {
 
         }
 
-        MyTilePane.getChildren().addAll(LibraryConsults.filterStoreGames(nameTextField.getText(), auxprecio));
+        MyTilePane.getChildren().addAll(LibraryConsults.filterLibraryGames(nameTextField.getText(), auxprecio));
     }
 
 }

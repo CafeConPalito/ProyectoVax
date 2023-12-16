@@ -16,9 +16,15 @@ public class RegulationConsults {
     
     
     //insert into regulacion (region, nivel) values
+    /**
+     * Inserta la regulacion de un juego en la BBDD
+     * @param idregulacion id de la regulacion que se quiere añadir
+     * @param idjuego id del juego al que se quiere insertar
+     */
     public static void insercion(Integer idregulacion,Integer idjuego) {
         //insercion
         EntityManager em = ConectionBBDD.getEm();
+        
         
         Query insercion = em.createNativeQuery("insert into regulacion_juego(idregulacion,idjuego) values (:idregulacion, :idjuego);");
         em.getTransaction().begin();

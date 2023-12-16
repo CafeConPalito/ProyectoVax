@@ -26,6 +26,12 @@ public class StoreConsults {
 
     private static ArrayList<GameInfoController> storeGames = new ArrayList<>();
 
+    /**
+     * Consulta en la Base de datos la informacion de todos los juegos registrados
+     * @return devuelve toda la lista si el usuario no esta logeado (invitado)
+     * o los juegos que el usuario no tiene comprados
+     * @throws IOException
+     */
     public static ArrayList<GameInfoController> getStoreGames() throws IOException {
 
         storeGames.clear();
@@ -81,6 +87,14 @@ public class StoreConsults {
 
     }
 
+    /**
+     * Aplica filtros a la lista de juegos en funcion de si el usuario esta logeado o no
+     * mostrando los que no tiene comprados
+     * @param gameName nombre del juego a buscar
+     * @param gamePrice precio del juego a buscar
+     * @return devuelve un ArrayList de GameInfoController con los juegos filtrados
+     * @throws IOException 
+     */
     public static ArrayList<GameInfoController> filterStoreGames(String gameName, int gamePrice) throws IOException {
 
         storeGames.clear();
@@ -147,6 +161,12 @@ public class StoreConsults {
 
     }
 
+    /**
+     * Aplica los filtros a la lista
+     * @param col Collection de Juegos 
+     * @param gameName nombre del juego para filtrar
+     * @param gamePrice precio del juego para filtrar
+     */
     private static void filtro(Collection<Juego> col, String gameName, int gamePrice) {
         Iterator<Juego> it = col.iterator();
         while (it.hasNext()) {

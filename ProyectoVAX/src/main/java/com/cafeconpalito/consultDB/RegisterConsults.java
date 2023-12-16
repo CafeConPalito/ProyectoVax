@@ -18,6 +18,11 @@ import javax.persistence.Query;
  */
 public class RegisterConsults {
     
+    /**
+     * Consulta en la BBDD si el Email ya existe para poder registrar al nuevo usuario
+     * @param email email para consultar en la BBDD
+     * @return Devuelve True si el Email no esta registrado
+     */
     public static boolean emailExists(String email){
         Query q = ConectionBBDD.getEm().createNamedQuery("Usuario.findByEmail");
         q.setParameter("email", email);
@@ -29,6 +34,11 @@ public class RegisterConsults {
         return false;
     }
     
+    /**
+     * Consulta en la BBDD si el Alias ya existe para poder registrar al nuevo usuario
+     * @param nickName Alias para consultar en la BBDD
+     * @return Devuelve True si el Alias no esta registrado
+     */
     public static boolean nickNameExists(String nickName){
         Query q = ConectionBBDD.getEm().createNamedQuery("Usuario.findByAlias");
         q.setParameter("alias", nickName);
@@ -40,6 +50,9 @@ public class RegisterConsults {
         return false;
     }
     
+    /**
+     * Inserta los datos de un nuevo usuario en la BBDD
+     */
     public static void insercion() {
         //insercion
         EntityManager em = ConectionBBDD.getEm();

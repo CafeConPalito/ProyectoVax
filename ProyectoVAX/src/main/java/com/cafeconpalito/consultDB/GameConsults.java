@@ -20,6 +20,11 @@ import javax.persistence.Query;
  */
 public class GameConsults {
 
+    /**
+     * Consulta en la base de datos la informacion de un juego a partir de su id
+     * @param idGame id del juego
+     * @return devuelve un arraylist con la informacion del juego
+     */
     public static ArrayList<Juego> getGameData(int idGame) {
         Query q = ConectionBBDD.getEm().createNamedQuery("Juego.findByIdjuego");
         q.setParameter("idjuego", idGame);
@@ -27,6 +32,10 @@ public class GameConsults {
 
     }
 
+    /**
+     * Devuelve un listado de los generos de la base de datos
+     * @return devuelve una ObservableList de String con los generos
+     */
     public static ObservableList<String> getGenreList() {
         Query q = ConectionBBDD.getEm().createNamedQuery("Genero.findAll");
         ArrayList<Genero> r = (ArrayList<Genero>) q.getResultList();
@@ -39,6 +48,9 @@ public class GameConsults {
         return items;
     }
     
+    /**
+     * inserta en la base de datos la informacion de un juego nuevo
+     */
     public static void insercion() {
         //insercion
         EntityManager em = ConectionBBDD.getEm();
@@ -58,6 +70,12 @@ public class GameConsults {
         em.clear();
         em.getTransaction().commit();
     }
+    
+    /**
+     * Consulta en la BBDD el titulo de un juego y devuelve toda la informacion de este
+     * @param tittle titulo del juego
+     * @return Devuelve Un Array list de juegos
+     */
     public static ArrayList<Juego> getNewGameid(String tittle) {
         Query q = ConectionBBDD.getEm().createNamedQuery("Juego.findByTitulo");
         q.setParameter("titulo", tittle);
