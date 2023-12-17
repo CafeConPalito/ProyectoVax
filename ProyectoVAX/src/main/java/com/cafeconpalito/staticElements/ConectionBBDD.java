@@ -4,6 +4,7 @@
  */
 package com.cafeconpalito.staticElements;
 
+import com.cafeconpalito.proyectovax.EntryPoint;
 import java.util.HashMap;
 import java.util.Map;
 import javax.persistence.EntityManager;
@@ -28,27 +29,13 @@ public class ConectionBBDD {
      */
     public static EntityManager getEm() {
         //start();
-        if (em == null) {
+        if (!startEntryPointValues()) {
             return null;
         }
         return em;
     }
 
-    /**
-     * inicia la conexion
-     */
-    public static void start() {
-
-        if (emf == null) {
-            emf = Persistence.createEntityManagerFactory("com.cafeconpalito_ProyectoVAX_jar_1.0-SNAPSHOTPU");
-        }
-
-        if (em == null) {
-            em = emf.createEntityManager();
-        }
-
-    }
-
+    
     /**
      * cierra las conexiones
      */
@@ -63,7 +50,7 @@ public class ConectionBBDD {
         }
     }
 
-    public static void createCustomEM(String newIP, String user, String pass) {
+    public static boolean startEntryPointValues() {
 
         //Crea una nueva EntityManagerFactory con los datos que se necesitan
         try {
@@ -71,9 +58,9 @@ public class ConectionBBDD {
             EntityManagerFactory managerFactory = null;
             Map<String, String> persistenceMap = new HashMap<String, String>();
 
-            persistenceMap.put("javax.persistence.jdbc.url", "jdbc:mysql://" + newIP + ":3306/vapor?zeroDateTimeBehavior=CONVERT_TO_NULL");
-            persistenceMap.put("javax.persistence.jdbc.user", user);
-            persistenceMap.put("javax.persistence.jdbc.password", pass);
+            persistenceMap.put("javax.persistence.jdbc.url", "jdbc:mysql://" + EntryPoint.serverIP + ":3306/vapor?zeroDateTimeBehavior=CONVERT_TO_NULL");
+            persistenceMap.put("javax.persistence.jdbc.user", EntryPoint.user);
+            persistenceMap.put("javax.persistence.jdbc.password", EntryPoint.pass);
             persistenceMap.put("javax.persistence.jdbc.driver", "com.mysql.cj.jdbc.Driver");
 
             //Carga las entidades del Em original en el nuevo EntityManagerFactory
@@ -85,9 +72,11 @@ public class ConectionBBDD {
             //System.out.println("\ndespues de modificar");
             emAux = managerFactory.createEntityManager();
             em = emAux;
+            return true;
         } catch (Exception e) {
             //si falla la conexion em se queda en null
             em = null;
+            return false;
         }
 
     }
@@ -114,6 +103,8 @@ public class ConectionBBDD {
             //System.out.println("\ndespues de modificar");
             emAux = managerFactory.createEntityManager();
             em = emAux;
+            EntryPoint.serverIP = newIP;
+            
             return true;
         } catch (Exception e) {
             //si falla la conexion em se queda en null

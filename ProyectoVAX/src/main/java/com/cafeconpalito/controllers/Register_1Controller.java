@@ -107,8 +107,6 @@ public class Register_1Controller implements Initializable {
     @FXML
     private void backBtn(MouseEvent event) throws IOException {
         
-        //PARA BORRAR??
-        //incluir persistencia de datos aqui ******** aunque  no se haya relellenado todo
         saveData();
         MainView.main.setCenter(App.loadFXML("register"));
     }
@@ -137,9 +135,6 @@ public class Register_1Controller implements Initializable {
             userRegisterInfo.setRole(rolecombobox.getValue().toString());
             userRegisterInfo.setRolenumber(rolecombobox.getSelectionModel().getSelectedIndex());
         }
-        
-        
-        
     }
 
     /**
@@ -172,6 +167,7 @@ public class Register_1Controller implements Initializable {
     /**
      * Lanza una ventana de Seleccion de Fichero.
      * Permitiendo al usuario cargar una imagen de perfil.
+     * Solo permite las extensiones de imagenes permitidas. 
      */
     private void launchFileChooser() {
         
@@ -180,8 +176,11 @@ public class Register_1Controller implements Initializable {
             fileChooserOpened = true;
           
             FileChooser fch = new FileChooser();
-            //FALTA AÑADIR LAS EXTENCIONES PERMITIDAS.
-            
+
+            //Configuramos el File Chooser para que solo adminta archivos de tipo imagen
+            String[] extensions = {"*.png","*.jpg","*.jpeg","*.bmp","*.gif"};
+            FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Image Files", extensions);
+            fch.getExtensionFilters().add(extFilter);
             
             File selected = fch.showOpenDialog(null);
    
