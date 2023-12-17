@@ -44,10 +44,10 @@
                            <children>
                               <Label fx:id="gameTitle" contentDisplay="CENTER" prefHeight="110.0" prefWidth="400.0" styleClass="titulo" text="TITLE">
                                  <font>
-                                    <Font size="34.0" />
+                                    <Font size="36.0" />
                                  </font>
                               </Label>
-                              <TextFlow fx:id="gameDescription" disable="true" lineSpacing="3.0" opacity="0.87" prefHeight="300.0" prefWidth="300.0" styleClass="labels" />
+                              <TextFlow fx:id="gameDescription" disable="true" opacity="0.87" prefHeight="300.0" prefWidth="300.0" styleClass="labels" />
                            </children>
                         </VBox>
                         <Pane prefHeight="391.0" prefWidth="0.0" HBox.hgrow="ALWAYS" />

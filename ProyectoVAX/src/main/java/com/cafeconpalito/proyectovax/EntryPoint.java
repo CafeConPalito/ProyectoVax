@@ -20,7 +20,8 @@ public class EntryPoint {
     //public static String serverIP = "192.168.34.209";
     public static String user = "root";
     //public static String pass = "1234";
-    public static String pass = "12345678";
+    public static String pass = "12341234";
+    //public static String pass = "12345678";
 
     public static String rutaImgUser = "/imguser/";
     public static String rutaImgGame = "/imggame/";
