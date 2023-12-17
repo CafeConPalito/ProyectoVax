@@ -4,12 +4,16 @@ module com.cafeconpalito.proyectovax {
     requires javafx.graphics;
     requires javafx.base;
     requires java.base;
-
+    requires com.google.protobuf;
+    requires com.google.common;
+    
     //BBDD
     requires org.hibernate.orm.core;
     requires java.sql;
     requires java.persistence;
     requires org.controlsfx.controls;
+    requires java.desktop;
+    requires java.logging;
         
     //OJO NO LE GUSTAN LAS BARRAS BAJAS PARA LOS NOMBRE DE LOS PAQUETES!
     opens com.cafeconpalito.userLogedData to com.cafeconpalito.proyectovax ;
@@ -27,5 +31,6 @@ module com.cafeconpalito.proyectovax {
     opens com.cafeconpalito.proyectovax to javafx.graphics;
    
     exports com.cafeconpalito.proyectovax;
+    
            
 }

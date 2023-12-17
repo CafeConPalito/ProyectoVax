@@ -30,23 +30,23 @@
                      </font>
                   </Label>
                   <Pane prefHeight="50.0" />
-                  <Label alignment="CENTER" styleClass="labels" text="EMAIL" textAlignment="CENTER">
+                  <Label fx:id="emailLabel" alignment="CENTER" styleClass="labels" text="EMAIL" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <TextField alignment="CENTER" prefHeight="25.0" prefWidth="221.0" style="-fx-background-color: transparent; -fx-border-style: solid; -fx-border-width: 0 0 1 0;">
+                  <TextField fx:id="emailTextField" alignment="CENTER" onMouseClicked="#emailTextFocused" prefHeight="25.0" prefWidth="221.0" style="-fx-background-color: transparent; -fx-border-style: solid; -fx-border-width: 0 0 1 0;">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </TextField>
                   <Pane prefHeight="25.0" />
-                  <Label alignment="CENTER" styleClass="labels" text="PASSWORD" textAlignment="CENTER">
+                  <Label fx:id="passwordLabel" alignment="CENTER" styleClass="labels" text="PASSWORD" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <PasswordField alignment="CENTER" style="-fx-background-color: trasnparent; -fx-border-style: solid; -fx-border-width: 0 0 1 0;">
+                  <PasswordField fx:id="passwordTextField" alignment="CENTER" onMousePressed="#passwordTextFocused" style="-fx-background-color: trasnparent; -fx-border-style: solid; -fx-border-width: 0 0 1 0;">
                      <font>
                         <Font size="18.0" />
                      </font>

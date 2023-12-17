@@ -27,7 +27,7 @@ import javax.persistence.TemporalType;
 
 /**
  *
- * @author produccion
+ * @author CafeConPalito
  */
 @Entity
 @Table(name = "juego")
@@ -38,7 +38,9 @@ import javax.persistence.TemporalType;
     @NamedQuery(name = "Juego.findByImagen", query = "SELECT j FROM Juego j WHERE j.imagen = :imagen"),
     @NamedQuery(name = "Juego.findByFecha", query = "SELECT j FROM Juego j WHERE j.fecha = :fecha"),
     @NamedQuery(name = "Juego.findByNumdescargas", query = "SELECT j FROM Juego j WHERE j.numdescargas = :numdescargas"),
-    @NamedQuery(name = "Juego.findByPrecio", query = "SELECT j FROM Juego j WHERE j.precio = :precio")})
+    @NamedQuery(name = "Juego.findByPrecio", query = "SELECT j FROM Juego j WHERE j.precio = :precio")
+    })
+
 public class Juego implements Serializable {
 
     private static final long serialVersionUID = 1L;

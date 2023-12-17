@@ -8,7 +8,7 @@ import javafx.scene.layout.BorderPane;
 
 /**
  *
- * @author produccion
+ * @author CafeConPalito
  */
 public class MainView {
     

@@ -11,12 +11,13 @@ import java.io.IOException;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.StageStyle;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 /**
- * JavaFX App
+ * @author CafeConPalito
+ * @author Maria Carmen Barrios Fernández
+ * @author Ramiro Gutiérrez Valverde
+ * @author Daniel Espinosa García
+ * @author Albano Díez de Paulino
  */
 public class App extends Application {
 
@@ -25,16 +26,8 @@ public class App extends Application {
     @Override
     public void init() throws Exception {
         
-        
-        //INICIAR CONEXION BBDD
-        ConectionBBDD.start();
-        
-        //aquí llamo a los métodos que INICIAN LA BASE DE DATOS . se ejecuta antes de start
-
         System.out.println("Hola. Aquí empieza todo");
-        
-        
-        
+
     }
 
     @Override
@@ -55,8 +48,13 @@ public class App extends Application {
         MainView.main = (BorderPane) scene.lookup("#layout");
         
 
-        //Añado la tienda al primary para cuando se lanze
-        MainView.main.setCenter(App.loadFXML("store"));
+        //Compruebo al iniciar que EM no sea nulo si lo es carga help para meter la nueva ip en caso contrario muestra Store.
+        if (ConectionBBDD.getEm()==null) {
+            MainView.main.setCenter(App.loadFXML("help"));
+        }else{
+            MainView.main.setCenter(App.loadFXML("store"));
+        }
+        
 
         //Añado la barra lateral
         MainView.main.setLeft(App.loadFXML("panelIzquierdoGeneral"));
@@ -73,7 +71,7 @@ public class App extends Application {
         mainStage.setTitle("VaX");
          */
         
-        //Icono Stage
+        //Icono Stage        
         mainStage.getIcons().add(new Image(App.class.getResourceAsStream("images/logovax.png")));
 
         //Mostrando Escena principal
@@ -114,10 +112,11 @@ public class App extends Application {
 
     @Override
     public void stop() throws Exception {
-        // aquí se ejecuta el código después de cerrar la aplicación. Por ejemplo CERRAR CONEXIÓN BASE DE DATOS
-
         // si quiero salir en otro punto del código y que se ejecute el stop() HAY QUE USAR el :
         // Platform.exit();
+        
+        //Cerrando las conexiones a la BBDD al salir de la aplicacion
+        ConectionBBDD.close();
         
     }
 

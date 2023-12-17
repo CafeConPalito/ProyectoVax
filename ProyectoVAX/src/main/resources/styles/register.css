@@ -9,16 +9,34 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 
 .button{
     -fx-background-color: transparent;
-    -fx-text-fill: white;
+    -fx-text-fill: #11598a;
     -fx-border-radius: 50;
     -fx-border-width: 2;
     -fx-background-radius : 50;
-    -fx-border-color: white;
+    -fx-border-color: #11598a;
     -fx-font-size: 18px;
     /*    Sombra boton*/
     /*    -fx-effect: dropshadow(three-pass-box, black, 10, 0, 5, 5);*/
 }
+
 .button:hover{
+    -fx-text-fill: #db3c21;
+    -fx-border-color: #db3c21;
+}
+
+.button.cancel{
+    -fx-background-color: transparent;
+    -fx-text-fill: #c60000;
+    -fx-border-radius: 50;
+    -fx-border-width: 2;
+    -fx-background-radius : 50;
+    -fx-border-color: #c60000;
+    -fx-font-size: 18px;
+    /*    Sombra boton*/
+    /*    -fx-effect: dropshadow(three-pass-box, black, 10, 0, 5, 5);*/
+}
+
+.button.cancel:hover{
     -fx-text-fill: #db3c21;
     -fx-border-color: #db3c21;
 }
@@ -58,28 +76,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-background-radius : 10;
 }
 
-#ButtonRegister{
-    -fx-background-color: transparent;
-    -fx-text-fill: #11598a;
-    -fx-border-radius: 50;
-    -fx-border-width: 2;
-    -fx-background-radius : 50;
-    -fx-border-color: #11598a;
-    -fx-font-size: 18px;
-    /*    Sombra boton*/
-    /*    -fx-effect: dropshadow(three-pass-box, black, 10, 0, 5, 5);*/
-}
-#ButtonRegister:hover{
-    -fx-text-fill: #db3c21;
-    -fx-border-color: #db3c21;
+/*
+    -fx-effect: dropshadow( gaussian, rgba(0, 255, 255, 0.4), 10, 0.5, 0.0, 0.0 );
+    
+}*/
+
+#datepicker {
+    -fx-control-inner-background: #e6ecf5;
 }
 
-#selectImgBtn{
-    -fx-background-color: transparent;
-    -fx-text-fill: #11598a;
-    -fx-border-radius: 50;
-    -fx-border-width: 2;
-    -fx-background-radius : 50;
-    -fx-border-color: #11598a;
-    -fx-font-size: 18px;
+.ComboBox{
+    -fx-background-color: #e6ecf5;
 }

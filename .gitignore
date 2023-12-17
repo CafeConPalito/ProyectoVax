@@ -3,3 +3,8 @@
 /ProyectoVAX/target/
 /blas/target/
 
+/serverZipUpload/target/
+/serverImageUser/target/
+/serverZipDownload/target/
+/SERVERS/serverZipUpload/target/
+/SERVERS/serverZipDownload/target/

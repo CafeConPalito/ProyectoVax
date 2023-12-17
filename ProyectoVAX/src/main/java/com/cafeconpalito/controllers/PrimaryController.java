@@ -9,9 +9,14 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+/**
+ * FXML Controller class
+ *
+ * @author CafeConPalito
+ */
 public class PrimaryController {
 
-    private double xMouse,yMouse;
+    private double xMouse, yMouse;
 
     @FXML
     private Pane parent;
@@ -26,33 +31,57 @@ public class PrimaryController {
     @FXML
     private Button CloseButton;
 
+    String operatingSystem = System.getProperty("os.name").toLowerCase();
 
-   
-
+    /**
+     * Accion del boton para minimizar la aplicacion
+     * @param event 
+     */
     @FXML
     private void MinimizeButton(ActionEvent event) {
         Stage stage = (Stage) MiminizeButton.getScene().getWindow();
         stage.setIconified(true);
     }
 
+    /**
+     * Accion del boton para maximisar la aplicacion
+     * @param event 
+     */
     @FXML
     private void MaximizeButton(ActionEvent event) {
         Stage stage = (Stage) MaximizeButton.getScene().getWindow();
-
-        if (stage.isMaximized()) {
-            stage.setMaximized(false);
+        
+        if (operatingSystem.contains("mac")) {
+            if (stage.isFullScreen()) {
+                stage.setFullScreen(false);
+            } else {
+                stage.setFullScreen(true);
+            }
         } else {
-            stage.setMaximized(true);
+            if (stage.isMaximized()) {
+                stage.setMaximized(false);
+            } else {
+                stage.setMaximized(true);
+            }
+            
         }
 
     }
 
+    /**
+     * Accion del boton de cerrar para finalizar la aplicacion
+     * @param event 
+     */
     @FXML
     private void CloseButton(ActionEvent event) {
         Stage stage = (Stage) CloseButton.getScene().getWindow();
         stage.close();
     }
 
+    /**
+     * Accion de la Barra superior para permitir mover la aplicacion.
+     * @param event 
+     */
     @FXML
     private void HeaderMovement(MouseEvent event) {
         Stage stage = (Stage) Header.getScene().getWindow();
@@ -60,14 +89,16 @@ public class PrimaryController {
         stage.setY(event.getScreenY() - yMouse);
     }
 
+    /**
+     * Accion de la barra superior al ser clicada para determinar la posicion actual.
+     * @param event 
+     */
     @FXML
     private void HeaderClick(MouseEvent event) {
         Stage stage = (Stage) Header.getScene().getWindow();
         xMouse = event.getSceneX();
         yMouse = event.getSceneY();
-        
-    }
 
-   
+    }
 
 }

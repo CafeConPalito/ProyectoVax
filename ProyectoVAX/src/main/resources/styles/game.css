@@ -23,7 +23,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-border-color: #db3c21;
 }
 
-.button.allGamesBtn{
+.button.download{
     -fx-background-color: transparent;
     -fx-text-fill: #15b218;
     -fx-border-radius: 50;
@@ -33,7 +33,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-font-size: 18px;
 }
 
-.button.allGamesBtn:hover{
+.button.download:hover{
     -fx-text-fill: #db3c21;
     -fx-border-color: #db3c21;
 }
@@ -41,6 +41,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 .labels{
     -fx-text-fill: #11598a;
 }
+
+.titulo{
+    -fx-font-style: italic;
+    -fx-font-size: 28px;
+    -fx-text-fill: #11598a;
+}
+
 
 #VBoxPrin{
     -fx-background-color: linear-gradient(to bottom,#060b36,  #11598a);
