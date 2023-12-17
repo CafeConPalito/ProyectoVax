@@ -10,8 +10,10 @@ import com.cafeconpalito.entities.Juego;
 import com.cafeconpalito.proyectovax.App;
 import com.cafeconpalito.registerGameData.gameRegisterInfo;
 import com.cafeconpalito.socket.SocketImagGame;
+import com.cafeconpalito.socket.SocketZipGameUpload;
 import com.cafeconpalito.staticElements.Colors;
 import com.cafeconpalito.staticElements.MainView;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -23,9 +25,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser;
 
 /**
  * FXML Controller class
@@ -127,6 +132,12 @@ public class insertGame_1Controller implements Initializable {
     private Label acbLabel;
     @FXML
     private Label uskLabel;
+    @FXML
+    private Label zipLabel;
+    @FXML
+    private TextField zipTexField;
+    @FXML
+    private Button zipButton;
 
     /**
      * Initializes the controller class. Carga los valores del ComboBox genre
@@ -154,6 +165,48 @@ public class insertGame_1Controller implements Initializable {
         gameRegisterInfo.setEsrb(esrbNum);
         gameRegisterInfo.setUsk(uskNum);
 
+    }
+    
+    private boolean fileChooserOpened = false;
+
+    /**
+     * Lanza una ventana de Seleccion de Fichero. Permitiendo al usuario cargar
+     * un archivo zip.
+     */
+    private void launchFileChooser() {
+
+        if (!fileChooserOpened) {
+
+            fileChooserOpened = true;
+
+            FileChooser fch = new FileChooser();
+
+            //Configuramos el File Chooser para que solo admita archivos de tipo zip
+            String[] extensions = {"*.zip"};
+            FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Zip Files", extensions);
+            fch.getExtensionFilters().add(extFilter);
+
+            File selected = fch.showOpenDialog(null);
+
+            if (selected != null) {
+                if (selected != null) {
+                    // Verificar el tamaño del archivo seleccionado
+                    long fileSizeInBytes = selected.length();
+                    long fileSizeInMegabytes = fileSizeInBytes / (1024 * 1024);
+
+                    // Verificar si el tamaño excede los 100 MB
+                    if (fileSizeInMegabytes > 100) {
+                        //error message
+                        zipLabel.setTextFill(Colors.textColorError);
+                        zipLabel.setText("Max 100 MB files");
+                    } else {
+                        zipTexField.setText(selected.getAbsolutePath());
+                    }
+                }
+            }
+
+            fileChooserOpened = false;
+        }
     }
 
     /**
@@ -210,6 +263,11 @@ public class insertGame_1Controller implements Initializable {
             uskLabel.setTextFill(Colors.textColorError);
             b = false;
         }
+        
+        if (zipTexField.getText().isBlank()) {
+            zipLabel.setTextFill(Colors.textColorError);
+            b = false;
+        }
 
         if (b) {
 
@@ -226,7 +284,10 @@ public class insertGame_1Controller implements Initializable {
 
             //insertar imagen
             SocketImagGame sig = new SocketImagGame(gameRegisterInfo.getTitle().replaceAll("\\s+", ""), gameRegisterInfo.getImage());
-
+            
+            //insertar zip
+            SocketZipGameUpload szgu= new SocketZipGameUpload(gameRegisterInfo.getTitle().replaceAll("\\s+", ""), zipTexField.getText());
+            
             //insercion de la tabla regulacion 
             RegulationConsults.insercion(pegiNum, idJuego);
             RegulationConsults.insercion(acbNum, idJuego);
@@ -550,6 +611,30 @@ public class insertGame_1Controller implements Initializable {
     private void a25s(ActionEvent event) {
         uskLabel.setTextFill(Colors.textColor);
         uskNum = 25;
+    }
+
+
+    /**
+     * Cambia el color del label a su estado original
+     *
+     * @param event
+     */
+    @FXML
+    private void zipFocused(MouseEvent event) {
+        zipLabel.setTextFill(Colors.textColor);
+        zipLabel.setText("Zip File");
+    }
+
+    /**
+     * Lanza un FileChooser para asignar la ruta del archivo zip
+     *
+     * @param event
+     */
+    @FXML
+    private void SelectZip(ActionEvent event) {
+        zipLabel.setText("Zip File");
+        launchFileChooser();
+        
     }
 
 }

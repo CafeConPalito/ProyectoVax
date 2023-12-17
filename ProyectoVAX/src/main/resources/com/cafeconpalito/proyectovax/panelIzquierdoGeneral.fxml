@@ -115,7 +115,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="labels" text="0.0.1" textAlignment="CENTER" textFill="WHITE">
+            <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="labels" text="1.0.0" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>

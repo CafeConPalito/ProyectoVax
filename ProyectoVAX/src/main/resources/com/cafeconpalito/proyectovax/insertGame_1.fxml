@@ -5,6 +5,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -17,7 +18,7 @@
    <children>
       <HBox id="BackGroundForm" alignment="CENTER" maxHeight="900.0" maxWidth="1200.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="700.0" HBox.hgrow="ALWAYS">
          <children>
-            <Pane prefHeight="650.0" prefWidth="50.0" />
+            <Pane prefHeight="650.0" prefWidth="80.0" />
             <VBox alignment="CENTER" prefWidth="650.0" HBox.hgrow="NEVER">
                <children>
                   <HBox alignment="TOP_CENTER">
@@ -35,15 +36,8 @@
                         </Label>
                      </children>
                   </HBox>
-                  <Pane prefHeight="39.0" prefWidth="650.0" />
-                  <Label fx:id="genreLabel" alignment="CENTER" prefHeight="29.0" prefWidth="200.0" styleClass="labels" text="Genre" textAlignment="CENTER">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <ComboBox fx:id="genreComboBox" onMouseClicked="#genreFocused" prefHeight="34.0" prefWidth="320.0" />
-                  <Pane prefHeight="43.0" prefWidth="650.0" />
-                  <HBox alignment="CENTER" prefHeight="234.0" prefWidth="650.0">
+                  <Pane prefHeight="40.0" prefWidth="613.0" />
+                  <HBox alignment="CENTER" prefHeight="312.0" prefWidth="633.0">
                      <children>
                         <VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="300.0">
                            <children>
@@ -52,80 +46,76 @@
                                     <Font name="System Bold" size="18.0" />
                                  </font>
                               </Label>
-                              <Pane prefHeight="12.0" prefWidth="300.0" />
+                              <Pane prefHeight="20.0" prefWidth="300.0" />
                               <HBox>
                                  <children>
                                     <RadioButton fx:id="a1" mnemonicParsing="false" onAction="#a1s" text="3">
                                        <toggleGroup>
                                           <ToggleGroup fx:id="pegi" />
                                        </toggleGroup></RadioButton>
-                                    <Pane prefHeight="12.0" prefWidth="300.0" />
+                                    <Pane prefHeight="12.0" prefWidth="26.0" />
                                     <RadioButton fx:id="a2" mnemonicParsing="false" onAction="#a2s" text="7" toggleGroup="$pegi" />
-                                    <Pane prefHeight="12.0" prefWidth="300.0" />
+                                    <Pane prefHeight="12.0" prefWidth="26.0" />
                                     <RadioButton fx:id="a3" mnemonicParsing="false" onAction="#a3s" text="12" toggleGroup="$pegi" />
-                                    <Pane prefHeight="12.0" prefWidth="300.0" />
+                                    <Pane prefHeight="12.0" prefWidth="26.0" />
                                     <RadioButton fx:id="a4" mnemonicParsing="false" onAction="#a4s" text="16" toggleGroup="$pegi" />
-                                    <Pane prefHeight="12.0" prefWidth="300.0" />
+                                    <Pane prefHeight="12.0" prefWidth="26.0" />
                                     <RadioButton fx:id="a5" mnemonicParsing="false" onAction="#a5s" text="18" toggleGroup="$pegi" />
                                  </children>
                               </HBox>
-                              <Pane prefHeight="25.0" prefWidth="300.0" />
+                              <Pane prefHeight="20.0" prefWidth="271.0" />
                               <Label fx:id="cerfoLabel" alignment="CENTER" prefWidth="200.0" styleClass="labels" text="CERO - Japan" textAlignment="CENTER">
                                  <font>
                                     <Font name="System Bold" size="18.0" />
                                  </font>
                               </Label>
-                              <Pane prefHeight="12.0" prefWidth="300.0" />
+                              <Pane prefHeight="20.0" prefWidth="300.0" />
                               <HBox>
                                  <children>
                                     <RadioButton fx:id="a6" mnemonicParsing="false" onAction="#a6s" text="A">
                                        <toggleGroup>
                                           <ToggleGroup fx:id="cero" />
                                        </toggleGroup></RadioButton>
-                                    <Pane prefHeight="12.0" prefWidth="300.0" />
+                                    <Pane prefHeight="12.0" prefWidth="26.0" />
                                     <RadioButton fx:id="a7" mnemonicParsing="false" onAction="#a7s" text="B" toggleGroup="$cero" />
-                                    <Pane prefHeight="12.0" prefWidth="300.0" />
+                                    <Pane prefHeight="12.0" prefWidth="26.0" />
                                     <RadioButton fx:id="a8" mnemonicParsing="false" onAction="#a8s" text="C" toggleGroup="$cero" />
-                                    <Pane prefHeight="12.0" prefWidth="300.0" />
+                                    <Pane prefHeight="12.0" prefWidth="26.0" />
                                     <RadioButton fx:id="a9" mnemonicParsing="false" onAction="#a9s" text="D" toggleGroup="$cero" />
-                                    <Pane prefHeight="12.0" prefWidth="300.0" />
+                                    <Pane prefHeight="12.0" prefWidth="26.0" />
                                     <RadioButton fx:id="a10" mnemonicParsing="false" onAction="#a10s" text="Z" toggleGroup="$cero" />
                                  </children>
                               </HBox>
-                              <Pane prefHeight="25.0" prefWidth="300.0" />
+                              <Pane prefHeight="20.0" prefWidth="271.0" />
                               <Label fx:id="esrbLabel" alignment="CENTER" prefWidth="200.0" styleClass="labels" text="ESRB - America" textAlignment="CENTER">
                                  <font>
                                     <Font name="System Bold" size="18.0" />
                                  </font>
                               </Label>
-                              <Pane prefHeight="12.0" prefWidth="300.0" />
+                              <Pane prefHeight="20.0" prefWidth="300.0" />
                               <HBox>
                                  <children>
                                     <RadioButton fx:id="a11" mnemonicParsing="false" onAction="#a11s" text="E">
                                        <toggleGroup>
                                           <ToggleGroup fx:id="esrb" />
                                        </toggleGroup></RadioButton>
-                                    <Pane prefHeight="18.0" prefWidth="22.0" />
+                                    <Pane prefHeight="18.0" prefWidth="26.0" />
                                     <RadioButton fx:id="a12" mnemonicParsing="false" onAction="#a12s" prefHeight="18.0" prefWidth="56.0" text="E10+" toggleGroup="$esrb" />
-                                    <Pane prefHeight="18.0" prefWidth="13.0" />
+                                    <Pane prefHeight="18.0" prefWidth="9.0" />
                                     <RadioButton fx:id="a13" mnemonicParsing="false" onAction="#a13s" text="T" toggleGroup="$esrb" />
-                                    <Pane prefHeight="18.0" prefWidth="22.0" />
+                                    <Pane prefHeight="18.0" prefWidth="26.0" />
                                     <RadioButton fx:id="a14" mnemonicParsing="false" onAction="#a14s" text="M" toggleGroup="$esrb" />
-                                    <Pane prefHeight="18.0" prefWidth="22.0" />
+                                    <Pane prefHeight="18.0" prefWidth="26.0" />
                                     <RadioButton fx:id="a15" mnemonicParsing="false" onAction="#a15s" prefHeight="18.0" prefWidth="42.0" text="AO" toggleGroup="$esrb" />
                                  </children>
                               </HBox>
-                           </children>
-                        </VBox>
-                        <Pane prefHeight="234.0" prefWidth="118.0" />
-                        <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="300.0">
-                           <children>
+                              <Pane prefHeight="20.0" prefWidth="300.0" />
                               <Label fx:id="acbLabel" alignment="CENTER" prefWidth="200.0" styleClass="labels" text="ACB - Australia" textAlignment="CENTER">
                                  <font>
                                     <Font name="System Bold" size="18.0" />
                                  </font>
                               </Label>
-                              <Pane prefHeight="12.0" prefWidth="300.0" />
+                              <Pane prefHeight="20.0" prefWidth="300.0" />
                               <HBox>
                                  <children>
                                     <RadioButton fx:id="a16" mnemonicParsing="false" onAction="#a16s" text="G">
@@ -136,40 +126,74 @@
                                     <RadioButton fx:id="a17" mnemonicParsing="false" onAction="#a17s" prefHeight="18.0" prefWidth="44.0" text="PG" toggleGroup="$acb" />
                                     <Pane prefHeight="18.0" prefWidth="16.0" />
                                     <RadioButton fx:id="a18" mnemonicParsing="false" onAction="#a18s" text="M" toggleGroup="$acb" />
-                                    <Pane prefHeight="18.0" prefWidth="21.0" />
+                                    <Pane prefHeight="18.0" prefWidth="26.0" />
                                     <RadioButton fx:id="a19" mnemonicParsing="false" onAction="#a19s" text="MA" toggleGroup="$acb" />
-                                    <Pane prefHeight="18.0" prefWidth="18.0" />
+                                    <Pane prefHeight="18.0" prefWidth="26.0" />
                                     <RadioButton fx:id="a20" mnemonicParsing="false" onAction="#a20s" text="R" toggleGroup="$acb" />
                                  </children>
                               </HBox>
-                              <Pane prefHeight="25.0" prefWidth="300.0" />
-                              <Label fx:id="uskLabel" alignment="CENTER" prefWidth="200.0" styleClass="labels" text="USK - Germany" textAlignment="CENTER">
+                              <Pane prefHeight="20.0" prefWidth="300.0" />
+                              <Label fx:id="uskLabel" alignment="CENTER" prefHeight="23.0" prefWidth="273.0" styleClass="labels" text="USK - Germany" textAlignment="CENTER">
                                  <font>
                                     <Font name="System Bold" size="18.0" />
                                  </font>
                               </Label>
-                              <Pane prefHeight="12.0" prefWidth="300.0" />
+                              <Pane prefHeight="20.0" prefWidth="271.0" />
                               <HBox>
                                  <children>
                                     <RadioButton fx:id="a21" mnemonicParsing="false" onAction="#a21s" text="0">
                                        <toggleGroup>
                                           <ToggleGroup fx:id="usk" />
-                                       </toggleGroup></RadioButton>
-                                    <Pane prefHeight="12.0" prefWidth="300.0" />
+                                       </toggleGroup>
+                                    </RadioButton>
+                                    <Pane prefHeight="12.0" prefWidth="26.0" />
                                     <RadioButton fx:id="a22" mnemonicParsing="false" onAction="#a22s" text="6" toggleGroup="$usk" />
-                                    <Pane prefHeight="12.0" prefWidth="300.0" />
+                                    <Pane prefHeight="12.0" prefWidth="26.0" />
                                     <RadioButton fx:id="a23" mnemonicParsing="false" onAction="#a23s" text="12" toggleGroup="$usk" />
-                                    <Pane prefHeight="12.0" prefWidth="300.0" />
+                                    <Pane prefHeight="12.0" prefWidth="26.0" />
                                     <RadioButton fx:id="a24" mnemonicParsing="false" onAction="#a24s" text="16" toggleGroup="$usk" />
-                                    <Pane prefHeight="12.0" prefWidth="300.0" />
+                                    <Pane prefHeight="12.0" prefWidth="26.0" />
                                     <RadioButton fx:id="a25" mnemonicParsing="false" onAction="#a25s" text="18" toggleGroup="$usk" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <Pane prefHeight="312.0" prefWidth="76.0" />
+                        <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="300.0">
+                           <children>
+                              <Pane prefHeight="40.0" prefWidth="279.0" />
+                              <Pane prefHeight="24.0" prefWidth="272.0">
+                                 <children>
+                                    <Label fx:id="genreLabel" alignment="CENTER" layoutX="36.0" layoutY="-2.0" prefHeight="39.0" prefWidth="200.0" styleClass="labels" text="Genre" textAlignment="CENTER">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                              <Pane prefHeight="12.0" prefWidth="300.0" />
+                              <ComboBox fx:id="genreComboBox" onMouseClicked="#genreFocused" prefHeight="32.0" prefWidth="272.0" />
+                              <Pane prefHeight="85.0" prefWidth="279.0" />
+                              <Label fx:id="zipLabel" alignment="CENTER" prefHeight="23.0" prefWidth="272.0" styleClass="labels" text="Zip File" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <HBox>
+                                 <children>
+                                    <TextField id="SelectImgTf" fx:id="zipTexField" alignment="CENTER" onMouseClicked="#zipFocused" prefHeight="25.0" prefWidth="220.0" style="-fx-background-color: transparent; -fx-border-style: solid; -fx-border-width: 0 0 1 0;">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </TextField>
+                                    <Button id="selectImgBtn" fx:id="zipButton" mnemonicParsing="false" onAction="#SelectZip" prefHeight="39.0" prefWidth="117.0" text="Select" />
                                  </children>
                               </HBox>
                            </children>
                         </VBox>
                      </children>
                   </HBox>
-                  <Pane prefHeight="20.0" prefWidth="500.0" style="-fx-background-color: transparent;" />
+                  <Pane prefHeight="55.0" prefWidth="613.0" style="-fx-background-color: transparent;" />
                   <HBox alignment="CENTER_RIGHT">
                      <children>
                         <ImageView id="backBtn" fx:id="backArrow" fitHeight="52.0" fitWidth="42.0" onMouseClicked="#backBtn" pickOnBounds="true" preserveRatio="true">
@@ -177,18 +201,18 @@
                               <Image url="@images/Custom-Icon-Design-Flatastic-1-Back.72.png" />
                            </image>
                         </ImageView>
-                        <Pane prefHeight="43.0" prefWidth="82.0" />
+                        <Pane prefHeight="43.0" prefWidth="71.0" />
                         <Button id="ButtonRegister" fx:id="addGameButton" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" onAction="#tryToRegister" prefHeight="43.0" prefWidth="150.0" text="Add Game" textFill="#15b218">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Pane prefHeight="43.0" prefWidth="69.0" />
+                        <Pane prefHeight="43.0" prefWidth="63.0" />
                      </children>
                   </HBox>
                </children>
             </VBox>
-            <Pane prefHeight="650.0" prefWidth="50.0" />
+            <Pane prefHeight="650.0" prefWidth="80.0" />
          </children>
          <opaqueInsets>
             <Insets />
