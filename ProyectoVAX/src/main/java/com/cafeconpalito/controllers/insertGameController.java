@@ -62,6 +62,7 @@ public class insertGameController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * Carga los datos de la persistencia del registro si los hubiera
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -77,6 +78,10 @@ public class insertGameController implements Initializable {
 
     private boolean fileChooserOpened = false;
 
+    /**
+     * Lanza una ventana de Seleccion de Fichero.
+     * Permitiendo al usuario cargar una imagen del juego.
+     */
     private void launchFileChooser() {
 
         if (!fileChooserOpened) {
@@ -94,6 +99,12 @@ public class insertGameController implements Initializable {
         }
     }
 
+    /**
+     * Accion del boton Select.
+     * Cambia el color del label a su estado original.
+     * Lanza el metodo FileChooser.
+     * @param event 
+     */
     @FXML
     private void SelectImage(ActionEvent event) {
         imageLabel.setTextFill(Colors.textColor);
@@ -101,6 +112,13 @@ public class insertGameController implements Initializable {
 
     }
 
+    /**
+     * Accion del Boton (next).
+     * Comprueba que los campos son correctos, si es asi guarda la informacion en la percistencia del registro.
+     * Cambia la vista a insertGame_1
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void nextBtn(MouseEvent event) throws IOException {
         // aquí realizo la comprobación de los campos
@@ -140,44 +158,73 @@ public class insertGameController implements Initializable {
 
     }
 
+    /**
+     * Comprueba que el precio este en el formato correcto al pasarlo a Double.
+     * @param price recibe el precio en formato String.
+     * @return Devuelve True si es correcto.
+     */
     private boolean doubleTest(String price) {
         try {
             Double d = Double.parseDouble(price);
 
             return true;
         } catch (NumberFormatException nfe) {
-            System.err.println("NumberFormatException");
+            //System.err.println("NumberFormatException");
             return false;
         }
 
     }
 
+    /**
+     * Cambia el color del label a su estado original
+     * @param event 
+     */
     @FXML
     private void CancelInsertGame(ActionEvent event) throws IOException {
         MainView.main.setCenter(App.loadFXML("store"));
         gameRegisterInfo.resetGameInfo();
     }
 
+    /**
+     * Cambia el color del label a su estado original
+     * @param event 
+     */
     @FXML
     private void titleFocused(MouseEvent event) {
         titleLabel.setTextFill(Colors.textColor);
     }
 
+    /**
+     * Cambia el color del label a su estado original
+     * @param event 
+     */
     @FXML
     private void descriptionFocused(MouseEvent event) {
         descriptionLabel.setTextFill(Colors.textColor);
     }
 
+    /**
+     * Cambia el color del label a su estado original
+     * @param event 
+     */
     @FXML
     private void priceFocused(MouseEvent event) {
         priceLabel.setTextFill(Colors.textColor);
     }
 
+    /**
+     * Cambia el color del label a su estado original
+     * @param event 
+     */
     @FXML
     private void imageFocused(MouseEvent event) {
         imageLabel.setTextFill(Colors.textColor);
     }
 
+    /**
+     * Cambia el color del label a su estado original
+     * @param event 
+     */
     @FXML
     private void dateFocused(MouseEvent event) {
         launchLabel.setTextFill(Colors.textColor);
