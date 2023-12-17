@@ -148,7 +148,7 @@
                                     <Pane prefHeight="200.0" prefWidth="212.0" />
                                     <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelEvent" prefHeight="39.0" prefWidth="150.0" text="Cancel" />
                                     <Pane prefHeight="200.0" prefWidth="200.0" />
-                                    <Button fx:id="downloadButton" mnemonicParsing="false" onAction="#downloadEvent" prefHeight="39.0" prefWidth="150.0" styleClass="download" text="Download" />
+                                    <Button fx:id="downloadButton" mnemonicParsing="false" onAction="#downloadEvent" prefHeight="39.0" prefWidth="150.0" styleClass="download" text="Buy" />
                                     <Pane prefHeight="225.0" prefWidth="212.0" />
                                  </children>
                               </VBox>
