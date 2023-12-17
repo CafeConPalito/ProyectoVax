@@ -25,6 +25,8 @@ import javafx.scene.layout.HBox;
 public class GameInfoController extends HBox {
 
     private int idGame; // ID del juego rescatado de la DB
+    
+    private boolean library=false;
 
     @FXML
     private Label infoGameTitle;
@@ -70,7 +72,7 @@ public class GameInfoController extends HBox {
      * @param urlImage url de la imagen, se comprueba si la url es validas
      * @throws IOException
      */
-    public GameInfoController(int idGame, String title, String numDownloads, String price, String urlImage) throws IOException {
+    public GameInfoController(int idGame, String title, String numDownloads, String price, String urlImage,boolean library) throws IOException {
 
         //Construyo el objeto
         FXMLLoader fxmlLoader = new FXMLLoader();
@@ -96,7 +98,8 @@ public class GameInfoController extends HBox {
         if (CheckURLImg.exists(urlImage)) {
             infoGameImage.setImage(new Image(urlImage));
         }
-
+        this.library=library;
+    
     }
 
     /**
@@ -108,7 +111,7 @@ public class GameInfoController extends HBox {
     @FXML
     private void switchToPurchase(ActionEvent event) throws IOException {
 
-        GameController gc = new GameController(idGame);
+        GameController gc = new GameController(idGame,library);
 
         MainView.main.setCenter(gc);
 

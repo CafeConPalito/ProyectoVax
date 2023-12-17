@@ -42,12 +42,12 @@ public class LibraryConsults {
                 if (b.getIdusuario().getIdusuario() == UserLogedInfo.getUserID()) {
                     String URL = "http://" + EntryPoint.getServerIP() + ":80" + EntryPoint.rutaImgGame + j.getImagen();
                     if (CheckURLImg.exists(URL)) {
-                        GameInfoController cg = new GameInfoController(j.getIdjuego(), j.getTitulo(), j.getNumdescargas() + "", j.getPrecio() + "", URL);
+                        GameInfoController cg = new GameInfoController(j.getIdjuego(), j.getTitulo(), j.getNumdescargas() + "", j.getPrecio() + "", URL,true);
                         cg.getPurchaseButton().setText("Download");
                         libraryGames.add(cg);
                         break;
                     } else {
-                        GameInfoController cg = new GameInfoController(j.getIdjuego(), j.getTitulo(), j.getNumdescargas() + "", j.getPrecio() + "", j.getImagen());
+                        GameInfoController cg = new GameInfoController(j.getIdjuego(), j.getTitulo(), j.getNumdescargas() + "", j.getPrecio() + "", j.getImagen(),true);
                         cg.getPurchaseButton().setText("Download");
                         libraryGames.add(cg);
                         break;
@@ -91,11 +91,11 @@ public class LibraryConsults {
         for (Juego j : aux) {
             String URL = "http://" + EntryPoint.getServerIP() + ":80" + EntryPoint.rutaImgGame + j.getImagen();
             if (CheckURLImg.exists(URL)) {
-                GameInfoController cg = new GameInfoController(j.getIdjuego(), j.getTitulo(), j.getNumdescargas() + "", j.getPrecio() + "", URL);
+                GameInfoController cg = new GameInfoController(j.getIdjuego(), j.getTitulo(), j.getNumdescargas() + "", j.getPrecio() + "", URL,true);
                 cg.getPurchaseButton().setText("Download");
                 libraryGames.add(cg);
             } else {
-                GameInfoController cg = new GameInfoController(j.getIdjuego(), j.getTitulo(), j.getNumdescargas() + "", j.getPrecio() + "", j.getImagen());
+                GameInfoController cg = new GameInfoController(j.getIdjuego(), j.getTitulo(), j.getNumdescargas() + "", j.getPrecio() + "", j.getImagen(),true);
                 cg.getPurchaseButton().setText("Download");
                 libraryGames.add(cg);
             }

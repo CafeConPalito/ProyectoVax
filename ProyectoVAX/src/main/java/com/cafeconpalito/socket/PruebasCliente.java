@@ -4,6 +4,7 @@
  */
 package com.cafeconpalito.socket;
 
+import com.cafeconpalito.staticElements.RunGame;
 import java.io.File;
 
 /**
@@ -32,10 +33,10 @@ public class PruebasCliente {
         //SocketImagUser siu = new SocketImagUser(alias, path);
         //SocketImagGame sig = new SocketImagGame(alias, path);
         //SocketZipGameUpload szgu = new SocketZipGameUpload(alias, path);
-        //SocketZipGameDownload szgd = new SocketZipGameDownload("da niel");
+        //SocketZipGameDownload szgd = new SocketZipGameDownload("Cafe Con Palito");
         
-        //RunGame r = new RunGame("daniel");
-        //r.runGame();
+        RunGame r = new RunGame("Cafe Con Palito");
+        r.runGame();
         
     }
     
