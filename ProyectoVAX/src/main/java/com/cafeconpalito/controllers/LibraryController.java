@@ -5,6 +5,9 @@
 package com.cafeconpalito.controllers;
 
 import com.cafeconpalito.consultDB.LibraryConsults;
+import com.cafeconpalito.proyectovax.App;
+import com.cafeconpalito.staticElements.ConectionBBDD;
+import com.cafeconpalito.staticElements.MainView;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -38,6 +41,8 @@ public class LibraryController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+       
         try {
             MyTilePane.getChildren().clear();
             MyTilePane.getChildren().addAll(LibraryConsults.getLibraryGames());

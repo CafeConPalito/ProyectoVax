@@ -6,11 +6,14 @@ package com.cafeconpalito.controllers;
 
 import com.cafeconpalito.consultDB.StoreConsults;
 import com.cafeconpalito.proyectovax.App;
+import com.cafeconpalito.staticElements.ConectionBBDD;
 import com.cafeconpalito.staticElements.MainView;
 import com.cafeconpalito.userLogedData.UserLogedInfo;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -42,7 +45,7 @@ public class StoreController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        
         try {
 
             MyTilePane.getChildren().clear();

@@ -131,6 +131,7 @@ public class insertGame_1Controller implements Initializable {
 
     /**
      * Initializes the controller class.
+     * Carga los valores del ComboBox genre ComboBox rescatados de la DB.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -139,6 +140,9 @@ public class insertGame_1Controller implements Initializable {
 
     }
     
+    /**
+     * Guarda toda la informacion de los campos completados en la persistencia de Registro.
+     */
     private void saveData(){
         if (genreComboBox.getValue() != null) {
             gameRegisterInfo.setGenre(genreComboBox.getValue().toString());
@@ -150,11 +154,14 @@ public class insertGame_1Controller implements Initializable {
         gameRegisterInfo.setEsrb(esrbNum);
         gameRegisterInfo.setUsk(uskNum);
         
-        
-        
-        
     }
 
+    /**
+     * Accion del Boton (Back).
+     * Cambia la vista a insertGame
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void backBtn(MouseEvent event) throws IOException {
 
@@ -162,6 +169,7 @@ public class insertGame_1Controller implements Initializable {
 
     }
 
+    
     @FXML
     private void tryToRegister(ActionEvent event) throws IOException {
         boolean b = true;
@@ -232,23 +240,39 @@ public class insertGame_1Controller implements Initializable {
 
     }
 
+    /**
+     * Cambia el color del label a su estado original
+     * @param event 
+     */
     @FXML
     private void genreFocused(MouseEvent event) {
         genreLabel.setTextFill(Colors.textColor);
     }
 
+    /**
+     * Cambia el color del label a su estado original
+     * @param event 
+     */
     @FXML
     private void a1s(ActionEvent event) {
         pegiLabel.setTextFill(Colors.textColor);
         pegiNum = 1;
     }
 
+    /**
+     * Cambia el color del label a su estado original
+     * @param event 
+     */
     @FXML
     private void a2s(ActionEvent event) {
         pegiLabel.setTextFill(Colors.textColor);
         pegiNum = 2;
     }
 
+    /**
+     * Cambia el color del label a su estado original
+     * @param event 
+     */
     @FXML
     private void a3s(ActionEvent event) {
         pegiLabel.setTextFill(Colors.textColor);
@@ -261,24 +285,40 @@ public class insertGame_1Controller implements Initializable {
         pegiNum = 4;
     }
 
+    /**
+     * Cambia el color del label a su estado original
+     * @param event 
+     */
     @FXML
     private void a5s(ActionEvent event) {
         pegiLabel.setTextFill(Colors.textColor);
         pegiNum = 5;
     }
 
+    /**
+     * Cambia el color del label a su estado original
+     * @param event 
+     */
     @FXML
     private void a6s(ActionEvent event) {
         cerfoLabel.setTextFill(Colors.textColor);
         ceroNum = 6;
     }
 
+    /**
+     * Cambia el color del label a su estado original
+     * @param event 
+     */
     @FXML
     private void a7s(ActionEvent event) {
         cerfoLabel.setTextFill(Colors.textColor);
         ceroNum = 7;
     }
 
+    /**
+     * Cambia el color del label a su estado original
+     * @param event 
+     */
     @FXML
     private void a8s(ActionEvent event) {
         cerfoLabel.setTextFill(Colors.textColor);
@@ -291,96 +331,160 @@ public class insertGame_1Controller implements Initializable {
         ceroNum = 9;
     }
 
+    /**
+     * Cambia el color del label a su estado original
+     * @param event 
+     */
     @FXML
     private void a10s(ActionEvent event) {
         cerfoLabel.setTextFill(Colors.textColor);
         ceroNum = 10;
     }
 
+    /**
+     * Cambia el color del label a su estado original
+     * @param event 
+     */
     @FXML
     private void a11s(ActionEvent event) {
         esrbLabel.setTextFill(Colors.textColor);
         esrbNum = 11;
     }
 
+    /**
+     * Cambia el color del label a su estado original
+     * @param event 
+     */
     @FXML
     private void a12s(ActionEvent event) {
         esrbLabel.setTextFill(Colors.textColor);
         esrbNum = 12;
     }
 
+    /**
+     * Cambia el color del label a su estado original
+     * @param event 
+     */
     @FXML
     private void a13s(ActionEvent event) {
         esrbLabel.setTextFill(Colors.textColor);
         esrbNum = 13;
     }
 
+    /**
+     * Cambia el color del label a su estado original
+     * @param event 
+     */
     @FXML
     private void a14s(ActionEvent event) {
         esrbLabel.setTextFill(Colors.textColor);
         esrbNum = 14;
     }
 
+    /**
+     * Cambia el color del label a su estado original
+     * @param event 
+     */
     @FXML
     private void a15s(ActionEvent event) {
         esrbLabel.setTextFill(Colors.textColor);
         esrbNum = 15;
     }
 
+    /**
+     * Cambia el color del label a su estado original
+     * @param event 
+     */
     @FXML
     private void a16s(ActionEvent event) {
         acbLabel.setTextFill(Colors.textColor);
         acbNum = 16;
     }
 
+    /**
+     * Cambia el color del label a su estado original
+     * @param event 
+     */
     @FXML
     private void a17s(ActionEvent event) {
         acbLabel.setTextFill(Colors.textColor);
         acbNum = 17;
     }
 
+    /**
+     * Cambia el color del label a su estado original
+     * @param event 
+     */
     @FXML
     private void a18s(ActionEvent event) {
         acbLabel.setTextFill(Colors.textColor);
         acbNum = 18;
     }
 
+    /**
+     * Cambia el color del label a su estado original
+     * @param event 
+     */
     @FXML
     private void a19s(ActionEvent event) {
         acbLabel.setTextFill(Colors.textColor);
         acbNum = 19;
     }
 
+    /**
+     * Cambia el color del label a su estado original
+     * @param event 
+     */
     @FXML
     private void a20s(ActionEvent event) {
         acbLabel.setTextFill(Colors.textColor);
         acbNum = 20;
     }
 
+    /**
+     * Cambia el color del label a su estado original
+     * @param event 
+     */
     @FXML
     private void a21s(ActionEvent event) {
         uskLabel.setTextFill(Colors.textColor);
         uskNum = 21;
     }
 
+    /**
+     * Cambia el color del label a su estado original
+     * @param event 
+     */
     @FXML
     private void a22s(ActionEvent event) {
         uskLabel.setTextFill(Colors.textColor);
         uskNum = 22;
     }
 
+    /**
+     * Cambia el color del label a su estado original
+     * @param event 
+     */
     @FXML
     private void a23s(ActionEvent event) {
         uskLabel.setTextFill(Colors.textColor);
         uskNum = 23;
     }
-
+    
+    /**
+     * Cambia el color del label a su estado original
+     * @param event 
+     */
     @FXML
     private void a24s(ActionEvent event) {
         uskLabel.setTextFill(Colors.textColor);
         uskNum = 24;
     }
 
+    /**
+     * Cambia el color del label a su estado original
+     * @param event 
+     */
     @FXML
     private void a25s(ActionEvent event) {
         uskLabel.setTextFill(Colors.textColor);

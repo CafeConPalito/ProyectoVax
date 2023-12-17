@@ -34,6 +34,8 @@ public class StoreConsults {
      */
     public static ArrayList<GameInfoController> getStoreGames() throws IOException {
 
+        
+        
         storeGames.clear();
 
         if (!UserLogedInfo.isUserIsLoged()) {

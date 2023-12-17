@@ -44,8 +44,13 @@ public class App extends Application {
         MainView.main = (BorderPane) scene.lookup("#layout");
         
 
-        //Añado la tienda al primary para cuando se lanze
-        MainView.main.setCenter(App.loadFXML("store"));
+        //Compruebo al iniciar que EM no sea nulo si lo es carga help para meter la nueva ip en caso contrario muestra Store.
+        if (ConectionBBDD.getEm()==null) {
+            MainView.main.setCenter(App.loadFXML("help"));
+        }else{
+            MainView.main.setCenter(App.loadFXML("store"));
+        }
+        
 
         //Añado la barra lateral
         MainView.main.setLeft(App.loadFXML("panelIzquierdoGeneral"));
