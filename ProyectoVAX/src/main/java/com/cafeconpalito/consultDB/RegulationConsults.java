@@ -14,8 +14,6 @@ import javax.persistence.Query;
  */
 public class RegulationConsults {
     
-    
-    //insert into regulacion (region, nivel) values
     /**
      * Inserta la regulacion de un juego en la BBDD
      * @param idregulacion id de la regulacion que se quiere añadir

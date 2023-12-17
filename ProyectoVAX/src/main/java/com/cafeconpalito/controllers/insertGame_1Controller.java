@@ -221,7 +221,7 @@ public class insertGame_1Controller implements Initializable {
             
             
             //insertar imagen
-            SocketImagGame sig = new SocketImagGame(gameRegisterInfo.getTitle(), gameRegisterInfo.getImage());
+            SocketImagGame sig = new SocketImagGame(gameRegisterInfo.getTitle().replaceAll("\\s+",""), gameRegisterInfo.getImage());
           
             //insercion de la tabla regulacion (conseguir id de juego creado y 
                 //realizar 5 inserciones con el valor de las variables que almacenan pegi... etc + la id)

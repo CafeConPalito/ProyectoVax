@@ -7,7 +7,10 @@ package com.cafeconpalito.consultDB;
 import com.cafeconpalito.entities.Genero;
 import com.cafeconpalito.entities.Juego;
 import com.cafeconpalito.registerGameData.gameRegisterInfo;
+import com.cafeconpalito.registerUserData.userRegisterInfo;
 import com.cafeconpalito.staticElements.ConectionBBDD;
+import com.cafeconpalito.userLogedData.UserLogedInfo;
+import com.google.common.io.Files;
 import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -60,11 +63,11 @@ public class GameConsults {
         
         insercion.setParameter("titulo", gameRegisterInfo.getTitle());
         insercion.setParameter("descripcion", gameRegisterInfo.getDescription());
-        insercion.setParameter("imagen", gameRegisterInfo.getImage());
+        insercion.setParameter("imagen", gameRegisterInfo.getTitle().replaceAll("\\s+","")+"."+Files.getFileExtension(gameRegisterInfo.getImage()));
         insercion.setParameter("fecha", gameRegisterInfo.getLaunchDate());
         insercion.setParameter("numdescargas", 0);//al crearse siempre es 0
         insercion.setParameter("precio", gameRegisterInfo.getPrice());
-        insercion.setParameter("idusuario",1);// falta   <-----------------------------------------------------    
+        insercion.setParameter("idusuario",UserLogedInfo.getUserID());  
         
         insercion.executeUpdate();
         em.clear();
@@ -81,6 +84,16 @@ public class GameConsults {
         q.setParameter("titulo", tittle);
         return (ArrayList<Juego>) q.getResultList();
 
+    }
+    public static boolean gameTittleExists(String titulo){
+        Query q = ConectionBBDD.getEm().createNamedQuery("Juego.findByTitulo");
+        q.setParameter("titulo", titulo);
+        ArrayList<Juego> l = (ArrayList<Juego>) q.getResultList();
+        
+        if (!l.isEmpty()) {
+            return true;
+        }
+        return false;
     }
 
 }

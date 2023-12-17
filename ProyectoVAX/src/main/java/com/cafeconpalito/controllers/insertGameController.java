@@ -4,6 +4,7 @@
  */
 package com.cafeconpalito.controllers;
 
+import com.cafeconpalito.consultDB.GameConsults;
 import com.cafeconpalito.proyectovax.App;
 import com.cafeconpalito.registerGameData.gameRegisterInfo;
 import com.cafeconpalito.staticElements.Colors;
@@ -119,7 +120,7 @@ public class insertGameController implements Initializable {
             
             //Configuramos el File Chooser para que solo admita archivos de tipo imagen
             
-            String[] extensions = {".png",".jpg",".jpeg",".bmp","*.gif"};
+            String[] extensions = {"*.png","*.jpg","*.jpeg","*.bmp","*.gif"};
             FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Image Files", extensions);
             fch.getExtensionFilters().add(extFilter);
 
@@ -160,7 +161,7 @@ public class insertGameController implements Initializable {
         // aquí realizo la comprobación de los campos
 
         boolean b = true;
-        if (titleTextField.getText().isBlank()) {
+        if (titleTextField.getText().isBlank()|| GameConsults.gameTittleExists(titleTextField.getText())) {
             titleLabel.setTextFill(Colors.textColorError);
             b = false;
         }
