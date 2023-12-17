@@ -16,8 +16,8 @@ public class EntryPoint {
     //PUERTO 6664 ZIP Upload
     //PUERTO 6663 ZIP Download
  
-    public static String serverIP = "localhost";
-    //public static String serverIP = "192.168.34.209";
+    //public static String serverIP = "localhost";
+    public static String serverIP = "192.168.34.209";
     public static String user = "root";
     //public static String pass = "1234";
     public static String pass = "12345678";
@@ -29,6 +29,8 @@ public class EntryPoint {
 
         Logger.getLogger("org.hibernate").setLevel(Level.SEVERE);
         
+        //SE PUEDE BORRAR
+        /*
         boolean conexCorrecta = true;
         while (conexCorrecta) {
             try {
@@ -42,7 +44,8 @@ public class EntryPoint {
                 }
             }
         }
-
+        */
+        
         App.main(args);
 
     }
