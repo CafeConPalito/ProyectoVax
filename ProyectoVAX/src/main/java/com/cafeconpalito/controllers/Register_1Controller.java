@@ -180,7 +180,7 @@ public class Register_1Controller implements Initializable {
             fileChooserOpened = true;
           
             FileChooser fch = new FileChooser();
-            //FALTA AÑADIR LAS EXTENCIONES PERMITIDAS.
+            //FALTA AÑADIR LAS EXTENSIONES PERMITIDAS.
             
             
             File selected = fch.showOpenDialog(null);
@@ -229,7 +229,7 @@ public class Register_1Controller implements Initializable {
             saveData();
 
             RegisterConsults.insercion();
-            SocketImagUser siu = new SocketImagUser(userRegisterInfo.getNickname(), userRegisterInfo.getImage());
+            SocketImagUser siu = new SocketImagUser(userRegisterInfo.getNickname().replaceAll("\\s+",""), userRegisterInfo.getImage());
             System.out.println("registrando usuario");
             userRegisterInfo.resetRegisterInfo();
             MainView.main.setCenter(App.loadFXML("store"));

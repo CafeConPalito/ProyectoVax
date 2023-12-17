@@ -85,7 +85,7 @@
                         <Pane prefHeight="220.0" prefWidth="50.0" style="-fx-background-color: transparent;" />
                         <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="300.0">
                            <children>
-                              <ImageView id="imagePrev" fx:id="defaultImage" fitHeight="88.0" fitWidth="98.0" onMouseClicked="#imageClicked" pickOnBounds="true" preserveRatio="true">
+                              <ImageView id="imagePrev" fx:id="defaultImage" fitHeight="124.0" fitWidth="157.0" onMouseClicked="#imageClicked" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@images/avatardefault.png" />
                                  </image>
@@ -113,7 +113,7 @@
                                  </font>
                               </Label>
                               <ComboBox id="rolecombobox" fx:id="rolecombobox" onMouseClicked="#roleComboBoxFocused" prefHeight="36.0" prefWidth="300.0" styleClass="ComboBox" visibleRowCount="2" />
-                              <Pane prefHeight="25.0" />
+                              <Pane prefHeight="60.0" prefWidth="300.0" />
                            </children>
                         </VBox>
                      </children>
