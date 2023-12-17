@@ -5,8 +5,7 @@
 package com.cafeconpalito.registerUserData;
 
 /**
- *
- * @author Ramiro
+ * @author CafeConPalitos
  */
 public class userRegisterInfo {
 

@@ -2,7 +2,6 @@ package com.cafeconpalito.proyectovax;
 
 import com.cafeconpalito.staticElements.ConectionBBDD;
 import com.cafeconpalito.staticElements.MainView;
-import java.awt.Taskbar;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,6 +14,10 @@ import javafx.stage.StageStyle;
 
 /**
  * @author CafeConPalito
+ * @author Maria Carmen Barrios Fernández
+ * @author Ramiro Gutiérrez Valverde
+ * @author Daniel Espinosa García
+ * @author Albano Díez de Paulino
  */
 public class App extends Application {
 

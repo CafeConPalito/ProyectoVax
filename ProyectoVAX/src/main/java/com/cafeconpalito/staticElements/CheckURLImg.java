@@ -8,7 +8,6 @@ import java.net.URL;
 
 /**
  * @author CafeConPalito
- * @author Albano Díez de Paulino
  */
 public class CheckURLImg {
 

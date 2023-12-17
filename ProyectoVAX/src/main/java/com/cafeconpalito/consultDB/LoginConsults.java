@@ -11,8 +11,7 @@ import java.util.ArrayList;
 import javax.persistence.Query;
 
 /**
- *
- * @author Ramiro
+ * @author CafeConPalito
  */
 public class LoginConsults {
     

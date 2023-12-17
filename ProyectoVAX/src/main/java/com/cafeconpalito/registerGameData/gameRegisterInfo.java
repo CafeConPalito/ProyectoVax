@@ -6,7 +6,7 @@ package com.cafeconpalito.registerGameData;
 
 /**
  *
- * @author Ramiro
+  * @author CafeConPalito
  */
 public class gameRegisterInfo {
     

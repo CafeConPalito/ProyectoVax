@@ -5,9 +5,6 @@
 package com.cafeconpalito.controllers;
 
 import com.cafeconpalito.consultDB.LibraryConsults;
-import com.cafeconpalito.proyectovax.App;
-import com.cafeconpalito.staticElements.ConectionBBDD;
-import com.cafeconpalito.staticElements.MainView;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -24,7 +21,7 @@ import javafx.scene.layout.TilePane;
 /**
  * FXML Controller class
  *
- * @author TerciodeMarte
+ * @author CafeConPalito
  */
 public class LibraryController implements Initializable {
 

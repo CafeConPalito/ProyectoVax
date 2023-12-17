@@ -16,7 +16,6 @@ import javax.persistence.Query;
 
 /**
  * @author CafeConPalito
- * @author Ramiro
  */
 public class GameConsults {
 

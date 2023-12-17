@@ -26,14 +26,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 
 /**
  * FXML Controller class
  *
- * @author Ramiro
+ * @author CafeConPalito
  */
 public class insertGameController implements Initializable {
 
@@ -119,7 +118,7 @@ public class insertGameController implements Initializable {
             
             //Configuramos el File Chooser para que solo admita archivos de tipo imagen
             
-            String[] extensions = {".png",".jpg",".jpeg",".bmp","*.gif"};
+            String[] extensions = {"*.png","*.jpg","*.jpeg","*.bmp","*.gif"};
             FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Image Files", extensions);
             fch.getExtensionFilters().add(extFilter);
 
