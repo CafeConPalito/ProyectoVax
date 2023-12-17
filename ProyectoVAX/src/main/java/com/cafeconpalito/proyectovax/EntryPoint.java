@@ -30,23 +30,6 @@ public class EntryPoint {
 
         Logger.getLogger("org.hibernate").setLevel(Level.SEVERE);
         
-        //SE PUEDE BORRAR
-        
-        boolean conexCorrecta = true;
-        while (conexCorrecta) {
-            try {
-                ConectionBBDD.createCustomEM(serverIP, user, pass);
-                conexCorrecta=false;
-            } catch (Exception e) {
-                System.out.println("Error al conectar con la BBDD");
-                FrameDatosConex fdc = new FrameDatosConex();
-                fdc.setVisible(true);
-                while (fdc.esperandoIP) {                    
-                }
-            }
-        }
-        
-        
         App.main(args);
 
     }
