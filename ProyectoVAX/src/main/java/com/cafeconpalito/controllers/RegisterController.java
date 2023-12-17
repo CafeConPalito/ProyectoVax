@@ -25,7 +25,7 @@ import java.time.LocalDate;
 /**
  * FXML Controller class
  *
- * @author Ramiro
+ * @author CafeConPalito
  */
 public class RegisterController implements Initializable {
 

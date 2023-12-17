@@ -19,7 +19,6 @@ import java.util.Iterator;
 import javax.persistence.Query;
 
 /**
- *
  * @author CafeConPalito
  */
 public class StoreConsults {

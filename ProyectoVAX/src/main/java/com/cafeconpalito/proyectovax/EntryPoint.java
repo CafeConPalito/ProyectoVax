@@ -1,12 +1,13 @@
 package com.cafeconpalito.proyectovax;
 
-import com.cafeconpalito.staticElements.ConectionBBDD;
-import com.cafeconpalito.staticElements.FrameDatosConex;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
  * @author CafeConPalito
+ * @author Maria Carmen Barrios Fernández
+ * @author Ramiro Gutiérrez Valverde
+ * @author Daniel Espinosa García
  * @author Albano Díez de Paulino
  */
 public class EntryPoint {
@@ -20,8 +21,8 @@ public class EntryPoint {
     //public static String serverIP = "192.168.34.209";
     public static String user = "root";
     //public static String pass = "1234";
-    public static String pass = "12341234";
-    //public static String pass = "12345678";
+    //public static String pass = "12341234";
+    public static String pass = "12345678";
 
     public static String rutaImgUser = "/imguser/";
     public static String rutaImgGame = "/imggame/";

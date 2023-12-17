@@ -8,8 +8,6 @@ import com.cafeconpalito.proyectovax.App;
 import com.cafeconpalito.staticElements.CheckURLImg;
 import com.cafeconpalito.staticElements.MainView;
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

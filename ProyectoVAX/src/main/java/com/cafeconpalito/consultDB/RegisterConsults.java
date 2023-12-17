@@ -13,8 +13,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 /**
- *
- * @author Ramiro
+ * @author CafeConPalito
  */
 public class RegisterConsults {
     

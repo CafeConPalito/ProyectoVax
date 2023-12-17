@@ -29,7 +29,7 @@ import javafx.stage.FileChooser;
 /**
  * FXML Controller class
  *
- * @author Ramiro
+ * @author CafeConPalito
  */
 public class Register_1Controller implements Initializable {
 

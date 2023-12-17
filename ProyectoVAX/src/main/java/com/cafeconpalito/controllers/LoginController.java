@@ -23,7 +23,7 @@ import javafx.scene.input.MouseEvent;
 /**
  * FXML Controller class
  *
- * @author TerciodeMarte
+ * @author CafeConPalito
  */
 public class LoginController implements Initializable {
 
