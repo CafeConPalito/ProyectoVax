@@ -56,13 +56,7 @@
                                     <Font name="System Bold" size="18.0" />
                                  </font>
                               </Label>
-                              <TextArea fx:id="descriptionTextArea" onMouseClicked="#descriptionFocused" prefHeight="173.0" prefWidth="300.0" />
-                              <Pane prefHeight="25.0" />
-                           </children>
-                        </VBox>
-                        <Pane prefHeight="432.0" prefWidth="50.0" style="-fx-background-color: transparent;" />
-                        <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="300.0">
-                           <children>
+                              <TextArea fx:id="descriptionTextArea" onMouseClicked="#descriptionFocused" prefHeight="105.0" prefWidth="300.0" />
                               <Pane prefHeight="23.0" prefWidth="300.0" />
                               <Label fx:id="priceLabel" alignment="CENTER" prefWidth="200.0" styleClass="labels" text="Price" textAlignment="CENTER">
                                  <font>
@@ -74,7 +68,18 @@
                                     <Font size="18.0" />
                                  </font>
                               </TextField>
-                              <Pane prefHeight="54.0" prefWidth="300.0" />
+                           </children>
+                        </VBox>
+                        <Pane prefHeight="432.0" prefWidth="50.0" style="-fx-background-color: transparent;" />
+                        <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="300.0">
+                           <children>
+                              <Pane prefHeight="8.0" prefWidth="300.0" />
+                              <ImageView id="imagePrev" fx:id="defaultImage" fitHeight="142.0" fitWidth="202.0" onMouseClicked="#imageClicked" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/avatardefault.png" />
+                                 </image>
+                              </ImageView>
+                              <Pane prefHeight="25.0" prefWidth="300.0" />
                               <Label fx:id="imageLabel" alignment="CENTER" prefHeight="31.0" prefWidth="300.0" styleClass="labels" text="Image" textAlignment="CENTER">
                                  <font>
                                     <Font name="System Bold" size="18.0" />
@@ -90,14 +95,14 @@
                                     <Button id="selectImgBtn" fx:id="imageButton" mnemonicParsing="false" onAction="#SelectImage" text="Select" />
                                  </children>
                               </HBox>
-                              <Pane prefHeight="40.0" prefWidth="300.0" />
+                              <Pane prefHeight="23.0" prefWidth="275.0" />
                               <Label fx:id="launchLabel" alignment="CENTER" prefWidth="200.0" styleClass="labels" text="Launch Date" textAlignment="CENTER">
                                  <font>
                                     <Font name="System Bold" size="18.0" />
                                  </font>
                               </Label>
                               <DatePicker fx:id="launchDateChooser" onMouseClicked="#dateFocused" prefHeight="35.0" prefWidth="300.0" />
-                              <Pane prefHeight="19.0" prefWidth="300.0" />
+                              <Pane prefHeight="0.0" prefWidth="300.0" />
                            </children>
                         </VBox>
                      </children>

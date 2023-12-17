@@ -174,10 +174,10 @@ public class insertGame_1Controller implements Initializable {
     private void tryToRegister(ActionEvent event) throws IOException {
         boolean b = true;
 
-//        if (genreComboBox.getValue() == null) {
-//            genreLabel.setTextFill(Colors.textColorError);
-//            b = false;
-//        }
+        if (genreComboBox.getValue() == null) {
+            genreLabel.setTextFill(Colors.textColorError);
+            b = false;
+        }
         if (pegi.getSelectedToggle() == null) {
             pegiLabel.setTextFill(Colors.textColorError);
             b = false;
@@ -225,7 +225,7 @@ public class insertGame_1Controller implements Initializable {
           
             //insercion de la tabla regulacion (conseguir id de juego creado y 
                 //realizar 5 inserciones con el valor de las variables que almacenan pegi... etc + la id)
-                RegulationConsults.insercion(pegiNum, idJuego);//<--------------------
+                RegulationConsults.insercion(pegiNum, idJuego);
                 RegulationConsults.insercion(acbNum, idJuego);
                 RegulationConsults.insercion(ceroNum, idJuego);
                 RegulationConsults.insercion(esrbNum, idJuego);

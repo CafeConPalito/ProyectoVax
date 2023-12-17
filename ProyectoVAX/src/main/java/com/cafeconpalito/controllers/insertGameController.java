@@ -13,6 +13,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -21,6 +23,8 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import javafx.scene.input.MouseEvent;
@@ -59,6 +63,8 @@ public class insertGameController implements Initializable {
     private ImageView rightArrowImage;
     @FXML
     private Label imageLabel;
+    @FXML
+    private ImageView defaultImage;
 
     /**
      * Initializes the controller class.
@@ -66,14 +72,35 @@ public class insertGameController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        descriptionTextArea.setTextFormatter(createTextFormatter());
+        
         if (gameRegisterInfo.getTitle() != null) {
             titleTextField.setText(gameRegisterInfo.getTitle());
             descriptionTextArea.setText(gameRegisterInfo.getDescription());
             priceTextField.setText(gameRegisterInfo.getPrice().toString());
             imagetexField.setText(gameRegisterInfo.getImage());
+            defaultImage.setImage(new Image("file:" + imagetexField.getText()));
             launchDateChooser.setValue((LocalDate.parse(gameRegisterInfo.getLaunchDate())));
 
         }
+    }
+    
+    
+    private static <T> TextFormatter<T> createTextFormatter() {
+
+        final IntegerProperty lines = new SimpleIntegerProperty(1);
+
+        return new TextFormatter<>(change -> {
+            if (change.isAdded()) {
+                if (change.getText().indexOf('\n') > -1) {
+                    lines.set(lines.get() + 1);
+                }
+                if (lines.get() > 10) {
+                    change.setText("");
+                }
+            }
+            return change;
+        });
     }
 
     private boolean fileChooserOpened = false;
@@ -87,12 +114,21 @@ public class insertGameController implements Initializable {
         if (!fileChooserOpened) {
 
             fileChooserOpened = true;
-
+            
             FileChooser fch = new FileChooser();
+            
+            //Configuramos el File Chooser para que solo admita archivos de tipo imagen
+            
+            String[] extensions = {".png",".jpg",".jpeg",".bmp","*.gif"};
+            FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Image Files", extensions);
+            fch.getExtensionFilters().add(extFilter);
+
+            
             File selected = fch.showOpenDialog(null);
 
             if (selected != null) {
                 imagetexField.setText(selected.getAbsolutePath());
+                defaultImage.setImage(new Image("file:" + imagetexField.getText()));
             }
 
             fileChooserOpened = false;
@@ -176,7 +212,7 @@ public class insertGameController implements Initializable {
     }
 
     /**
-     * Cambia el color del label a su estado original
+     * Cambia la vista de la ventana a la store y resetea los valores del registro de persistencia
      * @param event 
      */
     @FXML
@@ -228,6 +264,12 @@ public class insertGameController implements Initializable {
     @FXML
     private void dateFocused(MouseEvent event) {
         launchLabel.setTextFill(Colors.textColor);
+    }
+
+    @FXML
+    private void imageClicked(MouseEvent event) {
+        launchFileChooser();
+        
     }
 
 }

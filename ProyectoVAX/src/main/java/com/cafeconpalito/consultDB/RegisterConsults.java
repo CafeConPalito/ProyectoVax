@@ -67,7 +67,7 @@ public class RegisterConsults {
         insercion.setParameter("apellido1", userRegisterInfo.getFirstSurname());
         insercion.setParameter("apellido2", userRegisterInfo.getSecondSurname());
         insercion.setParameter("fechanac", userRegisterInfo.getBirthDate());
-        insercion.setParameter("imagen", userRegisterInfo.getNickname() +"."+Files.getFileExtension(userRegisterInfo.getImage()));
+        insercion.setParameter("imagen", userRegisterInfo.getNickname().replaceAll("\\s+","") +"."+Files.getFileExtension(userRegisterInfo.getImage())); //quitamos los espacios para poder cargar la url de la imagen
         insercion.setParameter("region", userRegisterInfo.getRegionNumber());
         insercion.setParameter("rol", userRegisterInfo.getRolenumber());
         

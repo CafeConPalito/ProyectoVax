@@ -2,6 +2,7 @@ package com.cafeconpalito.proyectovax;
 
 import com.cafeconpalito.staticElements.ConectionBBDD;
 import com.cafeconpalito.staticElements.MainView;
+import java.awt.Taskbar;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -67,7 +68,7 @@ public class App extends Application {
         mainStage.setTitle("VaX");
          */
         
-        //Icono Stage
+        //Icono Stage        
         mainStage.getIcons().add(new Image(App.class.getResourceAsStream("images/logovax.png")));
 
         //Mostrando Escena principal
