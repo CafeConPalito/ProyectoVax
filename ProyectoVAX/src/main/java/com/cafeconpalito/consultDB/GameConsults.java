@@ -7,7 +7,6 @@ package com.cafeconpalito.consultDB;
 import com.cafeconpalito.entities.Genero;
 import com.cafeconpalito.entities.Juego;
 import com.cafeconpalito.registerGameData.gameRegisterInfo;
-import com.cafeconpalito.registerUserData.userRegisterInfo;
 import com.cafeconpalito.staticElements.ConectionBBDD;
 import com.cafeconpalito.userLogedData.UserLogedInfo;
 import com.google.common.io.Files;
@@ -23,7 +22,7 @@ import javax.persistence.Query;
 public class GameConsults {
 
     /**
-     * Consulta en la base de datos la informacion de un juego a partir de su id
+     * Consulta en la base de datos la información de un juego a partir de su id
      * @param idGame id del juego
      * @return devuelve un arraylist con la informacion del juego
      */
@@ -51,7 +50,7 @@ public class GameConsults {
     }
     
     /**
-     * inserta en la base de datos la informacion de un juego nuevo
+     * inserta en la base de datos la información de un juego nuevo
      */
     public static void insercion() {
         //insercion
@@ -74,7 +73,7 @@ public class GameConsults {
     }
     
     /**
-     * Consulta en la BBDD el titulo de un juego y devuelve toda la informacion de este
+     * Consulta en la BBDD el titulo de un juego y devuelve toda la información de este
      * @param tittle titulo del juego
      * @return Devuelve Un Array list de juegos
      */
@@ -84,6 +83,12 @@ public class GameConsults {
         return (ArrayList<Juego>) q.getResultList();
 
     }
+    
+    /**
+     * Consulta en la BBDD el titulo de un juego y devuelve toda la información de este
+     * @param titulo titulo del juego
+     * @return Devuelve True si el título no esta registrado
+     */
     public static boolean gameTittleExists(String titulo){
         Query q = ConectionBBDD.getEm().createNamedQuery("Juego.findByTitulo");
         q.setParameter("titulo", titulo);

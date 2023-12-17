@@ -67,13 +67,13 @@ public class insertGameController implements Initializable {
     private ImageView defaultImage;
 
     /**
-     * Initializes the controller class.
-     * Carga los datos de la persistencia del registro si los hubiera
+     * Initializes the controller class. Carga los datos de la persistencia del
+     * registro si los hubiera
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         descriptionTextArea.setTextFormatter(createTextFormatter());
-        
+
         if (gameRegisterInfo.getTitle() != null) {
             titleTextField.setText(gameRegisterInfo.getTitle());
             descriptionTextArea.setText(gameRegisterInfo.getDescription());
@@ -84,8 +84,7 @@ public class insertGameController implements Initializable {
 
         }
     }
-    
-    
+
     private static <T> TextFormatter<T> createTextFormatter() {
 
         final IntegerProperty lines = new SimpleIntegerProperty(1);
@@ -106,29 +105,40 @@ public class insertGameController implements Initializable {
     private boolean fileChooserOpened = false;
 
     /**
-     * Lanza una ventana de Seleccion de Fichero.
-     * Permitiendo al usuario cargar una imagen del juego.
+     * Lanza una ventana de Seleccion de Fichero. Permitiendo al usuario cargar
+     * una imagen del juego.
      */
     private void launchFileChooser() {
 
         if (!fileChooserOpened) {
 
             fileChooserOpened = true;
-            
+
             FileChooser fch = new FileChooser();
-            
+
             //Configuramos el File Chooser para que solo admita archivos de tipo imagen
-            
-            String[] extensions = {"*.png","*.jpg","*.jpeg","*.bmp","*.gif"};
+            String[] extensions = {"*.png", "*.jpg", "*.jpeg", "*.bmp", "*.gif"};
             FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Image Files", extensions);
             fch.getExtensionFilters().add(extFilter);
 
-            
             File selected = fch.showOpenDialog(null);
 
             if (selected != null) {
-                imagetexField.setText(selected.getAbsolutePath());
-                defaultImage.setImage(new Image("file:" + imagetexField.getText()));
+                if (selected != null) {
+                    // Verificar el tamaño del archivo seleccionado
+                    long fileSizeInBytes = selected.length();
+                    long fileSizeInMegabytes = fileSizeInBytes / (1024 * 1024); // Convertir a MB
+
+                    // Verificar si el tamaño excede los 20 MB
+                    if (fileSizeInMegabytes > 20) {
+                        //error message
+                        imageLabel.setTextFill(Colors.textColorError);
+                        imageLabel.setText("Max 20 MB files");
+                    } else {
+                        imagetexField.setText(selected.getAbsolutePath());
+                        defaultImage.setImage(new Image("file:" + selected.getAbsolutePath()));
+                    }
+                }
             }
 
             fileChooserOpened = false;
@@ -136,31 +146,33 @@ public class insertGameController implements Initializable {
     }
 
     /**
-     * Accion del boton Select.
-     * Cambia el color del label a su estado original.
+     * Accion del boton Select. Cambia el color del label a su estado original.
      * Lanza el metodo FileChooser.
-     * @param event 
+     *
+     * @param event
      */
     @FXML
     private void SelectImage(ActionEvent event) {
+        imageLabel.setText("Image");
         imageLabel.setTextFill(Colors.textColor);
         launchFileChooser();
 
     }
 
     /**
-     * Accion del Boton (next).
-     * Comprueba que los campos son correctos, si es asi guarda la informacion en la percistencia del registro.
-     * Cambia la vista a insertGame_1
+     * Accion del Boton (next). Comprueba que los campos son correctos, si es
+     * asi guarda la informacion en la percistencia del registro. Cambia la
+     * vista a insertGame_1
+     *
      * @param event
-     * @throws IOException 
+     * @throws IOException
      */
     @FXML
     private void nextBtn(MouseEvent event) throws IOException {
         // aquí realizo la comprobación de los campos
 
         boolean b = true;
-        if (titleTextField.getText().isBlank()|| GameConsults.gameTittleExists(titleTextField.getText())) {
+        if (titleTextField.getText().isBlank() || GameConsults.gameTittleExists(titleTextField.getText())) {
             titleLabel.setTextFill(Colors.textColorError);
             b = false;
         }
@@ -188,7 +200,7 @@ public class insertGameController implements Initializable {
             gameRegisterInfo.setPrice(Double.parseDouble(priceTextField.getText()));
             gameRegisterInfo.setImage(imagetexField.getText());
             gameRegisterInfo.setLaunchDate(launchDateChooser.getValue().toString());
-            
+
             MainView.main.setCenter(App.loadFXML("insertGame_1"));
         }
 
@@ -196,6 +208,7 @@ public class insertGameController implements Initializable {
 
     /**
      * Comprueba que el precio este en el formato correcto al pasarlo a Double.
+     *
      * @param price recibe el precio en formato String.
      * @return Devuelve True si es correcto.
      */
@@ -212,8 +225,10 @@ public class insertGameController implements Initializable {
     }
 
     /**
-     * Cambia la vista de la ventana a la store y resetea los valores del registro de persistencia
-     * @param event 
+     * Cambia la vista de la ventana a la store y resetea los valores del
+     * registro de persistencia
+     *
+     * @param event
      */
     @FXML
     private void CancelInsertGame(ActionEvent event) throws IOException {
@@ -223,7 +238,8 @@ public class insertGameController implements Initializable {
 
     /**
      * Cambia el color del label a su estado original
-     * @param event 
+     *
+     * @param event
      */
     @FXML
     private void titleFocused(MouseEvent event) {
@@ -232,7 +248,8 @@ public class insertGameController implements Initializable {
 
     /**
      * Cambia el color del label a su estado original
-     * @param event 
+     *
+     * @param event
      */
     @FXML
     private void descriptionFocused(MouseEvent event) {
@@ -241,7 +258,8 @@ public class insertGameController implements Initializable {
 
     /**
      * Cambia el color del label a su estado original
-     * @param event 
+     *
+     * @param event
      */
     @FXML
     private void priceFocused(MouseEvent event) {
@@ -250,26 +268,37 @@ public class insertGameController implements Initializable {
 
     /**
      * Cambia el color del label a su estado original
-     * @param event 
+     *
+     * @param event
      */
     @FXML
     private void imageFocused(MouseEvent event) {
+        imageLabel.setText("Image");
         imageLabel.setTextFill(Colors.textColor);
     }
 
     /**
      * Cambia el color del label a su estado original
-     * @param event 
+     *
+     * @param event
      */
     @FXML
     private void dateFocused(MouseEvent event) {
         launchLabel.setTextFill(Colors.textColor);
     }
 
+    /**
+     * Accion de la imagen al ser pulsada con el ratón. Cambia el color del
+     * label a su estado original. Lanza el metodo FileChooser.
+     *
+     * @param event
+     */
     @FXML
     private void imageClicked(MouseEvent event) {
+        imageLabel.setText("Image");
+        imageLabel.setTextFill(Colors.textColor);
         launchFileChooser();
-        
+
     }
 
 }

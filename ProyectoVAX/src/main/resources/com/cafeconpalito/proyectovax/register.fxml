@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
@@ -38,33 +40,51 @@
                                  <font>
                                     <Font name="System Bold" size="18.0" />
                                  </font>
+                                 <tooltip>
+                                    <Tooltip text="Introduce a valid Name" />
+                                 </tooltip>
                               </Label>
                               <TextField fx:id="firstNameTextField" alignment="CENTER" onMouseClicked="#firstNameFocused" prefHeight="25.0" prefWidth="220.0" style="-fx-background-color: transparent; -fx-border-style: solid; -fx-border-width: 0 0 1 0;">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
+                                 <tooltip>
+                                    <Tooltip text="Introduce a valid Name" />
+                                 </tooltip>
                               </TextField>
                               <Pane prefHeight="25.0" />
                               <Label fx:id="firstSurnameLabel" alignment="CENTER" prefWidth="200.0" styleClass="labels" text="First Surname" textAlignment="CENTER">
                                  <font>
                                     <Font name="System Bold" size="18.0" />
                                  </font>
+                                 <tooltip>
+                                    <Tooltip text="Introduce a valid Surname" />
+                                 </tooltip>
                               </Label>
                               <TextField fx:id="firstSurnameTextField" alignment="CENTER" onMouseClicked="#firstSurnameFocused" prefHeight="25.0" prefWidth="220.0" style="-fx-background-color: transparent; -fx-border-style: solid; -fx-border-width: 0 0 1 0;">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
+                                 <tooltip>
+                                    <Tooltip text="Introduce a valid Surname" />
+                                 </tooltip>
                               </TextField>
                               <Pane prefHeight="25.0" />
                               <Label fx:id="secondSurnameLabel" alignment="CENTER" prefWidth="200.0" styleClass="labels" text="Second Surname" textAlignment="CENTER">
                                  <font>
                                     <Font name="System Bold" size="18.0" />
                                  </font>
+                                 <tooltip>
+                                    <Tooltip text="Introduce a valid Surname" />
+                                 </tooltip>
                               </Label>
                               <TextField fx:id="secondSurnameTextField" alignment="CENTER" onMouseClicked="#secondSurnameFocused" prefHeight="25.0" prefWidth="220.0" style="-fx-background-color: transparent; -fx-border-style: solid; -fx-border-width: 0 0 1 0;">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
+                                 <tooltip>
+                                    <Tooltip text="Introduce a valid Surname" />
+                                 </tooltip>
                               </TextField>
                               <Pane prefHeight="25.0" />
                            </children>
@@ -77,25 +97,43 @@
                                  <font>
                                     <Font name="System Bold" size="18.0" />
                                  </font>
+                                 <tooltip>
+                                    <Tooltip text="Select a date" />
+                                 </tooltip>
                               </Label>
-                              <DatePicker id="datepicker" fx:id="BirthDatePicker" editable="false" onMouseClicked="#birthDateFocused" prefHeight="35.0" prefWidth="300.0" />
+                              <DatePicker id="datepicker" fx:id="BirthDatePicker" editable="false" onMouseClicked="#birthDateFocused" prefHeight="35.0" prefWidth="300.0">
+                                 <tooltip>
+                                    <Tooltip text="Select a date" />
+                                 </tooltip></DatePicker>
                               <Pane prefHeight="25.0" />
                               <Label fx:id="RegionLabel" alignment="CENTER" prefWidth="200.0" styleClass="labels" text="Region" textAlignment="CENTER">
                                  <font>
                                     <Font name="System Bold" size="18.0" />
                                  </font>
+                                 <tooltip>
+                                    <Tooltip text="Select a region from the list" />
+                                 </tooltip>
                               </Label>
-                              <ComboBox id="regioncombobox" fx:id="regionComboBox" onMouseClicked="#regionFocused" prefHeight="36.0" prefWidth="300.0" styleClass="ComboBox" visibleRowCount="2" />
+                              <ComboBox id="regioncombobox" fx:id="regionComboBox" onMouseClicked="#regionFocused" prefHeight="36.0" prefWidth="300.0" styleClass="ComboBox" visibleRowCount="2">
+                                 <tooltip>
+                                    <Tooltip text="Select a region from the list" />
+                                 </tooltip></ComboBox>
                               <Pane prefHeight="25.0" />
                               <Label fx:id="emailLabel" alignment="CENTER" prefWidth="200.0" styleClass="labels" text="Email" textAlignment="CENTER">
                                  <font>
                                     <Font name="System Bold" size="18.0" />
                                  </font>
+                                 <tooltip>
+                                    <Tooltip text="Introduce a valid Email" />
+                                 </tooltip>
                               </Label>
-                              <TextField fx:id="emailTextField" alignment="CENTER" onMouseClicked="#emailFocused" prefHeight="25.0" prefWidth="220.0" style="-fx-background-color: transparent; -fx-border-style: solid; -fx-border-width: 0 0 1 0;">
+                              <TextField fx:id="emailTextField" alignment="CENTER" onMouseClicked="#emailFocused" prefHeight="25.0" prefWidth="220.0" promptText="Introduce a valid Email" style="-fx-background-color: transparent; -fx-border-style: solid; -fx-border-width: 0 0 1 0;">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
+                                 <tooltip>
+                                    <Tooltip text="Introduce a valid Email" />
+                                 </tooltip>
                               </TextField>
                               <Pane prefHeight="25.0" />
                            </children>
@@ -105,11 +143,18 @@
                   <Pane prefHeight="20.0" prefWidth="500.0" style="-fx-background-color: transparent;" />
                   <HBox alignment="CENTER">
                      <children>
-                        <ImageView id="nextBtn" fx:id="continueArrow" fitHeight="52.0" fitWidth="42.0" onMouseClicked="#nextBtn" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@images/Custom-Icon-Design-Flatastic-1-Forward.72.png" />
-                           </image>
-                        </ImageView>
+                        <ButtonBar prefHeight="42.0" prefWidth="22.0">
+                           <buttons>
+                              <ImageView id="nextBtn" fx:id="continueArrow" fitHeight="52.0" fitWidth="42.0" onMouseClicked="#nextBtn" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/Custom-Icon-Design-Flatastic-1-Forward.72.png" />
+                                 </image>
+                              </ImageView>
+                           </buttons>
+                           <tooltip>
+                              <Tooltip text="Next button" />
+                           </tooltip>
+                        </ButtonBar>
                      </children>
                   </HBox>
                </children>

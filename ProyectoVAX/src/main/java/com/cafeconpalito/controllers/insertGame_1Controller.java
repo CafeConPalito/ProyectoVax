@@ -129,8 +129,8 @@ public class insertGame_1Controller implements Initializable {
     private Label uskLabel;
 
     /**
-     * Initializes the controller class.
-     * Carga los valores del ComboBox genre ComboBox rescatados de la DB.
+     * Initializes the controller class. Carga los valores del ComboBox genre
+     * ComboBox rescatados de la DB.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -138,28 +138,29 @@ public class insertGame_1Controller implements Initializable {
         genreComboBox.getItems().addAll(GameConsults.getGenreList());
 
     }
-    
+
     /**
-     * Guarda toda la informacion de los campos completados en la persistencia de Registro.
+     * Guarda toda la informacion de los campos completados en la persistencia
+     * de Registro.
      */
-    private void saveData(){
+    private void saveData() {
         if (genreComboBox.getValue() != null) {
             gameRegisterInfo.setGenre(genreComboBox.getValue().toString());
         }
-        
+
         gameRegisterInfo.setPegi(pegiNum);
         gameRegisterInfo.setCero(ceroNum);
         gameRegisterInfo.setAcb(acbNum);
         gameRegisterInfo.setEsrb(esrbNum);
         gameRegisterInfo.setUsk(uskNum);
-        
+
     }
 
     /**
-     * Accion del Boton (Back).
-     * Cambia la vista a insertGame
+     * Accion del Botón (Back). Cambia la vista a insertGame
+     *
      * @param event
-     * @throws IOException 
+     * @throws IOException
      */
     @FXML
     private void backBtn(MouseEvent event) throws IOException {
@@ -168,7 +169,15 @@ public class insertGame_1Controller implements Initializable {
 
     }
 
-    
+    /**
+     * Accion del Botón (Register).
+     * Comprueba que todos los campos están rellenados para realizar una inserción
+     * en la tabla juegos y otra en la tabla regulacion. Pone el registro de
+     * persistencia a nulos y cambia la vista a store.
+     *
+     * @param event
+     * @throws IOException
+     */
     @FXML
     private void tryToRegister(ActionEvent event) throws IOException {
         boolean b = true;
@@ -205,34 +214,28 @@ public class insertGame_1Controller implements Initializable {
         if (b) {
 
             // insercion:
-            
-            GameConsults.insercion();// falta el id del usuario en el gameconsults.insercion
-            
-            System.out.println("Registrando juego");
-            
-            int idJuego=0;
-            
-            ArrayList <Juego> aj= GameConsults.getNewGameid(gameRegisterInfo.getTitle());
-            
+            GameConsults.insercion();
+
+            int idJuego = 0;
+
+            ArrayList<Juego> aj = GameConsults.getNewGameid(gameRegisterInfo.getTitle());
+
             for (Juego j : aj) {
-                idJuego= j.getIdjuego();
+                idJuego = j.getIdjuego();
             }
-            
-            
+
             //insertar imagen
-            SocketImagGame sig = new SocketImagGame(gameRegisterInfo.getTitle().replaceAll("\\s+",""), gameRegisterInfo.getImage());
-          
-            //insercion de la tabla regulacion (conseguir id de juego creado y 
-                //realizar 5 inserciones con el valor de las variables que almacenan pegi... etc + la id)
-                RegulationConsults.insercion(pegiNum, idJuego);
-                RegulationConsults.insercion(acbNum, idJuego);
-                RegulationConsults.insercion(ceroNum, idJuego);
-                RegulationConsults.insercion(esrbNum, idJuego);
-                RegulationConsults.insercion(uskNum, idJuego);
-            
+            SocketImagGame sig = new SocketImagGame(gameRegisterInfo.getTitle().replaceAll("\\s+", ""), gameRegisterInfo.getImage());
+
+            //insercion de la tabla regulacion 
+            RegulationConsults.insercion(pegiNum, idJuego);
+            RegulationConsults.insercion(acbNum, idJuego);
+            RegulationConsults.insercion(ceroNum, idJuego);
+            RegulationConsults.insercion(esrbNum, idJuego);
+            RegulationConsults.insercion(uskNum, idJuego);
 
             gameRegisterInfo.resetGameInfo();
-            
+
             MainView.main.setCenter(App.loadFXML("store"));
 
         }
@@ -241,7 +244,8 @@ public class insertGame_1Controller implements Initializable {
 
     /**
      * Cambia el color del label a su estado original
-     * @param event 
+     *
+     * @param event
      */
     @FXML
     private void genreFocused(MouseEvent event) {
@@ -250,7 +254,9 @@ public class insertGame_1Controller implements Initializable {
 
     /**
      * Cambia el color del label a su estado original
-     * @param event 
+     * seteando el número correspondiente de la regulación
+     *
+     * @param event
      */
     @FXML
     private void a1s(ActionEvent event) {
@@ -260,7 +266,9 @@ public class insertGame_1Controller implements Initializable {
 
     /**
      * Cambia el color del label a su estado original
-     * @param event 
+     * seteando el número correspondiente de la regulación
+     *
+     * @param event
      */
     @FXML
     private void a2s(ActionEvent event) {
@@ -270,7 +278,9 @@ public class insertGame_1Controller implements Initializable {
 
     /**
      * Cambia el color del label a su estado original
-     * @param event 
+     * seteando el número correspondiente de la regulación
+     *
+     * @param event
      */
     @FXML
     private void a3s(ActionEvent event) {
@@ -278,6 +288,12 @@ public class insertGame_1Controller implements Initializable {
         pegiNum = 3;
     }
 
+    /**
+     * Cambia el color del label a su estado original
+     * seteando el número correspondiente de la regulación
+     *
+     * @param event
+     */
     @FXML
     private void a4s(ActionEvent event) {
         pegiLabel.setTextFill(Colors.textColor);
@@ -286,7 +302,9 @@ public class insertGame_1Controller implements Initializable {
 
     /**
      * Cambia el color del label a su estado original
-     * @param event 
+     * seteando el número correspondiente de la regulación
+     *
+     * @param event
      */
     @FXML
     private void a5s(ActionEvent event) {
@@ -296,7 +314,9 @@ public class insertGame_1Controller implements Initializable {
 
     /**
      * Cambia el color del label a su estado original
-     * @param event 
+     * seteando el número correspondiente de la regulación
+     *
+     * @param event
      */
     @FXML
     private void a6s(ActionEvent event) {
@@ -306,7 +326,9 @@ public class insertGame_1Controller implements Initializable {
 
     /**
      * Cambia el color del label a su estado original
-     * @param event 
+     * seteando el número correspondiente de la regulación
+     *
+     * @param event
      */
     @FXML
     private void a7s(ActionEvent event) {
@@ -316,7 +338,9 @@ public class insertGame_1Controller implements Initializable {
 
     /**
      * Cambia el color del label a su estado original
-     * @param event 
+     * seteando el número correspondiente de la regulación
+     *
+     * @param event
      */
     @FXML
     private void a8s(ActionEvent event) {
@@ -324,6 +348,12 @@ public class insertGame_1Controller implements Initializable {
         ceroNum = 8;
     }
 
+    /**
+     * Cambia el color del label a su estado original
+     * seteando el número correspondiente de la regulación
+     *
+     * @param event
+     */
     @FXML
     private void a9s(ActionEvent event) {
         cerfoLabel.setTextFill(Colors.textColor);
@@ -332,7 +362,9 @@ public class insertGame_1Controller implements Initializable {
 
     /**
      * Cambia el color del label a su estado original
-     * @param event 
+     * seteando el número correspondiente de la regulación
+     *
+     * @param event
      */
     @FXML
     private void a10s(ActionEvent event) {
@@ -342,7 +374,9 @@ public class insertGame_1Controller implements Initializable {
 
     /**
      * Cambia el color del label a su estado original
-     * @param event 
+     * seteando el número correspondiente de la regulación
+     *
+     * @param event
      */
     @FXML
     private void a11s(ActionEvent event) {
@@ -352,7 +386,9 @@ public class insertGame_1Controller implements Initializable {
 
     /**
      * Cambia el color del label a su estado original
-     * @param event 
+     * seteando el número correspondiente de la regulación
+     *
+     * @param event
      */
     @FXML
     private void a12s(ActionEvent event) {
@@ -362,7 +398,9 @@ public class insertGame_1Controller implements Initializable {
 
     /**
      * Cambia el color del label a su estado original
-     * @param event 
+     * seteando el número correspondiente de la regulación
+     *
+     * @param event
      */
     @FXML
     private void a13s(ActionEvent event) {
@@ -372,7 +410,9 @@ public class insertGame_1Controller implements Initializable {
 
     /**
      * Cambia el color del label a su estado original
-     * @param event 
+     * seteando el número correspondiente de la regulación
+     *
+     * @param event
      */
     @FXML
     private void a14s(ActionEvent event) {
@@ -382,7 +422,9 @@ public class insertGame_1Controller implements Initializable {
 
     /**
      * Cambia el color del label a su estado original
-     * @param event 
+     * seteando el número correspondiente de la regulación
+     *
+     * @param event
      */
     @FXML
     private void a15s(ActionEvent event) {
@@ -392,7 +434,9 @@ public class insertGame_1Controller implements Initializable {
 
     /**
      * Cambia el color del label a su estado original
-     * @param event 
+     * seteando el número correspondiente de la regulación
+     *
+     * @param event
      */
     @FXML
     private void a16s(ActionEvent event) {
@@ -402,7 +446,9 @@ public class insertGame_1Controller implements Initializable {
 
     /**
      * Cambia el color del label a su estado original
-     * @param event 
+     * seteando el número correspondiente de la regulación
+     *
+     * @param event
      */
     @FXML
     private void a17s(ActionEvent event) {
@@ -412,7 +458,9 @@ public class insertGame_1Controller implements Initializable {
 
     /**
      * Cambia el color del label a su estado original
-     * @param event 
+     * seteando el número correspondiente de la regulación
+     *
+     * @param event
      */
     @FXML
     private void a18s(ActionEvent event) {
@@ -422,7 +470,9 @@ public class insertGame_1Controller implements Initializable {
 
     /**
      * Cambia el color del label a su estado original
-     * @param event 
+     * seteando el número correspondiente de la regulación
+     *
+     * @param event
      */
     @FXML
     private void a19s(ActionEvent event) {
@@ -432,7 +482,9 @@ public class insertGame_1Controller implements Initializable {
 
     /**
      * Cambia el color del label a su estado original
-     * @param event 
+     * seteando el número correspondiente de la regulación
+     *
+     * @param event
      */
     @FXML
     private void a20s(ActionEvent event) {
@@ -442,7 +494,9 @@ public class insertGame_1Controller implements Initializable {
 
     /**
      * Cambia el color del label a su estado original
-     * @param event 
+     * seteando el número correspondiente de la regulación
+     *
+     * @param event
      */
     @FXML
     private void a21s(ActionEvent event) {
@@ -452,7 +506,9 @@ public class insertGame_1Controller implements Initializable {
 
     /**
      * Cambia el color del label a su estado original
-     * @param event 
+     * seteando el número correspondiente de la regulación
+     *
+     * @param event
      */
     @FXML
     private void a22s(ActionEvent event) {
@@ -462,17 +518,21 @@ public class insertGame_1Controller implements Initializable {
 
     /**
      * Cambia el color del label a su estado original
-     * @param event 
+     * seteando el número correspondiente de la regulación
+     *
+     * @param event
      */
     @FXML
     private void a23s(ActionEvent event) {
         uskLabel.setTextFill(Colors.textColor);
         uskNum = 23;
     }
-    
+
     /**
      * Cambia el color del label a su estado original
-     * @param event 
+     * seteando el número correspondiente de la regulación
+     *
+     * @param event
      */
     @FXML
     private void a24s(ActionEvent event) {
@@ -482,7 +542,9 @@ public class insertGame_1Controller implements Initializable {
 
     /**
      * Cambia el color del label a su estado original
-     * @param event 
+     * seteando el número correspondiente de la regulación
+     *
+     * @param event
      */
     @FXML
     private void a25s(ActionEvent event) {

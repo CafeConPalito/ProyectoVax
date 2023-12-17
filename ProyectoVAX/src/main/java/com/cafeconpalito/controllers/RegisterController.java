@@ -57,9 +57,8 @@ public class RegisterController implements Initializable {
     private ImageView continueArrow;
 
     /**
-     * Initializes the controller class.
-     * Carga los valores del combo box de las regiones.
-     * Carga las persistencia del registro de usuario si los hubiera.
+     * Initializes the controller class. Carga los valores del combo box de las
+     * regiones. Carga las persistencia del registro de usuario si los hubiera.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -79,11 +78,12 @@ public class RegisterController implements Initializable {
     }
 
     /**
-     * Accion del Boton (next).
-     * Comprueba que los campos son correctos, si es asi guarda la informacion en la percistencia del registro.
-     * Cambia la vista a Register_1Controller
+     * Accion del Boton (next). Comprueba que los campos son correctos, si es
+     * asi guarda la informacion en la percistencia del registro. Cambia la
+     * vista a Register_1Controller
+     *
      * @param event
-     * @throws IOException 
+     * @throws IOException
      */
     @FXML
     private void nextBtn(MouseEvent event) throws IOException {
@@ -131,7 +131,8 @@ public class RegisterController implements Initializable {
 
     /**
      * Cambia el color del label a su estado original
-     * @param event 
+     *
+     * @param event
      */
     @FXML
     private void firstNameFocused(MouseEvent event) {
@@ -140,7 +141,8 @@ public class RegisterController implements Initializable {
 
     /**
      * Cambia el color del label a su estado original
-     * @param event 
+     *
+     * @param event
      */
     @FXML
     private void firstSurnameFocused(MouseEvent event) {
@@ -149,7 +151,8 @@ public class RegisterController implements Initializable {
 
     /**
      * Cambia el color del label a su estado original
-     * @param event 
+     *
+     * @param event
      */
     @FXML
     private void secondSurnameFocused(MouseEvent event) {
@@ -158,7 +161,8 @@ public class RegisterController implements Initializable {
 
     /**
      * Cambia el color del label a su estado original
-     * @param event 
+     *
+     * @param event
      */
     @FXML
     private void birthDateFocused(MouseEvent event) {
@@ -167,7 +171,8 @@ public class RegisterController implements Initializable {
 
     /**
      * Cambia el color del label a su estado original
-     * @param event 
+     *
+     * @param event
      */
     @FXML
     private void emailFocused(MouseEvent event) {
@@ -176,7 +181,8 @@ public class RegisterController implements Initializable {
 
     /**
      * Cambia el color del label a su estado original
-     * @param event 
+     *
+     * @param event
      */
     @FXML
     private void regionFocused(MouseEvent event) {
