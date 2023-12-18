@@ -7,8 +7,7 @@ package com.cafeconpalito.staticElements;
 import javafx.scene.paint.Color;
 
 /**
- *
- * @author Ramiro
+ * @author CafeConPalito
  */
 public class Colors {
     

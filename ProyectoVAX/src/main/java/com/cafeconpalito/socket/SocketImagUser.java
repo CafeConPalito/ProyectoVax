@@ -35,7 +35,7 @@ public class SocketImagUser implements Runnable {
      * @param imagenAbsolutePath ruta absoluta donde se encuentra la imagen
      */
     public SocketImagUser(String userAlias, String imagenAbsolutePath) {
-        this.userAlias = userAlias;
+        this.userAlias = userAlias.replaceAll("\\s+","");
         this.imagenAbsolutePath = imagenAbsolutePath;
         this.imagenExtencion = "."+Files.getFileExtension(this.imagenAbsolutePath);
         run();

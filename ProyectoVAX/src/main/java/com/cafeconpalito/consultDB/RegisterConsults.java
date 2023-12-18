@@ -13,11 +13,15 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 /**
- *
- * @author Ramiro
+ * @author CafeConPalito
  */
 public class RegisterConsults {
     
+    /**
+     * Consulta en la BBDD si el Email ya existe para poder registrar al nuevo usuario
+     * @param email email para consultar en la BBDD
+     * @return Devuelve True si el Email no esta registrado
+     */
     public static boolean emailExists(String email){
         Query q = ConectionBBDD.getEm().createNamedQuery("Usuario.findByEmail");
         q.setParameter("email", email);
@@ -29,6 +33,11 @@ public class RegisterConsults {
         return false;
     }
     
+    /**
+     * Consulta en la BBDD si el Alias ya existe para poder registrar al nuevo usuario
+     * @param nickName Alias para consultar en la BBDD
+     * @return Devuelve True si el Alias no esta registrado
+     */
     public static boolean nickNameExists(String nickName){
         Query q = ConectionBBDD.getEm().createNamedQuery("Usuario.findByAlias");
         q.setParameter("alias", nickName);
@@ -40,6 +49,9 @@ public class RegisterConsults {
         return false;
     }
     
+    /**
+     * Inserta los datos de un nuevo usuario en la BBDD
+     */
     public static void insercion() {
         //insercion
         EntityManager em = ConectionBBDD.getEm();
@@ -54,7 +66,7 @@ public class RegisterConsults {
         insercion.setParameter("apellido1", userRegisterInfo.getFirstSurname());
         insercion.setParameter("apellido2", userRegisterInfo.getSecondSurname());
         insercion.setParameter("fechanac", userRegisterInfo.getBirthDate());
-        insercion.setParameter("imagen", userRegisterInfo.getNickname() +"."+Files.getFileExtension(userRegisterInfo.getImage()));
+        insercion.setParameter("imagen", userRegisterInfo.getNickname().replaceAll("\\s+","") +"."+Files.getFileExtension(userRegisterInfo.getImage())); //quitamos los espacios para poder cargar la url de la imagen
         insercion.setParameter("region", userRegisterInfo.getRegionNumber());
         insercion.setParameter("rol", userRegisterInfo.getRolenumber());
         

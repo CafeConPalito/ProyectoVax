@@ -1,0 +1,26 @@
+sudo apt update
+
+sudo apt install mysql-server -y
+
+sudo mysql_secure_installation
+
+//Secuencia que hay que introducir tras ejecutar el comando anterior
+Y-0-n-n-n-y
+
+sudo mysql
+
+SELECT user,authentication_string,plugin,host FROM mysql.user;
+
+CREATE USER 'root'@'%' IDENTIFIED BY '12345678';
+
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
+
+exit
+
+sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
+
+Modificar Bind Address 0.0.0.0
+
+sudo systemctl restart mysql
+
+//Ejecutar scripts mysql de la carpeta DATABASE (create.sql && insert-reales.sql)

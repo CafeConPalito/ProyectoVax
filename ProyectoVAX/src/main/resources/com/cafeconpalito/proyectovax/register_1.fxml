@@ -2,10 +2,12 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
@@ -39,6 +41,9 @@
                                  <font>
                                     <Font name="System Bold" size="18.0" />
                                  </font>
+                                 <tooltip>
+                                    <Tooltip text="introduce a valid nickname (must be unique)" />
+                                 </tooltip>
                               </Label>
                               <HBox alignment="CENTER">
                                  <children>
@@ -54,6 +59,9 @@
                                        <font>
                                           <Font size="18.0" />
                                        </font>
+                                       <tooltip>
+                                          <Tooltip text="introduce a valid nickname (must be unique)" />
+                                       </tooltip>
                                     </TextField>
                                  </children>
                               </HBox>
@@ -62,22 +70,34 @@
                                  <font>
                                     <Font name="System Bold" size="18.0" />
                                  </font>
+                                 <tooltip>
+                                    <Tooltip text="enter a Password" />
+                                 </tooltip>
                               </Label>
                               <PasswordField fx:id="passwordtextfield" alignment="CENTER" onMouseClicked="#passwordFocused" style="-fx-background-color: trasnparent; -fx-border-style: solid; -fx-border-width: 0 0 1 0;">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
+                                 <tooltip>
+                                    <Tooltip text="enter a Password" />
+                                 </tooltip>
                               </PasswordField>
                               <Pane prefHeight="25.0" />
-                              <Label fx:id="rPaswordLabel" alignment="CENTER" styleClass="labels" text="Repeat Password" textAlignment="CENTER">
+                              <Label fx:id="rPaswordLabel" alignment="CENTER" styleClass="labels" text="Confirm Password" textAlignment="CENTER">
                                  <font>
                                     <Font name="System Bold" size="18.0" />
                                  </font>
+                                 <tooltip>
+                                    <Tooltip text="repeat the Password" />
+                                 </tooltip>
                               </Label>
                               <PasswordField fx:id="rPasswordtextfield" alignment="CENTER" onMouseClicked="#rpasswordFocused" style="-fx-background-color: trasnparent; -fx-border-style: solid; -fx-border-width: 0 0 1 0;">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
+                                 <tooltip>
+                                    <Tooltip text="repeat the Password" />
+                                 </tooltip>
                               </PasswordField>
                               <Pane prefHeight="25.0" />
                            </children>
@@ -85,7 +105,7 @@
                         <Pane prefHeight="220.0" prefWidth="50.0" style="-fx-background-color: transparent;" />
                         <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="300.0">
                            <children>
-                              <ImageView id="imagePrev" fx:id="defaultImage" fitHeight="88.0" fitWidth="98.0" onMouseClicked="#imageClicked" pickOnBounds="true" preserveRatio="true">
+                              <ImageView id="imagePrev" fx:id="defaultImage" fitHeight="124.0" fitWidth="157.0" onMouseClicked="#imageClicked" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@images/avatardefault.png" />
                                  </image>
@@ -95,15 +115,24 @@
                                  <font>
                                     <Font name="System Bold" size="18.0" />
                                  </font>
+                                 <tooltip>
+                                    <Tooltip text="select an image from your device (square images perform better)" />
+                                 </tooltip>
                               </Label>
                               <HBox>
                                  <children>
-                                    <TextField id="SelectImgTf" fx:id="imagetextfield" alignment="CENTER" onMouseClicked="#imageTextfieldFocused" prefHeight="25.0" prefWidth="220.0" promptText="Select an image" style="-fx-background-color: transparent; -fx-border-style: solid; -fx-border-width: 0 0 1 0;">
+                                    <TextField id="SelectImgTf" fx:id="imagetextfield" alignment="CENTER" onMouseClicked="#imageTextfieldFocused" prefHeight="25.0" prefWidth="220.0" style="-fx-background-color: transparent; -fx-border-style: solid; -fx-border-width: 0 0 1 0;">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
+                                       <tooltip>
+                                          <Tooltip text="select an image from your device (square images perform better)" />
+                                       </tooltip>
                                     </TextField>
-                                    <Button id="selectImgBtn" fx:id="selectImgButton" mnemonicParsing="false" onAction="#SelectImage" text="Select" />
+                                    <Button id="selectImgBtn" fx:id="selectImgButton" mnemonicParsing="false" onAction="#SelectImage" text="Select">
+                                       <tooltip>
+                                          <Tooltip text="select an image from your device (square images perform better)" />
+                                       </tooltip></Button>
                                  </children>
                               </HBox>
                               <Pane prefHeight="25.0" />
@@ -111,9 +140,15 @@
                                  <font>
                                     <Font name="System Bold" size="18.0" />
                                  </font>
+                                 <tooltip>
+                                    <Tooltip text="select a Role from the list" />
+                                 </tooltip>
                               </Label>
-                              <ComboBox id="rolecombobox" fx:id="rolecombobox" onMouseClicked="#roleComboBoxFocused" prefHeight="36.0" prefWidth="300.0" styleClass="ComboBox" visibleRowCount="2" />
-                              <Pane prefHeight="25.0" />
+                              <ComboBox id="rolecombobox" fx:id="rolecombobox" onMouseClicked="#roleComboBoxFocused" prefHeight="36.0" prefWidth="300.0" styleClass="ComboBox" visibleRowCount="2">
+                                 <tooltip>
+                                    <Tooltip text="select a Role from the list" />
+                                 </tooltip></ComboBox>
+                              <Pane prefHeight="60.0" prefWidth="300.0" />
                            </children>
                         </VBox>
                      </children>
@@ -121,16 +156,26 @@
                   <Pane prefHeight="20.0" prefWidth="500.0" style="-fx-background-color: transparent;" />
                   <HBox alignment="CENTER_RIGHT">
                      <children>
-                        <ImageView id="backBtn" fx:id="backArrow" fitHeight="52.0" fitWidth="42.0" onMouseClicked="#backBtn" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@images/Custom-Icon-Design-Flatastic-1-Back.72.png" />
-                           </image>
-                        </ImageView>
+                        <ButtonBar>
+                           <buttons>
+                              <ImageView id="backBtn" fx:id="backArrow" fitHeight="52.0" fitWidth="42.0" onMouseClicked="#backBtn" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/Custom-Icon-Design-Flatastic-1-Back.72.png" />
+                                 </image>
+                              </ImageView>
+                           </buttons>
+                           <tooltip>
+                              <Tooltip text="Back Button" />
+                           </tooltip>
+                        </ButtonBar>
                         <Pane prefHeight="43.0" prefWidth="82.0" />
                         <Button id="ButtonRegister" fx:id="registerButton" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" onAction="#tryToRegister" prefHeight="43.0" prefWidth="150.0" text="Register" textFill="#15b218">
                            <font>
                               <Font size="18.0" />
                            </font>
+                           <tooltip>
+                              <Tooltip text="Register Button" />
+                           </tooltip>
                         </Button>
                         <Pane prefHeight="43.0" prefWidth="69.0" />
                      </children>

@@ -1,12 +1,13 @@
 package com.cafeconpalito.proyectovax;
 
-import com.cafeconpalito.staticElements.ConectionBBDD;
-import com.cafeconpalito.staticElements.FrameDatosConex;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * @author CafeConPalito
+ * @author Maria Carmen Barrios Fernández
+ * @author Ramiro Gutiérrez Valverde
+ * @author Daniel Espinosa García
  * @author Albano Díez de Paulino
  */
 public class EntryPoint {
@@ -18,8 +19,10 @@ public class EntryPoint {
  
     //public static String serverIP = "localhost";
     public static String serverIP = "192.168.34.209";
+    //public static String serverIP = "ec2-54-221-134-1.compute-1.amazonaws.com";
     public static String user = "root";
     //public static String pass = "1234";
+    //public static String pass = "12341234";
     public static String pass = "12345678";
 
     public static String rutaImgUser = "/imguser/";
@@ -29,20 +32,6 @@ public class EntryPoint {
 
         Logger.getLogger("org.hibernate").setLevel(Level.SEVERE);
         
-        boolean conexCorrecta = true;
-        while (conexCorrecta) {
-            try {
-                ConectionBBDD.createCustomEM(serverIP, user, pass);
-                conexCorrecta=false;
-            } catch (Exception e) {
-                System.out.println("peto la conexion");
-                FrameDatosConex fdc = new FrameDatosConex();
-                fdc.setVisible(true);
-                while (fdc.esperandoIP) {                    
-                }
-            }
-        }
-
         App.main(args);
 
     }

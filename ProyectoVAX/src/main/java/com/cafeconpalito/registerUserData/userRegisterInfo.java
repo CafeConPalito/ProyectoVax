@@ -5,13 +5,12 @@
 package com.cafeconpalito.registerUserData;
 
 /**
- *
- * @author Ramiro
+ * @author CafeConPalitos
  */
 public class userRegisterInfo {
-    
+
     private static Integer regionNumber;
-    private static Integer rolenumber;    
+    private static Integer rolenumber;
     private static String firstName;
     private static String firstSurname;
     private static String secondSurname;
@@ -23,26 +22,27 @@ public class userRegisterInfo {
     private static String rPassword;
     private static String image;
     private static String Role;
-    
-  
-    
-     public static void resetRegisterInfo(){
-        
-        firstName=null;
-        firstSurname=null;
-        secondSurname=null;
-        birthDate=null;
-        region=null;
-        email=null;
-        nickname=null;
-        password=null;
-        rPassword=null;
-        image=null;
-        Role=null;
-        regionNumber=null;
-        rolenumber=null;
-         
-        
+
+    /**
+     * Pone todos los campos del registro de un usuario a nulo,
+     * usado al terminar el registro.
+     */
+    public static void resetRegisterInfo() {
+
+        firstName = null;
+        firstSurname = null;
+        secondSurname = null;
+        birthDate = null;
+        region = null;
+        email = null;
+        nickname = null;
+        password = null;
+        rPassword = null;
+        image = null;
+        Role = null;
+        regionNumber = null;
+        rolenumber = null;
+
     }
 
     public static Integer getRegionNumber() {
@@ -59,8 +59,8 @@ public class userRegisterInfo {
 
     public static void setRolenumber(Integer rolenumber) {
         userRegisterInfo.rolenumber = rolenumber;
-    } 
-     
+    }
+
     public static String getFirstName() {
         return firstName;
     }

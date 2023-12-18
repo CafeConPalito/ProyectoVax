@@ -5,7 +5,6 @@
 package com.cafeconpalito.controllers;
 
 import com.cafeconpalito.consultDB.LibraryConsults;
-import com.cafeconpalito.consultDB.StoreConsults;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -22,7 +21,7 @@ import javafx.scene.layout.TilePane;
 /**
  * FXML Controller class
  *
- * @author TerciodeMarte
+ * @author CafeConPalito
  */
 public class LibraryController implements Initializable {
 
@@ -34,19 +33,27 @@ public class LibraryController implements Initializable {
     private TilePane MyTilePane;
 
     /**
-     * Initializes the controller class.
+     * Initializes the controller class
+     * Limpia el panel central y carga instancias de los juegos del usuario
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+       
         try {
             MyTilePane.getChildren().clear();
-            MyTilePane.getChildren().addAll(LibraryConsults.getStoreGames());
+            MyTilePane.getChildren().addAll(LibraryConsults.getLibraryGames());
             priceComboBox.getItems().addAll("<Select>", "Free to Play", "-10$", "-20$");
         } catch (IOException ex) {
             Logger.getLogger(LibraryController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
+    /**
+     * Accion al esbribir en NameTextField que filtra por nombre y precio, al introducir caracteres
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void nameEntryInfo(KeyEvent event) throws IOException {
         MyTilePane.getChildren().clear();
@@ -71,9 +78,14 @@ public class LibraryController implements Initializable {
 
         }
 
-        MyTilePane.getChildren().addAll(LibraryConsults.filterStoreGames(nameTextField.getText(), auxprecio));
+        MyTilePane.getChildren().addAll(LibraryConsults.filterLibraryGames(nameTextField.getText(), auxprecio));
     }
 
+    /**
+     * Accion al seleccionar un precio en el Combo Box priceComboBox que filtra por precio y nombre, al modificar su estado
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void PriceSelectItem(ActionEvent event) throws IOException {
         MyTilePane.getChildren().clear();
@@ -98,7 +110,7 @@ public class LibraryController implements Initializable {
 
         }
 
-        MyTilePane.getChildren().addAll(LibraryConsults.filterStoreGames(nameTextField.getText(), auxprecio));
+        MyTilePane.getChildren().addAll(LibraryConsults.filterLibraryGames(nameTextField.getText(), auxprecio));
     }
 
 }

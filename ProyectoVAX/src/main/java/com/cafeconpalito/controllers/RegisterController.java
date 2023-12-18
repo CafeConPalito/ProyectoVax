@@ -25,7 +25,7 @@ import java.time.LocalDate;
 /**
  * FXML Controller class
  *
- * @author Ramiro
+ * @author CafeConPalito
  */
 public class RegisterController implements Initializable {
 
@@ -39,7 +39,6 @@ public class RegisterController implements Initializable {
     private DatePicker BirthDatePicker;
     @FXML
     private ComboBox<String> regionComboBox;
-
     @FXML
     private TextField emailTextField;
     @FXML
@@ -58,7 +57,8 @@ public class RegisterController implements Initializable {
     private ImageView continueArrow;
 
     /**
-     * Initializes the controller class.
+     * Initializes the controller class. Carga los valores del combo box de las
+     * regiones. Carga las persistencia del registro de usuario si los hubiera.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -77,6 +77,14 @@ public class RegisterController implements Initializable {
         }
     }
 
+    /**
+     * Accion del Boton (next). Comprueba que los campos son correctos, si es
+     * asi guarda la informacion en la percistencia del registro. Cambia la
+     * vista a Register_1Controller
+     *
+     * @param event
+     * @throws IOException
+     */
     @FXML
     private void nextBtn(MouseEvent event) throws IOException {
 
@@ -121,31 +129,61 @@ public class RegisterController implements Initializable {
 
     }
 
+    /**
+     * Cambia el color del label a su estado original
+     *
+     * @param event
+     */
     @FXML
     private void firstNameFocused(MouseEvent event) {
         firstNameLabel.setTextFill(Colors.textColor);
     }
 
+    /**
+     * Cambia el color del label a su estado original
+     *
+     * @param event
+     */
     @FXML
     private void firstSurnameFocused(MouseEvent event) {
         firstSurnameLabel.setTextFill(Colors.textColor);
     }
 
+    /**
+     * Cambia el color del label a su estado original
+     *
+     * @param event
+     */
     @FXML
     private void secondSurnameFocused(MouseEvent event) {
         secondSurnameLabel.setTextFill(Colors.textColor);
     }
 
+    /**
+     * Cambia el color del label a su estado original
+     *
+     * @param event
+     */
     @FXML
     private void birthDateFocused(MouseEvent event) {
         birthDateLabel.setTextFill(Colors.textColor);
     }
 
+    /**
+     * Cambia el color del label a su estado original
+     *
+     * @param event
+     */
     @FXML
     private void emailFocused(MouseEvent event) {
         emailLabel.setTextFill(Colors.textColor);
     }
 
+    /**
+     * Cambia el color del label a su estado original
+     *
+     * @param event
+     */
     @FXML
     private void regionFocused(MouseEvent event) {
         RegionLabel.setTextFill(Colors.textColor);

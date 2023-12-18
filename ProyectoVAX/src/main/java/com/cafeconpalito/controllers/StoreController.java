@@ -6,11 +6,14 @@ package com.cafeconpalito.controllers;
 
 import com.cafeconpalito.consultDB.StoreConsults;
 import com.cafeconpalito.proyectovax.App;
+import com.cafeconpalito.staticElements.ConectionBBDD;
 import com.cafeconpalito.staticElements.MainView;
 import com.cafeconpalito.userLogedData.UserLogedInfo;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -24,7 +27,7 @@ import javafx.scene.layout.TilePane;
 /**
  * FXML Controller class
  *
- * @author produccion
+ * @author CafeConPalito
  */
 public class StoreController implements Initializable {
 
@@ -42,7 +45,7 @@ public class StoreController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        
         try {
 
             MyTilePane.getChildren().clear();
@@ -60,6 +63,16 @@ public class StoreController implements Initializable {
         }
     }
 
+    @FXML
+    private void insertGameStore(ActionEvent event) throws IOException {
+        MainView.main.setCenter(App.loadFXML("insertGame"));
+    }
+    
+    /**
+     * Accion al esbribir en NameTextField que filtra por nombre y precio, al introducir caracteres
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void nameEntryInfo(KeyEvent event) throws IOException {
 
@@ -89,11 +102,12 @@ public class StoreController implements Initializable {
 
     }
 
-    @FXML
-    private void insertGameStore(ActionEvent event) throws IOException {
-        MainView.main.setCenter(App.loadFXML("insertGame"));
-    }
-
+    
+    /**
+     * Accion al seleccionar un precio en el Combo Box priceComboBox que filtra por precio y nombre, al modificar su estado
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void PriceSelectItem(ActionEvent event) throws IOException {
 

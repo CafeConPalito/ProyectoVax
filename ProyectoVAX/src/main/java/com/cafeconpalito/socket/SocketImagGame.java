@@ -36,7 +36,7 @@ public class SocketImagGame implements Runnable {
      * @param imagenAbsolutePath ruta absoluta donde se encuentra la imagen
      */
     public SocketImagGame(String gameName, String imagenAbsolutePath) {
-        this.gameName = gameName;
+        this.gameName = gameName.replaceAll("\\s+","");
         this.imagenAbsolutePath = imagenAbsolutePath;
         this.imagenExtencion = "." + Files.getFileExtension(imagenAbsolutePath);
         run();

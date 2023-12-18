@@ -6,31 +6,35 @@ package com.cafeconpalito.consultDB;
 
 import com.cafeconpalito.controllers.GameInfoController;
 import com.cafeconpalito.entities.Biblioteca;
-import com.cafeconpalito.entities.Genero;
 import com.cafeconpalito.staticElements.ConectionBBDD;
 import com.cafeconpalito.entities.Juego;
 import com.cafeconpalito.proyectovax.EntryPoint;
 import com.cafeconpalito.staticElements.CheckURLImg;
 import com.cafeconpalito.userLogedData.UserLogedInfo;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
-import javafx.scene.image.Image;
 import javax.persistence.Query;
 
 /**
- *
- * @author produccion
+ * @author CafeConPalito
  */
 public class StoreConsults {
 
     private static ArrayList<GameInfoController> storeGames = new ArrayList<>();
 
+    /**
+     * Consulta en la Base de datos la informacion de todos los juegos registrados
+     * @return devuelve toda la lista si el usuario no esta logeado (invitado)
+     * o los juegos que el usuario no tiene comprados
+     * @throws IOException
+     */
     public static ArrayList<GameInfoController> getStoreGames() throws IOException {
 
+        
+        
         storeGames.clear();
 
         if (!UserLogedInfo.isUserIsLoged()) {
@@ -39,10 +43,10 @@ public class StoreConsults {
             for (Juego j : (Collection<Juego>) q.getResultList()) {
                 String URL = "http://" + EntryPoint.getServerIP() + ":80" + EntryPoint.rutaImgGame + j.getImagen();
                 if (CheckURLImg.exists(URL)) {
-                    GameInfoController cg = new GameInfoController(j.getIdjuego(), j.getTitulo(), j.getNumdescargas() + "", j.getPrecio() + "", URL);
+                    GameInfoController cg = new GameInfoController(j.getIdjuego(), j.getTitulo(), j.getNumdescargas() + "", j.getPrecio() + "", URL,false);
                     storeGames.add(cg);
                 } else {
-                    GameInfoController cg = new GameInfoController(j.getIdjuego(), j.getTitulo(), j.getNumdescargas() + "", j.getPrecio() + "", j.getImagen());
+                    GameInfoController cg = new GameInfoController(j.getIdjuego(), j.getTitulo(), j.getNumdescargas() + "", j.getPrecio() + "", j.getImagen(),false);
                     storeGames.add(cg);
                 }
             }
@@ -65,11 +69,11 @@ public class StoreConsults {
                 if (!tienejuego) {
                     String URL = "http://" + EntryPoint.getServerIP() + ":80" + EntryPoint.rutaImgGame + j.getImagen();
                     if (CheckURLImg.exists(URL)) {
-                        GameInfoController cg = new GameInfoController(j.getIdjuego(), j.getTitulo(), j.getNumdescargas() + "", j.getPrecio() + "", URL);
+                        GameInfoController cg = new GameInfoController(j.getIdjuego(), j.getTitulo(), j.getNumdescargas() + "", j.getPrecio() + "", URL,false);
                         storeGames.add(cg);
                         tienejuego = false;
                     } else {
-                        GameInfoController cg = new GameInfoController(j.getIdjuego(), j.getTitulo(), j.getNumdescargas() + "", j.getPrecio() + "", j.getImagen());
+                        GameInfoController cg = new GameInfoController(j.getIdjuego(), j.getTitulo(), j.getNumdescargas() + "", j.getPrecio() + "", j.getImagen(),false);
                         storeGames.add(cg);
                         tienejuego = false;
                     }
@@ -84,6 +88,14 @@ public class StoreConsults {
 
     }
 
+    /**
+     * Aplica filtros a la lista de juegos en funcion de si el usuario esta logeado o no
+     * mostrando los que no tiene comprados
+     * @param gameName nombre del juego a buscar
+     * @param gamePrice precio del juego a buscar
+     * @return devuelve un ArrayList de GameInfoController con los juegos filtrados
+     * @throws IOException 
+     */
     public static ArrayList<GameInfoController> filterStoreGames(String gameName, int gamePrice) throws IOException {
 
         storeGames.clear();
@@ -97,10 +109,10 @@ public class StoreConsults {
             for (Juego j : aux) {
                 String URL = "http://" + EntryPoint.getServerIP() + ":80" + EntryPoint.rutaImgGame + j.getImagen();
                 if (CheckURLImg.exists(URL)) {
-                    GameInfoController cg = new GameInfoController(j.getIdjuego(), j.getTitulo(), j.getNumdescargas() + "", j.getPrecio() + "", URL);
+                    GameInfoController cg = new GameInfoController(j.getIdjuego(), j.getTitulo(), j.getNumdescargas() + "", j.getPrecio() + "", URL,false);
                     storeGames.add(cg);
                 } else {
-                    GameInfoController cg = new GameInfoController(j.getIdjuego(), j.getTitulo(), j.getNumdescargas() + "", j.getPrecio() + "", j.getImagen());
+                    GameInfoController cg = new GameInfoController(j.getIdjuego(), j.getTitulo(), j.getNumdescargas() + "", j.getPrecio() + "", j.getImagen(),false);
                     storeGames.add(cg);
                 }
 
@@ -135,10 +147,10 @@ public class StoreConsults {
             for (Juego j : aux) {
                 String URL = "http://" + EntryPoint.getServerIP() + ":80" + EntryPoint.rutaImgGame + j.getImagen();
                 if (CheckURLImg.exists(URL)) {
-                    GameInfoController cg = new GameInfoController(j.getIdjuego(), j.getTitulo(), j.getNumdescargas() + "", j.getPrecio() + "", URL);
+                    GameInfoController cg = new GameInfoController(j.getIdjuego(), j.getTitulo(), j.getNumdescargas() + "", j.getPrecio() + "", URL,false);
                     storeGames.add(cg);
                 } else {
-                    GameInfoController cg = new GameInfoController(j.getIdjuego(), j.getTitulo(), j.getNumdescargas() + "", j.getPrecio() + "", j.getImagen());
+                    GameInfoController cg = new GameInfoController(j.getIdjuego(), j.getTitulo(), j.getNumdescargas() + "", j.getPrecio() + "", j.getImagen(),false);
                     storeGames.add(cg);
                 }
 
@@ -150,6 +162,12 @@ public class StoreConsults {
 
     }
 
+    /**
+     * Aplica los filtros a la lista
+     * @param col Collection de Juegos 
+     * @param gameName nombre del juego para filtrar
+     * @param gamePrice precio del juego para filtrar
+     */
     private static void filtro(Collection<Juego> col, String gameName, int gamePrice) {
         Iterator<Juego> it = col.iterator();
         while (it.hasNext()) {

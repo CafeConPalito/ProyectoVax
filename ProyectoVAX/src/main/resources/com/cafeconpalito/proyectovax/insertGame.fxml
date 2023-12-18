@@ -17,7 +17,7 @@
    <children>
       <HBox id="BackGroundForm" alignment="CENTER" maxHeight="900.0" maxWidth="1200.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="700.0" HBox.hgrow="ALWAYS">
          <children>
-            <VBox alignment="CENTER" prefWidth="650.0" HBox.hgrow="NEVER">
+            <VBox alignment="CENTER" prefWidth="600.0" HBox.hgrow="NEVER">
                <children>
                   <HBox alignment="CENTER">
                      <children>
@@ -34,7 +34,6 @@
                         </Label>
                      </children>
                   </HBox>
-                  <Pane prefHeight="24.0" prefWidth="650.0" />
                   <HBox alignment="CENTER" prefHeight="360.0" prefWidth="650.0">
                      <children>
                         <VBox alignment="CENTER" prefHeight="400.0" prefWidth="300.0">
@@ -56,13 +55,7 @@
                                     <Font name="System Bold" size="18.0" />
                                  </font>
                               </Label>
-                              <TextArea fx:id="descriptionTextArea" onMouseClicked="#descriptionFocused" prefHeight="173.0" prefWidth="300.0" />
-                              <Pane prefHeight="25.0" />
-                           </children>
-                        </VBox>
-                        <Pane prefHeight="432.0" prefWidth="50.0" style="-fx-background-color: transparent;" />
-                        <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="300.0">
-                           <children>
+                              <TextArea fx:id="descriptionTextArea" onMouseClicked="#descriptionFocused" prefHeight="105.0" prefWidth="300.0" />
                               <Pane prefHeight="23.0" prefWidth="300.0" />
                               <Label fx:id="priceLabel" alignment="CENTER" prefWidth="200.0" styleClass="labels" text="Price" textAlignment="CENTER">
                                  <font>
@@ -74,7 +67,18 @@
                                     <Font size="18.0" />
                                  </font>
                               </TextField>
-                              <Pane prefHeight="54.0" prefWidth="300.0" />
+                           </children>
+                        </VBox>
+                        <Pane prefHeight="360.0" prefWidth="92.0" style="-fx-background-color: transparent;" />
+                        <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="300.0">
+                           <children>
+                              <Pane prefHeight="8.0" prefWidth="300.0" />
+                              <ImageView id="imagePrev" fx:id="defaultImage" fitHeight="142.0" fitWidth="202.0" onMouseClicked="#imageClicked" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/avatardefault.png" />
+                                 </image>
+                              </ImageView>
+                              <Pane prefHeight="25.0" prefWidth="300.0" />
                               <Label fx:id="imageLabel" alignment="CENTER" prefHeight="31.0" prefWidth="300.0" styleClass="labels" text="Image" textAlignment="CENTER">
                                  <font>
                                     <Font name="System Bold" size="18.0" />
@@ -82,34 +86,36 @@
                               </Label>
                               <HBox>
                                  <children>
-                                    <TextField id="SelectImgTf" fx:id="imagetexField" alignment="CENTER" onMouseClicked="#imageFocused" prefHeight="25.0" prefWidth="220.0" promptText="Select an image" style="-fx-background-color: transparent; -fx-border-style: solid; -fx-border-width: 0 0 1 0;">
+                                    <TextField id="SelectImgTf" fx:id="imagetexField" alignment="CENTER" onMouseClicked="#imageFocused" prefHeight="25.0" prefWidth="220.0" style="-fx-background-color: transparent; -fx-border-style: solid; -fx-border-width: 0 0 1 0;">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
                                     </TextField>
-                                    <Button id="selectImgBtn" fx:id="imageButton" mnemonicParsing="false" onAction="#SelectImage" text="Select" />
+                                    <Button id="selectImgBtn" fx:id="imageButton" mnemonicParsing="false" onAction="#SelectImage" prefHeight="39.0" prefWidth="106.0" text="Select" />
                                  </children>
                               </HBox>
-                              <Pane prefHeight="40.0" prefWidth="300.0" />
+                              <Pane prefHeight="23.0" prefWidth="275.0" />
                               <Label fx:id="launchLabel" alignment="CENTER" prefWidth="200.0" styleClass="labels" text="Launch Date" textAlignment="CENTER">
                                  <font>
                                     <Font name="System Bold" size="18.0" />
                                  </font>
                               </Label>
                               <DatePicker fx:id="launchDateChooser" onMouseClicked="#dateFocused" prefHeight="35.0" prefWidth="300.0" />
-                              <Pane prefHeight="19.0" prefWidth="300.0" />
+                              <Pane prefHeight="0.0" prefWidth="300.0" />
                            </children>
                         </VBox>
                      </children>
                   </HBox>
-                  <Pane prefHeight="20.0" prefWidth="500.0" style="-fx-background-color: transparent;" />
+                  <Pane prefHeight="44.0" prefWidth="600.0" style="-fx-background-color: transparent;" />
                   <HBox alignment="CENTER">
                      <children>
+                        <Pane prefHeight="42.0" prefWidth="162.0" style="-fx-background-color: transparent;" />
                         <ImageView id="nextBtn" fx:id="rightArrowImage" fitHeight="52.0" fitWidth="42.0" onMouseClicked="#nextBtn" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@images/Custom-Icon-Design-Flatastic-1-Forward.72.png" />
                            </image>
                         </ImageView>
+                        <Pane prefHeight="42.0" prefWidth="25.0" style="-fx-background-color: transparent;" />
                         <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#CancelInsertGame" styleClass="cancel" text="Cancel">
                            <HBox.margin>
                               <Insets left="40.0" />

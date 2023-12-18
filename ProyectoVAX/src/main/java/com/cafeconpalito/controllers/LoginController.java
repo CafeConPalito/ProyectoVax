@@ -23,7 +23,7 @@ import javafx.scene.input.MouseEvent;
 /**
  * FXML Controller class
  *
- * @author carra
+ * @author CafeConPalito
  */
 public class LoginController implements Initializable {
 
@@ -46,6 +46,13 @@ public class LoginController implements Initializable {
 
     }
 
+    /**
+     * Accion del Boton login, comprueba que los campos Email y Password Contienen informacion correcta,
+     * Consulta en la DB si existen y si todo es correcto permite logear al usuario
+     * Actualizando la informacion del usuario y refrescando visualmente la informacion.
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void tryLogIn(ActionEvent event) throws IOException {
 
@@ -65,16 +72,29 @@ public class LoginController implements Initializable {
 
     }
 
+    /**
+     * Accion del boton Register, envia al usuario a la vista del registro
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void switchToRegister(ActionEvent event) throws IOException {
         MainView.main.setCenter(App.loadFXML("register"));
     }
 
+    /**
+     * vuelte el color del label a su estado original
+     * @param event 
+     */
     @FXML
     private void emailTextFocused(MouseEvent event) {
         emailLabel.setTextFill(Colors.textColor);
     }
 
+    /**
+     * vuelte el color del label a su estado original
+     * @param event 
+     */
     @FXML
     private void passwordTextFocused(MouseEvent event) {
         passwordLabel.setTextFill(Colors.textColor);

@@ -6,7 +6,7 @@ package com.cafeconpalito.registerGameData;
 
 /**
  *
- * @author Ramiro
+  * @author CafeConPalito
  */
 public class gameRegisterInfo {
     
@@ -16,13 +16,16 @@ public class gameRegisterInfo {
     private static String image;
     private static String launchDate;
     private static String genre;
-    private static String pegi;
-    private static String cero;
-    private static String esrb;
-    private static String acb;
-    private static String usk;
+    private static Integer pegi;
+    private static Integer cero;
+    private static Integer esrb;
+    private static Integer acb;
+    private static Integer usk;
     
-    
+    /**
+     * Pone todos los datos del registro de un Juego a nulo,
+     * Usuado al terminar un registro
+     */
     public static void resetGameInfo(){
         
         title=null;
@@ -88,43 +91,43 @@ public class gameRegisterInfo {
         gameRegisterInfo.genre = genre;
     }
 
-    public static String getPegi() {
+    public static Integer getPegi() {
         return pegi;
     }
 
-    public static void setPegi(String pegi) {
+    public static void setPegi(Integer pegi) {
         gameRegisterInfo.pegi = pegi;
     }
 
-    public static String getCero() {
+    public static Integer getCero() {
         return cero;
     }
 
-    public static void setCero(String cero) {
+    public static void setCero(Integer cero) {
         gameRegisterInfo.cero = cero;
     }
 
-    public static String getEsrb() {
+    public static Integer getEsrb() {
         return esrb;
     }
 
-    public static void setEsrb(String esrb) {
+    public static void setEsrb(Integer esrb) {
         gameRegisterInfo.esrb = esrb;
     }
 
-    public static String getAcb() {
+    public static Integer getAcb() {
         return acb;
     }
 
-    public static void setAcb(String acb) {
+    public static void setAcb(Integer acb) {
         gameRegisterInfo.acb = acb;
     }
 
-    public static String getUsk() {
+    public static Integer getUsk() {
         return usk;
     }
 
-    public static void setUsk(String usk) {
+    public static void setUsk(Integer usk) {
         gameRegisterInfo.usk = usk;
     }
     

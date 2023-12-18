@@ -12,10 +12,12 @@ import com.cafeconpalito.proyectovax.EntryPoint;
 import com.cafeconpalito.staticElements.CheckURLImg;
 import com.cafeconpalito.staticElements.ConectionBBDD;
 import com.cafeconpalito.staticElements.MainView;
+import com.cafeconpalito.staticElements.RunGame;
 import com.cafeconpalito.userLogedData.UserLogedInfo;
 import java.io.IOException;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
+import java.util.Collection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -33,9 +35,13 @@ import javax.persistence.Query;
 /**
  * FXML Controller class
  *
- * @author produccion
+ * @author CafeConPalito
  */
 public class GameController extends HBox {
+
+    private int idGame; // ID del juego rescatado de la DB
+
+    private boolean library = false;
 
     @FXML
     private HBox BackGround;
@@ -45,9 +51,6 @@ public class GameController extends HBox {
     private Label gameTitle;
     @FXML
     private TextFlow gameDescription;
-
-    private int idGame;
-
     @FXML
     private Label showGenre;
     @FXML
@@ -64,7 +67,8 @@ public class GameController extends HBox {
     private Button downloadButton;
 
     /**
-     * Constructor sin parametros Crea una instancia de Game
+     * Constructor sin parametros Crea una instancia de Game NO SE USA EN EL
+     * PROYECTO
      */
     public GameController() throws IOException {
 
@@ -85,9 +89,15 @@ public class GameController extends HBox {
     }
 
     /**
-     * Constructor con los parametros del juego Crea una instancia de Game
+     * Constructor con los parametros del ID del juego Crea una instancia del
+     * GameController rescatando de la base de datos toda la informacion que
+     * necesita
+     *
+     * @param idGame id del juego
+     * @param library Es llamado desde la bibloteca (True)
+     * @throws java.io.IOException
      */
-    public GameController(int idGame) throws IOException {
+    public GameController(int idGame, boolean library) throws IOException {
 
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader = App.getFXMLLoader("game");
@@ -144,21 +154,51 @@ public class GameController extends HBox {
         //Habilito el boton de download si hay alguien logueado
         downloadButton.setDisable(!UserLogedInfo.isUserIsLoged());
 
+        this.library = library;
+        if (library) {
+            downloadButton.setText("Download");
+        }
+
     }
 
+    /**
+     * Accion del boton de cancel, te devuelve a la vista Store
+     *
+     * @param event
+     * @throws IOException
+     */
     @FXML
     private void cancelEvent(ActionEvent event) throws IOException {
         MainView.main.setCenter(App.loadFXML("store"));
     }
 
+    /**
+     * Accion del boton download, añadel el juego a la libreria en la DB par el
+     * usuario y cambia la bista a la libreria
+     *
+     * @param event
+     * @throws IOException
+     */
     @FXML
     private void downloadEvent(ActionEvent event) throws IOException {
-        downloadInsert();
-        MainView.main.setCenter(App.loadFXML("library"));
-        EntityManager em = ConectionBBDD.getEm();
+        if (!library) {
+            downloadInsert();
+            MainView.main.setCenter(App.loadFXML("library"));
+        } else {
+
+            //CORREGIR NO DESCARGA
+            //SOLO CREA CARPETA VACIA
+            System.out.println("DESCARGANDO JUEGO");
+            
+            RunGame r = new RunGame(findJuego()); 
+            r.runGame();
+        }
 
     }
 
+    /**
+     * Realiza la insercion en la DB del juego y el usuario en la biblioteca
+     */
     private void downloadInsert() {
         EntityManager em = ConectionBBDD.getEm();
 
@@ -171,9 +211,32 @@ public class GameController extends HBox {
         insercion.setParameter("fecha", ZonedDateTime.now().getYear() + "-" + ZonedDateTime.now().getMonthValue() + "-" + ZonedDateTime.now().getDayOfMonth());
 
         insercion.executeUpdate();
+
+        //Obtengo las descargas y le sumo 1
+        int descargas = 0;
+        for (Juego j : (Collection<Juego>) ConectionBBDD.getEm().createNamedQuery("Juego.findByIdjuego").setParameter("idjuego", this.idGame).getResultList()) {
+            descargas = j.getNumdescargas() + 1;
+        }
+
+        //Actualizo en la base de datos
+        Query insercion2 = em.createNativeQuery("UPDATE juego SET numdescargas = :numdescargas WHERE idjuego=:idjuego ;");
+
+        insercion2.setParameter("numdescargas", descargas);
+        insercion2.setParameter("idjuego", this.idGame);
+
+        insercion2.executeUpdate();
+
         em.clear();
         em.getTransaction().commit();
 
+    }
+    
+    private String findJuego(){
+        ConectionBBDD.getEm().createNamedQuery("Juego.findByIdjuego").setParameter("idjuego", this.idGame);
+        for (Juego j : (Collection<Juego>) ConectionBBDD.getEm().createNamedQuery("Juego.findByIdjuego").setParameter("idjuego", this.idGame).getResultList()) {
+            return j.getTitulo();
+        }
+        return null;
     }
 
 }

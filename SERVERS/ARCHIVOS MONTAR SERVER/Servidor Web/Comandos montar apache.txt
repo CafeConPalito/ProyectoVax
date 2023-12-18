@@ -1,14 +1,16 @@
 sudo apt update
 
-sudo apt install apache2
+sudo apt install apache2 -y
 
 sudo ufw disable
 
 sudo mkdir /var/www/vax
 
-sudo chmod -R 755 /var/www/vax
+sudo chmod -R 777 /var/www/vax
 
 sudo nano /etc/apache2/sites-available/vax.conf
+
+--------------------Archivo-----------------------
 
 <VirtualHost *:80>
     ServerAdmin vax@vax
@@ -19,6 +21,8 @@ sudo nano /etc/apache2/sites-available/vax.conf
     CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
 
+---------------- FIN ARCHIVO ----------------------
+
 sudo a2ensite vax.conf
 
 sudo a2dissite 000-default.conf
@@ -26,3 +30,7 @@ sudo a2dissite 000-default.conf
 sudo apache2ctl configtest
 
 sudo systemctl restart apache2
+
+//Subir todos los archivos de esta carpeta via sftp en la siguiente ruta /var/www/vax
+
+sudo chmod -R 777 /var/www/vax

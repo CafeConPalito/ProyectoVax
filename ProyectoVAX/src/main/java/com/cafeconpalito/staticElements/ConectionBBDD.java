@@ -4,6 +4,7 @@
  */
 package com.cafeconpalito.staticElements;
 
+import com.cafeconpalito.proyectovax.EntryPoint;
 import java.util.HashMap;
 import java.util.Map;
 import javax.persistence.EntityManager;
@@ -12,7 +13,7 @@ import javax.persistence.Persistence;
 
 /**
  *
- * @author produccion
+ * @author CafeConPalito
  */
 public class ConectionBBDD {
 
@@ -28,23 +29,10 @@ public class ConectionBBDD {
      */
     public static EntityManager getEm() {
         //start();
+        if (!startEntryPointValues()) {
+            return null;
+        }
         return em;
-    }
-
-    /**
-     * inicia la conexion
-     */
-    public static void start() {
-        
-             if (emf == null) {
-                emf = Persistence.createEntityManagerFactory("com.cafeconpalito_ProyectoVAX_jar_1.0-SNAPSHOTPU");
-            }
-
-            if (em == null) {
-                em = emf.createEntityManager();
-            }
-
-           
     }
 
     /**
@@ -61,51 +49,68 @@ public class ConectionBBDD {
         }
     }
 
-    public static void modifyEM(String newIP) {
-
-        //si no esta iniciada la inicio
-        System.out.println("\nAntes de Modificar");
-        start();
+    public static boolean startEntryPointValues() {
 
         //Crea una nueva EntityManagerFactory con los datos que se necesitan
-        EntityManagerFactory managerFactory = null;
-        Map<String, String> persistenceMap = new HashMap<String, String>();
+        try {
+            EntityManager emAux = null;
+            EntityManagerFactory managerFactory = null;
+            Map<String, String> persistenceMap = new HashMap<String, String>();
 
-        persistenceMap.put("javax.persistence.jdbc.url", "jdbc:mysql://" + newIP + ":3306/vapor?zeroDateTimeBehavior=CONVERT_TO_NULL");
-        persistenceMap.put("javax.persistence.jdbc.user", "root");
-        persistenceMap.put("javax.persistence.jdbc.password", "12345678");
-        persistenceMap.put("javax.persistence.jdbc.driver", "com.mysql.cj.jdbc.Driver");
+            persistenceMap.put("javax.persistence.jdbc.url", "jdbc:mysql://" + EntryPoint.serverIP + ":3306/vapor?zeroDateTimeBehavior=CONVERT_TO_NULL");
+            persistenceMap.put("javax.persistence.jdbc.user", EntryPoint.user);
+            persistenceMap.put("javax.persistence.jdbc.password", EntryPoint.pass);
+            persistenceMap.put("javax.persistence.jdbc.driver", "com.mysql.cj.jdbc.Driver");
 
-        //Carga las entidades del Em original en el nuevo EntityManagerFactory
-        managerFactory = Persistence.createEntityManagerFactory("com.cafeconpalito_ProyectoVAX_jar_1.0-SNAPSHOTPU", persistenceMap);
+            //Carga las entidades del Em original en el nuevo EntityManagerFactory
+            managerFactory = Persistence.createEntityManagerFactory("com.cafeconpalito_ProyectoVAX_jar_1.0-SNAPSHOTPU", persistenceMap);
 
-        //Una ves modificada vuelve a cargar la info en em
-        System.out.println("\ndespues de modificar");
-        em = managerFactory.createEntityManager();
+            //Una ves modificada vuelve a cargar la info en em
+            emf = managerFactory;
+
+            //System.out.println("\ndespues de modificar");
+            emAux = managerFactory.createEntityManager();
+            em = emAux;
+            return true;
+        } catch (Exception e) {
+            //si falla la conexion em se queda en null
+            em = null;
+            return false;
+        }
 
     }
 
-    public static void createCustomEM(String newIP, String user, String pass){
+    public static boolean createCustomEMonlyIP(String newIP) {
 
-        
         //Crea una nueva EntityManagerFactory con los datos que se necesitan
-        EntityManagerFactory managerFactory = null;
-        Map<String, String> persistenceMap = new HashMap<String, String>();
-        
-        persistenceMap.put("javax.persistence.jdbc.url", "jdbc:mysql://"+newIP+":3306/vapor?zeroDateTimeBehavior=CONVERT_TO_NULL");
-        persistenceMap.put("javax.persistence.jdbc.user", user);
-        persistenceMap.put("javax.persistence.jdbc.password", pass);
-        persistenceMap.put("javax.persistence.jdbc.driver", "com.mysql.cj.jdbc.Driver");
+        try {
+            EntityManager emAux = null;
+            EntityManagerFactory managerFactory = null;
+            Map<String, String> persistenceMap = new HashMap<String, String>();
 
-        //Carga las entidades del Em original en el nuevo EntityManagerFactory
-        managerFactory = Persistence.createEntityManagerFactory("com.cafeconpalito_ProyectoVAX_jar_1.0-SNAPSHOTPU", persistenceMap);
-        
-        //Una ves modificada vuelve a cargar la info en em
-        emf = managerFactory;
-        
-        //System.out.println("\ndespues de modificar");
-        em = managerFactory.createEntityManager();
+            persistenceMap.put("javax.persistence.jdbc.url", "jdbc:mysql://" + newIP + ":3306/vapor?zeroDateTimeBehavior=CONVERT_TO_NULL");
+            persistenceMap.put("javax.persistence.jdbc.user", "root");
+            persistenceMap.put("javax.persistence.jdbc.password", "12345678");
+            persistenceMap.put("javax.persistence.jdbc.driver", "com.mysql.cj.jdbc.Driver");
+
+            //Carga las entidades del Em original en el nuevo EntityManagerFactory
+            managerFactory = Persistence.createEntityManagerFactory("com.cafeconpalito_ProyectoVAX_jar_1.0-SNAPSHOTPU", persistenceMap);
+
+            //Una ves modificada vuelve a cargar la info en em
+            emf = managerFactory;
+
+            //System.out.println("\ndespues de modificar");
+            emAux = managerFactory.createEntityManager();
+            em = emAux;
+            EntryPoint.serverIP = newIP;
+
+            return true;
+        } catch (Exception e) {
+            //si falla la conexion em se queda en null
+            em = null;
+            return false;
+        }
 
     }
-    
+
 }

@@ -1,5 +1,7 @@
 package com.cafeconpalito.proyectovax;
 
+import com.cafeconpalito.staticElements.ConectionBBDD;
+import com.cafeconpalito.staticElements.LoadScene;
 import com.cafeconpalito.staticElements.MainView;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -12,24 +14,42 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.StageStyle;
 
 /**
- * JavaFX App
+ * @author CafeConPalito
+ * @author Maria Carmen Barrios Fernández
+ * @author Ramiro Gutiérrez Valverde
+ * @author Daniel Espinosa García
+ * @author Albano Díez de Paulino
  */
 public class App extends Application {
 
     private static Scene scene;
     
+
+    LoadScene ls = null;
+    //private static Scene loadScene;
+    //private static Stage loadStage = new Stage();
+    
     @Override
     public void init() throws Exception {
-        
+               
         System.out.println("Hola. Aquí empieza todo");
 
     }
 
     @Override
     public void start(Stage mainStage) throws IOException {
-
+        
+        //loadScene = new Scene(App.loadFXML("LoadScene"));
+        //loadStage.setScene(loadScene);
+        //loadStage.setResizable(true);
+        //loadStage.initStyle(StageStyle.TRANSPARENT);
+        //loadStage.getIcons().add(new Image(App.class.getResourceAsStream("images/logovax.png")));
+        //loadStage.show();
+               
         //Cargando Escena principal para mostrar
         scene = new Scene(loadFXML("primary"));
+
+       
 
         /*
         Made by Cerveza con jarra fria
@@ -37,18 +57,21 @@ public class App extends Application {
             *Cebo
             *Hortelano
             *Pijo^2
-        */
-        
+         */
         //SETEO EL Layout para que cualquiera pueda acceder!
         MainView.main = (BorderPane) scene.lookup("#layout");
+
+        //Compruebo al iniciar que EM no sea nulo si lo es carga help para meter la nueva ip en caso contrario muestra Store.
+        if (ConectionBBDD.getEm() == null) {
+            MainView.main.setCenter(App.loadFXML("help"));
+        } else {
+            MainView.main.setCenter(App.loadFXML("store"));
+        }
+
         
-
-        //Añado la tienda al primary para cuando se lanze
-        MainView.main.setCenter(App.loadFXML("store"));
-
         //Añado la barra lateral
         MainView.main.setLeft(App.loadFXML("panelIzquierdoGeneral"));
-        
+
         mainStage.setScene(scene);
 
         //Tamaño modificable del Stage si o no
@@ -60,11 +83,14 @@ public class App extends Application {
         //Titulo Stage
         mainStage.setTitle("VaX");
          */
-        
-        //Icono Stage
+
+        //Icono Stage        
         mainStage.getIcons().add(new Image(App.class.getResourceAsStream("images/logovax.png")));
 
         //Mostrando Escena principal
+
+        //loadStage.close();
+        
         mainStage.show();
 
         //Tamaño minimo Stage
@@ -80,9 +106,10 @@ public class App extends Application {
     //Dejar en public para que otros componentes puedan cargar la lista de fxml
     /**
      * Metodo que devuelve la ruta de un FXML y permite cargarlo
+     *
      * @param fxml
      * @return
-     * @throws IOException 
+     * @throws IOException
      */
     public static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
@@ -90,10 +117,12 @@ public class App extends Application {
     }
 
     /**
-     * Metodo Necesario para que devuelta la ruta correcta del FXLM y poder construir Objetos desde el controller 
+     * Metodo Necesario para que devuelta la ruta correcta del FXLM y poder
+     * construir Objetos desde el controller
+     *
      * @param fxml
      * @return
-     * @throws IOException 
+     * @throws IOException
      */
     public static FXMLLoader getFXMLLoader(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
@@ -102,11 +131,9 @@ public class App extends Application {
 
     @Override
     public void stop() throws Exception {
-        // aquí se ejecuta el código después de cerrar la aplicación. Por ejemplo CERRAR CONEXIÓN BASE DE DATOS
+        //Cerrando las conexiones a la BBDD al salir de la aplicacion
+        ConectionBBDD.close();
 
-        // si quiero salir en otro punto del código y que se ejecute el stop() HAY QUE USAR el :
-        // Platform.exit();
-        
     }
 
     public static void main(String[] args) {
