@@ -227,6 +227,8 @@ public class insertGame_1Controller implements Initializable {
      * Comprueba que todos los campos están rellenados para realizar una inserción
      * en la tabla juegos y otra en la tabla regulacion. Pone el registro de
      * persistencia a nulos y cambia la vista a store.
+     * Carga una imagen al servidor por el socket correspondiente y hace lo propio con 
+     * el zip del juego.
      *
      * @param event
      * @throws IOException
@@ -615,7 +617,7 @@ public class insertGame_1Controller implements Initializable {
 
 
     /**
-     * Cambia el color del label a su estado original
+     * Cambia el label a su color y texto originales.
      *
      * @param event
      */
@@ -626,12 +628,14 @@ public class insertGame_1Controller implements Initializable {
     }
 
     /**
-     * Lanza un FileChooser para asignar la ruta del archivo zip
+     * Lanza un FileChooser para asignar la ruta del archivo zip, y cambia
+     * el label a su color y texto originales.
      *
      * @param event
      */
     @FXML
     private void SelectZip(ActionEvent event) {
+        zipLabel.setTextFill(Colors.textColor);
         zipLabel.setText("Zip File");
         launchFileChooser();
         
