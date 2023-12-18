@@ -52,7 +52,7 @@ public class RunGame {
             //Busca en el directorio del juego si existe un .exe
             for (int i = 0; i < flist.length; i++) {
                 String filename = flist[i];
-                if (filename.endsWith(".exe")) {
+                if (filename.endsWith(".exe") && !filename.equalsIgnoreCase("UnityCrashHandler64.exe")) {
                     System.out.println(filename + " found");
                     if (new File(gameDir + File.separator + filename).exists()) {
                         //Guarda la direccion del .exe si existe
