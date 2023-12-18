@@ -288,7 +288,7 @@ public class insertGame_1Controller implements Initializable {
             SocketImagGame sig = new SocketImagGame(gameRegisterInfo.getTitle().replaceAll("\\s+", ""), gameRegisterInfo.getImage());
             
             //insertar zip
-            SocketZipGameUpload szgu= new SocketZipGameUpload(gameRegisterInfo.getTitle().replaceAll("\\s+", ""), zipTexField.getText());
+            SocketZipGameUpload szgu= new SocketZipGameUpload(gameRegisterInfo.getTitle(), zipTexField.getText());
             
             //insercion de la tabla regulacion 
             RegulationConsults.insercion(pegiNum, idJuego);

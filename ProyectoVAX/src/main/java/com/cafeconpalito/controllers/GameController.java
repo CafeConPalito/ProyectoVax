@@ -219,7 +219,7 @@ public class GameController extends HBox {
         }
 
         //Actualizo en la base de datos
-        Query insercion2 = em.createNativeQuery("UPDATE Juego SET numdescargas = :numdescargas WHERE idjuego=:idjuego ;");
+        Query insercion2 = em.createNativeQuery("UPDATE juego SET numdescargas = :numdescargas WHERE idjuego=:idjuego ;");
 
         insercion2.setParameter("numdescargas", descargas);
         insercion2.setParameter("idjuego", this.idGame);
