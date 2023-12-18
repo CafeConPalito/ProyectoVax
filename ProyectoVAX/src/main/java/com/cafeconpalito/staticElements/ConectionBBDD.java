@@ -35,7 +35,6 @@ public class ConectionBBDD {
         return em;
     }
 
-    
     /**
      * cierra las conexiones
      */
@@ -104,7 +103,7 @@ public class ConectionBBDD {
             emAux = managerFactory.createEntityManager();
             em = emAux;
             EntryPoint.serverIP = newIP;
-            
+
             return true;
         } catch (Exception e) {
             //si falla la conexion em se queda en null

@@ -4,7 +4,6 @@
  */
 package com.cafeconpalito.staticElements;
 
-import java.net.URL;
 
 /**
  * @author CafeConPalito
@@ -21,53 +20,13 @@ public class CheckURLImg {
 
         //Comprueba el tipo de archivo si es correcto continua
         if (URLName.endsWith(".jpg") || URLName.endsWith(".png") || URLName.endsWith(".gif") || URLName.endsWith(".bmp") || URLName.endsWith(".jpeg")) {
-            try {
-                new URL(URLName).toURI();
-                return true;
-            } catch (Exception e) {
-                return false;
+            //Llamar al hilo si se cumple esta condicion
+            //Implementacion Rapida para no tener que rehacer mucho codigo intentando lanzar hilos para comprobar imagenes de URL de AWS que va muy lento
+            HiloURLExist hue = new HiloURLExist(URLName);
+            while (!hue.comprobar) {                
             }
+            return hue.exists;
         }
-
         return false;
     }
 }
-
-// PRUEBAS
-/*
-        InputStream input = null;
-        try {
-
-            input = (new URL(urlImage)).openStream();
-            input.close();
-            infoGameImage.setImage(new Image(urlImage));
-            System.out.println("imagen correcta carago la del la BBDD");
-            
-        } catch (IOException ex) {
-            System.out.println("la imagen no va bien cargo dejo la de serie");
-        } finally {
-            if (input != null) {
-                input.close();
-            }
-
-        }
- */
- /*
-        Image image = new Image(urlImage);
-        if (image.isError()) {
-            System.out.println("error al leer la imagen");
-            
-        } else {
-            System.out.println("imagen ok");
-        }
- */
- /*
-        boolean result = false;
-        try {
-            InputStream input = (new URL(URLName)).openStream();
-            result = true;
-        } catch (IOException ex) {
-            System.out.println("Image doesnot exits :");
-        }
-        return result;
- */

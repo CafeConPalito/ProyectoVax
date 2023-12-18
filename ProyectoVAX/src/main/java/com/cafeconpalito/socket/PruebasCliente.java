@@ -4,7 +4,9 @@
  */
 package com.cafeconpalito.socket;
 
+import com.cafeconpalito.staticElements.LoadScene;
 import com.cafeconpalito.staticElements.RunGame;
+import java.awt.Color;
 import java.io.File;
 
 /**
@@ -18,26 +20,25 @@ public class PruebasCliente {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
-        
+
         //PRUEBAS DEL CLIENTE IMAGEN
-        
-        File f = new File("daniel.zip");
-        
-        String path = f.getAbsolutePath();
-        String alias = "pajaro volando";
-              
+        //File f = new File("daniel.zip");
+        //String path = f.getAbsolutePath();
+        //String alias = "pajaro volando";
         //System.out.println(alias);
         //System.out.println(alias.replaceAll("\\s+",""));
-        
         //SocketImagUser siu = new SocketImagUser(alias, path);
         //SocketImagGame sig = new SocketImagGame(alias, path);
         //SocketZipGameUpload szgu = new SocketZipGameUpload(alias, path);
         //SocketZipGameDownload szgd = new SocketZipGameDownload("Cafe Con Palito");
+        //RunGame r = new RunGame("Cafe Con Palito");
+        //r.runGame();
         
-        RunGame r = new RunGame("Cafe Con Palito");
-        r.runGame();
-        
+        LoadScene ls = new LoadScene();
+        ls.setBackground(new Color(0, 0, 0, 0));
+        ls.setLocationRelativeTo(null);
+        ls.setVisible(true);
+
     }
-    
+
 }
