@@ -156,7 +156,7 @@ public class insertGame_1Controller implements Initializable {
      */
     private void saveData() {
         if (genreComboBox.getValue() != null) {
-            gameRegisterInfo.setGenre(genreComboBox.getValue().toString());
+            gameRegisterInfo.setGenre(genreComboBox.getSelectionModel().getSelectedIndex()+1);
         }
 
         gameRegisterInfo.setPegi(pegiNum);
@@ -274,6 +274,7 @@ public class insertGame_1Controller implements Initializable {
         if (b) {
 
             // insercion:
+            saveData();
             GameConsults.insercion();
 
             int idJuego = 0;
