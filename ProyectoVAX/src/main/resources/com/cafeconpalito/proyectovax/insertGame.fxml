@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox id="BackGround" alignment="CENTER" stylesheets="@../../../styles/register.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cafeconpalito.controllers.insertGameController">
+<HBox id="BackGround" alignment="CENTER" stylesheets="@../../../styles/register.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cafeconpalito.controllers.insertGameController">
    <children>
       <HBox id="BackGroundForm" alignment="CENTER" maxHeight="900.0" maxWidth="1200.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="700.0" HBox.hgrow="ALWAYS">
          <children>
@@ -27,7 +27,7 @@
                            </image>
                         </ImageView>
                         <Pane prefHeight="89.0" prefWidth="45.0" />
-                        <Label alignment="CENTER" prefHeight="89.0" prefWidth="213.0" styleClass="labels" text="NEW GAME" textAlignment="CENTER" textFill="WHITE">
+                        <Label alignment="CENTER" prefHeight="89.0" prefWidth="236.0" styleClass="labels" text="NEW GAME" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="36.0" />
                            </font>
