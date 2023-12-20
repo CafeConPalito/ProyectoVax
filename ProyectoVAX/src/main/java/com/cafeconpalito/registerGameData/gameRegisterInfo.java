@@ -15,7 +15,7 @@ public class gameRegisterInfo {
     private static Double price;
     private static String image;
     private static String launchDate;
-    private static String genre;
+    private static Integer genre;
     private static Integer pegi;
     private static Integer cero;
     private static Integer esrb;
@@ -83,11 +83,11 @@ public class gameRegisterInfo {
         gameRegisterInfo.launchDate = launchDate;
     }
 
-    public static String getGenre() {
+    public static int getGenre() {
         return genre;
     }
 
-    public static void setGenre(String genre) {
+    public static void setGenre(int genre) {
         gameRegisterInfo.genre = genre;
     }
 
